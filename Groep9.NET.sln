@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Groep9.NET", "Groep9.NET\Groep9.NET.csproj", "{785721A5-6C08-4990-A844-E9B7EEAD3872}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Groep9.NET.Tests", "Groep9.NET.Tests\Groep9.NET.Tests.csproj", "{792C2674-8A11-4630-8F9D-ACA1E556511D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{785721A5-6C08-4990-A844-E9B7EEAD3872}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{785721A5-6C08-4990-A844-E9B7EEAD3872}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{785721A5-6C08-4990-A844-E9B7EEAD3872}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{785721A5-6C08-4990-A844-E9B7EEAD3872}.Release|Any CPU.Build.0 = Release|Any CPU
+		{792C2674-8A11-4630-8F9D-ACA1E556511D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{792C2674-8A11-4630-8F9D-ACA1E556511D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{792C2674-8A11-4630-8F9D-ACA1E556511D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{792C2674-8A11-4630-8F9D-ACA1E556511D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
