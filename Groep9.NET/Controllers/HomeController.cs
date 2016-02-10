@@ -15,7 +15,7 @@ namespace Groep9.NET.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Test changes";
 
             return View();
         }
