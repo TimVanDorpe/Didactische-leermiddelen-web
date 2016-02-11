@@ -6,31 +6,11 @@ using System.ComponentModel;
 
 namespace Groep9.NET {
     public class Student : Gebruikers {
-        public int GebruikersID {
-            get {
-                throw new NotImplementedException();
-            }
-        }
+        public int GebruikersID { get; set; }
 
-        public string Naam {
-            get {
-                throw new NotImplementedException();
-            }
+        public string Naam { get; set; }
 
-            set {
-                throw new NotImplementedException();
-            }
-        }
-
-        public string Wachtwoord {
-            get {
-                throw new NotImplementedException();
-            }
-
-            set {
-                throw new NotImplementedException();
-            }
-        }
+        public string Wachtwoord { get; set; }
 
         public void LogIn() {
             throw new NotImplementedException();
