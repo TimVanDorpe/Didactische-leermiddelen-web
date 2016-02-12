@@ -164,7 +164,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Models\Domein\Docent.cs" />
-    <Compile Include="Models\Domein\Gebruikers.cs" />
+    <Compile Include="Models\Domein\Gebruiker.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

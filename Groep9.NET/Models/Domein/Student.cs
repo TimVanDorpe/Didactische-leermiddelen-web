@@ -5,7 +5,7 @@ using System.Web.Services.Protocols;
 using System.ComponentModel;
 
 namespace Groep9.NET {
-    public class Student : Gebruikers {
+    public class Student : Gebruiker {
         public int GebruikersID { get; set; }
 
         public string Naam { get; set; }

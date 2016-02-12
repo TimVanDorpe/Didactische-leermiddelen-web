@@ -28,6 +28,16 @@ namespace Groep9.NET
             return producten;
         }
 
+        public void Add(Product product)
+        {
+            producten.Add(product);
+        }
+
+        public void Delete(Product product)
+        {
+            producten.Remove(product);
+        }
+
         public void SaveChanges()
         {
             context.SaveChanges();

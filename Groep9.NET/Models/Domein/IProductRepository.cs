@@ -12,7 +12,8 @@ namespace Groep9.NET.Models.Domein {
 
         IQueryable<Product> VindAlleProducten();
 
-
+        void Add(Product product);
+        void Delete(Product product);
 
     }
 }

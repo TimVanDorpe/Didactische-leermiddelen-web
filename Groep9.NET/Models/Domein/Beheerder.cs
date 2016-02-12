@@ -5,7 +5,7 @@ using System.Web.Services.Protocols;
 using System.ComponentModel;
 
 namespace Groep9.NET {
-    public class Beheerder : Gebruikers {
+    public class Beheerder : Gebruiker {
         public int GebruikersID
         { get; set; }
 

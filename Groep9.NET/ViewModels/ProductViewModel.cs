@@ -1,15 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Compilation;
 
 namespace Groep9.NET.ViewModels {
     public class ProductViewModel {
-
+        [Required]
         public int ProductID { get; private set; }
+
+        [Required]
         public string Naam { get; private set; }
         public string Foto { get; private set; }
+
+        [DataType(DataType.MultilineText)]
         public string Omschrijving { get; private set; }
         public int Aantal { get; private set; }
         public int Prijs { get; private set; }
