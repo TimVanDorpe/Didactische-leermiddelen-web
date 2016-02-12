@@ -17,5 +17,20 @@ namespace Groep9.NET {
         public string Firma { get; set; }
         public string Doelgroep { get; set; }
         public string Leergebied { get; set; }
+
+       
+
+        public Product()
+        {
+
+        }
+        public Product(int productnummer, string naam, string omschrijving)
+        {
+            this.ProductNummer = productnummer;
+            this.Naam = naam;
+            this.Omschrijving = omschrijving;
+        
+        
+        }
     }
 }

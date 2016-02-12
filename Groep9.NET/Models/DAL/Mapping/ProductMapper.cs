@@ -4,6 +4,7 @@ using System.Data.Entity.ModelConfiguration;
 using System.Linq;
 using System.Web;
 
+
 namespace Groep9.NET.Models.DAL
 {
     public class ProductMapper : EntityTypeConfiguration<Product>
@@ -18,8 +19,8 @@ namespace Groep9.NET.Models.DAL
             Property(t => t.Plaats).IsRequired();
             Property(t => t.Prijs).IsRequired();
             Property(t => t.Uitleenbaarheid).IsRequired();
-            
-                
+
+
         }
 
     }
