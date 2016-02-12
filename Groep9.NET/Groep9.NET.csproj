@@ -157,7 +157,6 @@
     <Compile Include="Controllers\CatalogusController.cs" />
     <Compile Include="Models\DAL\Context.cs" />
     <Compile Include="Models\DAL\Mapping\ProductMapper.cs" />
-    <Compile Include="Models\DAL\ProductMapper.cs" />
     <Compile Include="Models\Domein\Beheerder.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />

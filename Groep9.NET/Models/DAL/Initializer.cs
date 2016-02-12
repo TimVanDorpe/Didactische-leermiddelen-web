@@ -15,7 +15,7 @@ namespace Groep9.NET.Models
             {
 
 
-                Product testproduct = new Product();
+                Product testproduct = new Product(1,"Testprod", "Dit is een testproduct");
 
                 context.SaveChanges();
 
