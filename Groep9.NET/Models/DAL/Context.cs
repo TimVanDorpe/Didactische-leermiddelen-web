@@ -11,14 +11,14 @@ namespace Groep9.NET.Models.DAL
     public class Context : DbContext
     {
 
-        public Context()
-            : base("")
+        public Context(): base("groep9")
         { }
 
         public DbSet<Product> producten { get; set; }
         
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Configurations.Add(new ProductMapper());
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             modelBuilder.Configurations.AddFromAssembly(Assembly.GetExecutingAssembly());
         }
