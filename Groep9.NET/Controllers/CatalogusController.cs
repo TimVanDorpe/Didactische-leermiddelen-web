@@ -21,10 +21,22 @@ namespace Groep9.NET.Controllers
         
         public ActionResult Index()
         {
-            IEnumerable<Product> producten = productRepository.VindAlleProducten().OrderBy(p => p.Naam);
-            IEnumerable<ProductViewModel> productViewModels =
-                producten.Select(p => new ProductViewModel(p)).ToList();
-            return View(productViewModels);
+             if (ModelState.IsValid)
+                {
+                    try
+                    {
+                        IEnumerable<Product> producten = productRepository.VindAlleProducten().OrderBy(p => p.Naam);
+                        IEnumerable<ProductViewModel> productViewModels =
+                        producten.Select(p => new ProductViewModel(p)).ToList();
+                        return View(productViewModels);
+                    }
+                    catch (Exception ex)
+                    {
+                        ModelState.AddModelError("", ex.Message);
+                    }
+                }
+                      
+            return RedirectToAction("Index", "Home");
         }   
     }
 }

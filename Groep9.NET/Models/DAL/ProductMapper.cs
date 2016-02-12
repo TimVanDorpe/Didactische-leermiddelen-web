@@ -12,6 +12,7 @@ namespace Groep9.NET.Models.DAL
         {
             ToTable("Product");
             HasKey(p => p.ProductNummer);
+            
             Property(t => t.Naam).IsRequired();
             Property(t => t.Leergebied).IsRequired();
             Property(t => t.Omschrijving).IsRequired();
