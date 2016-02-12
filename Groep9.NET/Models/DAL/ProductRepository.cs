@@ -5,12 +5,13 @@ using System.Web.Services.Protocols;
 using System.ComponentModel;
 using System.Collections.Generic;
 using Groep9.NET.Models.DAL;
+using Groep9.NET.Models.Domein;
 using System.Data.Entity;
 using System.Linq;
 
 namespace Groep9.NET
 {
-    public class ProductRepository
+    public class ProductRepository : IProductRepository
     {
 
         private Context context;
@@ -22,7 +23,7 @@ namespace Groep9.NET
             producten = context.producten;
         }
 
-        public IQueryable<Product> VindtAlleProducten()
+        public IQueryable<Product> VindAlleProducten()
         {
             return producten;
         }
@@ -34,10 +35,10 @@ namespace Groep9.NET
               
       
 
-        public Product Zoeken(string Trefwoord)
+        public Product Zoeken(string trefwoord)
         {
 
-            return producten.Find(Trefwoord);
+            return producten.Find(trefwoord);
 
         }
 
@@ -45,5 +46,7 @@ namespace Groep9.NET
         {
             throw new System.NotImplementedException();
         }
+
+       
     }
 }

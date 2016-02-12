@@ -77,5 +77,32 @@ namespace Groep9.NET {
             set {
             }
         }
+
+        public string Firma {
+            get {
+                throw new System.NotImplementedException();
+            }
+
+            set {
+            }
+        }
+
+        public string Doelgroep {
+            get {
+                throw new System.NotImplementedException();
+            }
+
+            set {
+            }
+        }
+
+        public string Leergebied {
+            get {
+                throw new System.NotImplementedException();
+            }
+
+            set {
+            }
+        }
     }
 }

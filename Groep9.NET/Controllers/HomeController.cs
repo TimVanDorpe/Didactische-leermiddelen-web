@@ -13,6 +13,8 @@ namespace Groep9.NET.Controllers
             return View();
         }
 
+
+        /*
         public ActionResult About()
         {
             ViewBag.Message = "Test changes 2. Jarne";
@@ -26,5 +28,6 @@ namespace Groep9.NET.Controllers
 
             return View();
         }
+        */
     }
 }
