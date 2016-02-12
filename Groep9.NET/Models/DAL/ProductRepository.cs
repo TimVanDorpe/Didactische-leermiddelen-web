@@ -14,7 +14,7 @@ namespace Groep9.NET
     {
 
         private Context context;
-        private DbSet<Product> producten;
+        private System.Data.Entity.DbSet<Product> producten;
 
         public ProductRepository(Context context)
         {
