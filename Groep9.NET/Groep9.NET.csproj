@@ -156,22 +156,18 @@
   <ItemGroup>
     <Compile Include="Controllers\CatalogusController.cs" />
     <Compile Include="Models\DAL\Context.cs" />
+    <Compile Include="Models\DAL\ProductMapper.cs" />
     <Compile Include="Models\Domein\Beheerder.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Models\Domein\Docent.cs" />
     <Compile Include="Models\Domein\Gebruiker.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Domein\IProductRepository.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\DAL\ProductRepository.cs" />
     <Compile Include="Models\Domein\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

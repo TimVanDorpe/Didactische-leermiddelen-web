@@ -8,7 +8,7 @@ namespace Groep9.NET
     {
         public void Configuration(IAppBuilder app)
         {
-            ConfigureAuth(app);
+            
         }
     }
 }
