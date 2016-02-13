@@ -1,11 +1,7 @@
-﻿using Groep9.NET.Models.DAL;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Data.Entity.Validation;
-using System.Linq;
-using System.Web;
 
-namespace Groep9.NET.Models
+namespace Groep9.NET.Models.DAL
 {
     public class Initializer : System.Data.Entity.DropCreateDatabaseAlways<Context>
     {
@@ -16,7 +12,7 @@ namespace Groep9.NET.Models
 
 
                 Product testproduct = new Product(1,"Testprod", "Dit is een testproduct");
-
+                context.Producten.Add(testproduct);
                 context.SaveChanges();
 
 
