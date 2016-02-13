@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Data.Entity.Validation;
+using System.Data.Entity;
 
 namespace Groep9.NET.Models.DAL
 {
-    public class Initializer : System.Data.Entity.DropCreateDatabaseAlways<Context>
+    public class Initializer : DropCreateDatabaseAlways<Context>
     {
         protected override void Seed(Context context)
         {
