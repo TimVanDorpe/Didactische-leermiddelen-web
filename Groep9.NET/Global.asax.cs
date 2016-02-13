@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Groep9.NET.Models.DAL;
 
 namespace Groep9.NET
 {
@@ -16,6 +17,9 @@ namespace Groep9.NET
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            Context db = new Context();
+            db.Database.Initialize(true);
         }
     }
 }

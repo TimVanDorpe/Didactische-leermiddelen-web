@@ -15,27 +15,27 @@ namespace Groep9.NET
     {
 
         private Context context;
-        private System.Data.Entity.DbSet<Product> producten;
+        private DbSet<Product> Producten;
 
         public ProductRepository(Context context)
         {
             this.context = context;
-            producten = context.producten;
+            Producten = context.Producten;
         }
 
         public IQueryable<Product> VindAlleProducten()
         {
-            return producten;
+            return Producten;
         }
 
         public void Add(Product product)
         {
-            producten.Add(product);
+            Producten.Add(product);
         }
 
         public void Delete(Product product)
         {
-            producten.Remove(product);
+            Producten.Remove(product);
         }
 
         public void SaveChanges()
@@ -48,7 +48,7 @@ namespace Groep9.NET
         public Product Zoeken(string trefwoord)
         {
 
-            return producten.Find(trefwoord);
+            return Producten.Find(trefwoord);
 
         }
 

@@ -1,10 +1,12 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Reflection;
 using System.Web;
+using System.Web.Mvc;
 
 namespace Groep9.NET.Models.DAL
 {
@@ -14,13 +16,17 @@ namespace Groep9.NET.Models.DAL
         public Context(): base("groep9")
         { }
 
-        public DbSet<Product> producten { get; set; }
+        public DbSet<Product> Producten { get; set; }
         
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Configurations.Add(new ProductMapper());
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             modelBuilder.Configurations.AddFromAssembly(Assembly.GetExecutingAssembly());
+        }
+        public static Context Create()
+        {
+            return DependencyResolver.Current.GetService<Context>();
         }
     }
 }
