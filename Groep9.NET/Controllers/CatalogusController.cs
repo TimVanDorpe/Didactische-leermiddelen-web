@@ -26,9 +26,8 @@ namespace Groep9.NET.Controllers
                     try
                     {
                         IEnumerable<Product> producten = productRepository.VindAlleProducten().OrderBy(p => p.Naam);
-                        IEnumerable<ProductViewModel> productViewModels =
-                        producten.Select(p => new ProductViewModel(p)).ToList();
-                        return View(productViewModels);
+                      
+                        return View(producten);
                     }
                     catch (Exception ex)
                     {
