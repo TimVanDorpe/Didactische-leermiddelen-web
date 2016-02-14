@@ -52,6 +52,11 @@ namespace Groep9.NET
 
         }
 
+        public Product FindByProductNummer(int productnummer)
+        {
+            return Producten.Find(productnummer);
+        }
+
         public List<Product> GeavanceerdZoeken(string Trefwoord, string Doelgroep, string Leergebied)
         {
             throw new System.NotImplementedException();

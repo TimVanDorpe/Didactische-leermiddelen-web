@@ -37,5 +37,12 @@ namespace Groep9.NET.Controllers
                       
             return RedirectToAction("Index", "Home");
         }   
+
+
+        public ActionResult Details(int id)
+        {
+            Product product = productRepository.FindByProductNummer(id);
+            return View(product);
+        }
     }
 }

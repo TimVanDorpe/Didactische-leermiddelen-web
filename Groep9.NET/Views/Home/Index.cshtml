@@ -1,95 +1,13 @@
 ﻿@model IEnumerable<Groep9.NET.Product>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Home";
 }
 
-<h2>Productcatalogus</h2>
+<div class="jumbotron">
 
-<p>
-    @Html.ActionLink("zoeken", "Index", "Zoeken", null, new {@class = "btn btn-primary btn-large"})
-</p>
+    <h1>Didactische leermiddelen</h1>
+    <p class="lead">Welkom bij de uitleendienst voor didactische leermiddelen </p>
+    @Html.ActionLink("Naar Catalogus", "Index", "Catalogus", null, new { @class = "btn btn-primary btn-large" })
 
-@*<table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.FotoURL)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Naam)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Omschrijving)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductNummer)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Prijs)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Aantal)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Uitleenbaarheid)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Plaats)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Firma)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Doelgroep)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Leergebied)
-            </th>
-            <th></th>
-        </tr>
-
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FotoURL)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Naam)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Omschrijving)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductNummer)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Prijs)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Aantal)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Uitleenbaarheid)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Plaats)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Firma)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Doelgroep)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Leergebied)
-            </td>
-            <td>
-
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ })
-
-            </td>
-        </tr>
-    }
-
-    </table>
-*@
+</div>

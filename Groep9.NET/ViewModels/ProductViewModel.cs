@@ -17,7 +17,7 @@ namespace Groep9.NET.ViewModels {
         [DataType(DataType.MultilineText)]
         public string Omschrijving { get; private set; }
         public int Aantal { get; private set; }
-        public int Prijs { get; private set; }
+        public double Prijs { get; private set; }
         public string Firma { get; private set; }
         public string Doelgroep { get; private set; }
         public string Leergebied { get; private set; }
