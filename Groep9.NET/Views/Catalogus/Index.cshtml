@@ -9,9 +9,17 @@
 
 <p>
     <div class="form-group">
-        @Html.TextBox("Trefwoord", "", "", new { @class = "form-control" })
-        
-        <input type="submit" value="Zoeken" class="btn btn-default" />
+        <p>
+    Zoeken op :
+</p>
+    @using (@Html.BeginForm("Index", "CatalogusController", FormMethod.Get))
+    {
+        @Html.RadioButton("zoekenNaar", "Naam", true)<text> Naam</text>
+        @Html.RadioButton("zoekenNaar", "Omschrijving") <text>Omschrijving </text><br />
+   
+@Html.TextBox("trefwoord", "", "", new { @class = "form-control" })
+<input type="submit" value="Search" class="btn btn-default" />
+}
     </div>
 </p>
 
