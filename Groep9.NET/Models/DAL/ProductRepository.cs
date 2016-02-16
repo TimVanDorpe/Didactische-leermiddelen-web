@@ -25,17 +25,17 @@ namespace Groep9.NET
 
         public IQueryable<Product> VindAlleProducten()
         {
-            return Producten;
+            return Producten ;
         }
 
         public void Add(Product product)
         {
-            Producten.Add(product);
+            Producten.Add(product) ;
         }
 
         public void Delete(Product product)
         {
-            Producten.Remove(product);
+            Producten.Remove(product) ;
         }
 
         public void SaveChanges()
