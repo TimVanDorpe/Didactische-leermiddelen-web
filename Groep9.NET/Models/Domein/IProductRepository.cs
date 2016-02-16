@@ -8,7 +8,7 @@ namespace Groep9.NET.Models.Domein {
     public interface IProductRepository
     {
 
-        Product Zoeken(string trefwoord);
+        
 
         IQueryable<Product> VindAlleProducten();
 

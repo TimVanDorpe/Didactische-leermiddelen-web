@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -6,9 +7,12 @@ using System.Web;
 using System.Web.Compilation;
 
 namespace Groep9.NET.ViewModels {
-    public class ProductViewModel {
+   
+
+    public class ProductViewModel
+    {
         [Required]
-        public int ProductID { get; private set; }
+        public int ProductId { get; private set; }
 
         [Required]
         public string Naam { get; private set; }
@@ -21,7 +25,6 @@ namespace Groep9.NET.ViewModels {
         public string Firma { get; private set; }
         public string Doelgroep { get; private set; }
         public string Leergebied { get; private set; }
-
         public ProductViewModel(Product p)
         {
 
@@ -33,7 +36,7 @@ namespace Groep9.NET.ViewModels {
             Naam = p.Naam;
             Omschrijving = p.Omschrijving;
             Aantal = p.Aantal;
-            ProductID = p.ProductNummer;
+            ProductId = p.ProductNummer;
             Prijs = p.Prijs;
             Firma = p.Firma;
             Doelgroep = p.Doelgroep;
@@ -42,7 +45,9 @@ namespace Groep9.NET.ViewModels {
 
 
         }
+        public ProductViewModel()
+        {
 
-
+        }
     }
 }

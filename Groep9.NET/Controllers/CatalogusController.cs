@@ -19,16 +19,31 @@ namespace Groep9.NET.Controllers
             productRepository = pr;
         }
         
-        public ActionResult Index()
+        public ActionResult Index(string trefwoord = "")
         {
              if (ModelState.IsValid)
                 {
                     try
                     {
-                        IEnumerable<Product> producten = productRepository.VindAlleProducten().OrderBy(p => p.Naam);
-                      
-                        return View(producten);
-                    }
+                        IEnumerable<Product> producten;
+                        if (trefwoord.Equals(""))
+                        {
+                            producten = productRepository.VindAlleProducten().OrderBy(p => p.Naam).ToList();
+                        }
+                        else
+                        {
+                        //zoeken
+                            producten =
+                                productRepository.VindAlleProducten()
+                                    .Where(p => p.Naam.Equals(trefwoord))
+                                    .OrderBy(g => g.Naam);
+
+                        }
+                    if (Request.IsAjaxRequest())
+                        return PartialView("Producten", producten);
+                    ViewBag.Trefwoord = trefwoord;
+                    return View(producten);
+                }
                     catch (Exception ex)
                     {
                         ModelState.AddModelError("", ex.Message);
@@ -36,7 +51,9 @@ namespace Groep9.NET.Controllers
                 }
                       
             return RedirectToAction("Index", "Home");
-        }   
+        }
+
+       
 
 
         public ActionResult Details(int id)

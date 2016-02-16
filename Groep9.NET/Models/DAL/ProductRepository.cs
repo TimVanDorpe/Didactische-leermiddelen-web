@@ -45,12 +45,7 @@ namespace Groep9.NET
               
       
 
-        public Product Zoeken(string trefwoord)
-        {
-
-            return Producten.Find(trefwoord);
-
-        }
+      
 
         public Product FindByProductNummer(int productnummer)
         {
