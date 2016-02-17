@@ -29,7 +29,7 @@ namespace Groep9.NET.Controllers
             // tijdelijke authenticatie, moet hier mee ingelogd worden of het is fout
             if (model.Email == "user@user.com" && model.Password == "password") {
                 var identity = new ClaimsIdentity(new[] {
-                new Claim(ClaimTypes.Name, "Jens"),
+                new Claim(ClaimTypes.Name, "Voorlopige Gebruiker"),
                 new Claim(ClaimTypes.Email, "a@b.com"),
                 new Claim(ClaimTypes.Country, "Belgium")
             },
