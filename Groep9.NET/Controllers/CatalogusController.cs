@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
 using Groep9.NET.Models.Domein;
@@ -9,7 +10,8 @@ using Groep9.NET.Models.DAL;
 
 namespace Groep9.NET.Controllers
 {
-    public class CatalogusController : Controller
+    // gebruikers kunnen enkel nog op de catalogus na inloggen als user@user.com / password
+    public class CatalogusController : AppController
     {
         // GET: Catalogus
 
@@ -45,7 +47,8 @@ namespace Groep9.NET.Controllers
 
         public ActionResult Index(/*string zoekenNaar,*/ string trefwoord = "", int doelgroep = 0, int leergebied = 0)
         {
-             if (ModelState.IsValid)
+            
+            if (ModelState.IsValid)
                 {
                     try
                     {
