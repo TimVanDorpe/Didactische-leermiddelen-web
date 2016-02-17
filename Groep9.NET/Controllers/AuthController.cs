@@ -19,7 +19,8 @@ namespace Groep9.NET.Controllers
 
             if (HttpContext.Request.IsAuthenticated)
             {
-                return RedirectToAction("index", "home");
+                //return RedirectToAction("index", "home");
+                return RedirectToAction("ReedsIngelogd", "Auth");
             }
             else
             {
@@ -27,7 +28,11 @@ namespace Groep9.NET.Controllers
 
             }
         }
-     
+
+        public ActionResult ReedsIngelogd()
+        {
+            return View();
+        }
 
         [HttpPost]
         public ActionResult LogIn(LogInViewModel model) {
