@@ -27,7 +27,8 @@
         @Html.RadioButton("zoekenNaar", "Omschrijving") <text>Omschrijving </text><br />*@
 
         @Html.TextBox("trefwoord", "", "", new { @class = "form-control" })
-        <input type="submit" value="Search" class="btn btn-default" />
+        <input type="submit" value="Search" class="btn btn-default"/>
+        @Html.ActionLink("Geef alle weer","index","Catalogus")
     }
 
 
