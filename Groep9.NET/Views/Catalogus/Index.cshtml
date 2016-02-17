@@ -8,19 +8,20 @@
 <h2>Productcatalogus</h2>
 
 <p>
-    <div class="form-group">
-        <p>
+
+        
     Zoeken op :
-</p>
-    @using (@Html.BeginForm("Index", "CatalogusController", FormMethod.Get))
+
+    @using (@Html.BeginForm("Index","Catalogus"))
     {
-        @Html.RadioButton("zoekenNaar", "Naam", true)<text> Naam</text>
-        @Html.RadioButton("zoekenNaar", "Omschrijving") <text>Omschrijving </text><br />
-   
-@Html.TextBox("trefwoord", "", "", new { @class = "form-control" })
-<input type="submit" value="Search" class="btn btn-default" />
-}
-    </div>
+        @*@Html.RadioButton("zoekenNaar", "Naam", true)<text> Naam</text>
+        @Html.RadioButton("zoekenNaar", "Omschrijving") <text>Omschrijving </text><br />*@
+
+        @Html.TextBox("trefwoord", "", "", new { @class = "form-control" })
+        <input type="submit" value="Search" class="btn btn-default" />
+    }
+
+
 </p>
 
 <div id="bestellingen">

@@ -43,7 +43,7 @@ namespace Groep9.NET.Controllers
         }*/
        
 
-        public ActionResult Index(string zoekenNaar, string trefwoord = "")
+        public ActionResult Index(/*string zoekenNaar,*/ string trefwoord = "")
         {
              if (ModelState.IsValid)
                 {
@@ -61,28 +61,29 @@ namespace Groep9.NET.Controllers
                         else
                         {
 
-                        if (zoekenNaar == "Omschrijving")
-                        {
-                            producten = productRepository.VindAlleProducten()
-                                   .Where(p => p.Omschrijving.Equals(trefwoord))
-                                   .OrderBy(g => g.Naam);
-                            //producten = context.Producten.Where(x => x.Omschrijving == trefwoord || trefwoord == null).ToList();
-
-                        }
-                        if (zoekenNaar == "Naam")
-                        {
-                            producten = productRepository.VindAlleProducten()
-                                    .Where(p => p.Naam.Equals(trefwoord))
+                        /* if (zoekenNaar == "Omschrijving")
+                         {
+                             producten = productRepository.VindAlleProducten()
+                                    .Where(p => p.Omschrijving.Contains(trefwoord))
                                     .OrderBy(g => g.Naam);
-                        }
-                        else { 
+                             //producten = context.Producten.Where(x => x.Omschrijving == trefwoord || trefwoord == null).ToList();
+
+                         }
+                         if (zoekenNaar == "Naam")
+                         {
+                             producten = productRepository.VindAlleProducten()
+                                     .Where(p => p.Naam.Contains(trefwoord))
+                                     .OrderBy(g => g.Naam);
+                         }
+                         else { */
                         //zoeken
                         producten =
                                 productRepository.VindAlleProducten()
-                                    .Where(p => p.Naam.Equals(trefwoord))
-                                    .OrderBy(g => g.Naam);}
+                                    .Where(p => p.Naam.Contains(trefwoord) || p.Omschrijving.Contains(trefwoord))
+                                    .OrderBy(g => g.Naam);
+                    }
 
-                        }
+                        
                    if (Request.IsAjaxRequest())
                         return PartialView("Producten", producten);
                     ViewBag.Trefwoord = trefwoord;

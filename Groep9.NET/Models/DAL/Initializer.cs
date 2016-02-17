@@ -14,10 +14,15 @@ namespace Groep9.NET.Models.DAL
 
                 Product testproduct = new Product(1,"Testprod", "Dit is een testproduct", 12.95, 3, true, "Gent", "Hogent", "Informatica", ".net");
                 Product testproduct2 = new Product(2, "Testprod2", "Dit is een testproduct", 7.85 , 9, false, "Aalst", "Hogent", "Landmeetkunde", "Kaartprojectie");
+                Product testproduct3 = new Product(3, "Test product 3", "een testproduct", 8.55, 10, false, "Aalst", "Hogent", "Landmeetkunde", "Kaartprojectie");
+                Product testproduct4 = new Product(4, "Landkaart", "Map van België", 8.55, 10, false, "Aalst", "Hogent", "Landmeetkunde", "Kaartprojectie");
+                Product testproduct5 = new Product(5, "Rekenmachine", "Rekenmachine van merk ..", 8.55, 10, false, "Aalst", "Hogent", "Landmeetkunde", "Kaartprojectie");
 
                 context.Producten.Add(testproduct);
                 context.Producten.Add(testproduct2);
-
+                context.Producten.Add(testproduct3);
+                context.Producten.Add(testproduct4);
+                context.Producten.Add(testproduct5);
                 context.SaveChanges();
 
 
