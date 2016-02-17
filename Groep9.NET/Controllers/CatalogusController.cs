@@ -16,7 +16,6 @@ namespace Groep9.NET.Controllers
         // GET: Catalogus
 
         private IProductRepository productRepository;
-        private Context context;
 
         public CatalogusController(IProductRepository pr)
         {
@@ -24,49 +23,58 @@ namespace Groep9.NET.Controllers
             
         }
     
-        public ActionResult Index(/*string zoekenNaar,*/ string trefwoord = "", int doelgroep = 0, int leergebied = 0)
+        public ActionResult Index( string trefwoord = "", string doelgroep = "", string leergebied = "")
         {
             
             if (ModelState.IsValid)
                 {
                     try
                     {
-                     
-                    
-                   IEnumerable<Product> producten;
-                    
 
-                    if (trefwoord.Equals(""))
+                        if (doelgroep.Equals("-- Selecteer doelgroep --"))
                         {
-                            producten = productRepository.VindAlleProducten().OrderBy(p => p.Naam).ToList();
+                            doelgroep = "";
                         }
-                        else
-                        {
-
-                        /* if (zoekenNaar == "Omschrijving")
-                         {
-                             producten = productRepository.VindAlleProducten()
-                                    .Where(p => p.Omschrijving.Contains(trefwoord))
-                                    .OrderBy(g => g.Naam);
-                             //producten = context.Producten.Where(x => x.Omschrijving == trefwoord || trefwoord == null).ToList();
-
-                         }
-                         if (zoekenNaar == "Naam")
-                         {
-                             producten = productRepository.VindAlleProducten()
-                                     .Where(p => p.Naam.Contains(trefwoord))
-                                     .OrderBy(g => g.Naam);
-                         }
-                         else { */
-                        //zoeken
-                        producten =
-                                productRepository.VindAlleProducten()
-                                    .Where(p => p.Naam.Contains(trefwoord) || p.Omschrijving.Contains(trefwoord))
-                                    .OrderBy(g => g.Naam);
+                    if (leergebied.Equals("-- Selecteer doelgroep --"))
+                    {
+                        leergebied = "";
                     }
+                    
+
+                    IEnumerable<Product>  producten = productRepository.VindAlleProducten().OrderBy(p => p.Naam).ToList();
+
+                    if (!trefwoord.Equals(""))
+                    {
+
+                        producten =
+                            producten.Where(p => p.Naam.Contains(trefwoord) || p.Omschrijving.Contains(trefwoord));
+                    }
+                        if (!doelgroep.Equals(""))
+                        {
+                        producten = producten.Where(p=> p.Doelgroep.Equals(doelgroep));
+                        }
+                        if (!leergebied.Equals(""))
+                        {
+                        producten = producten.Where(p => p.Leergebied.Equals(leergebied));
+                    }
+                    //{
+                      //     
+                      //  }
+                      ////else if (doelgroep.Equals("") && leergebied.Equals(""))
+                      ////{
+
+                      ////    //zoeken
+                      ////    producten =
+                      ////        productRepository.VindAlleProducten()
+                      ////            .Where(p => p.Naam.Contains(trefwoord) || p.Omschrijving.Contains(trefwoord))
+                      ////            .OrderBy(g => g.Naam);
+                      ////}
+                      //else
+                      //{
+                       
+                    //}
 
                     FillDropDownList();
-                    ViewBag.Leergebieden = GetLeergebiedSelectList(leergebied);
                     ViewBag.Trefwoord = trefwoord;
                    if (Request.IsAjaxRequest())
                         return PartialView("Producten", producten);
@@ -104,15 +112,15 @@ namespace Groep9.NET.Controllers
 
 
 
-        private SelectList GetDoelgroepSelectList(int selectedValue = 0)
+        private SelectList GetDoelgroepSelectList()
         {
             return new SelectList(productRepository.VindAlleProducten().GroupBy(g=>g.Doelgroep),
-                "Doelgroep", "Doelgroep", selectedValue);
+                "Doelgroep", "Doelgroep");
         }
-        private SelectList GetLeergebiedSelectList(int selectedValue = 0)
+        private SelectList GetLeergebiedSelectList()
         {
             return new SelectList(productRepository.VindAlleProducten().GroupBy(g => g.Leergebied),
-                "Leergebied", "Leergebied", selectedValue);
+                "Leergebied", "Leergebied");
         }
 
         public ActionResult Details(int id)
@@ -134,8 +142,8 @@ namespace Groep9.NET.Controllers
 
             IEnumerable<String> en = list;
             IEnumerable<String> en2 = list2;
-            ViewBag.Geavanceerd = new SelectList(en2);
-            ViewBag.Doelgroepen = new SelectList(en);
+            ViewBag.leergebied = new SelectList(en2);
+            ViewBag.doelgroep = new SelectList(en);
 
         }
 
