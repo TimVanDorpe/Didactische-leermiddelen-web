@@ -23,9 +23,16 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="/" class="">Home</a></li>
-                    <li><a href="/auth/logIn" class="">Login</a></li>
+                    <li>
+                        @*  @if (CurrentUser.Identity.IsAuthenticated) {
+                                <a href="/auth/ReedsIngelogd" class="">Login</a>
+                            }
+                            else {*@
+
+                                <a href="/auth/LogIn" class="">Login</a>
+                        @*}*@
+                    </li>
                 </ul>
-              
             </div>
         </div>
     </div>
@@ -33,7 +40,15 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2016    -    Hogent - TV - JDD - TVD - JTB</p>
+            @if (CurrentUser.Identity.IsAuthenticated)
+            {
+                <p>
+                    Ingelogd als: @CurrentUser.Name - <a href="@Url.Action("logout", "auth")">Log Uit</a>
+                </p>
+            }
+
+            <p>&copy; 2016 - Hogent - TV - JDD - TVD - JTB</p>
+
         </footer>
     </div>
 

@@ -248,6 +248,7 @@
     <Content Include="Views\Catalogus\Details.cshtml" />
     <Content Include="Views\Catalogus\Producten.cshtml" />
     <Content Include="Views\Auth\LogIn.cshtml" />
+    <Content Include="Views\Auth\ReedsIngelogd.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

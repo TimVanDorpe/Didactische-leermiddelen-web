@@ -17,8 +17,17 @@ namespace Groep9.NET.Controllers
                 ReturnUrl = returnUrl
             };
 
-            return View(model);
+            if (HttpContext.Request.IsAuthenticated)
+            {
+                return RedirectToAction("index", "home");
+            }
+            else
+            {
+                return View(model);
+
+            }
         }
+     
 
         [HttpPost]
         public ActionResult LogIn(LogInViewModel model) {
