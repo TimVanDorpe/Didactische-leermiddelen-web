@@ -12,31 +12,15 @@
         
     Zoeken op :
 
-    
-<p>
-    @Html.RadioButton("zoekenNaar", "Naam", true)<text> Naam</text>
-    @Html.RadioButton("zoekenNaar", "Omschrijving") <text>Omschrijving </text><br />
-</p>
-        <p>
-        
+    @using (@Html.BeginForm("Index","Catalogus"))
+    {
+        @*@Html.RadioButton("zoekenNaar", "Naam", true)<text> Naam</text>
+        @Html.RadioButton("zoekenNaar", "Omschrijving") <text>Omschrijving </text><br />*@
 
-
-       @Html.DropDownList("Doelgroepen", "-- Selecteer zoekfunctie --")
-            
-       @Html.DropDownList("Geavanceerd", new List<SelectListItem>
-
-   {
-       new SelectListItem {Text = "Trefwoord", Value= "1" },
-       new SelectListItem {Text = "Doelgroep", Value= "2" },
-       new SelectListItem {Text = "Leergebied", Value= "3" }
-
-   }, "-- Selecteer zoekfunctie --")
-             </p>
-        
-
-        @Html.TextBox("trefwoord", "", "", new { @class = "form-control" })<br />
-        <input type="submit" value="Search" class="btn btn-default" />
-    
+        @Html.TextBox("trefwoord", "", "", new { @class = "form-control" })
+        <input type="submit" value="Search" class="btn btn-default"/>
+        @Html.ActionLink("Geef alle weer","index","Catalogus")
+    }
 
 
 </p>
