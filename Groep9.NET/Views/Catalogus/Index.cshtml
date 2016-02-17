@@ -19,7 +19,6 @@
 <p>
 
 
-    Zoeken op :
 
     @using (@Html.BeginForm("Index", "Catalogus"))
     {
@@ -29,17 +28,17 @@
 
 
 
-        @Html.DropDownList("Doelgroepen", "-- Selecteer zoekfunctie --")
+        @Html.DropDownList("doelgroep", "-- Selecteer doelgroep --")
        
 
-        @Html.DropDownList("Geavanceerd", "-- Selecteer zoekfunctie --")
+        @Html.DropDownList("leergebied", "-- Selecteer leergebied --")
     </p>
 
     
             
 
         @Html.TextBox("trefwoord", "", "", new { @class = "form-control" })<br />
-        <input type="submit" value="Search" class="btn btn-default"/>
+        <input type="submit" value="Zoeken" class="btn btn-default"/>
         @Html.ActionLink("Geef alle weer","index","Catalogus")
     }
 
