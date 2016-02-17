@@ -11,7 +11,7 @@ using Groep9.NET.Models.DAL;
 namespace Groep9.NET.Controllers
 {
     // gebruikers kunnen enkel nog op de catalogus na inloggen als user@user.com / password
-    public class CatalogusController : AppController
+    public class CatalogusController : Controller
     {
         // GET: Catalogus
 
@@ -65,14 +65,7 @@ namespace Groep9.NET.Controllers
                                     .OrderBy(g => g.Naam);
                     }
 
-                   /* List<object> list = new List<object>();
-                    list.Add("Doelgroepen");
-                    list.Add("Leergebieden");
-                    list.Add("Trefwoord");
-
-                    IEnumerable<object> en = list;
-                    ViewBag.Geavanceerd = new SelectList(en);*/
-                    ViewBag.Doelgroepen = new SelectList(productRepository.VindAlleProducten().GroupBy(g => g.Doelgroep));
+                    FillDropDownList();
                     ViewBag.Leergebieden = GetLeergebiedSelectList(leergebied);
                     ViewBag.Trefwoord = trefwoord;
                    if (Request.IsAjaxRequest())
@@ -127,5 +120,24 @@ namespace Groep9.NET.Controllers
             Product product = productRepository.FindByProductNummer(id);
             return View(product);
         }
+
+        public void FillDropDownList()
+        {
+            List<String> list = new List<String>();
+            List<String> list2 = new List<String>();
+            foreach (var x in productRepository.VindAlleProducten())
+            {
+
+                list.Add(x.Doelgroep);
+                list2.Add(x.Leergebied);
+            }
+
+            IEnumerable<String> en = list;
+            IEnumerable<String> en2 = list2;
+            ViewBag.Geavanceerd = new SelectList(en2);
+            ViewBag.Doelgroepen = new SelectList(en);
+
+        }
+
     }
 }
