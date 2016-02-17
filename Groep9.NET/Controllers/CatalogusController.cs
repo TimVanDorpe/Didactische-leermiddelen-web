@@ -43,7 +43,7 @@ namespace Groep9.NET.Controllers
         }*/
        
 
-        public ActionResult Index(/*string zoekenNaar,*/ string trefwoord = "")
+        public ActionResult Index(/*string zoekenNaar,*/ string trefwoord = "", int doelgroep = 0, int leergebied = 0)
         {
              if (ModelState.IsValid)
                 {
@@ -86,6 +86,8 @@ namespace Groep9.NET.Controllers
                         
                    if (Request.IsAjaxRequest())
                         return PartialView("Producten", producten);
+                    ViewBag.Doelgroepen = GetDoelgroepSelectList(doelgroep);
+                    ViewBag.Leergebieden = GetLeergebiedSelectList(leergebied);
                     ViewBag.Trefwoord = trefwoord;
                     return View(producten);
                 }
@@ -97,9 +99,17 @@ namespace Groep9.NET.Controllers
                       
             return RedirectToAction("Index", "Home");
         }
-        
-    
 
+        private SelectList GetDoelgroepSelectList(int selectedValue = 0)
+        {
+            return new SelectList(productRepository.VindAlleProducten().GroupBy(g=>g.Doelgroep),
+                "Doelgroep", "Doelgroep", selectedValue);
+        }
+        private SelectList GetLeergebiedSelectList(int selectedValue = 0)
+        {
+            return new SelectList(productRepository.VindAlleProducten().GroupBy(g => g.Leergebied),
+                "Leergebied", "Leergebied", selectedValue);
+        }
 
         public ActionResult Details(int id)
         {
