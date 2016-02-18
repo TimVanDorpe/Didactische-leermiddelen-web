@@ -20,9 +20,9 @@ namespace Groep9.NET.Tests.Models
 
         public DummyContext()
         {
-            VoorbeeldProduct = new Product(1, "A","TestProd", 2.1, 1, true, "hier", "B", "C", "D");
-            VoorbeeldProduct2 = new Product(2, "B", "TestProd2", 5.8, 1, true, "hier", "B", "C", "D");
-            VoorbeeldProduct3 = new Product(3, "C", "TestProd3", 2.1, 1, true, "hier", "B", "C", "D");
+            VoorbeeldProduct = new Product("",1, "A","TestProd", 2.1, 1, true, "hier", "B", "C", "D");
+            VoorbeeldProduct2 = new Product("",2, "B", "TestProd2", 5.8, 1, true, "hier", "B", "C", "D");
+            VoorbeeldProduct3 = new Product("",3, "C", "TestProd3", 2.1, 1, true, "hier", "B", "C", "D");
             ProductenLijst =
                  (new Product[] { VoorbeeldProduct, VoorbeeldProduct2, VoorbeeldProduct3 }).ToList().AsQueryable();
 
