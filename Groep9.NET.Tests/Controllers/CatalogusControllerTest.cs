@@ -21,32 +21,46 @@ namespace Groep9.NET.Tests.Controllers
     {
 
         private CatalogusController CC;
-        private Product VoorbeeldProduct;
         private Mock<IProductRepository> mockProductenRepository;
         private ProductViewModel model;
-        public CatalogusControllerTest()
-        {
-            //
-            // TODO: Add constructor logic here
-            //
-        }
+        private DummyContext context;
+    
         [TestInitialize]
         public void SetUpContext()
         {
             DummyContext context = new DummyContext();
             mockProductenRepository = new Mock<IProductRepository>();
-            VoorbeeldProduct = context.VoorbeeldProduct;
+            mockProductenRepository.Setup(m => m.VindAlleProducten()).Returns(context.ProductenLijst);
             CC = new CatalogusController(mockProductenRepository.Object);
-            model = new ProductViewModel(VoorbeeldProduct);
           
            
         }
 
 
         [TestMethod]
-        public void TestMethod1()
+        public void IndexReturnsAlleProducten()
         {
-            //ViewResult result = CC.Index(VoorbeeldProduct) as ViewResult;
+            //Act
+            ViewResult result = CC.Index("","") as ViewResult;
+            List<Product> producten = (result.Model as IEnumerable<Product>).ToList();
+            //Assert
+              Assert.AreEqual(3, producten.Count);
+            //     Assert.AreEqual(1, producten[0].ProductId);
+            //   Assert.AreEqual(2, producten[1].Naam);
+            //   Assert.AreEqual("C", producten[2].Naam);
+
+        }
+
+        [TestMethod]
+        public void DetailsReturnsDetails()
+        {
+           ViewResult result = CC.Details(1) as ViewResult;
+             ProductViewModel product = result.Model as ProductViewModel;
+
+            //Assert
+            Assert.AreEqual(context.VoorbeeldProduct.Omschrijving, product.Omschrijving);
+
+
         }
     }
 }

@@ -187,7 +187,6 @@
     <Compile Include="Models\DAL\Context.cs" />
     <Compile Include="Models\DAL\Mapping\ProductMapper.cs" />
     <Compile Include="Models\Domein\AppUser.cs" />
-    <Compile Include="Models\Domein\Beheerder.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -231,6 +230,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Views\css\styles.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
