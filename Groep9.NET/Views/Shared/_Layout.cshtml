@@ -18,21 +18,33 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/" contenteditable="false">Didactische Leermiddelen</a>
+               
+
+                <a class="navbar-brand" href="/" contenteditable="false"> Didactische Leermiddelen</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="/" class="">Home</a></li>
-                    <li>
-                          @if (CurrentUser.Identity.IsAuthenticated) {
-                                <a href="/auth/LogIn" class="">Uitloggen</a>
-                            }
-                            else {
-
-                                <a href="/auth/LogIn" class="rechts">Inloggen</a>
-                            }
-                    </li>
+                    <li>@Html.ActionLink("Catalogus", "Index", "Catalogus")</li>
+                   
                 </ul>
+                <div class="navbar-right nav-rechts">
+                    @if (CurrentUser.Identity.IsAuthenticated)
+                {
+                       
+                          @CurrentUser.Name  
+                        
+                    }
+                     &nbsp; | &nbsp; 
+                    @if (CurrentUser.Identity.IsAuthenticated)
+                    {
+                        <a href="/auth/LogIn" class="">Uitloggen</a>
+                    }
+                    else
+                    {
+
+                        <a href="/auth/LogIn" class="pull-right">Inloggen</a>
+                    }
+                </div>
             </div>
         </div>
     </div>
@@ -47,7 +59,7 @@
                 </p>
             }
 
-            <p>&copy; 2016 - Hogent - TV - JDD - TVD - JTB</p>
+            <p>&copy; 2016 - Hogent Didactische leermiddelen</p>
 
         </footer>
     </div>

@@ -26,3 +26,17 @@ textarea {
 .right {
     float: right;
 }
+
+.nav-rechts {
+    color:#fff;
+    font-size: 14px;
+    margin-top:15px;
+}
+.nav-rechts a {
+    color: #fdf367;
+}
+
+.nav-rechts a:hover {
+    color: #ffee00;
+    text-decoration: none;
+}
