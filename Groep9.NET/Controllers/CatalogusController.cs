@@ -90,7 +90,11 @@ namespace Groep9.NET.Controllers
             return new SelectList(productRepository.VindAlleProducten().Distinct(),
                 "Leergebied", "Leergebied");
         }
-
+        public ActionResult Details(int id)
+        {
+            Product product = productRepository.FindByProductNummer(id);
+            return View(product);
+        }
 
         public void FillDropDownList()
         {

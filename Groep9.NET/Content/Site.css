@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: #fcfcfc;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -42,14 +43,10 @@
 .zoeken {
     margin-top: 10px;
     width:100%;
-    visibility: hidden;
 }
-@media (max-width: 768px) {
-  .zoeken {
-      /*margin: auto;
-      max-width:100%;
-      padding: 0 3% 0 3%;*/
-      visibility: visible;
-  }
-  }
+
+.product-small {
+    margin-left:3%;
+    margin-right:3%;
+   
 }

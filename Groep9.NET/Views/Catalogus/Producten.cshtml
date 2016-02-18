@@ -3,9 +3,9 @@
 <div class="hidden-sm hidden-xs">
     <table class="table table-responsive ">
         <tr>
-            @*<th>
-                    @Html.DisplayNameFor(model => model.FotoURL)
-                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.FotoURL)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Naam)
             </th>
@@ -48,9 +48,10 @@
         @foreach (var item in Model)
         {
             <tr>
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.FotoURL)
-                    </td>*@
+                <td>
+
+                    <img alt="@Html.DisplayFor(modelItem => item.Naam)" src="@Html.DisplayFor(modelItem => item.FotoURL)" />
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Naam)
                 </td>
@@ -100,6 +101,42 @@
     }
     @foreach (var item in Model)
     {
-        <div></div>
+        @*<a href="@Url.Action("Details", "Details", new {id = item.ProductNummer})" class="product-small">
+            <div class="row ">
+
+                <div class="thumbnail right-caption">
+                    <div class="caption">
+                        <h2>@Html.DisplayFor(modelItem => item.Naam)</h2>
+                        <p>@Html.DisplayFor(modelItem => item.Omschrijving)</p>
+                        <p>@Html.ActionLink("Details", "Details", new { id = item.ProductNummer })</p>
+                    </div>
+                </div>
+                <div class=" col-xs-12 product-small">
+                    <div class="col-xs-4">
+                        <img alt="@Html.DisplayFor(modelItem => item.Naam)" src="@Html.DisplayFor(modelItem => item.FotoURL)" />
+                    </div>
+
+                    <div class="col-xs-8">
+                        <h2>@Html.DisplayFor(modelItem => item.Naam)</h2>
+                        <p>@Html.DisplayFor(modelItem => item.Omschrijving)</p>
+                    </div>
+                </div>
+
+            </div>
+        </a>
+        <br />*@
+
+        <div class="row ">
+
+            <div class="thumbnail right-caption product-small">
+                <div class="caption">
+                    <h2>@Html.DisplayFor(modelItem => item.Naam)</h2>
+                    <p>@Html.DisplayFor(modelItem => item.Omschrijving)</p>
+                    <p>@Html.ActionLink("Details", "Details", new {id = item.ProductNummer})</p>
+                </div>
+            </div>
+            <br />
+        </div>
+        
     }
-</div>
+            </div>

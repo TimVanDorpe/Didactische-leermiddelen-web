@@ -33,7 +33,7 @@
         </div>
         <div class=" visible-sm visible-xs">
             @Html.TextBox("trefwoord", "", "geef trefwoord..", new { @class = "form-control" })
-            <input type="submit" value="Zoeken" class="btn btn-default responsive-verdwijn groen zoeken"  />
+            <input type="submit" value="Zoeken" class="btn btn-default groen zoeken"  />
         </div>
             <div class="row hidden-sm hidden-xs">
                 <div class="col-md-3">
@@ -60,6 +60,8 @@
 
 </p>
 
-<div id="bestellingen">
-    @Html.Partial("Producten", Model)
+<div class="row">
+    <div class="col-xs-12">
+        @Html.Partial("Producten", Model)
+    </div>
 </div>
