@@ -31,10 +31,10 @@
                     @if (CurrentUser.Identity.IsAuthenticated)
                 {
                        
-                          @CurrentUser.Name  
+                          @CurrentUser.Name;  
                         
                     }
-                     &nbsp; | &nbsp; 
+                    
                     @if (CurrentUser.Identity.IsAuthenticated)
                     {
                         <a href="/auth/LogIn" class="">Uitloggen</a>

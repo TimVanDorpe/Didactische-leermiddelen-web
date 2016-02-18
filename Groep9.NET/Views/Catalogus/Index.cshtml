@@ -20,7 +20,7 @@
     {
         @*@Html.RadioButton("zoekenNaar", "Naam", true)<text> Naam</text>
             @Html.RadioButton("zoekenNaar", "Omschrijving") <text>Omschrijving </text><br />*@
-        <div class="row">
+        <div class="row hidden-sm hidden-xs">
             <div class="col-md-3">
                 @Html.Label("trefwoord:", htmlAttributes: new {@class = "control-label "})
             </div>
@@ -30,15 +30,20 @@
             <div class="col-md-3">
                 @Html.Label("leergebied:", htmlAttributes: new { @class = "control-label " })
             </div>
-        </div>  
-            <div class="row">
+        </div>
+        <div class=" visible-sm visible-xs">
+            @Html.TextBox("trefwoord", "", "geef trefwoord..", new { @class = "form-control" })
+            <input type="submit" value="Zoeken" class="btn btn-default responsive-verdwijn groen zoeken"  />
+        </div>
+            <div class="row hidden-sm hidden-xs">
                 <div class="col-md-3">
-                    @Html.TextBox("trefwoord", "", "geef trefwoord..", new { @class = "form-control" })
+                    @Html.TextBox("trefwoord", "", "geef trefwoord..", new { @class = "form-control responsive-verdwijn" } )
+
                 </div>
-                <div class="col-md-3"> 
+                <div class="col-md-3 responsive-verdwijn"> 
                     @Html.DropDownList("doelgroep", ViewBag.doelgroep as SelectList, "-- Selecteer doelgroep --", new { @class = "form-control" })
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-3 responsive-verdwijn">
                     @Html.DropDownList("leergebied", ViewBag.leergebied as SelectList, "-- Selecteer leergebied --", new { @class = "form-control" })
                 </div>
 
@@ -46,7 +51,7 @@
 
 
                 <div class="col-md-3">
-                    <input type="submit" value="Zoeken" class="btn btn-default " />
+                    <input type="submit" value="Zoeken" class="btn btn-default responsive-verdwijn groen" />
                     @Html.ActionLink("Reset zoekfilter", "index", "Catalogus", new { @class = "btn btn-default" })
                 </div>
             </div>
