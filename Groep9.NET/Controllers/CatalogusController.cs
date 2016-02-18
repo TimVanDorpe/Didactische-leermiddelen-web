@@ -73,7 +73,10 @@ namespace Groep9.NET.Controllers
                       //{
                        
                     //}
-
+                        if (!producten.Any())
+                        {
+                            TempData["error"] = "Er zijn geen producten gevonden";
+                        }
                     FillDropDownList();
                     ViewBag.Trefwoord = trefwoord;
                    if (Request.IsAjaxRequest())
@@ -114,12 +117,12 @@ namespace Groep9.NET.Controllers
 
         private SelectList GetDoelgroepSelectList()
         {
-            return new SelectList(productRepository.VindAlleProducten().GroupBy(g=>g.Doelgroep),
+            return new SelectList(productRepository.VindAlleProducten().Distinct(),
                 "Doelgroep", "Doelgroep");
         }
         private SelectList GetLeergebiedSelectList()
         {
-            return new SelectList(productRepository.VindAlleProducten().GroupBy(g => g.Leergebied),
+            return new SelectList(productRepository.VindAlleProducten().Distinct(),
                 "Leergebied", "Leergebied");
         }
 
@@ -131,19 +134,9 @@ namespace Groep9.NET.Controllers
 
         public void FillDropDownList()
         {
-            List<String> list = new List<String>();
-            List<String> list2 = new List<String>();
-            foreach (var x in productRepository.VindAlleProducten())
-            {
-
-                list.Add(x.Doelgroep);
-                list2.Add(x.Leergebied);
-            }
-
-            IEnumerable<String> en = list;
-            IEnumerable<String> en2 = list2;
-            ViewBag.leergebied = new SelectList(en2);
-            ViewBag.doelgroep = new SelectList(en);
+            
+            ViewBag.leergebied = GetLeergebiedSelectList();
+            ViewBag.doelgroep = GetDoelgroepSelectList();
 
         }
 
