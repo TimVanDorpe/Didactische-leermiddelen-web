@@ -41,7 +41,7 @@ namespace Groep9.NET.Controllers
             }
 
             // tijdelijke authenticatie, moet hier mee ingelogd worden of het is fout
-            if (model.Email == "user@user.com" && model.Password == "password") {
+            if (model.Email == "user@user.com" && model.Wachtwoord == "password") {
                 var identity = new ClaimsIdentity(new[] {
                 new Claim(ClaimTypes.Name, "Voorlopige Gebruiker"),
                 new Claim(ClaimTypes.Email, "a@b.com"),
@@ -58,7 +58,7 @@ namespace Groep9.NET.Controllers
             }
 
             // user authN failed
-            ModelState.AddModelError("", "Invalid email or password");
+            ModelState.AddModelError("", "Foute e-mail of paswoord ingevoerd");
             return View();
         }
 
