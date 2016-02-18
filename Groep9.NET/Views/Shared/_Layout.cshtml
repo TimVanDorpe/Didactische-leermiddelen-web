@@ -30,11 +30,11 @@
                 <div class="navbar-right nav-rechts">
                     @if (CurrentUser.Identity.IsAuthenticated)
                 {
-                       
-                          @CurrentUser.Name  
+
+                    @CurrentUser.Name
+                    <span>&nbsp; | &nbsp;</span>
                         
                     }
-                     &nbsp; | &nbsp; 
                     @if (CurrentUser.Identity.IsAuthenticated)
                     {
                         <a href="/auth/LogIn" class="">Uitloggen</a>
