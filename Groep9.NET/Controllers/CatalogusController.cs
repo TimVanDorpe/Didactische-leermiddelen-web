@@ -58,10 +58,7 @@ namespace Groep9.NET.Controllers
                         producten = producten.Where(p => p.Leergebied.Equals(leergebied));
                     }
                   
-                        if (!producten.Any())
-                     {
-                          TempData["error"] = "Er zijn geen producten gevonden";
-                       }
+                       
 
 
                     FillDropDownList();
@@ -94,11 +91,6 @@ namespace Groep9.NET.Controllers
                 "Leergebied", "Leergebied");
         }
 
-        public ActionResult Details(int id)
-        {
-            Product product = productRepository.FindByProductNummer(id);
-            return View(product);
-        }
 
         public void FillDropDownList()
         {
