@@ -1,0 +1,114 @@
+﻿@model Groep9.NET.Product
+
+@{
+    ViewBag.Title = "Detail";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Product</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.FotoURL)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.FotoURL)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Naam)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Naam)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Omschrijving)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Omschrijving)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ProductNummer)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ProductNummer)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Prijs)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Prijs)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Aantal)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Aantal)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Uitleenbaarheid)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Uitleenbaarheid)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Plaats)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Plaats)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Firma)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Firma)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Doelgroep)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Doelgroep)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Leergebied)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Leergebied)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @*@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |*@
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

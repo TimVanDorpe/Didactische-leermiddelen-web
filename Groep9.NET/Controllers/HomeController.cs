@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace Groep9.NET.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         public ActionResult Index()
@@ -13,18 +14,6 @@ namespace Groep9.NET.Controllers
             return View();
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page. TESTCOMMITJARNE";
 
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
     }
 }

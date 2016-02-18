@@ -1,0 +1,46 @@
+﻿@using System.Security.Policy
+@model IEnumerable<Groep9.NET.Product>
+
+@{
+    ViewBag.Title = "Catalogus";
+    ViewBag.Active = "Product";
+}
+
+<h2>Productcatalogus</h2>
+
+<p>
+    
+</p>
+
+<p>
+
+
+
+    @using (@Html.BeginForm("Index", "Catalogus"))
+    {
+        @*@Html.RadioButton("zoekenNaar", "Naam", true)<text> Naam</text>
+            @Html.RadioButton("zoekenNaar", "Omschrijving") <text>Omschrijving </text><br />*@
+    <p>
+
+
+
+        @Html.DropDownList("doelgroep", "-- Selecteer doelgroep --")
+       
+
+        @Html.DropDownList("leergebied", "-- Selecteer leergebied --")
+    </p>
+
+    
+            
+
+        @Html.TextBox("trefwoord", "", "", new { @class = "form-control" })<br />
+        <input type="submit" value="Zoeken" class="btn btn-default"/>
+        @Html.ActionLink("Geef alle weer","index","Catalogus")
+    }
+
+
+</p>
+
+<div id="bestellingen">
+    @Html.Partial("Producten", Model)
+</div>
