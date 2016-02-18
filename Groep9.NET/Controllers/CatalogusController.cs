@@ -57,26 +57,13 @@ namespace Groep9.NET.Controllers
                         {
                         producten = producten.Where(p => p.Leergebied.Equals(leergebied));
                     }
-                    //{
-                      //     
-                      //  }
-                      ////else if (doelgroep.Equals("") && leergebied.Equals(""))
-                      ////{
-
-                      ////    //zoeken
-                      ////    producten =
-                      ////        productRepository.VindAlleProducten()
-                      ////            .Where(p => p.Naam.Contains(trefwoord) || p.Omschrijving.Contains(trefwoord))
-                      ////            .OrderBy(g => g.Naam);
-                      ////}
-                      //else
-                      //{
+                  
                        
-                    //}
+
 
                     FillDropDownList();
                     ViewBag.Trefwoord = trefwoord;
-                   if (Request.IsAjaxRequest())
+                    if (Request.IsAjaxRequest())
                         return PartialView("Producten", producten);
                     
                     
@@ -91,59 +78,25 @@ namespace Groep9.NET.Controllers
                       
             return RedirectToAction("Index", "Home");
         }
-       /* [HttpPost]
-        public ActionResult Index(ProductViewModel productVm)
-        {
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    
-                   
-                }
-                catch (Exception ex)
-                {
-                    ModelState.AddModelError("", ex.Message);
-                }
-            }
-            return View(productVm);
-        }
-        */
-
-
+      
 
         private SelectList GetDoelgroepSelectList()
         {
-            return new SelectList(productRepository.VindAlleProducten().GroupBy(g=>g.Doelgroep),
+            return new SelectList(productRepository.VindAlleProducten().Distinct(),
                 "Doelgroep", "Doelgroep");
         }
         private SelectList GetLeergebiedSelectList()
         {
-            return new SelectList(productRepository.VindAlleProducten().GroupBy(g => g.Leergebied),
+            return new SelectList(productRepository.VindAlleProducten().Distinct(),
                 "Leergebied", "Leergebied");
         }
 
-        public ActionResult Details(int id)
-        {
-            Product product = productRepository.FindByProductNummer(id);
-            return View(product);
-        }
 
         public void FillDropDownList()
         {
-            List<String> list = new List<String>();
-            List<String> list2 = new List<String>();
-            foreach (var x in productRepository.VindAlleProducten())
-            {
-
-                list.Add(x.Doelgroep);
-                list2.Add(x.Leergebied);
-            }
-
-            IEnumerable<String> en = list;
-            IEnumerable<String> en2 = list2;
-            ViewBag.leergebied = new SelectList(en2);
-            ViewBag.doelgroep = new SelectList(en);
+         
+            ViewBag.leergebied = GetLeergebiedSelectList();
+            ViewBag.doelgroep = GetDoelgroepSelectList();
 
         }
 

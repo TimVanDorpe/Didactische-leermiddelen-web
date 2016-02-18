@@ -24,7 +24,7 @@ namespace Groep9.NET {
         {
 
         }
-        public Product(int productnummer, string naam, string omschrijving, double prijs, int aantal, bool uitleenbaarheid, string plaats, string firma, string doelgroep, string leergebied)
+        public Product(string FotoURL, int productnummer, string naam, string omschrijving, double prijs, int aantal, bool uitleenbaarheid, string plaats, string firma, string doelgroep, string leergebied)
         {
             this.ProductNummer = productnummer;
             this.Naam = naam;

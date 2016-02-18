@@ -24,13 +24,13 @@
                 <ul class="nav navbar-nav">
                     <li><a href="/" class="">Home</a></li>
                     <li>
-                        @*  @if (CurrentUser.Identity.IsAuthenticated) {
-                                <a href="/auth/ReedsIngelogd" class="">Login</a>
+                          @if (CurrentUser.Identity.IsAuthenticated) {
+                                <a href="/auth/LogIn" class="">Uitloggen</a>
                             }
-                            else {*@
+                            else {
 
-                                <a href="/auth/LogIn" class="">Login</a>
-                        @*}*@
+                                <a href="/auth/LogIn" class="rechts">Inloggen</a>
+                            }
                     </li>
                 </ul>
             </div>
@@ -43,7 +43,7 @@
             @if (CurrentUser.Identity.IsAuthenticated)
             {
                 <p>
-                    Ingelogd als: @CurrentUser.Name - <a href="@Url.Action("logout", "auth")">Log Uit</a>
+                    Ingelogd als: @CurrentUser.Name - <a href="@Url.Action("logout", "auth")">Uitloggen</a>
                 </p>
             }
 
