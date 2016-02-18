@@ -58,7 +58,7 @@ namespace Groep9.NET.Controllers
             }
 
             // user authN failed
-            ModelState.AddModelError("", "Invalid email or password");
+            ModelState.AddModelError("", "Foute e-mail of paswoord ingevoerd");
             return View();
         }
 
