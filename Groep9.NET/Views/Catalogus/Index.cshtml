@@ -20,23 +20,37 @@
     {
         @*@Html.RadioButton("zoekenNaar", "Naam", true)<text> Naam</text>
             @Html.RadioButton("zoekenNaar", "Omschrijving") <text>Omschrijving </text><br />*@
-    <p>
+        <div class="row">
+            <div class="col-md-3">
+                @Html.Label("trefwoord:", htmlAttributes: new {@class = "control-label "})
+            </div>
+            <div class="col-md-3">
+                @Html.Label("doelgroep:", htmlAttributes: new {@class = "control-label "})
+            </div>
+            <div class="col-md-3">
+                @Html.Label("leergebied:", htmlAttributes: new { @class = "control-label " })
+            </div>
+        </div>  
+            <div class="row">
+                <div class="col-md-3">
+                    @Html.TextBox("trefwoord", "", "geef trefwoord..", new { @class = "form-control" })
+                </div>
+                <div class="col-md-3"> 
+                    @Html.DropDownList("doelgroep", ViewBag.doelgroep as SelectList, "-- Selecteer doelgroep --", new { @class = "form-control" })
+                </div>
+                <div class="col-md-3">
+                    @Html.DropDownList("leergebied", ViewBag.doelgroep as SelectList, "-- Selecteer leergebied --", new { @class = "form-control" })
+                </div>
 
 
 
-        @Html.DropDownList("doelgroep", "-- Selecteer doelgroep --")
-       
 
-        @Html.DropDownList("leergebied", "-- Selecteer leergebied --")
-    </p>
-
-    
-            
-
-        @Html.TextBox("trefwoord", "", "", new { @class = "form-control" })<br />
-        <input type="submit" value="Zoeken" class="btn btn-default"/>
-        @Html.ActionLink("Geef alle weer","index","Catalogus")
-    }
+                <div class="col-md-3">
+                    <input type="submit" value="Zoeken" class="btn btn-default " />
+                    @Html.ActionLink("Reset zoekfilter", "index", "Catalogus", new { @class = "btn btn-default" })
+                </div>
+            </div>
+            }
 
 
 </p>
