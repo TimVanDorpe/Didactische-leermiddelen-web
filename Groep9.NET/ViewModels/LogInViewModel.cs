@@ -13,7 +13,7 @@ namespace Groep9.NET.ViewModels {
 
         [Required]
         [DataType(DataType.Password)]
-        public string Password { get; set; }
+        public string Wachtwoord { get; set; }
 
         [HiddenInput(DisplayValue = false)]
         public string ReturnUrl { get; set; }
