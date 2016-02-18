@@ -14,7 +14,7 @@ namespace Groep9.NET.Tests.Models
         public Product VoorbeeldProduct { get; set; }
         public DummyContext()
         {
-            VoorbeeldProduct = new Product(1, "A", "TestProd", 2.1, 1, true, "hier", "B", "C", "D");
+            VoorbeeldProduct = new Product("./Content/images/dobbelsteen.PNG", 1, "A", "TestProd", 2.1, 1, true, "hier", "B", "C", "D");
         }
            
     }
