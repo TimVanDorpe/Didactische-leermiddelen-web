@@ -3,9 +3,9 @@
 
 <table class="table">
     <tr>
-        @*<th>
+        <th>
             @Html.DisplayNameFor(model => model.FotoURL)
-        </th>*@
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Naam)
         </th>
@@ -47,9 +47,10 @@
 }
 @foreach (var item in Model) {
     <tr>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.FotoURL)
-        </td>*@
+        <td>
+           
+            <img alt="@Html.DisplayFor(modelItem => item.Naam)" src="(@Html.DisplayFor(modelItem => item.FotoURL))" />
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Naam)
         </td>
