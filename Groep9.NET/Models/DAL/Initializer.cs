@@ -12,12 +12,12 @@ namespace Groep9.NET.Models.DAL
             {
 
 
-                Product testproduct = new Product("dobbelsteen.PNG", 1, "Testprod", "Dit is een testproduct", 12.95, 3, true, "Gent", "Hogent", "Informatica", ".net");
-                Product testproduct2 = new Product("dobbelsteen.PNG", 2, "Testprod2", "Dit is een testproduct", 7.85, 9, false, "Aalst", "Hogent", "Landmeetkunde", "Kaartprojectie");
-                Product testproduct3 = new Product("dobbelsteen.PNG", 3, "Test product 3", "een testproduct", 8.55, 10, false, "Aalst", "Hogent", "Landmeetkunde", "Kaartprojectie");
-                Product testproduct4 = new Product("dobbelsteen.PNG", 4, "Landkaart", "Map van België", 8.55, 10, false, "Aalst", "Hogent", "Landmeetkunde", "Kaartprojectie");
-                Product testproduct5 = new Product("dobbelsteen.PNG", 5, "Rekenmachine", "Rekenmachine van merk ..", 8.55, 10, false, "Aalst", "Hogent", "Landmeetkunde", "Kaartprojectie");
-                Product dobbelsteenschatkist = new Product("dobbelsteen.PNG", 6, "dobbelsteen-schatkist-162delig", "koffertje met verschillende soorten dobbelstenen: blanco, met cijfers, ..", 35, 1, true, "GLEDE 1.011", "Hogent", "Kleuters", "Tellen");
+                Product testproduct = new Product("dobbelsteen.png", 1, "Testprod", "Dit is een testproduct", 12.95, 3, true, "Gent", "Hogent", "Informatica", ".net");
+                Product testproduct2 = new Product("dobbelsteen.png", 2, "Testprod2", "Dit is een testproduct", 7.85, 9, false, "Aalst", "Hogent", "Landmeetkunde", "Kaartprojectie");
+                Product testproduct3 = new Product("dobbelsteen.png", 3, "Test product 3", "een testproduct", 8.55, 10, false, "Aalst", "Hogent", "Landmeetkunde", "Kaartprojectie");
+                Product testproduct4 = new Product("dobbelsteen.png", 4, "Landkaart", "Map van België", 8.55, 10, false, "Aalst", "Hogent", "Landmeetkunde", "Kaartprojectie");
+                Product testproduct5 = new Product("dobbelsteen.png", 5, "Rekenmachine", "Rekenmachine van merk ..", 8.55, 10, false, "Aalst", "Hogent", "Landmeetkunde", "Kaartprojectie");
+                Product dobbelsteenschatkist = new Product("dobbelsteen.png", 6, "dobbelsteen-schatkist-162delig", "koffertje met verschillende soorten dobbelstenen: blanco, met cijfers, ..", 35, 1, true, "GLEDE 1.011", "Hogent", "Kleuters", "Tellen");
 
                 context.Producten.Add(testproduct);
                 context.Producten.Add(testproduct2);

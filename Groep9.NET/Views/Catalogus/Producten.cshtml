@@ -4,7 +4,7 @@
     <table class="table table-responsive ">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.FotoURL)
+                @Html.DisplayNameFor(model => model.FotoUrl)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Naam)
@@ -49,8 +49,8 @@
         {
             <tr>
                 <td>
-
-                    <img alt="@Html.DisplayFor(modelItem => item.Naam)" src="@Html.DisplayFor(modelItem => item.FotoURL)" />
+                   
+                    <img alt="@Html.DisplayFor(modelItem => item.Naam)" src="~/Content/images/@(@Html.DisplayFor(modelItem =>item.FotoUrl))" />
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Naam)
@@ -128,8 +128,12 @@
 
         <div class="row ">
 
-            <div class="thumbnail right-caption product-small">
-                <div class="caption">
+            <div class="col-xs-12 product-small">
+                <div class="col-xs-4">
+                    <img alt="@Html.DisplayFor(modelItem => item.Naam)" src="~/Content/images/@(@Html.DisplayFor(modelItem =>item.FotoUrl))" />
+                </div>
+                
+                <div class="caption col-xs-8">
                     <h2>@Html.DisplayFor(modelItem => item.Naam)</h2>
                     <p>@Html.DisplayFor(modelItem => item.Omschrijving)</p>
                     <p>@Html.ActionLink("Details", "Details", new {id = item.ProductNummer})</p>

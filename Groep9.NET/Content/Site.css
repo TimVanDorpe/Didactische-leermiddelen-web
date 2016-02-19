@@ -48,5 +48,36 @@
 .product-small {
     margin-left:3%;
     margin-right:3%;
-   
+    width:93%;
+    padding: 4px;
+    background-color:#fff;
+   /*display: inline-block;
+        height: auto;*/
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            overflow:hidden;
 }
+
+.product-small:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+
+.product-small > img {
+    float: left;
+    margin-right: 9px;
+    width: 100%;
+    height: 100%;
+}
+
+@media(max-width:500px) {
+                          .product-small > .caption > h2 {
+                              font-size:18px;
+                          } 
+                       }
+
+

@@ -32,7 +32,7 @@ namespace Groep9.NET.ViewModels {
             //aantalInCatalogus, artikelNr (van de firma), prijs,
             //firma, doelgroepen, leergebieden
 
-            Foto = p.FotoURL;
+            Foto = p.FotoUrl;
             Naam = p.Naam;
             Omschrijving = p.Omschrijving;
             Aantal = p.Aantal;
