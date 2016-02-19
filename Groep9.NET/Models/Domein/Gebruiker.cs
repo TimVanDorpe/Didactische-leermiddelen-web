@@ -8,6 +8,7 @@ using System.Security.Claims;
 
 namespace Groep9.NET {
     public abstract class Gebruiker : ClaimsPrincipal {
+         public string GebruikersNummer { get; set; }
         public string Naam
         {
             get { return this.FindFirst(ClaimTypes.Name).Value; }
@@ -16,6 +17,11 @@ namespace Groep9.NET {
         {
             get
             { return this.FindFirst(ClaimTypes.Country).Value; }
+        }
+        public string Email
+        {
+            get
+            { return this.FindFirst(ClaimTypes.Email).Value; }
         }
         int GebruikersID { get; }
         ICollection<Product> VerlangLijst { get; set; }

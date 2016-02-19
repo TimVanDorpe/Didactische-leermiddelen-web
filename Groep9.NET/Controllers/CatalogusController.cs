@@ -17,10 +17,12 @@ namespace Groep9.NET.Controllers
         // GET: Catalogus
 
         private IProductRepository productRepository;
+        //private IGebruikerRepository gebruikerRepository;
 
         public CatalogusController(IProductRepository pr)
         {
             productRepository = pr;
+          //  gebruikerRepository = gr;
             
         }
     

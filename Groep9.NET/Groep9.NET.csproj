@@ -185,6 +185,7 @@
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\CatalogusController.cs" />
     <Compile Include="Models\DAL\Context.cs" />
+    <Compile Include="Models\DAL\GebruikerRepository.cs" />
     <Compile Include="Models\DAL\Mapping\ProductMapper.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -195,6 +196,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Domein\IGebruikerRepository.cs" />
     <Compile Include="Models\Domein\IProductRepository.cs" />
     <Compile Include="Models\DAL\ProductRepository.cs" />
     <Compile Include="Models\Domein\Product.cs" />

@@ -17,7 +17,8 @@ namespace Groep9.NET.Models.DAL
         { }
 
         public DbSet<Product> Producten { get; set; }
-        
+       // public DbSet<Gebruiker> Gebruikers { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
