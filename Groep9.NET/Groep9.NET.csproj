@@ -209,9 +209,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\images\dobbelsteen.png" />
+    <Content Include="Content\images\blanco_draaischijf.PNG" />
+    <Content Include="Content\images\dobbelsteen.jpg" />
     <Content Include="Content\images\favicon.ico" />
     <Content Include="Content\images\HoGent_Logo.png" />
+    <Content Include="Content\images\landkaart.jpg" />
+    <Content Include="Content\images\Magnspinner.jpg" />
+    <Content Include="Content\images\rekenmachine.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

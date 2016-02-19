@@ -12,18 +12,18 @@ namespace Groep9.NET.Models.DAL
             {
 
 
-                Product testproduct = new Product("dobbelsteen.png", 1, "Testprod", "Dit is een testproduct", 12.95, 3, true, "Gent", "Hogent", "Informatica", ".net");
-                Product testproduct2 = new Product("dobbelsteen.png", 2, "Testprod2", "Dit is een testproduct", 7.85, 9, false, "Aalst", "Hogent", "Landmeetkunde", "Kaartprojectie");
-                Product testproduct3 = new Product("dobbelsteen.png", 3, "Test product 3", "een testproduct", 8.55, 10, false, "Aalst", "Hogent", "Landmeetkunde", "Kaartprojectie");
-                Product testproduct4 = new Product("dobbelsteen.png", 4, "Landkaart", "Map van België", 8.55, 10, false, "Aalst", "Hogent", "Landmeetkunde", "Kaartprojectie");
-                Product testproduct5 = new Product("dobbelsteen.png", 5, "Rekenmachine", "Rekenmachine van merk ..", 8.55, 10, false, "Aalst", "Hogent", "Landmeetkunde", "Kaartprojectie");
-                Product dobbelsteenschatkist = new Product("dobbelsteen.png", 6, "dobbelsteen-schatkist-162delig", "koffertje met verschillende soorten dobbelstenen: blanco, met cijfers, ..", 35, 1, true, "GLEDE 1.011", "Hogent", "Kleuters", "Tellen");
-
-                context.Producten.Add(testproduct);
-                context.Producten.Add(testproduct2);
-                context.Producten.Add(testproduct3);
+                
+                Product testproduct4 = new Product("landkaart.jpg", 4, "Landkaart", "Map van België", 8.55, 10, false, "Aalst", "Hogent", "Landmeetkunde", "Kaartprojectie");
+                Product testproduct5 = new Product("rekenmachine.jpg", 5, "Rekenmachine", "Rekenmachine van merk ..", 8.55, 10, false, "Aalst", "Hogent", "Landmeetkunde", "Kaartprojectie");
+                Product dobbelsteenschatkist = new Product("dobbelsteen.jpg", 6, "Dobbelsteen schatkist", "koffertje met verschillende soorten dobbelstenen: blanco, met cijfers, ..", 35, 1, true, "GLEDE 1.011", "Hogent", "Kleuters", "Tellen");
+                Product blancodraaischijf = new Product("blanco_draaischijf.PNG", 7, "Blanco shijf", "Met verschillende blanco shijven in hard papier", 31.45, 1, true, "GLEDE 1.011", "HoGent", "Kleuters", "Kansberekening");
+                Product spinners_klass_ass = new Product("Magnspinner.jpg", 8, "Magnetische spinner", "Magnetische spinners in de vorm van een pijl, een vinger en een potlood", 19.2, 1, true, "GLEDE 1.011", "Hogent", "Kleuters", "Behendigheid");
+                
                 context.Producten.Add(testproduct4);
                 context.Producten.Add(testproduct5);
+                context.Producten.Add(dobbelsteenschatkist);
+                context.Producten.Add(blancodraaischijf);
+                context.Producten.Add(spinners_klass_ass);
                 context.SaveChanges();
 
 
