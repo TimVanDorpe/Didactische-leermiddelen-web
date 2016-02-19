@@ -42,24 +42,11 @@ namespace Groep9.NET
         {
             context.SaveChanges();
         }
-
-        public IQueryable<Product> VindAlleDoelgroepen()
-        {
-            return context.Producten;
-        }
-
-
-
+        
         public Product FindByProductNummer(int productnummer)
         {
             return Producten.Find(productnummer);
         }
-
-        public List<Product> GeavanceerdZoeken(string Trefwoord, string Doelgroep, string Leergebied)
-        {
-            throw new System.NotImplementedException();
-        }
-
-       
+        
     }
 }
