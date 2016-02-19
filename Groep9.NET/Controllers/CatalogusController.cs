@@ -62,7 +62,6 @@ namespace Groep9.NET.Controllers
 
 
                     FillDropDownList();
-                    ViewBag.Trefwoord = trefwoord;
                     if (Request.IsAjaxRequest())
                         return PartialView("Producten", producten);
                     
