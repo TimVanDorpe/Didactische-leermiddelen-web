@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using Groep9.NET.Models.Domein;
 using Groep9.NET.ViewModels;
 using Groep9.NET.Models.DAL;
+using System.Globalization;
 
 namespace Groep9.NET.Controllers
 {
@@ -42,10 +43,12 @@ namespace Groep9.NET.Controllers
                     
                     if (!trefwoord.Equals(""))
                     {
-
+               
                         producten =
-                            producten.Where(p => p.Naam.Contains(trefwoord) || p.Omschrijving.Contains(trefwoord));
-                    }
+                            producten.Where(p => p.Naam.ToLower().Contains(trefwoord.ToLower()) || p.Omschrijving.ToLower().Contains(trefwoord.ToLower()));
+                
+
+            }
             
             if (!doelgroep.Equals(""))
                         {
@@ -93,6 +96,7 @@ namespace Groep9.NET.Controllers
             ViewBag.doelgroep = GetDoelgroepSelectList();
 
         }
+       
 
     }
 }
