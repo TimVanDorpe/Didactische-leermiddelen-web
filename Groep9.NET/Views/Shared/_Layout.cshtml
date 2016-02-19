@@ -31,7 +31,7 @@
                     @if (CurrentUser.Identity.IsAuthenticated)
                 {
                        
-                    @CurrentUser.Name
+                    @CurrentUser.Naam
                     <span>&nbsp; | &nbsp;</span>
                         
                     }
@@ -55,7 +55,7 @@
             @if (CurrentUser.Identity.IsAuthenticated)
             {
                 <p>
-                    Ingelogd als: @CurrentUser.Name - <a href="@Url.Action("logout", "auth")">Uitloggen</a>
+                    Ingelogd als: @CurrentUser.Naam - <a href="@Url.Action("logout", "auth")">Uitloggen</a>
                 </p>
             }
 

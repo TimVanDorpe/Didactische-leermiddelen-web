@@ -8,11 +8,11 @@ using Groep9.NET.Models.Domein;
 
 namespace Groep9.NET.Views.App {
     public abstract class AppViewPage<TModel> : WebViewPage<TModel> {
-        protected AppUser CurrentUser
+        protected Gebruiker CurrentUser
         {
             get
             {
-                return new AppUser(this.User as ClaimsPrincipal);
+                return new Docent(this.User as ClaimsPrincipal);
             }
         }
     }
