@@ -24,7 +24,7 @@ namespace Groep9.NET.Controllers
             
         }
     
-        public ActionResult Index( string trefwoord = "", string doelgroep = "", string leergebied = "")
+        public ActionResult Index( string trefwoord = "", string doelgroep = "", string leergebied = "" )
         {
             
             
