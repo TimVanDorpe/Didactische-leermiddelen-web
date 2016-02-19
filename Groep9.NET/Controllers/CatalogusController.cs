@@ -26,12 +26,9 @@ namespace Groep9.NET.Controllers
         public ActionResult Index( string trefwoord = "", string doelgroep = "", string leergebied = "")
         {
             
-            if (ModelState.IsValid)
-                {
-                    try
-                    {
-
-                        if (doelgroep.Equals("-- Selecteer doelgroep --"))
+            
+                    
+                    if (doelgroep.Equals("-- Selecteer doelgroep --"))
                         {
                             doelgroep = "";
                         }
@@ -42,14 +39,15 @@ namespace Groep9.NET.Controllers
                     
 
                     IEnumerable<Product>  producten = productRepository.VindAlleProducten().OrderBy(p => p.Naam).ToList();
-
+                    
                     if (!trefwoord.Equals(""))
                     {
 
                         producten =
                             producten.Where(p => p.Naam.Contains(trefwoord) || p.Omschrijving.Contains(trefwoord));
                     }
-                        if (!doelgroep.Equals(""))
+            
+            if (!doelgroep.Equals(""))
                         {
                         producten = producten.Where(p=> p.Doelgroep.Equals(doelgroep));
                         }
@@ -57,24 +55,17 @@ namespace Groep9.NET.Controllers
                         {
                         producten = producten.Where(p => p.Leergebied.Equals(leergebied));
                     }
-                  
-                       
 
-
-                    FillDropDownList();
-                    ViewBag.Trefwoord = trefwoord;
-                    if (Request.IsAjaxRequest())
+            FillDropDownList();
+            ViewBag.trefwoord = trefwoord;
+            if (Request.IsAjaxRequest())
                         return PartialView("Producten", producten);
                     
                     
 
                     return View(producten);
-                }
-                    catch (Exception ex)
-                    {
-                        ModelState.AddModelError("", ex.Message);
-                    }
-                }
+               
+                
                       
             return RedirectToAction("Index", "Home");
         }
@@ -82,13 +73,12 @@ namespace Groep9.NET.Controllers
 
         private SelectList GetDoelgroepSelectList()
         {
-            return new SelectList(productRepository.VindAlleProducten().Distinct(),
-                "Doelgroep", "Doelgroep");
+            return new SelectList(productRepository.VindAlleProducten().Select(s => s.Doelgroep).Distinct());
         }
         private SelectList GetLeergebiedSelectList()
         {
-            return new SelectList(productRepository.VindAlleProducten().Distinct(),
-                "Leergebied", "Leergebied");
+            return new SelectList(productRepository.VindAlleProducten().Select(s => s.Leergebied).Distinct());
+                
         }
         public ActionResult Details(int id)
         {
