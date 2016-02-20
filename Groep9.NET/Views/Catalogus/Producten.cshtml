@@ -85,7 +85,13 @@
                 <td>
 
                     @Html.ActionLink("Details", "Details", new { id = item.ProductNummer })
-
+@using (Html.BeginForm("AddToVerlanglijst", "Catalogus", new { id = item.ProductNummer }))
+{
+    <button type="submit" class="btn btn-default">
+        <span class="glyphicon glyphicon-ok-sign"></span>
+    </button>
+}
+                  
                 </td>
             </tr>
         }
@@ -101,30 +107,7 @@
     }
     @foreach (var item in Model)
     {
-        @*<a href="@Url.Action("Details", "Details", new {id = item.ProductNummer})" class="product-small">
-            <div class="row ">
-
-                <div class="thumbnail right-caption">
-                    <div class="caption">
-                        <h2>@Html.DisplayFor(modelItem => item.Naam)</h2>
-                        <p>@Html.DisplayFor(modelItem => item.Omschrijving)</p>
-                        <p>@Html.ActionLink("Details", "Details", new { id = item.ProductNummer })</p>
-                    </div>
-                </div>
-                <div class=" col-xs-12 product-small">
-                    <div class="col-xs-4">
-                        <img alt="@Html.DisplayFor(modelItem => item.Naam)" src="@Html.DisplayFor(modelItem => item.Foto)" />
-                    </div>
-
-                    <div class="col-xs-8">
-                        <h2>@Html.DisplayFor(modelItem => item.Naam)</h2>
-                        <p>@Html.DisplayFor(modelItem => item.Omschrijving)</p>
-                    </div>
-                </div>
-
-            </div>
-        </a>
-        <br />*@
+        
 
         <div class="row ">
 
@@ -134,8 +117,15 @@
                 </div>
                 
                 <div class="caption col-xs-8">
-                    <h2>@Html.DisplayFor(modelItem => item.Naam)</h2>
+                    <h2>@Html.DisplayFor(modelItem => item.Naam) @using (Html.BeginForm("AddToVerlanglijst", "Catalogus", new { id = item.ProductNummer }))
+                    {
+                        <button type="submit" class="btn btn-default ">
+                            <span class="glyphicon glyphicon glyphicon-ok-sign"></span>
+                        </button>
+                    }</h2> 
+                   
                     <p>@Html.DisplayFor(modelItem => item.Omschrijving)</p>
+                   
                     <span class="pull-left">@Html.ActionLink("Details", "Details", new {id = item.ProductNummer})</span><span class="pull-right">Aantal: @Html.DisplayFor(modelItem => item.Aantal)</span>
                 </div>
             </div>

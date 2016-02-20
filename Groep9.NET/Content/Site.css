@@ -115,3 +115,12 @@
 .changethisone input{
     border-right-style:none;
 }
+
+.caption h2,button {
+    text-align:left;
+    display:inline;
+}
+
+.addVerlanglijst {
+    
+}

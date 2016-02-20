@@ -101,7 +101,11 @@ namespace Groep9.NET.Controllers
             ViewBag.doelgroep = GetDoelgroepSelectList();
 
         }
-       
 
+        public ActionResult AddToVerlanglijst(int productId)
+        {
+
+            return RedirectToAction("Index");
+        }
     }
 }

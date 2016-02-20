@@ -17,49 +17,27 @@ namespace Groep9.NET {
         public bool Uitleenbaarheid { get; set; }
         public string Leergebied { get; set; }
 
-        public String Doelgroep
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
+        public String Doelgroep { get; set; }
 
-            set
-            {
-            }
-        }
+        public String Plaats { get;
 
-        public String Plaats
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-
-            set
-            {
-            }
+            set ;
         }
 
         public string Firma
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
+            get ;
 
-            set
-            {
-            }
+            set ;
         }
 
         public Product()
         {
 
         }
-        public Product(string Foto, int productnummer, string naam, string omschrijving, double prijs, int aantal, bool uitleenbaarheid, string plaats, string firma, string doelgroep, string leergebied)
+        public Product(string foto, int productnummer, string naam, string omschrijving, double prijs, int aantal, bool uitleenbaarheid, string plaats, string firma, string doelgroep, string leergebied)
         {
-            this.Foto = Foto;
+            this.Foto = foto;
             this.ProductNummer = productnummer;
             this.Naam = naam;
             this.Omschrijving = omschrijving;
