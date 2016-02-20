@@ -6,7 +6,7 @@ using Groep9.NET.ViewModels;
 namespace Groep9.NET.Controllers
 {
     [AllowAnonymous]
-    public class AuthController : Controller {
+    public class AccountController : Controller {
         public ActionResult LogIn() {
             return View();
         }
@@ -20,7 +20,7 @@ namespace Groep9.NET.Controllers
             if (HttpContext.Request.IsAuthenticated)
             {
                 //return RedirectToAction("index", "home");
-                return RedirectToAction("ReedsIngelogd", "Auth");
+                return RedirectToAction("ReedsIngelogd", "Account");
             }
             else
             {

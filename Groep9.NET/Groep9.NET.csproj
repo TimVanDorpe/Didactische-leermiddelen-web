@@ -182,7 +182,7 @@
   <ItemGroup>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="Controllers\AppController.cs" />
-    <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CatalogusController.cs" />
     <Compile Include="Models\DAL\Context.cs" />
     <Compile Include="Models\DAL\GebruikerRepository.cs" />
@@ -255,8 +255,8 @@
     <Content Include="Views\Catalogus\Index.cshtml" />
     <Content Include="Views\Catalogus\Details.cshtml" />
     <Content Include="Views\Catalogus\Producten.cshtml" />
-    <Content Include="Views\Auth\LogIn.cshtml" />
-    <Content Include="Views\Auth\ReedsIngelogd.cshtml" />
+    <Content Include="Views\Account\LogIn.cshtml" />
+    <Content Include="Views\Account\ReedsIngelogd.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
