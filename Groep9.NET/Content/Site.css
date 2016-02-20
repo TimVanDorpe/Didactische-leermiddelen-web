@@ -40,15 +40,19 @@
     background-color: #009c7c;
     color: #fff;
 }
+
+.groen:hover {
+    background-color: rgba(0, 156, 124, 0.61);
+}
 .zoeken {
     margin-top: 10px;
     width:100%;
 }
 
 .product-small {
-    margin-left:3%;
-    margin-right:3%;
-    width:93%;
+    margin-left:2%;
+    margin-right:2%;
+    width:96%;
     padding: 4px;
     background-color:#fff;
    /*display: inline-block;
@@ -56,6 +60,7 @@
             border: 1px solid #ddd;
             border-radius: 4px;
             overflow:hidden;
+            
 }
 
 .product-small:after {
@@ -67,17 +72,36 @@
     height: 0;
 }
 
-.product-small > img {
-    float: left;
-    margin-right: 9px;
-    width: 100%;
-    height: 100%;
+
+.foto {
+    padding-left: 0;
+
+}
+.product-small >.caption {
+    float: right;
 }
 
+.geavanceerd-zoeken {
+    width:100%;
+    border:none;
+}
 @media(max-width:500px) {
                           .product-small > .caption > h2 {
                               font-size:18px;
                           } 
+                          .titel {
+                              font-size:20px
+                          }
                        }
 
+
+
+@media(max-width:992px) {
+                          .knoppen {
+                              margin-top:10px;
+                          }
+                          .dropdownlijst {
+                              margin-top: 5px;
+                          }
+                       }
 

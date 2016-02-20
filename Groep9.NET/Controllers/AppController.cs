@@ -9,11 +9,11 @@ using Groep9.NET.Models.Domein;
 namespace Groep9.NET.Controllers
 {
     public abstract class AppController : Controller {
-        public AppUser CurrentUser
+        public Gebruiker CurrentUser
         {
             get
             {
-                return new AppUser(this.User as ClaimsPrincipal);
+                return new Docent(this.User as ClaimsPrincipal);
             }
         }
     }

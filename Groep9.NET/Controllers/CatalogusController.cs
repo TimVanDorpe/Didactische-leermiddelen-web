@@ -17,14 +17,16 @@ namespace Groep9.NET.Controllers
         // GET: Catalogus
 
         private IProductRepository productRepository;
+        //private IGebruikerRepository gebruikerRepository;
 
         public CatalogusController(IProductRepository pr)
         {
             productRepository = pr;
+          //  gebruikerRepository = gr;
             
         }
     
-        public ActionResult Index( string trefwoord = "", string doelgroep = "", string leergebied = "")
+        public ActionResult Index( string trefwoord = "", string doelgroep = "", string leergebied = "" )
         {
             
             
@@ -50,6 +52,7 @@ namespace Groep9.NET.Controllers
 
             }
             
+
             if (!doelgroep.Equals(""))
                         {
                         producten = producten.Where(p=> p.Doelgroep.Equals(doelgroep));
@@ -60,7 +63,7 @@ namespace Groep9.NET.Controllers
                     }
 
             FillDropDownList();
-            ViewBag.trefwoord = trefwoord;
+            ViewBag.Trefwoord = trefwoord;
             if (Request.IsAjaxRequest())
                         return PartialView("Producten", producten);
                     

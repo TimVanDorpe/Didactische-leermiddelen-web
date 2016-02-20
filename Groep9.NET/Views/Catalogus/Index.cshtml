@@ -6,62 +6,83 @@
     ViewBag.Active = "Product";
 }
 
-<h2>Productcatalogus</h2>
+
+<h2 class="titel">Productcatalogus</h2>
 
 <p>
     
 </p>
 
+
+
+
 <p>
-
-
-
-    @using (@Html.BeginForm("Index", "Catalogus" ,new {@id = "formID"}))
+    @using (@Html.BeginForm("Index", "Catalogus"))
     {
         @*@Html.RadioButton("zoekenNaar", "Naam", true)<text> Naam</text>
             @Html.RadioButton("zoekenNaar", "Omschrijving") <text>Omschrijving </text><br />*@
         <div class="row hidden-sm hidden-xs">
             <div class="col-md-3">
-                @Html.Label("trefwoord:", htmlAttributes: new {@class = "control-label "})
+                @Html.Label("trefwoord:", htmlAttributes: new { @class = "control-label " })
             </div>
             <div class="col-md-3">
-                @Html.Label("doelgroep:", htmlAttributes: new {@class = "control-label "})
+                @Html.Label("doelgroep:", htmlAttributes: new { @class = "control-label " })
             </div>
             <div class="col-md-3">
                 @Html.Label("leergebied:", htmlAttributes: new { @class = "control-label " })
             </div>
         </div>
-        <div class=" visible-sm visible-xs">
-            @Html.TextBox("trefwoord", "", "", new { @class = "form-control" })
-            <input type="submit" value="Zoeken" class="btn btn-default groen zoeken"  />
-        </div>
-            <div class="row hidden-sm hidden-xs">
-                <div class="col-md-3">
-                    @Html.TextBox("trefwoord2", "", "", new { @class = "form-control responsive-verdwijn" } )
+        @*<div class=" visible-sm visible-xs">
+                @Html.TextBox("trefwoord", "", "", new { @class = "form-control  hidden-lg hidden-md" })
+                <input type="submit" value="Zoeken" class="btn btn-default groen zoeken"  />
+            </div>*@
+        <div class="row ">
+            <div class="col-md-3 col-xs-12">
+                @Html.TextBox("trefwoord", "", "", new { @class = "form-control" })
 
-                </div>
-                <div class="col-md-3 responsive-verdwijn"> 
-                    @Html.DropDownList("doelgroep", ViewBag.doelgroep as SelectList, "-- Selecteer doelgroep --", new { @class = "form-control" })
-                </div>
-                <div class="col-md-3 responsive-verdwijn">
-                    @Html.DropDownList("leergebied", ViewBag.leergebied as SelectList, "-- Selecteer leergebied --", new { @class = "form-control" })
-                </div>
+            </div>
 
+            
 
-
-
-                <div class="col-md-3">
-                    <input type="submit" value="Zoeken" class="btn btn-default responsive-verdwijn groen" id="zoeken" />
-                    @Html.ActionLink("Reset zoekfilter", "index", "Catalogus", new { @class = "btn btn-default" })
+            <div id="filter-panel">
+                <div id="panel">
+                    <div id="panel-body">
+                        <div class="col-md-3">
+                            @Html.DropDownList("doelgroep", ViewBag.doelgroep as SelectList, "-- Selecteer doelgroep --", new { @class = "form-control dropdownlijst" })
+                        </div>
+                        <div class="col-md-3">
+                            @Html.DropDownList("leergebied", ViewBag.leergebied as SelectList, "-- Selecteer leergebied --", new { @class = "form-control dropdownlijst" })
+                        </div>
+                    </div>
                 </div>
             </div>
-            }
 
+
+            <div class="col-xs-12 hidden-md hidden-lg">
+
+                <button type="button" class="btn btn-default groen geavanceerd-zoeken" data-toggle="collapse" data-target="#filter-panel">
+                    <span class="glyphicon glyphicon-cog"></span> Geavanceerd zoeken
+                </button>
+
+
+            </div>
+
+
+            <div class="col-md-3 col-xs-12 knoppen">
+                <input type="submit" value="Zoeken" class="btn btn-default groen col-xs-8 col-md-7" />
+                @Html.ActionLink("Reset", "index", "Catalogus", new { @class = "btn btn-default col-xs-3 col-md-4 pull-right" })
+            </div>
+
+        </div>
+       
+
+    }
 
 </p>
 
-<div class="row">
-    <div class="col-xs-12">
-        @Html.Partial("Producten", Model)
-    </div>
-</div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    @Html.Partial("Producten", Model)
+                </div>
+            </div>

@@ -185,8 +185,8 @@
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\CatalogusController.cs" />
     <Compile Include="Models\DAL\Context.cs" />
+    <Compile Include="Models\DAL\GebruikerRepository.cs" />
     <Compile Include="Models\DAL\Mapping\ProductMapper.cs" />
-    <Compile Include="Models\Domein\AppUser.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -196,6 +196,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Domein\IGebruikerRepository.cs" />
     <Compile Include="Models\Domein\IProductRepository.cs" />
     <Compile Include="Models\DAL\ProductRepository.cs" />
     <Compile Include="Models\Domein\Product.cs" />
@@ -209,9 +210,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\images\dobbelsteen.png" />
+    <Content Include="Content\images\blanco_draaischijf.PNG" />
+    <Content Include="Content\images\dobbelsteen.jpg" />
     <Content Include="Content\images\favicon.ico" />
     <Content Include="Content\images\HoGent_Logo.png" />
+    <Content Include="Content\images\landkaart.jpg" />
+    <Content Include="Content\images\Magnspinner.jpg" />
+    <Content Include="Content\images\rekenmachine.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

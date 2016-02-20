@@ -31,7 +31,7 @@
                     @if (CurrentUser.Identity.IsAuthenticated)
                 {
                        
-                    @CurrentUser.Name
+                    @CurrentUser.Naam
                     <span>&nbsp; | &nbsp;</span>
                         
                     }
@@ -55,7 +55,7 @@
             @if (CurrentUser.Identity.IsAuthenticated)
             {
                 <p>
-                    Ingelogd als: @CurrentUser.Name - <a href="@Url.Action("logout", "auth")">Uitloggen</a>
+                    Ingelogd als: @CurrentUser.Naam - <a href="@Url.Action("logout", "auth")">Uitloggen</a>
                 </p>
             }
 
@@ -67,5 +67,7 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script src="@Url.Content("~/Scripts/jquery-1.10.2.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/custom.js")" type="text/javascript"></script>
 </body>
 </html>
