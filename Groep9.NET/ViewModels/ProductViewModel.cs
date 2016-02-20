@@ -16,6 +16,8 @@ namespace Groep9.NET.ViewModels {
 
         [Required]
         public string Naam { get; private set; }
+
+        [Display(Name = "Foto")]
         public string Foto { get; private set; }
 
         [DataType(DataType.MultilineText)]
@@ -32,7 +34,7 @@ namespace Groep9.NET.ViewModels {
             //aantalInCatalogus, artikelNr (van de firma), prijs,
             //firma, doelgroepen, leergebieden
 
-            Foto = p.FotoUrl;
+            Foto = p.Foto;
             Naam = p.Naam;
             Omschrijving = p.Omschrijving;
             Aantal = p.Aantal;

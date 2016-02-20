@@ -4,7 +4,7 @@
     <table class="table table-responsive ">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.FotoUrl)
+                @Html.DisplayNameFor(model => model.Foto)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Naam)
@@ -50,7 +50,7 @@
             <tr>
                 <td>
                    
-                    <img style="width: 75px; height: 75px;" alt="@Html.DisplayFor(modelItem => item.Naam)" src="~/Content/images/@(@Html.DisplayFor(modelItem =>item.FotoUrl))" />
+                    <img style="width: 75px; height: 75px;" alt="@Html.DisplayFor(modelItem => item.Naam)" src="~/Content/images/@(@Html.DisplayFor(modelItem =>item.Foto))" />
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Naam)
@@ -84,7 +84,7 @@
                 </td>
                 <td>
 
-                    @Html.ActionLink("Details", "Details","Catalogus", new { id = item.ProductNummer })
+                    @Html.ActionLink("Details", "Details", new { id = item.ProductNummer })
 
                 </td>
             </tr>
@@ -92,7 +92,7 @@
 
     </table>
 </div>
-
+<div class="visible-sm visible-xs">
     @if (!Model.Any())
     {
 
@@ -113,7 +113,7 @@
                 </div>
                 <div class=" col-xs-12 product-small">
                     <div class="col-xs-4">
-                        <img alt="@Html.DisplayFor(modelItem => item.Naam)" src="@Html.DisplayFor(modelItem => item.FotoURL)" />
+                        <img alt="@Html.DisplayFor(modelItem => item.Naam)" src="@Html.DisplayFor(modelItem => item.Foto)" />
                     </div>
 
                     <div class="col-xs-8">
@@ -130,17 +130,17 @@
 
             <div class="col-xs-12 product-small">
                 <div class="foto col-xs-4">
-                    <img alt="@Html.DisplayFor(modelItem => item.Naam)" src="~/Content/images/@(@Html.DisplayFor(modelItem =>item.FotoUrl))" class="img-responsive"/>
+                    <img alt="@Html.DisplayFor(modelItem => item.Naam)" src="~/Content/images/@(@Html.DisplayFor(modelItem =>item.Foto))" class="img-responsive"/>
                 </div>
                 
                 <div class="caption col-xs-8">
                     <h2>@Html.DisplayFor(modelItem => item.Naam)</h2>
                     <p>@Html.DisplayFor(modelItem => item.Omschrijving)</p>
-                    <span class="pull-left">@Html.ActionLink("Details", "Details","Catalogus", new {id = item.ProductNummer})</span><span class="pull-right">Aantal: @Html.DisplayFor(modelItem => item.Aantal)</span>
+                    <span class="pull-left">@Html.ActionLink("Details", "Details", new {id = item.ProductNummer})</span><span class="pull-right">Aantal: @Html.DisplayFor(modelItem => item.Aantal)</span>
                 </div>
             </div>
             <br />
         </div>
         
     }
-            
+            </div>

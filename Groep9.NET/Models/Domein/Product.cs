@@ -6,7 +6,7 @@ using System.ComponentModel;
 
 namespace Groep9.NET {
     public class Product {
-        public string FotoUrl { get; set; }
+        public string Foto { get; set; }
         public string Naam { get; set; }
         public string Omschrijving { get; set; }
         public int ProductNummer { get; set; }
@@ -24,9 +24,9 @@ namespace Groep9.NET {
         {
 
         }
-        public Product(string fotoUrl, int productnummer, string naam, string omschrijving, double prijs, int aantal, bool uitleenbaarheid, string plaats, string firma, string doelgroep, string leergebied)
+        public Product(string Foto, int productnummer, string naam, string omschrijving, double prijs, int aantal, bool uitleenbaarheid, string plaats, string firma, string doelgroep, string leergebied)
         {
-            this.FotoUrl = fotoUrl;
+            this.Foto = Foto;
             this.ProductNummer = productnummer;
             this.Naam = naam;
             this.Omschrijving = omschrijving;
