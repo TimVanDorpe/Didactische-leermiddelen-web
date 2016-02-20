@@ -39,10 +39,10 @@ namespace Groep9.NET.Controllers
                     {
                         leergebied = "";
                     }
-                    
+            IEnumerable<Product> producten = productRepository.VindAlleProducten();
 
-                    IEnumerable<Product>  producten = productRepository.VindAlleProducten().OrderBy(p => p.Naam).ToList();
-                    
+
+
                     if (!trefwoord.Equals(""))
                     {
                
@@ -61,6 +61,8 @@ namespace Groep9.NET.Controllers
                         {
                         producten = producten.Where(p => p.Leergebied.Equals(leergebied));
                     }
+
+            producten = productRepository.VindAlleProducten().OrderBy(p => p.Naam).ToList();
 
             FillDropDownList();
             ViewBag.Trefwoord = trefwoord;

@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Web;
 using System.Web.Services;
 using System.Web.Services.Protocols;
 using System.ComponentModel;
+using Groep9.NET.Models.Domein;
 
 namespace Groep9.NET {
     public class Product {
@@ -13,12 +15,43 @@ namespace Groep9.NET {
         public double Prijs { get; set; }
         public int Aantal { get; set; }
         public bool Uitleenbaarheid { get; set; }
-        public string Plaats { get; set; }
-        public string Firma { get; set; }
-        public string Doelgroep { get; set; }
         public string Leergebied { get; set; }
 
-       
+        public String Doelgroep
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+
+            set
+            {
+            }
+        }
+
+        public String Plaats
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+
+            set
+            {
+            }
+        }
+
+        public string Firma
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+
+            set
+            {
+            }
+        }
 
         public Product()
         {
