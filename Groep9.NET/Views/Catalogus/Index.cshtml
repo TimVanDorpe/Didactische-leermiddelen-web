@@ -38,9 +38,13 @@
             </div>*@
         <div class="row ">
             <div class="col-md-3 col-xs-12">
-                @Html.TextBox("trefwoord", "", "", new { @class = "form-control" })
-
-            </div>
+                <div class="input-group changethisone">
+                    @Html.TextBox("trefwoord", "", "", new { @class = "form-control", @placeholder = "Geef hier uw trefwoord.." })
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-search"></i>
+                    </span>
+                    </div>
+                </div>
 
             
 
