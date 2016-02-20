@@ -16,7 +16,7 @@
 
 
 
-    @using (@Html.BeginForm("Index", "Catalogus"))
+    @using (@Html.BeginForm("Index", "Catalogus" ,new {@id = "formID"}))
     {
         @*@Html.RadioButton("zoekenNaar", "Naam", true)<text> Naam</text>
             @Html.RadioButton("zoekenNaar", "Omschrijving") <text>Omschrijving </text><br />*@
@@ -32,12 +32,12 @@
             </div>
         </div>
         <div class=" visible-sm visible-xs">
-            @*@Html.TextBox("trefwoord", "", "", new { @class = "form-control" })*@
+            @Html.TextBox("trefwoord", "", "", new { @class = "form-control" })
             <input type="submit" value="Zoeken" class="btn btn-default groen zoeken"  />
         </div>
             <div class="row hidden-sm hidden-xs">
                 <div class="col-md-3">
-                    @Html.TextBox("trefwoord", "", "", new { @class = "form-control responsive-verdwijn" } )
+                    @Html.TextBox("trefwoord2", "", "", new { @class = "form-control responsive-verdwijn" } )
 
                 </div>
                 <div class="col-md-3 responsive-verdwijn"> 
@@ -51,7 +51,7 @@
 
 
                 <div class="col-md-3">
-                    <input type="submit" value="Zoeken" class="btn btn-default responsive-verdwijn groen" />
+                    <input type="submit" value="Zoeken" class="btn btn-default responsive-verdwijn groen" id="zoeken" />
                     @Html.ActionLink("Reset zoekfilter", "index", "Catalogus", new { @class = "btn btn-default" })
                 </div>
             </div>
