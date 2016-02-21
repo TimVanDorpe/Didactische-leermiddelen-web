@@ -10,7 +10,7 @@ namespace Groep9.NET
         public void Configuration(IAppBuilder app) {
             app.UseCookieAuthentication(new CookieAuthenticationOptions {
                 AuthenticationType = "ApplicationCookie",
-                LoginPath = new PathString("/auth/logIn")
+                LoginPath = new PathString("/account/logIn")
             });
         }
     }

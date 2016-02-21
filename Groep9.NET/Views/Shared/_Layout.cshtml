@@ -37,12 +37,12 @@
                     }
                     @if (CurrentUser.Identity.IsAuthenticated)
                     {
-                        <a href="/auth/LogIn" >Uitloggen</a>
+                        <a href="/account/LogIn" >Uitloggen</a>
                     }
                     else
                     {
 
-                        <a href="/auth/LogIn" >Inloggen</a>
+                        <a href="/account/LogIn" >Inloggen</a>
                     }
                 </div>
             </div>
@@ -55,7 +55,7 @@
             @if (CurrentUser.Identity.IsAuthenticated)
             {
                 <p>
-                    Ingelogd als: @CurrentUser.Naam - <a href="@Url.Action("logout", "auth")">Uitloggen</a>
+                    Ingelogd als: @CurrentUser.Naam - <a href="@Url.Action("logout", "account")">Uitloggen</a>
                 </p>
             }
 
