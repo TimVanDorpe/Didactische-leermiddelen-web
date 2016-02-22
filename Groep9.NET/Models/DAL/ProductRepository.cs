@@ -28,15 +28,7 @@ namespace Groep9.NET
             return Producten ;
         }
 
-        public void Add(Product product)
-        {
-            Producten.Add(product) ;
-        }
-
-        public void Delete(Product product)
-        {
-            Producten.Remove(product) ;
-        }
+     
 
         public void SaveChanges()
         {

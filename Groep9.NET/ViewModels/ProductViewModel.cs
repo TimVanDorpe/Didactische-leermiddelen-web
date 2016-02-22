@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Groep9.NET.Models.Domein;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -25,8 +26,8 @@ namespace Groep9.NET.ViewModels {
         public int Aantal { get; private set; }
         public double Prijs { get; private set; }
         public string Firma { get; private set; }
-        public string Doelgroep { get; private set; }
-        public string Leergebied { get; private set; }
+        public Doelgroep Doelgroep { get; private set; }
+        public Leergebied Leergebied { get; private set; }
         public ProductViewModel(Product p)
         {
 

@@ -8,6 +8,7 @@ using Groep9.NET.Models.Domein;
 
 namespace Groep9.NET {
     public class Product {
+        public int ProductId { get; set; }
         public string Foto { get; set; }
         public string Naam { get; set; }
         public string Omschrijving { get; set; }
@@ -15,9 +16,8 @@ namespace Groep9.NET {
         public double Prijs { get; set; }
         public int Aantal { get; set; }
         public bool Uitleenbaarheid { get; set; }
-        public string Leergebied { get; set; }
-
-        public String Doelgroep { get; set; }
+        public Doelgroep Doelgroep { get; set; }
+        public Leergebied Leergebied { get; set; }
 
         public String Plaats { get;
 
@@ -35,7 +35,7 @@ namespace Groep9.NET {
         {
 
         }
-        public Product(string foto, int productnummer, string naam, string omschrijving, double prijs, int aantal, bool uitleenbaarheid, string plaats, string firma, string doelgroep, string leergebied)
+        public Product(string foto, int productnummer, string naam, string omschrijving, double prijs, int aantal, bool uitleenbaarheid, string plaats, string firma, Doelgroep doelgroep, Leergebied leergebied)
         {
             this.Foto = foto;
             this.ProductNummer = productnummer;

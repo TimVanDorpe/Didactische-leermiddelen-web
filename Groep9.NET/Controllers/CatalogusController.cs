@@ -55,17 +55,17 @@ namespace Groep9.NET.Controllers
 
             if (!doelgroep.Equals(""))
                         {
-                        producten = producten.Where(p=> p.Doelgroep.Equals(doelgroep));
+                        producten = producten.Where(p=> p.Doelgroep.Naam.Equals(doelgroep));
                         }
                         if (!leergebied.Equals(""))
                         {
-                        producten = producten.Where(p => p.Leergebied.Equals(leergebied));
+                        producten = producten.Where(p => p.Leergebied.Naam.Equals(leergebied));
                     }
 
             producten = productRepository.VindAlleProducten().OrderBy(p => p.Naam).ToList();
 
             FillDropDownList();
-            ViewBag.Trefwoord = trefwoord;
+           // ViewBag.Trefwoord = trefwoord;   //MOEST WEG VOLGENS TECH REV??
             if (Request.IsAjaxRequest())
                         return PartialView("Producten", producten);
                     
@@ -81,11 +81,11 @@ namespace Groep9.NET.Controllers
 
         private SelectList GetDoelgroepSelectList()
         {
-            return new SelectList(productRepository.VindAlleProducten().Select(s => s.Doelgroep).Distinct());
+            return new SelectList(productRepository.VindAlleProducten().Select(s => s.Doelgroep.Naam).Distinct());
         }
         private SelectList GetLeergebiedSelectList()
         {
-            return new SelectList(productRepository.VindAlleProducten().Select(s => s.Leergebied).Distinct());
+            return new SelectList(productRepository.VindAlleProducten().Select(s => s.Leergebied.Naam).Distinct());
                 
         }
         public ActionResult Details(int id)

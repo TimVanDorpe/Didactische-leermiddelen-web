@@ -7,28 +7,23 @@ namespace Groep9.NET.Models.Domein
 {
     public class Doelgroep
     {
-        public String Naam
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
+        private string naam;
 
-            set
-            {
-            }
+
+        public string Naam
+        {
+            get { return naam; }
+            set { naam = value; }
         }
 
         public int DoelgroepId
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
+            get; set;
+        }
 
-            set
-            {
-            }
+        public Doelgroep()
+        {
+            
         }
     }
 }
