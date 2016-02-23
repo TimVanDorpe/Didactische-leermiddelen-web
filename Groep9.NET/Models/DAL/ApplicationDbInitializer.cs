@@ -31,7 +31,7 @@ namespace Groep9.NET.Models.DAL
         {
             CreateUserAndRoles("personeel@hogent.be", "password", "personeel");
 
-            CreateUserAndRoles("student@hogent.be", "password", "student");
+            CreateUserAndRoles("student@hogent.be", "password", "studenten");
 
         }
 

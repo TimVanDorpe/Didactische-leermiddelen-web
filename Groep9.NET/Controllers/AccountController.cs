@@ -109,6 +109,12 @@ namespace Groep9.NET.Controllers
         //    return View();
         //}
 
+        // GET: /Account/Login
+        [AllowAnonymous]
+        public ActionResult Login(string returnUrl) {
+            ViewBag.ReturnUrl = returnUrl;
+            return View();
+        }
 
         // POST: /Account/Login
         [HttpPost]
@@ -120,10 +126,10 @@ namespace Groep9.NET.Controllers
             {
                 return View(model);
             }
-
-            // This doesn't count login failures towards account lockout
-            // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Wachtwoord, model.RememberMe, shouldLockout: false);
+            
+                // This doesn't count login failures towards account lockout
+                // To enable password failures to trigger account lockout, change to shouldLockout: true
+                var result = await SignInManager.PasswordSignInAsync(model.Email, model.Wachtwoord, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -137,6 +143,11 @@ namespace Groep9.NET.Controllers
                     ModelState.AddModelError("", "Invalid login attempt.");
                     return View(model);
             }
+        }
+
+        public ActionResult ReedsIngelogd()
+        {
+            return View();
         }
         private ActionResult RedirectToLocal(string returnUrl)
         {
@@ -155,6 +166,8 @@ namespace Groep9.NET.Controllers
 
             return returnUrl;
         }
+
+        
 
         public ActionResult LogOut() {
             var ctx = Request.GetOwinContext();

@@ -49,7 +49,7 @@ namespace Groep9.NET.Models.DAL
                 context.Producten.Add(spinnersKlassAss);
                 context.SaveChanges();
 
-
+                //InitializeIdentity();
 
 
             }
@@ -66,12 +66,45 @@ namespace Groep9.NET.Models.DAL
         }
 
 
-        //private void InitializeIdentity()
-        //{
-        //    CreateUser("admin@hogent.be", "P@ssword1"); //Create user Admin
-        //    CreateUser("student@hogent.be", "P@ssword1");  //Create User Student
-        //}
+        private void InitializeIdentity()
+        {
+
+
+            
+
+            /*
+            System.Web.Security.Roles.CreateRole("docenten");
+            System.Web.Security.Roles.CreateRole("studenten");
+            var docent = new ApplicationUser { UserName = "docent@hogent.be", Email = "docent@hogent.be" };
+            */
+
+            /*
+            System.Web.Security.Roles.AddUserToRole(docent, "docenten");
+
+
+
+            Microsoft.AspNet.Identity.UserManager.CreateAsync(user, model.Password);
+            if (result.Succeeded) {
+                await UserManager.AddToRoleAsync(user.Id, "student");
+                await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                return RedirectToAction("Index", "Home");
+            }
+            AddErrors(result);
+
+            */
+
+
+        }
+
+
+        //System.Web.Security.Roles.AddUserToRole(user, "docent");
+
+
+        /*
+        CreateUser("admin@hogent.be", "P@ssword1"); //Create user Admin
+        CreateUser("student@hogent.be", "P@ssword1");  //Create User Student
+        */
+    }
 
         
     }
-}
