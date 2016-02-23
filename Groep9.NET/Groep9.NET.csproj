@@ -193,13 +193,10 @@
     <Compile Include="Controllers\CatalogusController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\VerlanglijstController.cs" />
-<<<<<<< Updated upstream
     <Compile Include="Models\DAL\Mapping\LeergebiedMapper.cs" />
-=======
     <Compile Include="Models\DAL\ApplicationDbContext.cs" />
     <Compile Include="Models\DAL\ApplicationDbInitializer.cs" />
     <Compile Include="Models\Domein\ApplicationUser.cs" />
->>>>>>> Stashed changes
     <Compile Include="Models\Domein\Firma.cs" />
     <Compile Include="Models\DAL\Context.cs" />
     <Compile Include="Models\DAL\GebruikerRepository.cs" />
