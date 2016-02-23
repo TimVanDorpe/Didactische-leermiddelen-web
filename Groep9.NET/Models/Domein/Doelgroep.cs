@@ -7,13 +7,12 @@ namespace Groep9.NET.Models.Domein
 {
     public class Doelgroep
     {
-        private string naam;
+        
 
 
         public string Naam
         {
-            get { return naam; }
-            set { naam = value; }
+            get; set;
         }
 
         public int DoelgroepId
@@ -21,9 +20,9 @@ namespace Groep9.NET.Models.Domein
             get; set;
         }
 
-        public Doelgroep()
+        public Doelgroep(string naam)
         {
-            
+            Naam = naam;   
         }
     }
 }

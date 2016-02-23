@@ -8,7 +8,7 @@ namespace Groep9.NET.Models.Domein
     public class Leergebied
     {
 
-        public String Naam { get; set; }
+        public string Naam { get; set; }
 
         public int LeergebiedId { get; set; }
 
