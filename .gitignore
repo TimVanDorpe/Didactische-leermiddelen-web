@@ -157,9 +157,5 @@ $RECYCLE.BIN/
 
 #Visual studio
 .vs/
-<<<<<<< Updated upstream
-Groep9.NET/App_Data/
-=======
 Groep9.NET/App_Data/
 packages/
->>>>>>> Stashed changes
