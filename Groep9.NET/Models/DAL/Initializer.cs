@@ -1,7 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Data.Entity;
+<<<<<<< Updated upstream
 using Groep9.NET.Models.Domein;
+=======
+using System.Web;
+using Groep9.NET.Models.Domein;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
+>>>>>>> Stashed changes
 
 namespace Groep9.NET.Models.DAL
 {
@@ -9,9 +18,11 @@ namespace Groep9.NET.Models.DAL
     {
         protected override void Seed(Context context)
         {
+          
             try
             {
 
+<<<<<<< Updated upstream
                 Doelgroep Kleuters = new Doelgroep { Naam = "Kleuters" };
                 Doelgroep LagereSchool = new Doelgroep { Naam = "Lagere School" };//manier 1
 
@@ -37,6 +48,16 @@ namespace Groep9.NET.Models.DAL
                 
 
 
+=======
+               
+
+                Product landkaart = new Product("landkaart.jpg", 4, "Landkaart", "Map van België", 8.55, 10, false, "Aalst", "Hogent", "Landmeetkunde", "Kaartprojectie");
+                Product rekenmachine = new Product("rekenmachine.jpg", 5, "Rekenmachine", "Rekenmachine van merk ..", 8.55, 10, false, "Aalst", "Hogent", "Landmeetkunde", "Kaartprojectie");
+                Product dobbelsteenschatkist = new Product("dobbelsteen.jpg", 6, "Dobbelsteen schatkist", "koffertje met verschillende soorten dobbelstenen: blanco, met cijfers, ..", 35, 1, true, "GLEDE 1.011", "Hogent", "Kleuters", "Tellen");
+                Product blancodraaischijf = new Product("blanco_draaischijf.PNG", 7, "Blanco shijf", "Met verschillende blanco shijven in hard papier", 31.45, 1, true, "GLEDE 1.011", "HoGent", "Kleuters", "Kansberekening");
+                Product spinners_klass_ass = new Product("Magnspinner.jpg", 8, "Magnetische spinner", "Magnetische spinners in de vorm van een pijl, een vinger en een potlood", 19.2, 1, true, "GLEDE 1.011", "Hogent", "Kleuters", "Behendigheid");
+                
+>>>>>>> Stashed changes
                 context.Producten.Add(landkaart);
                 context.Producten.Add(rekenmachine);
                 context.Producten.Add(dobbelsteenschatkist);
@@ -64,5 +85,14 @@ namespace Groep9.NET.Models.DAL
                 throw new Exception(s);
             }
         }
+
+
+        //private void InitializeIdentity()
+        //{
+        //    CreateUser("admin@hogent.be", "P@ssword1"); //Create user Admin
+        //    CreateUser("student@hogent.be", "P@ssword1");  //Create User Student
+        //}
+
+        
     }
 }

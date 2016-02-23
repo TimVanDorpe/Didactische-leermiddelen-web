@@ -17,5 +17,9 @@ namespace Groep9.NET.ViewModels {
 
         [HiddenInput(DisplayValue = false)]
         public string ReturnUrl { get; set; }
+
+
+        [Display(Name = "Gegevens omthouden?")]
+        public bool RememberMe { get; set; }
     }
 }

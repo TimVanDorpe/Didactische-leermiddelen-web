@@ -18,8 +18,8 @@ namespace Groep9.NET
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            Context db = new Context();
-            db.Database.Initialize(true);
+            //ApplicationDbContext db = new ApplicationDbContext();
+            //db.Database.Initialize(true);
         }
     }
 }
