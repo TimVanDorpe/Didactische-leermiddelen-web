@@ -19,12 +19,11 @@ namespace Groep9.NET.Models.Domein
             return userIdentity;
         }
         
-        ICollection<Product> VerlangLijst { get; set; }
+        public ICollection<Product> VerlangLijst { get; set; }
 
         public abstract void VoegProductAanVerlanglijstToe(Product p);
 
-        public string Naam { get; set; }
-
+       
        
 
         /*

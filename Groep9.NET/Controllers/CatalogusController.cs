@@ -1,13 +1,7 @@
-﻿using System;
+﻿using Groep9.NET.Models.Domein;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Claims;
-using System.Web;
 using System.Web.Mvc;
-using Groep9.NET.Models.Domein;
-using Groep9.NET.ViewModels;
-using Groep9.NET.Models.DAL;
-using System.Globalization;
 
 namespace Groep9.NET.Controllers
 {
@@ -23,11 +17,11 @@ namespace Groep9.NET.Controllers
         public CatalogusController(IProductRepository pr)
         {
             productRepository = pr;
-          //  gebruikerRepository = gr;
-            
+            //  gebruikerRepository = gr;
+            //gebruiker = currentuser;
         }
     
-        public ActionResult Index( string trefwoord = "", string doelgroep = "", string leergebied = "" )
+        public ActionResult Index( string trefwoord = "", string doelgroep = "", string leergebied = "" , int productverlanglijstID = 0)
         {
             
             
@@ -45,13 +39,10 @@ namespace Groep9.NET.Controllers
 
 
                     if (!trefwoord.Equals(""))
-                    {
-               
+                    {              
                         producten =
                             producten.Where(p => p.Naam.ToLower().Contains(trefwoord.ToLower()) || p.Omschrijving.ToLower().Contains(trefwoord.ToLower()));
-                
-
-            }
+                            }
             
 
             if (!doelgroep.Equals(""))
@@ -63,21 +54,20 @@ namespace Groep9.NET.Controllers
                        // producten = producten.Where(p => p.Leergebied.Naam.Equals(leergebied));
                     }
 
-           
 
+            if (productverlanglijstID != 0)
+                AddToVerlanglijst(productverlanglijstID);
             FillDropDownList();
            
             if (Request.IsAjaxRequest())
                         return PartialView("Producten", producten);
-                    
-                    
-
                     return View(producten);
-               
-                
+                            
                       
             return RedirectToAction("Index", "Home");
         }
+
+
       
 
         private SelectList GetDoelgroepSelectList()
@@ -104,10 +94,16 @@ namespace Groep9.NET.Controllers
 
         }
 
-        public ActionResult AddToVerlanglijst(int productId)
+        public void AddToVerlanglijst(int productId)
         {
+            gebruiker.VoegProductAanVerlanglijstToe(productRepository.FindByProductNummer(productId));
+            
+        }
 
-            return RedirectToAction("Index");
+        public ActionResult Verlanglijst()
+        {
+            IEnumerable<Product> producten = gebruiker.VerlangLijst.ToList();
+            return View(producten);
         }
     }
 }
