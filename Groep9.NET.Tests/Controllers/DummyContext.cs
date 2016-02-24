@@ -3,6 +3,7 @@ using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
+using Groep9.NET.Models.Domein;
 
 namespace Groep9.NET.Tests.Models
 {
@@ -32,6 +33,14 @@ namespace Groep9.NET.Tests.Models
         public Product GetProduct(int id)
         {
             return ProductenLijst.FirstOrDefault(p=> p.ProductNummer== id);
+        }
+
+        public Student student
+        {
+            get
+            {
+                return new Student { Email};
+            }
         }
 
     }

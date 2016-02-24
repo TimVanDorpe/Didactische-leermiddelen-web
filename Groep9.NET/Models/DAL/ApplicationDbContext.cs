@@ -11,7 +11,7 @@ namespace Groep9.NET.Models.DAL
     public class ApplicationDbContext : IdentityDbContext<Gebruiker>
     {
         public ApplicationDbContext()
-            : base("Gebruikers", throwIfV1Schema: false)
+            : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
 

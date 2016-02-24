@@ -46,7 +46,7 @@ namespace Groep9.NET.Models.DAL
 
                 if (roleName.Equals("personeel"))
                 {
-                    user = new Docent {UserName = email, Email = email, LockoutEnabled = false};
+                    user = new Personeelslid { UserName = email, Email = email, LockoutEnabled = false};
                 }
                 else
                 {
