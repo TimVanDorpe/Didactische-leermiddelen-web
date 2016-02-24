@@ -23,15 +23,16 @@ namespace Groep9.NET.Models.DAL
                HttpContext.Current.GetOwinContext().Get<ApplicationRoleManager>();
 
             // InitializeIdentity();
+
             InitializeIdentityAndRoles();
             base.Seed(context);
         }
 
         private void InitializeIdentityAndRoles()
         {
-            CreateUserAndRoles("personeel@hogent.be", "password", "personeel");
+            CreateUserAndRoles("personeel@hogent.be", "password1", "personeel");
 
-            CreateUserAndRoles("student@hogent.be", "password", "studenten");
+            CreateUserAndRoles("student@hogent.be", "password1", "studenten");
 
         }
 
