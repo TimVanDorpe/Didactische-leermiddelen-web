@@ -5,34 +5,18 @@ using System.Web.Services.Protocols;
 using System.ComponentModel;
 using System.Collections.Generic;
 using System.Security.Claims;
+using Groep9.NET.Models.Domein;
 
 namespace Groep9.NET {
     public class Student : Gebruiker {
-        public int GebruikersID { get; set; }
-
-        public string Naam
-        {
-            get
-            ;
-            }
-        
-
         public virtual ICollection<Product> VerlangLijst { get; set; }
-       
-
-        public Student(ClaimsPrincipal principal)
-            :base(principal)
+        public Student()
         {
             VerlangLijst = new List<Product>();
-
         }
-        public string Wachtwoord { get; set; }
-               
         public override void voegProductAanVerlanglijstToe(Product p)
         {
             VerlangLijst.Add(p);
-            
-
         }
     }
 }

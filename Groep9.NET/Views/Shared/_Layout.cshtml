@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Groep9.NET.Models.Domein
+@using Microsoft.AspNet.Identity
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -28,16 +30,17 @@
                    
                 </ul>
                 <div class="navbar-right nav-rechts">
-                    @if (CurrentUser.Identity.IsAuthenticated)
+                    @if (Request.IsAuthenticated)
                 {
                        
-                    @CurrentUser.Naam
+                    // toont de naam (momenteel == email) van de momenteel ingelogde user
+                    @User.Identity.Name
                     <span>&nbsp; | &nbsp;</span>
                         
                     }
-                    @if (CurrentUser.Identity.IsAuthenticated)
+                    @if (Request.IsAuthenticated)
                     {
-                        <a href="/account/LogIn" >Uitloggen</a>
+                        <a href="/account/Logout" >Uitloggen</a>
                     }
                     else
                     {
@@ -52,10 +55,10 @@
         @RenderBody()
         <hr />
         <footer>
-            @if (CurrentUser.Identity.IsAuthenticated)
+            @if (Request.IsAuthenticated)
             {
                 <p>
-                    Ingelogd als: @CurrentUser.Naam - <a href="@Url.Action("logout", "account")">Uitloggen</a>
+                    Ingelogd als: @User.Identity.Name - <a href="@Url.Action("logout", "account")">Uitloggen</a>
                 </p>
             }
 

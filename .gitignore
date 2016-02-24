@@ -154,3 +154,8 @@ $RECYCLE.BIN/
 
 # Mac desktop service store files
 .DS_Store
+
+#Visual studio
+.vs/
+Groep9.NET/App_Data/
+packages/

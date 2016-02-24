@@ -5,14 +5,14 @@ using System.Web.Services;
 using System.Web.Services.Protocols;
 using System.ComponentModel;
 using System.Linq;
+using Groep9.NET.Models.Domein;
 
 namespace Groep9.NET
 {
     public class Verlanglijst
     {
         public Gebruiker Gebruiker
-        {
-            get; set; }
+        { get; set; }
         private IList<Product> producten = new List<Product>();
 
         public virtual IEnumerable<Product> Producten
