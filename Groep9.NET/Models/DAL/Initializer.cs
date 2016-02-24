@@ -39,7 +39,7 @@ namespace Groep9.NET.Models.DAL
                 Product landkaart = new Product("landkaart.jpg", 4, "Landkaart", "Map van België", 8.55, 10, false, "Aalst", "Hogent", lagereSchool, kaarten);
                 Product rekenmachine = new Product("rekenmachine.jpg", 5, "Rekenmachine", "Rekenmachine van merk ..", 8.55, 10, false, "Aalst", "Hogent", lagereSchool, kaarten);
                 Product dobbelsteenschatkist = new Product("dobbelsteen.jpg", 6, "Dobbelsteen schatkist", "koffertje met verschillende soorten dobbelstenen: blanco, met cijfers, ..", 35, 1, true, "GLEDE 1.011", "Hogent", kleuters, tellen);
-                Product blancodraaischijf = new Product("blanco_draaischijf.PNG", 7, "Blanco schijf", "Met verschillende blanco shijven in hard papier", 31.45, 1, true, "GLEDE 1.011", "HoGent", kleuters, kansen);
+                Product blancodraaischijf = new Product("blanco_draaischijf.PNG", 7, "Blanco schijf", "Met verschillende blanco schijven in hard papier", 31.45, 1, true, "GLEDE 1.011", "HoGent", kleuters, kansen);
                 Product spinnersKlassAss = new Product("Magnspinner.jpg", 8, "Magnetische spinner", "Magnetische spinners in de vorm van een pijl, een vinger en een potlood", 19.2, 1, true, "GLEDE 1.011", "Hogent", kleuters , behendigheid);
                 
                 context.Producten.Add(landkaart);
