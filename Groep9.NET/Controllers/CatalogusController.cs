@@ -19,6 +19,7 @@ namespace Groep9.NET.Controllers
 
         private IProductRepository productRepository;
         //private IGebruikerRepository gebruikerRepository;
+        private Gebruiker gebruiker;
 
         public CatalogusController(IProductRepository pr)
         {

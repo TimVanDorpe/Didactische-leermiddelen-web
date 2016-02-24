@@ -221,7 +221,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Models\Domein\Student.cs" />
-    <Compile Include="Models\Domein\Verlanglijst.cs" />
     <Compile Include="ViewModels\LogInViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="Views\App\AppViewPage.cs" />
@@ -275,7 +274,7 @@
     <Content Include="Views\Catalogus\Producten.cshtml" />
     <Content Include="Views\Account\LogIn.cshtml" />
     <Content Include="Views\Account\ReedsIngelogd.cshtml" />
-    <Content Include="Views\Verlanglijst\Index.cshtml" />
+    <Content Include="Views\Catalogus\Verlanglijst.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
