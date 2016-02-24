@@ -23,7 +23,6 @@ namespace Groep9.NET.Models.Domein
 
         public abstract void VoegProductAanVerlanglijstToe(Product p);
 
-        public string Naam { get; set; }
 
        
 

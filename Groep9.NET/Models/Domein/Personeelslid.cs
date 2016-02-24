@@ -16,14 +16,6 @@ namespace Groep9.NET {
         public override void VoegProductAanVerlanglijstToe(Product p) {
             VerlangLijst.Add(p);
         }
-        public string Naam { get; set; }
-        public String Email
-        {
-            get;
-
-
-            set;
-
-        }
+        
     }
 }
