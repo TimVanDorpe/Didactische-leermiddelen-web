@@ -13,8 +13,17 @@ namespace Groep9.NET {
         public Personeelslid() {
             VerlangLijst = new List<Product>();
         }
-        public override void voegProductAanVerlanglijstToe(Product p) {
+        public override void VoegProductAanVerlanglijstToe(Product p) {
             VerlangLijst.Add(p);
+        }
+        public string Naam { get; set; }
+        public String Email
+        {
+            get;
+
+
+            set;
+
         }
     }
 }

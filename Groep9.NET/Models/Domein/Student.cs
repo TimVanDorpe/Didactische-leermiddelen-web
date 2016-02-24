@@ -14,7 +14,7 @@ namespace Groep9.NET {
         {
             VerlangLijst = new List<Product>();
         }
-        public override void voegProductAanVerlanglijstToe(Product p)
+        public override void VoegProductAanVerlanglijstToe(Product p)
         {
             VerlangLijst.Add(p);
         }

@@ -21,7 +21,11 @@ namespace Groep9.NET.Models.Domein
         
         ICollection<Product> VerlangLijst { get; set; }
 
-        public abstract void voegProductAanVerlanglijstToe(Product p);
+        public abstract void VoegProductAanVerlanglijstToe(Product p);
+
+        public string Naam { get; set; }
+
+       
 
         /*
         public Gebruiker(ClaimsPrincipal principal)
@@ -29,7 +33,7 @@ namespace Groep9.NET.Models.Domein
         }
         */
 
-        
+
 
     }
 }

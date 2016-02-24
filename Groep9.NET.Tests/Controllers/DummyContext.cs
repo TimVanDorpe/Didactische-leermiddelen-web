@@ -26,7 +26,7 @@ namespace Groep9.NET.Tests.Models
             //VoorbeeldProduct3 = new Product("",3, "C", "TestProd3", 2.1, 1, true, "hier", "B", "C", "D");
             //ProductenLijst =
             //     (new Product[] { VoorbeeldProduct, VoorbeeldProduct2, VoorbeeldProduct3 }).ToList().AsQueryable();
-
+            
 
         }
 
