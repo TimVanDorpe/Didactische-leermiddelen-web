@@ -39,7 +39,7 @@ namespace Groep9.NET.Controllers
                     {
                         leergebied = "";
                     }
-            IEnumerable<Product> producten = productRepository.VindAlleProducten().OrderBy(p => p.Naam);
+            IEnumerable<Product> producten = productRepository.VindAlleProducten().ToList();
 
 
 
@@ -62,10 +62,10 @@ namespace Groep9.NET.Controllers
                         producten = producten.Where(p => p.Leergebied.Naam.Equals(leergebied));
                     }
 
-            producten = producten.ToList();
+           
 
             FillDropDownList();
-           // ViewBag.Trefwoord = trefwoord;   //MOEST WEG VOLGENS TECH REV??
+           
             if (Request.IsAjaxRequest())
                         return PartialView("Producten", producten);
                     

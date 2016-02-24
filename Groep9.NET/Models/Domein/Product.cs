@@ -46,8 +46,8 @@ namespace Groep9.NET {
             this.Uitleenbaarheid = uitleenbaarheid;
             this.Plaats = plaats;
             this.Firma = firma;
-            this.Doelgroep = doelgroep;
-            this.Leergebied = leergebied;
+            Doelgroep = doelgroep;
+            Leergebied = leergebied;
 
         
         

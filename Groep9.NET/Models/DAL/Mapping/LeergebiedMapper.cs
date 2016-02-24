@@ -12,8 +12,8 @@ namespace Groep9.NET.Models.DAL.Mapping
         public LeergebiedMapper()
         {
             ToTable("Leergebied");
-
-            //Property(t => t.Name).IsRequired().HasMaxLength(100);
+            HasKey(p => p.LeergebiedId);
+            Property(t => t.Naam).IsRequired().HasMaxLength(100);
 
             //HasMany(t => t.Products).WithRequired(t => t.Category).Map(m => m.MapKey("CategoryId")).WillCascadeOnDelete(false);
         }
