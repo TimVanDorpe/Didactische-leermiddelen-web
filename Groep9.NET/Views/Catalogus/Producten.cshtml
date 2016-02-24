@@ -30,12 +30,12 @@
             @*<th>
                     @Html.DisplayNameFor(model => model.Firma)
                 </th>*@
-            <th>
-                @Html.DisplayNameFor(model => model.Doelgroep)
+            @*<th>
+                @Html.DisplayNameFor(model => model.Doelgroepen)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Leergebied)
-            </th>
+                @Html.DisplayNameFor(model => model.Leergebieden)
+            </th>*@
             <th></th>
         </tr>
         @if (!Model.Any())
@@ -76,12 +76,12 @@
                 @*<td>
                         @Html.DisplayFor(modelItem => item.Firma)
                     </td>*@
-                <td>
-                    @Html.DisplayFor(modelItem => item.Doelgroep.Naam)
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.Doelgroepen.)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Leergebied.Naam)
-                </td>
+                    @Html.DisplayFor(modelItem => item.Leergebieden.Naam)
+                </td>*@
                 <td>
 
                     @Html.ActionLink("Details", "Details", new { id = item.ProductNummer })

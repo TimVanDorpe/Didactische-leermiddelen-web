@@ -15,7 +15,11 @@ namespace Groep9.NET.Models.DAL.Mapping
             HasKey(p => p.DoelgroepId);
             Property(t => t.Naam).IsRequired().HasMaxLength(100);
 
-            //HasMany(t => t.Products).WithRequired(t => t.Category).Map(m => m.MapKey("CategoryId")).WillCascadeOnDelete(false);
+            HasMany(i => i.Producten).WithMany(p => p.Doelgroepen).Map(m => {
+                m.ToTable("ProductenDoelgroep");
+                m.MapLeftKey("DoelgroepId");
+                m.MapRightKey("ProductId");
+            });
         }
     }
 }

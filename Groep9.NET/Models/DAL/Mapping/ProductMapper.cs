@@ -20,8 +20,8 @@ namespace Groep9.NET.Models.DAL
              Property(t => t.Prijs).IsRequired();
              Property(t => t.Uitleenbaarheid).IsRequired();*/
            
-            //HasRequired(d => d.Doelgroep).WithOptional().Map(m => m.MapKey("DoelgroepId"));
-            //HasRequired(d => d.Leergebied).WithOptional().Map(m => m.MapKey("LeergebiedId"));
+            //HasRequired(d => d.Doelgroepen).WithOptional().Map(m => m.MapKey("DoelgroepId"));
+            //HasRequired(d => d.Leergebieden).WithOptional().Map(m => m.MapKey("LeergebiedId"));
 
         }
 

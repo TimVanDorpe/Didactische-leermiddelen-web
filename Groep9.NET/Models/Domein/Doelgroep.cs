@@ -20,9 +20,24 @@ namespace Groep9.NET.Models.Domein
             get; set;
         }
 
+       public virtual ICollection<Product> Producten { get; set; }
+
+        public Doelgroep()
+        {
+            Producten = new List<Product>();
+        }
+
         public Doelgroep(string naam)
+            :this()
         {
             Naam = naam;   
+        }
+
+
+        public void RegistreerProduct(Product product)
+        {
+           
+            Producten.Add(product);
         }
     }
 }

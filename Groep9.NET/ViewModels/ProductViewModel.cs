@@ -26,8 +26,10 @@ namespace Groep9.NET.ViewModels {
         public int Aantal { get; private set; }
         public double Prijs { get; private set; }
         public string Firma { get; private set; }
-        public Doelgroep Doelgroep { get; private set; }
-        public Leergebied Leergebied { get; private set; }
+       // public Doelgroep Doelgroep { get; private set; }
+        public string[] Leergebied { get; private set; }
+
+        public string[] Doelgroep { get; private set; }
         public ProductViewModel(Product p)
         {
 
@@ -42,9 +44,8 @@ namespace Groep9.NET.ViewModels {
             ProductId = p.ProductNummer;
             Prijs = p.Prijs;
             Firma = p.Firma;
-            Doelgroep = p.Doelgroep;
-            Leergebied = p.Leergebied;
-
+            Doelgroep = p.Doelgroepen.Select(i => i.Naam).OrderBy(i => i).ToArray();
+            Leergebied = p.Leergebieden.Select(i => i.Naam).OrderBy(i => i).ToArray();
 
 
         }

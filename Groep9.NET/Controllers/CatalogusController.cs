@@ -8,6 +8,7 @@ using Groep9.NET.Models.Domein;
 using Groep9.NET.ViewModels;
 using Groep9.NET.Models.DAL;
 using System.Globalization;
+using System.Data.Entity;
 
 namespace Groep9.NET.Controllers
 {
@@ -54,18 +55,27 @@ namespace Groep9.NET.Controllers
             
 
             if (!doelgroep.Equals(""))
-                        {
-                        producten = producten.Where(p=> p.Doelgroep.Naam.Equals(doelgroep));
+                        {                
+                   //producten = producten.Where(p=> p.Doelgroepen.ElementAt(1).Naam.Equals(doelgroep));
+                //   producten = producten.Include(p=>p.Doelgroepen).
+               
+                       
                         }
                         if (!leergebied.Equals(""))
                         {
-                        producten = producten.Where(p => p.Leergebied.Naam.Equals(leergebied));
+                        producten = producten.Where(p => p.Leergebieden.ElementAt(1).Naam.Equals(leergebied));
                     }
 
+
+
+            
+                        FillDropDownList();
            
 
-            FillDropDownList();
-           
+
+
+
+
             if (Request.IsAjaxRequest())
                         return PartialView("Producten", producten);
                     
@@ -81,12 +91,18 @@ namespace Groep9.NET.Controllers
 
         private SelectList GetDoelgroepSelectList()
         {
-            return new SelectList(productRepository.VindAlleProducten().Select(s => s.Doelgroep.Naam).Distinct());
+                                 
+                     
+         //   return new SelectList(productRepository.VindAlleProducten().Include(p => p.Doelgroepen.Select(g => g.Naam)).ToList());
+            return new SelectList(productRepository.VindAlleProducten().Select(p => p.Doelgroepen.ToList().Select(g => g.Naam)));
+
         }
         private SelectList GetLeergebiedSelectList()
         {
-            return new SelectList(productRepository.VindAlleProducten().Select(s => s.Leergebied.Naam).Distinct());
-                
+            return new SelectList(productRepository.VindAlleProducten().Select(p => p.Leergebieden.ToList().Select(g => g.Naam)));
+           // return new SelectList(productRepository.VindAlleProducten().Include(p => p.Leergebieden.Select(g => g.Naam)).ToList());
+
+
         }
         public ActionResult Details(int id)
         {
