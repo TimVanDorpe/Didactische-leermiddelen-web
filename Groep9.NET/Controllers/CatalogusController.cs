@@ -56,11 +56,11 @@ namespace Groep9.NET.Controllers
 
             if (!doelgroep.Equals(""))
                         {
-                        producten = producten.Where(p=> p.Doelgroep.Naam.Equals(doelgroep));
+                        //producten = producten.Where(p=> p.Doelgroep.Naam.Equals(doelgroep));
                         }
                         if (!leergebied.Equals(""))
                         {
-                        producten = producten.Where(p => p.Leergebied.Naam.Equals(leergebied));
+                       // producten = producten.Where(p => p.Leergebied.Naam.Equals(leergebied));
                     }
 
            
@@ -82,12 +82,13 @@ namespace Groep9.NET.Controllers
 
         private SelectList GetDoelgroepSelectList()
         {
-            return new SelectList(productRepository.VindAlleProducten().Select(s => s.Doelgroep.Naam).Distinct());
+            return new SelectList(productRepository.VindAlleProducten().Select(s => s.Doelgroepen.Select(p => p.Naam).Distinct()));
         }
         private SelectList GetLeergebiedSelectList()
         {
-            return new SelectList(productRepository.VindAlleProducten().Select(s => s.Leergebied.Naam).Distinct());
-                
+            return new SelectList(productRepository.VindAlleProducten().Select(s => s.Doelgroepen.Select(p => p.Naam).Distinct()));
+
+
         }
         public ActionResult Details(int id)
         {
