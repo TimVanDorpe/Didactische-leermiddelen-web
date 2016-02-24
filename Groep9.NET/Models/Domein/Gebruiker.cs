@@ -1,36 +1,35 @@
 ﻿using System;
-using System.Web;
-using System.Web.Services;
-using System.Web.Services.Protocols;
-using System.ComponentModel;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
+using System.Threading.Tasks;
+using System.Web;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace Groep9.NET {
-    public abstract class Gebruiker : ClaimsPrincipal {
-         public string GebruikersNummer { get; set; }
-        public string Naam
+namespace Groep9.NET.Models.Domein
+{
+    public abstract class Gebruiker : IdentityUser
+    {
+        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<Gebruiker> manager)
         {
-            get { return this.FindFirst(ClaimTypes.Name).Value; }
+            // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
+            var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
+            // Add custom user claims here
+            return userIdentity;
         }
-        public string Country
-        {
-            get
-            { return this.FindFirst(ClaimTypes.Country).Value; }
-        }
-        public string Email
-        {
-            get
-            { return this.FindFirst(ClaimTypes.Email).Value; }
-        }
-        int GebruikersID { get; }
+        
         ICollection<Product> VerlangLijst { get; set; }
 
         public abstract void voegProductAanVerlanglijstToe(Product p);
 
+        /*
         public Gebruiker(ClaimsPrincipal principal)
             : base(principal) {
         }
+        */
+
+        
 
     }
 }

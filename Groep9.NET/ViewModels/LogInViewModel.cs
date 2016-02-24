@@ -19,7 +19,7 @@ namespace Groep9.NET.ViewModels {
         public string ReturnUrl { get; set; }
 
 
-        [Display(Name = "Gegevens omthouden?")]
+        [Display(Name = "Gegevens onthouden?")]
         public bool RememberMe { get; set; }
     }
 }

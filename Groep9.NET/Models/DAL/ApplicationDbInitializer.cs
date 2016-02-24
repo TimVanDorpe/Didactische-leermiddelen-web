@@ -40,10 +40,18 @@ namespace Groep9.NET.Models.DAL
         private void CreateUserAndRoles(string email, string password, string roleName)
         {
             //Create user
-            ApplicationUser user = userManager.FindByName(email);
+            Gebruiker user = userManager.FindByName(email);
             if (user == null)
             {
-                user = new ApplicationUser { UserName = email, Email = email, LockoutEnabled = false };
+
+                if (roleName.Equals("personeel"))
+                {
+                    user = new Docent {UserName = email, Email = email, LockoutEnabled = false};
+                }
+                else
+                {
+                    user = new Student { UserName = email, Email = email, LockoutEnabled = false };
+                }
                 IdentityResult result = userManager.Create(user, password);
                 if (!result.Succeeded)
                     throw new ApplicationException(result.Errors.ToString());

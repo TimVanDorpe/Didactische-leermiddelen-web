@@ -8,7 +8,7 @@ using System.Data.Entity;
 
 namespace Groep9.NET.Models.DAL
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : IdentityDbContext<Gebruiker>
     {
         public ApplicationDbContext()
             : base("Gebruikers", throwIfV1Schema: false)
