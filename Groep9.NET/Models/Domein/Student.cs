@@ -9,12 +9,12 @@ using Groep9.NET.Models.Domein;
 
 namespace Groep9.NET {
     public class Student : Gebruiker {
-        public virtual ICollection<Product> VerlangLijst { get; set; }
+        public virtual new ICollection<Product> VerlangLijst { get; set; }
         public Student()
         {
             VerlangLijst = new List<Product>();
         }
-        public override void voegProductAanVerlanglijstToe(Product p)
+        public override void VoegProductAanVerlanglijstToe(Product p)
         {
             VerlangLijst.Add(p);
         }

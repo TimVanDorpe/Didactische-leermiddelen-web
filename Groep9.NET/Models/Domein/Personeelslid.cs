@@ -8,13 +8,15 @@ using System.Security.Claims;
 using Groep9.NET.Models.Domein;
 
 namespace Groep9.NET {
-    public class Docent : Gebruiker {
-        public virtual ICollection<Product> VerlangLijst { get; set; }
-        public Docent() {
+    public class Personeelslid : Gebruiker {
+        public virtual new ICollection<Product> VerlangLijst { get; set; }
+        public Personeelslid() {
             VerlangLijst = new List<Product>();
         }
-        public override void voegProductAanVerlanglijstToe(Product p) {
+        public override void VoegProductAanVerlanglijstToe(Product p) {
             VerlangLijst.Add(p);
         }
+       
+
+        }
     }
-}
