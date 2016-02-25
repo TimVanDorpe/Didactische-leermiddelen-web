@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Groep9.NET;
 
-namespace Groep9.NET.Models.Domein {
+namespace Groep9.NET {
     public interface IProductRepository
     {
 
         
 
-        IQueryable<Product> VindAlleProducten();
+     IQueryable<Product> VindAlleProducten();
 
      
         Product FindByProductNummer(int productnummer);
+
     }
 }

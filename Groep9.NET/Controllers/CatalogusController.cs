@@ -18,11 +18,15 @@ namespace Groep9.NET.Controllers
         // GET: Catalogus
 
         private IProductRepository productRepository;
+        private IDoelgroepRepository doelgroepRepository;
+        private ILeergebiedRepository leergebiedRepository;
         //private IGebruikerRepository gebruikerRepository;
 
-        public CatalogusController(IProductRepository pr)
+        public CatalogusController(IProductRepository pr, IDoelgroepRepository dr, ILeergebiedRepository lr)
         {
             productRepository = pr;
+            doelgroepRepository = dr;
+            leergebiedRepository = lr;
           //  gebruikerRepository = gr;
             
         }
@@ -57,8 +61,8 @@ namespace Groep9.NET.Controllers
             if (!doelgroep.Equals(""))
                         {                
                    //producten = producten.Where(p=> p.Doelgroepen.ElementAt(1).Naam.Equals(doelgroep));
-                //   producten = producten.Include(p=>p.Doelgroepen).
-               
+                        //    var productdoelgroepen 
+                        //producten = producten.Select
                        
                         }
                         if (!leergebied.Equals(""))
@@ -94,12 +98,12 @@ namespace Groep9.NET.Controllers
                                  
                      
          //   return new SelectList(productRepository.VindAlleProducten().Include(p => p.Doelgroepen.Select(g => g.Naam)).ToList());
-            return new SelectList(productRepository.VindAlleProducten().Select(p => p.Doelgroepen.ToList().Select(g => g.Naam)));
+            return new SelectList(doelgroepRepository.VindAlleDoelgroepen().Select(p=>p.Naam));
 
         }
         private SelectList GetLeergebiedSelectList()
         {
-            return new SelectList(productRepository.VindAlleProducten().Select(p => p.Leergebieden.ToList().Select(g => g.Naam)));
+            return new SelectList(leergebiedRepository.VindAlleLeergebieden().Select(p=>p.Naam));
            // return new SelectList(productRepository.VindAlleProducten().Include(p => p.Leergebieden.Select(g => g.Naam)).ToList());
 
 
