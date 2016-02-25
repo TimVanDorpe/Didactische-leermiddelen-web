@@ -9,13 +9,14 @@ using Groep9.NET.Models.Domein;
 
 namespace Groep9.NET {
     public class Personeelslid : Gebruiker {
-        public virtual ICollection<Product> VerlangLijst { get; set; }
+        public new virtual ICollection<Product> VerlangLijst { get; set; }
         public Personeelslid() {
             VerlangLijst = new List<Product>();
         }
         public override void VoegProductAanVerlanglijstToe(Product p) {
             VerlangLijst.Add(p);
         }
-        
+       
+
+        }
     }
-}

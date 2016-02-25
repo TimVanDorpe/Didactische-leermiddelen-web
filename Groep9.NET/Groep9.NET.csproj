@@ -193,6 +193,8 @@
     <Compile Include="Controllers\CatalogusController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\VerlanglijstController.cs" />
+    <Compile Include="Infrastructure\GebruikerModelBinder.cs" />
+    <Compile Include="Models\DAL\Mapping\GebruikerMapper.cs" />
     <Compile Include="Models\DAL\Mapping\LeergebiedMapper.cs" />
     <Compile Include="Models\DAL\ApplicationDbContext.cs" />
     <Compile Include="Models\DAL\ApplicationDbInitializer.cs" />

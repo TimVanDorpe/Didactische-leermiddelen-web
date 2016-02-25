@@ -65,6 +65,7 @@ namespace Groep9.NET.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<IProductRepository>().To<ProductRepository>().InRequestScope();
+            kernel.Bind<IGebruikerRepository>().To<GebruikerRepository>().InRequestScope();
             kernel.Bind<Context>().ToSelf().InRequestScope();
         }        
     }
