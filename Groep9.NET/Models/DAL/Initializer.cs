@@ -23,6 +23,7 @@ namespace Groep9.NET.Models.DAL
                 
                 context.Doelgroepen.Add(Kleuters);
                 context.Doelgroepen.Add(LagereSchool);
+                context.SaveChanges();
 
                 context.Leergebieden.Add(Kaarten);
                 context.Leergebieden.Add(Kansen);

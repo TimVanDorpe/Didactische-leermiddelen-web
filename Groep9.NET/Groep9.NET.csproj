@@ -193,8 +193,8 @@
     <Compile Include="Controllers\CatalogusController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\VerlanglijstController.cs" />
-    <Compile Include="Infrastructure\GebruikerModelBinder.cs" />
-    <Compile Include="Models\DAL\Mapping\GebruikerMapper.cs" />
+    <Compile Include="Models\DAL\DoelgroepRepository.cs" />
+    <Compile Include="Models\DAL\LeergebiedRepository.cs" />
     <Compile Include="Models\DAL\Mapping\LeergebiedMapper.cs" />
     <Compile Include="Models\DAL\ApplicationDbContext.cs" />
     <Compile Include="Models\DAL\ApplicationDbInitializer.cs" />
@@ -213,7 +213,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Domein\IDoelgroepRepository.cs" />
     <Compile Include="Models\Domein\IGebruikerRepository.cs" />
+    <Compile Include="Models\Domein\ILeergebiedRepository.cs" />
     <Compile Include="Models\Domein\IProductRepository.cs" />
     <Compile Include="Models\DAL\ProductRepository.cs" />
     <Compile Include="Models\Domein\Leergebied.cs" />
