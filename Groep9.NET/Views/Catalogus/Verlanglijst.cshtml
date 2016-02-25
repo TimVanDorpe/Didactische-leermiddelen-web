@@ -1,14 +1,7 @@
 ﻿@model IEnumerable<Groep9.NET.Product>
 
-@{
-    ViewBag.Title = "Verlanglijst";
-}
-
 <h2>Verlanglijst</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -40,48 +33,7 @@
         </th>
         <th></th>
     </tr>
-    @if (!Model.Any())
-    {
-        <tr>
-            <td colspan="7">Er zijn geen rijen gevonden</td>
-        </tr>
-
-    }
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Foto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Naam)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Omschrijving)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductNummer)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Prijs)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Aantal)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Uitleenbaarheid)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Plaats)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Firma)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ProductId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ProductId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ProductId })
-        </td>
-    </tr>
-}
-
+  
 </table>
+
+
