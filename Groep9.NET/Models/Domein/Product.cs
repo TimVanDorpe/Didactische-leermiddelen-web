@@ -60,7 +60,7 @@ namespace Groep9.NET {
             {
                
                 Doelgroepen.Add(doel);
-                doel.RegistreerProduct(this);
+               // doel.RegistreerProduct(this);
             }
             foreach (var leer in leergebieden)
             {

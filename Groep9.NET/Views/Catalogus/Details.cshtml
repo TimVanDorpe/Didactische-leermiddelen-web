@@ -88,21 +88,29 @@
                 @Html.DisplayFor(model => model.Firma)
             </dd>
     
-            @*<dt>
-                @Html.DisplayNameFor(model => model.Doelgroep.Naam)
+           <dt>
+                @Html.DisplayNameFor(model => model.Doelgroepen)
             </dt>
     
             <dd>
-                @Html.DisplayFor(model => model.Doelgroep.Naam)
+                @foreach (var doel in Model.Doelgroepen.ToList()) {
+                   <span>@doel.Naam, </span>
+                   
+                    
+                }
             </dd>
     
             <dt>
-                @Html.DisplayNameFor(model => model.Leergebied.Naam)
+                @Html.DisplayNameFor(model => model.Leergebieden)
             </dt>
     
             <dd>
-                @Html.DisplayFor(model => model.Leergebied.Naam)
-            </dd>*@
+                @foreach (var leer in Model.Leergebieden.ToList())
+                {
+                    <span>@leer.Naam, </span>
+                }
+                
+            </dd>
     
         </dl>
     </div>

@@ -20,14 +20,12 @@ namespace Groep9.NET.Controllers
         private IProductRepository productRepository;
         private IDoelgroepRepository doelgroepRepository;
         private ILeergebiedRepository leergebiedRepository;
-        //private IGebruikerRepository gebruikerRepository;
 
         public CatalogusController(IProductRepository pr, IDoelgroepRepository dr, ILeergebiedRepository lr)
         {
             productRepository = pr;
             doelgroepRepository = dr;
             leergebiedRepository = lr;
-          //  gebruikerRepository = gr;
             
         }
     
@@ -59,25 +57,18 @@ namespace Groep9.NET.Controllers
             
 
             if (!doelgroep.Equals(""))
-                        {                
-                   //producten = producten.Where(p=> p.Doelgroepen.ElementAt(1).Naam.Equals(doelgroep));
-                        //    var productdoelgroepen 
-                        //producten = producten.Select
-                       
-                        }
-                        if (!leergebied.Equals(""))
-                        {
-                        producten = producten.Where(p => p.Leergebieden.ElementAt(1).Naam.Equals(leergebied));
-                    }
 
-
-
+            {
+                producten = producten.Where(p => p.Doelgroepen.Any(d=>d.Naam.Equals(doelgroep)));              
+            }
+            if (!leergebied.Equals(""))
+            {
+                producten = producten.Where(p => p.Leergebieden.Any(d => d.Naam.Equals(leergebied)));
+            }
             
-                        FillDropDownList();
+
+            FillDropDownList();
            
-
-
-
 
 
             if (Request.IsAjaxRequest())
@@ -96,16 +87,12 @@ namespace Groep9.NET.Controllers
         private SelectList GetDoelgroepSelectList()
         {
                                  
-                     
-         //   return new SelectList(productRepository.VindAlleProducten().Include(p => p.Doelgroepen.Select(g => g.Naam)).ToList());
             return new SelectList(doelgroepRepository.VindAlleDoelgroepen().Select(p=>p.Naam));
 
         }
         private SelectList GetLeergebiedSelectList()
         {
             return new SelectList(leergebiedRepository.VindAlleLeergebieden().Select(p=>p.Naam));
-           // return new SelectList(productRepository.VindAlleProducten().Include(p => p.Leergebieden.Select(g => g.Naam)).ToList());
-
 
         }
         public ActionResult Details(int id)
