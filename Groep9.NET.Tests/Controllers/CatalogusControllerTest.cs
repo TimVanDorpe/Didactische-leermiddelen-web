@@ -23,17 +23,22 @@ namespace Groep9.NET.Tests.Controllers
         private CatalogusController CC;
         private Mock<IProductRepository> mockProductenRepository;
         private ProductViewModel model;
-        private DummyContext context;
-    
+        private Mock<ILeergebiedRepository> mocklr;
+        private Mock<IDoelgroepRepository> mockdr;
+        private Product product1;
+        private IQueryable<Product> ProductenLijst;
+
         [TestInitialize]
         public void SetUpContext()
         {
             DummyContext context = new DummyContext();
             mockProductenRepository = new Mock<IProductRepository>();
-            mockProductenRepository.Setup(m => m.VindAlleProducten()).Returns(context.ProductenLijst);
-         //   CC = new CatalogusController(mockProductenRepository.Object);
-          
-           
+            mockdr = new Mock<IDoelgroepRepository>();
+            mocklr = new Mock<ILeergebiedRepository>();
+            product1 = context.VoorbeeldProduct;
+            CC = new CatalogusController(mockProductenRepository.Object , mockdr.Object, mocklr.Object);
+            model = new ProductViewModel();
+            ProductenLijst = context.ProductenLijst;
         }
 
 
@@ -41,10 +46,12 @@ namespace Groep9.NET.Tests.Controllers
         public void IndexReturnsAlleProducten()
         {
             //Act
-            ViewResult result = CC.Index("","") as ViewResult;
+            ViewResult result = CC.Index("","","") as ViewResult;
             List<Product> producten = (result.Model as IEnumerable<Product>).ToList();
+                
+                
             //Assert
-              Assert.AreEqual(3, producten.Count);
+              Assert.AreEqual(3, producten.Count());
             //     Assert.AreEqual(1, producten[0].ProductId);
             //   Assert.AreEqual(2, producten[1].Naam);
             //   Assert.AreEqual("C", producten[2].Naam);
@@ -55,10 +62,10 @@ namespace Groep9.NET.Tests.Controllers
         public void DetailsReturnsDetails()
         {
            ViewResult result = CC.Details(1) as ViewResult;
-             ProductViewModel product = result.Model as ProductViewModel;
+             Product product = result.Model as Product;
 
             //Assert
-            Assert.AreEqual(context.VoorbeeldProduct.Omschrijving, product.Omschrijving);
+            Assert.AreEqual(product1.Omschrijving, product.Omschrijving);
 
 
         }
