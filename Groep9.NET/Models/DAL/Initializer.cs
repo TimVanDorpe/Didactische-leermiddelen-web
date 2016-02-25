@@ -46,9 +46,7 @@ namespace Groep9.NET.Models.DAL
                 context.Producten.Add(blancodraaischijf);
                 context.Producten.Add(spinners_klass_ass);
                 context.SaveChanges();
-
-
-
+                
 
             }
             catch (DbEntityValidationException e)

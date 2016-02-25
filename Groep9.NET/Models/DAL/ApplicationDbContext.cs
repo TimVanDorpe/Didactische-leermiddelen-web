@@ -5,10 +5,12 @@ using System.Web;
 using Groep9.NET.Models.Domein;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity;
+using Groep9.NET.Models.Domain;
 
 namespace Groep9.NET.Models.DAL
 {
-    public class ApplicationDbContext : IdentityDbContext<Gebruiker>
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+
     {
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
@@ -24,5 +26,6 @@ namespace Groep9.NET.Models.DAL
         {
             Database.SetInitializer<ApplicationDbContext>(new ApplicationDbInitializer());
         }
+
     }
 }

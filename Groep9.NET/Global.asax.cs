@@ -5,7 +5,9 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Groep9.NET.Infrastructure;
 using Groep9.NET.Models.DAL;
+using Groep9.NET.Models.Domein;
 
 namespace Groep9.NET
 {
@@ -18,8 +20,14 @@ namespace Groep9.NET
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            //ApplicationDbContext db = new ApplicationDbContext();
-            //db.Database.Initialize(true);
+
+            // voor de gebruikermodelbinder te initializeren
+            ModelBinders.Binders.Add(typeof(Gebruiker), new GebruikerModelBinder());
+
+            /*
+            Context db = new Context();
+            db.Database.Initialize(true);
+            */
         }
     }
 }

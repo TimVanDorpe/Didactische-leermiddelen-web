@@ -31,7 +31,7 @@ namespace Groep9.NET.Tests.Controllers
             DummyContext context = new DummyContext();
             mockProductenRepository = new Mock<IProductRepository>();
             mockProductenRepository.Setup(m => m.VindAlleProducten()).Returns(context.ProductenLijst);
-            CC = new CatalogusController(mockProductenRepository.Object);
+            //CC = new CatalogusController(mockProductenRepository.Object);
           
            
         }

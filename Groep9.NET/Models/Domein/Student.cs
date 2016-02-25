@@ -9,6 +9,17 @@ using Groep9.NET.Models.Domein;
 
 namespace Groep9.NET {
     public class Student : Gebruiker {
+
+
+
+        //public string GebruikersNummer { get; set; }
+        //public String Naam { get; set; }
+        //public String Voornaam { get; set; }
+        public new string Email { get; set; }
+
+        public new string Rol { get; set; }
+
+
         public new virtual ICollection<Product> VerlangLijst { get; set; }
         public Student()
         {

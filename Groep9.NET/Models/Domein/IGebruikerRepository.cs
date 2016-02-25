@@ -10,7 +10,7 @@ namespace Groep9.NET.Models.Domein
     {
 
         void Add(Gebruiker gebruiker);
-        Gebruiker FindByEmail(String email);
+        Gebruiker FindByEmail(string email);
         void SaveChanges();
 
     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using Groep9.NET.Models.Domain;
 using Groep9.NET.Models.Domein;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -39,18 +40,24 @@ namespace Groep9.NET.Models.DAL
 
         private void CreateUserAndRoles(string email, string password, string roleName)
         {
+            Gebruiker gebruiker;
             //Create user
-            Gebruiker user = userManager.FindByName(email);
+            ApplicationUser user = userManager.FindByName(email);
             if (user == null)
             {
 
                 if (roleName.Equals("personeel"))
                 {
-                    user = new Personeelslid { UserName = email, Email = email, LockoutEnabled = false};
+                    user = new ApplicationUser{ UserName = email, Email = email, LockoutEnabled = false};
+                    gebruiker = new Personeelslid();
+                    gebruiker.Email = email;
+  
                 }
                 else
                 {
-                    user = new Student { UserName = email, Email = email, LockoutEnabled = false };
+                    user = new ApplicationUser{ UserName = email, Email = email, LockoutEnabled = false };
+                    gebruiker = new Student();
+                    gebruiker.Email = email;
                 }
                 IdentityResult result = userManager.Create(user, password);
                 if (!result.Succeeded)

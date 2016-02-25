@@ -8,25 +8,22 @@ using System.Linq;
 using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
+using Groep9.NET.Models.Domain;
 using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace Groep9.NET.Models.DAL
-{
-    public class Context : DbContext
-    {
+namespace Groep9.NET.Models.DAL {
+    public class Context : IdentityDbContext<ApplicationUser> {
 
-        public Context(): base("groep9")
-        { }
+        public Context() : base("groep9") { }
 
         public DbSet<Product> Producten { get; set; }
         public DbSet<Leergebied> Leergebieden { get; set; }
         public DbSet<Doelgroep> Doelgroepen { get; set; }
         public DbSet<Gebruiker> Gebruikers { get; set; }
 
-      
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder) {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             modelBuilder.Configurations.AddFromAssembly(Assembly.GetExecutingAssembly());
@@ -36,8 +33,7 @@ namespace Groep9.NET.Models.DAL
             modelBuilder.Entity<IdentityRole>().HasKey<string>(r => r.Id);
             modelBuilder.Entity<IdentityUserRole>().HasKey(r => new { r.RoleId, r.UserId });
         }
-        public static Context Create()
-        {
+        public static Context Create() {
             return DependencyResolver.Current.GetService<Context>();
         }
 
