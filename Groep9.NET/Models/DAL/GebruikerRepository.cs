@@ -7,38 +7,37 @@ using System.Web;
 
 namespace Groep9.NET.Models.DAL
 {
-    public class GebruikerRepository // :IGebruikerRepository
+    public class GebruikerRepository  :IGebruikerRepository
     {
 
         private Context context;
-       // private DbSet<Gebruiker> gebruikers;
+       private DbSet<Gebruiker> Gebruikers;
 
         public GebruikerRepository(Context context)
         {
             this.context = context;
-            //gebruikers = context.Gebruikers;
+            Gebruikers = context.Gebruikers;
         }
 
 
-
-        //public void Add(Gebruiker gebruiker)
-        //{
-        //    gebruikers.Add(gebruiker);
-        //}
-        //public Gebruiker FindByEmail(string email)
-        //{
-        //    return gebruikers.FirstOrDefault(g => g.Email == email);
-        //}
+        public void Add(Gebruiker gebruiker)
+        {
+            Gebruikers.Add(gebruiker);
+        }
+        public Gebruiker FindByEmail(string email)
+        {
+            return Gebruikers.FirstOrDefault(g => g.Email == email);
+        }
 
         //public void Delete(Gebruiker gebruiker)
         //{
         //    gebruikers.Remove(gebruiker);
         //}
 
-        //public Gebruiker FindByGebruikerID(String gebruikersNummer)
-        //{
-        //    return gebruikers.Find(gebruikersNummer);
-        //}
+        public Gebruiker FindByGebruikerID(String gebruikersNummer)
+        {
+            return Gebruikers.Find(gebruikersNummer);
+        }
 
         //public IQueryable<Gebruiker> VindAlleGebruikers()
         //{

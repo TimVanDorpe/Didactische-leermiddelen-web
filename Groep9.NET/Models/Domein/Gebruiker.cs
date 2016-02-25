@@ -11,6 +11,7 @@ namespace Groep9.NET.Models.Domein
 {
     public abstract class Gebruiker : IdentityUser
     {
+       // public String Email { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<Gebruiker> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -23,7 +24,7 @@ namespace Groep9.NET.Models.Domein
 
         public abstract void VoegProductAanVerlanglijstToe(Product p);
 
-       
+
        
 
         /*

@@ -35,13 +35,7 @@ namespace Groep9.NET.Tests.Models
             return ProductenLijst.FirstOrDefault(p=> p.ProductNummer== id);
         }
 
-        //public Student student
-        //{
-        //    get
-        //    {
-        //        return new Student { Email};
-        //    }
-        //}
+        
 
     }
 }

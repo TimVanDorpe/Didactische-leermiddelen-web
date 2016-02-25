@@ -6,13 +6,11 @@ using System.Threading.Tasks;
 
 namespace Groep9.NET.Models.Domein
 {
-    interface IGebruikerRepository
+    public interface IGebruikerRepository
     {
-        IQueryable<Gebruiker> VindAlleGebruikers();
 
         void Add(Gebruiker gebruiker);
-        void Delete(Gebruiker gebruiker);
-        Gebruiker FindByGebruikerID(String gebruikersNummer);
+        Gebruiker FindByEmail(String email);
         void SaveChanges();
 
     }
