@@ -53,18 +53,17 @@ namespace Groep9.NET.Controllers
             
 
             if (!doelgroep.Equals(""))
-                        {                
-                   //producten = producten.Where(p=> p.Doelgroepen.ElementAt(1).Naam.Equals(doelgroep));
-                        //    var productdoelgroepen 
-                        //producten = producten.Select
-                       
-                        }
-                        if (!leergebied.Equals(""))
                         {
-                        producten = producten.Where(p => p.Leergebieden.ElementAt(1).Naam.Equals(leergebied));
-                    }
+               producten = producten.Where(p => p.Doelgroepen.Any(d => d.Naam.Equals(doelgroep)));
 
-                        FillDropDownList();
+
+            }
+            if (!leergebied.Equals(""))
+                        {
+                  producten = producten.Where(p => p.Leergebieden.Any(d => d.Naam.Equals(leergebied)));
+            }
+
+            FillDropDownList();
 
             if (Request.IsAjaxRequest())
                         return PartialView("Producten", producten);
