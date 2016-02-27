@@ -1,12 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
-  <Class Name="Groep9.NET.Student">
-    <Position X="0.75" Y="6.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAQAAAAA=</HashCode>
-      <FileName>Models\Domein\Student.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Groep9.NET.ProductRepository">
     <Position X="0.5" Y="1" Width="3.25" />
     <TypeIdentifier>
@@ -50,17 +43,10 @@
       <FileName>Models\Domein\Verlanglijst.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Groep9.NET.Personeelslid">
-    <Position X="3.25" Y="6.25" Width="1.75" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAACAAAAAAAAAABAAAAAAAIAAAAAAAAQAAAAA=</HashCode>
-      <FileName>Models\Domein\Personeelslid.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Groep9.NET.Models.Domein.Gebruiker">
     <Position X="1.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAACAAAAAAAAAAABAAAAAAAIAAAAAAAAQAAAAA=</HashCode>
+      <HashCode>AAAAAAAACAAAAAAAAAAAAAAAAAAAIAAAAAAAAQAAAAA=</HashCode>
       <FileName>Models\Domein\Gebruiker.cs</FileName>
     </TypeIdentifier>
   </Class>

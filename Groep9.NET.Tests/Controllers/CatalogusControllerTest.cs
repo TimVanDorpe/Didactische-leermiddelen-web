@@ -25,6 +25,7 @@ namespace Groep9.NET.Tests.Controllers
         private ProductViewModel model;
         private Mock<ILeergebiedRepository> mocklr;
         private Mock<IDoelgroepRepository> mockdr;
+        private Mock<IDoelgroepRepository> mockgr;
         private Product product1;
         private IQueryable<Product> ProductenLijst;
 
@@ -35,8 +36,9 @@ namespace Groep9.NET.Tests.Controllers
             mockProductenRepository = new Mock<IProductRepository>();
             mockdr = new Mock<IDoelgroepRepository>();
             mocklr = new Mock<ILeergebiedRepository>();
+           // mockgr = new Mock<IGebruikerRepository>();
             product1 = context.VoorbeeldProduct;
-            CC = new CatalogusController(mockProductenRepository.Object , mockdr.Object, mocklr.Object);
+           // CC = new CatalogusController(mockProductenRepository.Object , mockdr.Object, mocklr.Object , mockgr.Object);
             model = new ProductViewModel();
             ProductenLijst = context.ProductenLijst;
         }

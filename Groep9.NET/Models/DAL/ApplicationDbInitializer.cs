@@ -21,36 +21,38 @@ namespace Groep9.NET.Models.DAL
 
             roleManager =
                HttpContext.Current.GetOwinContext().Get<ApplicationRoleManager>();
-
+            ApplicationDbContext c = context;
             // InitializeIdentity();
 
-            InitializeIdentityAndRoles();
+            InitializeIdentityAndRoles(c);
             base.Seed(context);
         }
 
-        private void InitializeIdentityAndRoles()
+        private void InitializeIdentityAndRoles(ApplicationDbContext c)
         {
-            CreateUserAndRoles("personeel@hogent.be", "password1", "personeel");
+            CreateUserAndRoles(c, "personeel@hogent.be", "password1", "personeel");
 
-            CreateUserAndRoles("student@hogent.be", "password1", "studenten");
+            CreateUserAndRoles(c, "student@hogent.be", "password1", "studenten");
 
         }
 
 
-        private void CreateUserAndRoles(string email, string password, string roleName)
+        private void CreateUserAndRoles(ApplicationDbContext c,string email, string password, string roleName)
         {
             //Create user
-            Gebruiker user = userManager.FindByName(email);
+            ApplicationUser user = userManager.FindByName(email);
             if (user == null)
             {
 
                 if (roleName.Equals("personeel"))
                 {
-                    user = new Personeelslid { UserName = email, Email = email, LockoutEnabled = false};
+                    user = new ApplicationUser { UserName = email, Email = email, LockoutEnabled = false};
+                    c.Users.Add(user);
                 }
                 else
                 {
-                    user = new Student { UserName = email, Email = email, LockoutEnabled = false };
+                    user = new ApplicationUser {  UserName = email, Email = email, LockoutEnabled = false };
+                    c.Users.Add(user);
                 }
                 IdentityResult result = userManager.Create(user, password);
                 if (!result.Succeeded)

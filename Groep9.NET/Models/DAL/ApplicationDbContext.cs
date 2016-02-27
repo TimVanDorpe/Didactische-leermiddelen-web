@@ -8,8 +8,10 @@ using System.Data.Entity;
 
 namespace Groep9.NET.Models.DAL
 {
-    public class ApplicationDbContext : IdentityDbContext<Gebruiker>
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+
+        //public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

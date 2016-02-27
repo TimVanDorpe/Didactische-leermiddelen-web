@@ -1,4 +1,5 @@
-﻿using Groep9.NET.Models.Domein;
+﻿using Groep9.NET.Models.DAL;
+using Groep9.NET.Models.Domein;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -13,23 +14,23 @@ namespace Groep9.NET.Controllers
         private IProductRepository productRepository;
         private IDoelgroepRepository doelgroepRepository;
         private ILeergebiedRepository leergebiedRepository;
-        //private IGebruikerRepository gebruikerRepository;
-       private Gebruiker gebruiker;
+        private IGebruikerRepository gebruikerRepository;
+        private ApplicationDbContext adc;
        
 
-        public CatalogusController(IProductRepository pr, IDoelgroepRepository dr, ILeergebiedRepository lr)
+        public CatalogusController(IProductRepository pr, IDoelgroepRepository dr, ILeergebiedRepository lr, IGebruikerRepository gr)
         {
             productRepository = pr;
             doelgroepRepository = dr;
             leergebiedRepository = lr;
-          //  gebruikerRepository = gr;
+           gebruikerRepository = gr;
             
         }
     
         public ActionResult Index( string trefwoord = "", string doelgroep = "", string leergebied = "", int prodID = -1 )
         {
 
-            AddToVerlanglijst(prodID);
+           AddToVerlanglijst(prodID, gebruikerRepository.FindByEmail(User.Identity.Name));
                     if (doelgroep.Equals("-- Selecteer doelgroep --"))
                         {
                             doelgroep = "";
@@ -74,7 +75,7 @@ namespace Groep9.NET.Controllers
                
                 
                       
-            return RedirectToAction("Index", "Home");
+           // return RedirectToAction("Index", "Home");
         }
       
 
@@ -107,11 +108,11 @@ namespace Groep9.NET.Controllers
 
         }
 
-        public void AddToVerlanglijst(int productId)
+        public void AddToVerlanglijst(int productId , Gebruiker currentUser)
         {
 
             if(productId > 0 )
-            gebruiker.VerlangLijst.Add(productRepository.FindByProductNummer(productId));
+            currentUser.VerlangLijst.Add(productRepository.FindByProductNummer(productId));
          
         }
         public ActionResult Verlanglijst()

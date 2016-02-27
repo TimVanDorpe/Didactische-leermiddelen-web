@@ -21,9 +21,10 @@ namespace Groep9.NET.Models.DAL
         public DbSet<Product> Producten { get; set; }
         public DbSet<Leergebied> Leergebieden { get; set; }
         public DbSet<Doelgroep> Doelgroepen { get; set; }
+
         public DbSet<Gebruiker> Gebruikers { get; set; }
 
-      
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
