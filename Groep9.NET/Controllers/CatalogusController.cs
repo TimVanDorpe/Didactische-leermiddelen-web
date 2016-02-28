@@ -15,7 +15,7 @@ namespace Groep9.NET.Controllers
         private IDoelgroepRepository doelgroepRepository;
         private ILeergebiedRepository leergebiedRepository;
         private IGebruikerRepository gebruikerRepository;
-        private ApplicationDbContext adc;
+      //  private ApplicationDbContext adc;
        
 
         public CatalogusController(IProductRepository pr, IDoelgroepRepository dr, ILeergebiedRepository lr, IGebruikerRepository gr)
@@ -27,10 +27,13 @@ namespace Groep9.NET.Controllers
             
         }
     
-        public ActionResult Index( string trefwoord = "", string doelgroep = "", string leergebied = "", int prodID = -1 )
+        public ActionResult Index( string trefwoord = "", string doelgroep = "", string leergebied = "")
         {
-
-           AddToVerlanglijst(prodID, gebruikerRepository.FindByEmail(User.Identity.Name));
+            //if (prodId >= 0)
+            //{
+            //    AddToVerlanglijst(prodId, gebruikerRepository.FindByEmail(User.Identity.Name));
+            //}
+          
                     if (doelgroep.Equals("-- Selecteer doelgroep --"))
                         {
                             doelgroep = "";
@@ -108,18 +111,22 @@ namespace Groep9.NET.Controllers
 
         }
 
-        public void AddToVerlanglijst(int productId , Gebruiker currentUser)
+        public ActionResult AddToVerlanglijst(int id, Gebruiker gebruiker)
         {
+            Gebruiker currentUser = gebruikerRepository.FindByEmail(User.Identity.Name);
 
-            if(productId > 0 )
-            currentUser.VerlangLijst.Add(productRepository.FindByProductNummer(productId));
-         
-        }
-        public ActionResult Verlanglijst()
-        {
-
+           
+                Product product = productRepository.FindByProductNummer(id);
+                gebruiker.VoegProductAanVerlanglijstToe(product);
             
-            return View();
+            return RedirectToAction("Index");
+        }
+        public ActionResult Verlanglijst(Gebruiker gebruiker)
+        {
+            string email = gebruiker.Email;
+            Gebruiker currentUser =  gebruikerRepository.FindByEmail(User.Identity.Name);
+            ICollection<Product> verlanglijst = gebruiker.VerlangLijst;
+            return View(gebruiker.VerlangLijst);
         }
     }
 }

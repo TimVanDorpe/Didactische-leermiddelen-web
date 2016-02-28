@@ -35,16 +35,30 @@ namespace Groep9.NET.Models.DAL
                 Product rekenmachine = new Product("rekenmachine.jpg", 5, "Rekenmachine", "Rekenmachine van merk ..", 8.55, 10, false, "Aalst", "Hogent", new List<Doelgroep> { LagereSchool }, new List<Leergebied> { Tellen });
                 Product dobbelsteenschatkist = new Product("dobbelsteen.jpg", 6, "Dobbelsteen schatkist", "koffertje met verschillende soorten dobbelstenen: blanco, met cijfers, ..", 35, 1, true, "GLEDE 1.011", "Hogent", new List<Doelgroep> { Kleuters, LagereSchool }, new List<Leergebied> { Kansen, Tellen });
                 Product blancodraaischijf = new Product("blanco_draaischijf.PNG", 7, "Blanco schijf", "Met verschillende blanco schijven in hard papier", 31.45, 1, true, "GLEDE 1.011", "HoGent", new List<Doelgroep> { Kleuters }, new List<Leergebied> { Behendigheid });
-                Product spinners_klass_ass = new Product("Magnspinner.jpg", 8, "Magnetische spinner", "Magnetische spinners in de vorm van een pijl, een vinger en een potlood", 19.2, 1, true, "GLEDE 1.011", "Hogent", new List
+                Product spinnersKlassAss = new Product("Magnspinner.jpg", 8, "Magnetische spinner", "Magnetische spinners in de vorm van een pijl, een vinger en een potlood", 19.2, 1, true, "GLEDE 1.011", "Hogent", new List
                     <Doelgroep> { Kleuters }, new List<Leergebied> { Behendigheid });
-                
 
+                Gebruiker student = new Gebruiker
+                {
+                    Email = "student@hogent.be",
+                    Rol = "Student"
+
+                };
+                Gebruiker personeelslid = new Gebruiker
+                {
+                    Email = "personeelslid@hogent.be",
+                    Rol = "Personeelslid"
+                    
+                };
+                student.VoegProductAanVerlanglijstToe(dobbelsteenschatkist);
+                context.Gebruikers.Add(student);
+                context.Gebruikers.Add(personeelslid);
 
                 context.Producten.Add(landkaart);
                 context.Producten.Add(rekenmachine);
                 context.Producten.Add(dobbelsteenschatkist);
                 context.Producten.Add(blancodraaischijf);
-                context.Producten.Add(spinners_klass_ass);
+                context.Producten.Add(spinnersKlassAss);
                 context.SaveChanges();
 
 

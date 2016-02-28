@@ -16,3 +16,12 @@ function mobileViewUpdate() {
 $(window).load(mobileViewUpdate);
 $(window).resize(mobileViewUpdate);
 
+$("#myLink").click(function(e) {
+
+    e.preventDefault();
+    $.ajax({
+        url: $(this).attr("href")
+  
+
+});
+});

@@ -57,6 +57,7 @@ namespace Groep9.NET.Models.DAL
                 IdentityResult result = userManager.Create(user, password);
                 if (!result.Succeeded)
                     throw new ApplicationException(result.Errors.ToString());
+                
             }
 
             //Create roles

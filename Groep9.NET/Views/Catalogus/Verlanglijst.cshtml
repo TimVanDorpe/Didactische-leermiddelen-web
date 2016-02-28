@@ -2,7 +2,8 @@
 
 <h2>Verlanglijst</h2>
 
-<table class="table">
+<div class="hidden-sm hidden-xs">
+<table class="table table-responsive ">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Foto)
@@ -13,27 +14,86 @@
         <th>
             @Html.DisplayNameFor(model => model.Omschrijving)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ProductNummer)
-        </th>
+        @*<th>
+                    @Html.DisplayNameFor(model => model.ProductNummer)
+                </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Prijs)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Aantal)
-        </th>
+        @*<th>
+                    @Html.DisplayNameFor(model => model.Aantal)
+                </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Uitleenbaarheid)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Plaats)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Firma)
-        </th>
+        @*<th>
+                    @Html.DisplayNameFor(model => model.Firma)
+                </th>*@
+        @*<th>
+                    @Html.DisplayNameFor(model => model.Doelgroepen)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Leergebieden)
+                </th>*@
         <th></th>
     </tr>
-  
+    @if (!Model.Any())
+    {
+        <tr>
+            <td colspan="7">Er zijn geen rijen gevonden</td>
+        </tr>
+
+    }
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+
+                <img style="width: 75px; height: 75px;" alt="@Html.DisplayFor(modelItem => item.Naam)" src="~/Content/images/@(@Html.DisplayFor(modelItem => item.Foto))"/>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Naam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Omschrijving)
+            </td>
+            @*<td>
+                        @Html.DisplayFor(modelItem => item.ProductNummer)
+                    </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Prijs)
+            </td>
+            @*<td>
+                        @Html.DisplayFor(modelItem => item.Aantal)
+                    </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Uitleenbaarheid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Plaats)
+            </td>
+            @*<td>
+                        @Html.DisplayFor(modelItem => item.Firma)
+                    </td>*@
+            @*<td>
+                        @Html.DisplayFor(modelItem => item.Doelgroepen.)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Leergebieden.Naam)
+                    </td>*@
+            <td>
+
+                @Html.ActionLink("Details", "Details", new {id = item.ProductNummer})
+
+              
+            </td>
+        </tr>
+    }
+
 </table>
+                </div>
 
 

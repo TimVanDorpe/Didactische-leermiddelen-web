@@ -13,11 +13,15 @@ namespace Groep9.NET.Models.Domein
     {
         public int GebruikerId { get; set; }
         public string Email { get; set; }
-      
 
+       
         public string Rol { get; set; }
         
-        public ICollection<Product> VerlangLijst { get; set; }
+        public virtual ICollection<Product> VerlangLijst { get; private set; }
+        public Gebruiker()
+        {
+            VerlangLijst = new List<Product>();
+        }
 
         public void VoegProductAanVerlanglijstToe(Product p)
         {

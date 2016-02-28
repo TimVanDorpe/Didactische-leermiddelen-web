@@ -15,7 +15,7 @@ namespace Groep9.NET.Models.DAL
     public class Context : DbContext
     {
 
-        public Context(): base("groep9")
+        public Context(): base("Groep9.NET")
         { }
 
         public DbSet<Product> Producten { get; set; }
@@ -28,19 +28,19 @@ namespace Groep9.NET.Models.DAL
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
+           // base.OnModelCreating(modelBuilder);
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             modelBuilder.Configurations.AddFromAssembly(Assembly.GetExecutingAssembly());
 
             //hotfix
-            modelBuilder.Entity<IdentityUserLogin>().HasKey<string>(l => l.UserId);
-            modelBuilder.Entity<IdentityRole>().HasKey<string>(r => r.Id);
-            modelBuilder.Entity<IdentityUserRole>().HasKey(r => new { r.RoleId, r.UserId });
+            //modelBuilder.Entity<IdentityUserLogin>().HasKey<string>(l => l.UserId);
+            //modelBuilder.Entity<IdentityRole>().HasKey<string>(r => r.Id);
+            //modelBuilder.Entity<IdentityUserRole>().HasKey(r => new { r.RoleId, r.UserId });
         }
-        public static Context Create()
-        {
-            return DependencyResolver.Current.GetService<Context>();
-        }
+        //public static Context Create()
+        //{
+        //    return DependencyResolver.Current.GetService<Context>();
+        //}
 
 
     }
