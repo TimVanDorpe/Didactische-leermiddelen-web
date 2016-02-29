@@ -91,13 +91,22 @@
            <dt>
                 @Html.DisplayNameFor(model => model.Doelgroepen)
             </dt>
-    
+
             <dd>
-                @foreach (var doel in Model.Doelgroepen.ToList()) {
-                   <span>@doel.Naam, </span>
-                   
-                    
+
+                @{
+                    //teller voor komma op het einde van de lijst niet weer te geven
+                    int teller = Model.Doelgroepen.Count;
+                    foreach (var doel in Model.Doelgroepen.ToList()) {
+                        <span>@doel.Naam</span>
+                        if (teller>1) {
+                            <span>, </span>
+                            teller--;
+                        }
+                    }
                 }
+
+                
             </dd>
     
             <dt>
@@ -105,9 +114,16 @@
             </dt>
     
             <dd>
-                @foreach (var leer in Model.Leergebieden.ToList())
-                {
-                    <span>@leer.Naam, </span>
+                @{
+                    //teller voor komma op het einde van de lijst niet weer te geven
+                    int teller2 = Model.Doelgroepen.Count;
+                    foreach (var leer in Model.Leergebieden.ToList()) {
+                        <span>@leer.Naam</span>
+                        if (teller2 > 1) {
+                            <span>, </span>
+                            teller2--;
+                        }
+                    }
                 }
                 
             </dd>
@@ -117,6 +133,8 @@
     <p>
         @*@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |*@
         @Html.ActionLink("Terug naar catalogus", "Index")
+        
+        
     </p>
 </body>
 </html>

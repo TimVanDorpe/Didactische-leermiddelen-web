@@ -17,7 +17,7 @@ namespace Groep9.NET.Models.Domein
        
         public string Rol { get; set; }
         
-        public virtual ICollection<Product> VerlangLijst { get;private  set; }
+        public virtual ICollection<Product> VerlangLijst { get; set; }
         public Gebruiker()
         {
             VerlangLijst = new List<Product>();
@@ -27,6 +27,7 @@ namespace Groep9.NET.Models.Domein
         {
 
             VerlangLijst.Add(p);
+            
         }
         
     }

@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Groep9.NET.Product>
+﻿@using Groep9.NET.Controllers
+@model IEnumerable<Groep9.NET.Product>
 
 <div class="hidden-sm hidden-xs">
     <table class="table table-responsive ">
@@ -90,6 +91,15 @@
                         
                         <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
                     </a>
+                    }
+                    else {
+                        <a href="@Url.Action("login", "account")" class="btn btn-default">
+
+                            <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
+                        </a>
+                    }
+
+
                     @*@using (@Html.BeginForm("Index", "Catalogus", new { id = item.ProductNummer }))
                     {
 
