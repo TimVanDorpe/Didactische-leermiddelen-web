@@ -7,6 +7,7 @@ using System.Web.Mvc;
 namespace Groep9.NET.Controllers
 {
     // gebruikers kunnen enkel nog op de catalogus na inloggen als user@user.com / password
+    [AllowAnonymous]
     public class CatalogusController : Controller
     {
         // GET: Catalogus
@@ -117,7 +118,7 @@ namespace Groep9.NET.Controllers
 
            
                 Product product = productRepository.FindByProductNummer(id);
-                gebruiker.VoegProductAanVerlanglijstToe(product);
+                currentUser.VoegProductAanVerlanglijstToe(product);
             
             return RedirectToAction("Index");
         }
