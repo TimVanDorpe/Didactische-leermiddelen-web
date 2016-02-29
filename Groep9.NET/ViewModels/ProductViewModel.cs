@@ -41,7 +41,7 @@ namespace Groep9.NET.ViewModels {
             Naam = p.Naam;
             Omschrijving = p.Omschrijving;
             Aantal = p.Aantal;
-            ProductId = p.ProductNummer;
+            ProductId = p.ProductId;
             Prijs = p.Prijs;
             Firma = p.Firma;
             Doelgroep = p.Doelgroepen.Select(i => i.Naam).OrderBy(i => i).ToArray();

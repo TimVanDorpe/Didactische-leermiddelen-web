@@ -113,20 +113,20 @@ namespace Groep9.NET.Controllers
 
         public ActionResult AddToVerlanglijst(int id, Gebruiker gebruiker)
         {
-            Gebruiker currentUser = gebruikerRepository.FindByEmail(User.Identity.Name);
+           // Gebruiker currentUser = gebruikerRepository.FindByEmail(User.Identity.Name);
 
            
                 Product product = productRepository.FindByProductNummer(id);
-                gebruiker.VoegProductAanVerlanglijstToe(product);
+            gebruiker.VoegProductAanVerlanglijstToe(product);
             
             return RedirectToAction("Index");
         }
         public ActionResult Verlanglijst(Gebruiker gebruiker)
         {
             string email = gebruiker.Email;
-            Gebruiker currentUser =  gebruikerRepository.FindByEmail(User.Identity.Name);
-            ICollection<Product> verlanglijst = gebruiker.VerlangLijst;
-            return View(gebruiker.VerlangLijst);
+           // Gebruiker currentUser =  gebruikerRepository.FindByEmail(User.Identity.Name);
+            IList<Product> verlanglijst = gebruiker.VerlangLijst.ToList();
+            return View(verlanglijst);
         }
     }
 }

@@ -86,7 +86,7 @@
                     </td>*@
             <td>
 
-                @Html.ActionLink("Details", "Details", new {id = item.ProductNummer})
+                @Html.ActionLink("Details", "Details", new {id = item.ProductId})
 
               
             </td>
@@ -95,5 +95,41 @@
 
 </table>
                 </div>
+<div class="visible-sm visible-xs">
+    @if (!Model.Any())
+    {
+
+        <h3>Geen producten gevonden</h3>
+
+    }
+    @foreach (var item in Model)
+    {
+
+
+        <div class="row ">
+
+            <div class="col-xs-12 product-small">
+                <div class="foto col-xs-4">
+                    <img alt="@Html.DisplayFor(modelItem => item.Naam)" src="~/Content/images/@(@Html.DisplayFor(modelItem =>item.Foto))" class="img-responsive" />
+                </div>
+
+                <div class="caption col-xs-8">
+                    <h2>
+                        @Html.DisplayFor(modelItem => item.Naam)
+                    
+                </h2>
+
+                <p>@Html.DisplayFor(modelItem => item.Omschrijving)</p>
+
+                <span class="pull-left">@Html.ActionLink("Details", "Details", new { id = item.ProductId })</span><span class="pull-right">Aantal: @Html.DisplayFor(modelItem => item.Aantal)</span>
+            </div>
+        </div>
+        <br />
+    </div>
+
+    }
+</div>
+
+
 
 

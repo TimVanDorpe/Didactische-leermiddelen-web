@@ -17,18 +17,19 @@ namespace Groep9.NET.Models.DAL.Mapping
             ////Property(t => t.Leergebied).IsRequired();
             //Property(t => t.Omschrijving).IsRequired();
             //HasOptional(p=>p.GebruikerId).WithMany(p => p.VerlangLijst);
-           // HasOptional(t => t.VerlangLijst).WithMany().HasForeignKey(t => t.).WillCascadeOnDelete(true);
-            HasMany(t => t.VerlangLijst).WithMany();
+            // HasOptional(t => t.VerlangLijst).WithMany().HasForeignKey(t => t.).WillCascadeOnDelete(true);
+            // HasMany(t => t.VerlangLijst).WithMany();
             // HasMany(t => t.VerlangLijst);
-            //HasMany(i => i.VerlangLijst).WithMany(p => p.ProductId).Map(m => {
-            //    m.ToTable("Verlanglijst");
-            //    m.MapLeftKey("GebruikerId");
-            //    m.MapRightKey("ProductId");
+            HasMany(i => i.VerlangLijst).WithMany().Map(m =>
+            {
+                m.ToTable("Verlanglijst");
+                m.MapLeftKey("GebruikerId");
+                m.MapRightKey("ProductId");
 
-            //});
+            });
 
-            HasMany(t => t.VerlangLijst)
-           .WithOptional().WillCascadeOnDelete(false);
+           // HasMany(t => t.VerlangLijst)
+           //.WithOptional().WillCascadeOnDelete(false);
         }
     }
 }

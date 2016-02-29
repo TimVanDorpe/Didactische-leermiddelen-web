@@ -44,7 +44,7 @@ namespace Groep9.NET.Tests.Models
 
         public Product GetProduct(int id)
         {
-            return ProductenLijst.FirstOrDefault(p=> p.ProductNummer== id);
+            return ProductenLijst.FirstOrDefault(p=> p.ProductId== id);
         }
 
         

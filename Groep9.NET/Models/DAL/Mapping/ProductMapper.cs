@@ -12,7 +12,7 @@ namespace Groep9.NET.Models.DAL
         public ProductMapper()
         {
             ToTable("Product");
-            HasKey(p => p.ProductNummer);
+            HasKey(p => p.ProductId);
             Property(t => t.Naam).IsRequired();
             //Property(t => t.Leergebied).IsRequired();
             Property(t => t.Omschrijving).IsRequired();

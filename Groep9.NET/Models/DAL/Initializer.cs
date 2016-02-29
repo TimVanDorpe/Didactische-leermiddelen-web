@@ -46,11 +46,12 @@ namespace Groep9.NET.Models.DAL
                 };
                 Gebruiker personeelslid = new Gebruiker
                 {
-                    Email = "personeelslid@hogent.be",
+                    Email = "personeel@hogent.be",
                     Rol = "Personeelslid"
                     
                 };
-                student.VoegProductAanVerlanglijstToe(dobbelsteenschatkist);
+           
+
                 context.Gebruikers.Add(student);
                 context.Gebruikers.Add(personeelslid);
 
