@@ -25,3 +25,11 @@ $("#myLink").click(function(e) {
 
 });
 });
+
+//$("#toggleButton").toggle(function () {
+//    $("#voegToe").show();
+//    $("#verwijder").hide();
+//}, function () {
+//    $("#verwijder").show();
+//    $("#voegToe").hide();
+//});

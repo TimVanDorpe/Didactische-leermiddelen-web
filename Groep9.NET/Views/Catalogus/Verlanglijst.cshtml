@@ -46,7 +46,7 @@
     @if (!Model.Any())
     {
         <tr>
-            <td colspan="7">Er zijn geen rijen gevonden</td>
+            <td colspan="9">Er zijn geen producten in de verlanglijst</td>
         </tr>
 
     }
@@ -98,6 +98,11 @@
             <td>
 
                 @Html.ActionLink("Details", "Details", new { id = item.ProductId })
+
+                <a href="@Url.Action("RemoveFromVerlanglijst", new {id = item.ProductId})" class="btn btn-danger">
+
+                    <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
+                </a>
 
 
 

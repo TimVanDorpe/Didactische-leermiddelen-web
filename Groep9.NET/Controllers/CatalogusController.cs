@@ -124,10 +124,49 @@ namespace Groep9.NET.Controllers
             gebruikerRepository.SaveChanges();
             return RedirectToAction("Index");
         }
+        public ActionResult RemoveFromVerlanglijst(int id, Gebruiker gebruiker)
+        {
+            // Gebruiker currentUser = gebruikerRepository.FindByEmail(User.Identity.Name);
+            if (!Request.IsAuthenticated)
+            {
+                return RedirectToAction("login", "Account");
+            }
+
+            Product product = productRepository.FindByProductNummer(id);
+            gebruiker.verwijderProductUitVerlanglijst(product);
+            gebruikerRepository.SaveChanges();
+            IList<Product> verlanglijst = gebruiker.VerlangLijst.ToList();
+            return RedirectToAction("Verlanglijst");
+        }
+        public ActionResult AddOfVerwijderVerlanglijst(int id, string actie, Gebruiker gebruiker)
+        {
+            if (!Request.IsAuthenticated)
+            {
+                return RedirectToAction("login", "Account");
+            }
+            if (actie.Equals("toevoegen"))
+            {
+                Product product = productRepository.FindByProductNummer(id);
+                gebruiker.VoegProductAanVerlanglijstToe(product);
+                gebruikerRepository.SaveChanges();
+
+            }
+            else
+            {
+                Product product = productRepository.FindByProductNummer(id);
+                gebruiker.verwijderProductUitVerlanglijst(product);
+                gebruikerRepository.SaveChanges();
+            }
+            // Gebruiker currentUser = gebruikerRepository.FindByEmail(User.Identity.Name);
+            
+
+           
+            return RedirectToAction("Index");
+        }
         public ActionResult Verlanglijst(Gebruiker gebruiker)
         {
             string email = gebruiker.Email;
-           // Gebruiker currentUser =  gebruikerRepository.FindByEmail(User.Identity.Name);
+            // Gebruiker currentUser =  gebruikerRepository.FindByEmail(User.Identity.Name);
             IList<Product> verlanglijst = gebruiker.VerlangLijst.ToList();
             return View(verlanglijst);
         }

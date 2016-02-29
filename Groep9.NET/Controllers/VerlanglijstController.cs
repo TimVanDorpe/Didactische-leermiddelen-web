@@ -14,6 +14,6 @@ namespace Groep9.NET.Controllers
             return View();
         }
 
-
+        
     }
 }

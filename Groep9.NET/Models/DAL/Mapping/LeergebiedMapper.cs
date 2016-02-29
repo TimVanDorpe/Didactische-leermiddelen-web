@@ -19,7 +19,7 @@ namespace Groep9.NET.Models.DAL.Mapping
                 m.ToTable("ProductLeergebied");
                 m.MapLeftKey("LeergebiedId");
                 m.MapRightKey("ProductId");
-
+               
             });
         }
     }
