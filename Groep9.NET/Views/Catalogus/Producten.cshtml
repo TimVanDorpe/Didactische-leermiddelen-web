@@ -86,11 +86,14 @@
                 <td>
 
                     @Html.ActionLink("Details", "Details", new { id = item.ProductId })
-                
-                    <a href="@Url.Action("AddToVerlanglijst", new {id = item.ProductId})" class="btn btn-default">
-                        
-                        <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
-                    </a>
+
+                    @if (Request.IsAuthenticated)
+                    {
+
+                        <a href="@Url.Action("AddToVerlanglijst", new {id = item.ProductId})" class="btn btn-default">
+
+                            <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
+                        </a>
                     }
                     else {
                         <a href="@Url.Action("login", "account")" class="btn btn-default">
