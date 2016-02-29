@@ -28,8 +28,14 @@ namespace Groep9.NET.Models.DAL.Mapping
 
             });
 
-           // HasMany(t => t.VerlangLijst)
-           //.WithOptional().WillCascadeOnDelete(false);
+            HasMany(i => i.ReservatieLijst).WithMany().Map(m => {
+                m.ToTable("Reservaties");
+                m.MapLeftKey("GebruikerId");
+                m.MapRightKey("ProductId");
+
+            });
+            // HasMany(t => t.VerlangLijst)
+            //.WithOptional().WillCascadeOnDelete(false);
         }
     }
 }

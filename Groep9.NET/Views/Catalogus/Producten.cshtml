@@ -19,15 +19,19 @@
             <th>
                 @Html.DisplayNameFor(model => model.Prijs)
             </th>
-            @*<th>
-                    @Html.DisplayNameFor(model => model.Aantal)
-                </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.Uitleenbaarheid)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Plaats)
             </th>
+                        @*
+            <th>
+            @Html.DisplayNameFor(model => model.Aantal) 
+        </th>
+
+                        *@
+            
             @*<th>
                     @Html.DisplayNameFor(model => model.Firma)
                 </th>*@
@@ -87,11 +91,7 @@
 
                     @Html.ActionLink("Details", "Details", new { id = item.ProductId })
 
-                                    @*
-                           @if (Request.IsAuthenticated)
-        {
-
-                                    *@                
+                                       
       
             <a href="@Url.Action("AddToVerlanglijst", new {id = item.ProductId})" class="btn btn-default">
 

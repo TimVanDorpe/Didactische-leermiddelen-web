@@ -12,37 +12,29 @@ namespace Groep9.NET {
         public string Foto { get; set; }
         public string Naam { get; set; }
         public string Omschrijving { get; set; }
-       
+
         public double Prijs { get; set; }
+        [DisplayName("Beschikbaar")]
         public int Aantal { get; set; }
         public bool Uitleenbaarheid { get; set; }
-        public  virtual ICollection<Doelgroep>  Doelgroepen { get; set; }
+        public virtual ICollection<Doelgroep> Doelgroepen { get; set; }
         public virtual ICollection<Leergebied> Leergebieden { get; set; }
 
-        public String Plaats { get;
+        public String Plaats { get; set; }
 
-            set ;
-        }
 
-        public string Firma
-        {
-            get ;
+        public string Firma { get; set; }
 
-            set ;
-        }
-
-        public Product()
-        {
+        public Product() {
             Doelgroepen = new List<Doelgroep>();
             Leergebieden = new List<Leergebied>();
         }
 
 
         public Product(string foto, string naam, string omschrijving, double prijs, int aantal, bool uitleenbaarheid, string plaats, string firma)
-            :this()
-        {
+            : this() {
             this.Foto = foto;
-          
+
             this.Naam = naam;
             this.Omschrijving = omschrijving;
             this.Prijs = prijs;
@@ -53,17 +45,14 @@ namespace Groep9.NET {
         }
 
         public Product(string foto, int productnummer, string naam, string omschrijving, double prijs, int aantal, bool uitleenbaarheid, string plaats, string firma, List<Doelgroep> doelgroepen, List<Leergebied> leergebieden)
-           : this(foto, naam, omschrijving, prijs, aantal, uitleenbaarheid, plaats, firma)
-        {
-         
-            foreach (var doel in doelgroepen)
-            {
-               
+           : this(foto, naam, omschrijving, prijs, aantal, uitleenbaarheid, plaats, firma) {
+
+            foreach (var doel in doelgroepen) {
+
                 Doelgroepen.Add(doel);
-               // doel.RegistreerProduct(this);
+                // doel.RegistreerProduct(this);
             }
-            foreach (var leer in leergebieden)
-            {
+            foreach (var leer in leergebieden) {
 
                 Leergebieden.Add(leer);
                 leer.RegistreerLeergebied(this);
@@ -73,7 +62,7 @@ namespace Groep9.NET {
 
         }
 
-       
+
 
     }
 }
