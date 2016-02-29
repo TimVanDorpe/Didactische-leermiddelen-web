@@ -114,8 +114,11 @@ namespace Groep9.NET.Controllers
 
         public ActionResult AddToVerlanglijst(int id, Gebruiker gebruiker)
         {
-           // Gebruiker currentUser = gebruikerRepository.FindByEmail(User.Identity.Name);
-
+            // Gebruiker currentUser = gebruikerRepository.FindByEmail(User.Identity.Name);
+            if (!Request.IsAuthenticated)
+            {
+                return RedirectToAction("login", "Account");
+            }
            
                 Product product = productRepository.FindByProductNummer(id);
                 gebruiker.VoegProductAanVerlanglijstToe(product);

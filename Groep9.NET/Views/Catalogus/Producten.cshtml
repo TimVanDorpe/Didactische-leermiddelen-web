@@ -87,20 +87,26 @@
 
                     @Html.ActionLink("Details", "Details", new { id = item.ProductId })
 
-                    @if (Request.IsAuthenticated)
-                    {
+                                    @*
+                           @if (Request.IsAuthenticated)
+        {
 
-                        <a href="@Url.Action("AddToVerlanglijst", new {id = item.ProductId})" class="btn btn-default">
+                                    *@                
+      
+            <a href="@Url.Action("AddToVerlanglijst", new {id = item.ProductId})" class="btn btn-default">
 
-                            <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
-                        </a>
+                <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
+            </a>
+            @*
                     }
                     else {
-                        <a href="@Url.Action("login", "account")" class="btn btn-default">
 
-                            <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
-                        </a>
-                    }
+
+                    <a href="@Url.Action("login", "account")" class="btn btn-default">
+
+                        <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
+                    </a>
+                }*@
 
 
                     @*@using (@Html.BeginForm("Index", "Catalogus", new { id = item.ProductNummer }))
