@@ -223,6 +223,7 @@
     <Compile Include="Models\Domein\Product.cs" />
     <Compile Include="Models\DAL\Initializer.cs" />
     <Compile Include="Models\Domein\Plaats.cs" />
+    <Compile Include="Models\Domein\Reservatie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\LogInViewModel.cs" />
