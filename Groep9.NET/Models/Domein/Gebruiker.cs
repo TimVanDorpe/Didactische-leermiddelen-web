@@ -18,7 +18,7 @@ namespace Groep9.NET.Models.Domein
         public string Rol { get; set; }
         
         public virtual ICollection<Product> VerlangLijst { get; set; }
-        public virtual ICollection<Reservatie> ReservatieLijst { get; set; } 
+      //  public virtual ICollection<Reservatie> ReservatieLijst { get; set; } 
         public Gebruiker()
         {
             VerlangLijst = new List<Product>();
