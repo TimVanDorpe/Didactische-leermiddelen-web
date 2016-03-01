@@ -113,7 +113,7 @@ namespace Groep9.NET.Controllers
 
         public ActionResult AddToVerlanglijst(int id, Gebruiker gebruiker)
         {
-            // Gebruiker currentUser = gebruikerRepository.FindByEmail(User.Identity.Name);
+            //Gebruiker currentUser = gebruikerRepository.FindByEmail(User.Identity.Name);
             if (!Request.IsAuthenticated)
             {
                 return RedirectToAction("login", "Account");
@@ -126,6 +126,9 @@ namespace Groep9.NET.Controllers
         }
         public ActionResult Verlanglijst(Gebruiker gebruiker)
         {
+            if (!Request.IsAuthenticated) {
+                return RedirectToAction("login", "Account");
+            }
             string email = gebruiker.Email;
            // Gebruiker currentUser =  gebruikerRepository.FindByEmail(User.Identity.Name);
             IList<Product> verlanglijst = gebruiker.VerlangLijst.ToList();

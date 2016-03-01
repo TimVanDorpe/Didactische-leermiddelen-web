@@ -38,14 +38,11 @@ namespace Groep9.NET.Models.DAL
                 Product spinnersKlassAss = new Product("Magnspinner.jpg", 8, "Magnetische spinner", "Magnetische spinners in de vorm van een pijl, een vinger en een potlood", 19.2, 1, true, "GLEDE 1.011", "Hogent", new List
                     <Doelgroep> { Kleuters }, new List<Leergebied> { Behendigheid });
 
-                Gebruiker student = new Gebruiker
-                {
+                Gebruiker student = new Student { 
                     Email = "student@hogent.be",
                     Rol = "Student"
-
                 };
-                Gebruiker personeelslid = new Gebruiker
-                {
+                Gebruiker personeelslid = new Personeelslid {
                     Email = "personeel@hogent.be",
                     Rol = "Personeelslid"
                     

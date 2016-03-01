@@ -21,9 +21,11 @@ namespace Groep9.NET.Views.App {
         {
             get
             {
-
-                //maakt niet uit of het new Student of new Docent is, rare dingen (jens)
-                return new Gebruiker();
+                if (CurrentUser.Rol == "studenten")
+                {
+                    return new Student();
+                }
+                else return new Personeelslid();
             }
         }
     }

@@ -9,7 +9,7 @@ namespace Groep9.NET.Models.Domein {
         {
            
         }
-
+        public int ReservatieId { get; set; }
         public DateTime StartDatum { get; set; }
         public DateTime EindDatum { get; set; }
         public ICollection<Product> ProductenLijst { get; set; }
