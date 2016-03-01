@@ -27,7 +27,7 @@ namespace Groep9.NET.Controllers
             
         }
     
-        public ActionResult Index( string trefwoord = "", string doelgroep = "", string leergebied = "")
+        public ActionResult Index( Gebruiker gebruiker, string trefwoord = "", string doelgroep = "", string leergebied = "")
         {
             //if (prodId >= 0)
             //{
@@ -51,7 +51,11 @@ namespace Groep9.NET.Controllers
                
                         producten =
                             producten.Where(p => p.Naam.ToLower().Contains(trefwoord.ToLower()) || p.Omschrijving.ToLower().Contains(trefwoord.ToLower()));
-                
+                        if (gebruiker.Rol == "Student")
+                        {
+                    producten = producten.Where(p => p.Uitleenbaarheid);
+
+                }
 
             }
             
