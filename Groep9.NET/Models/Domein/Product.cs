@@ -4,6 +4,7 @@ using System.Web;
 using System.Web.Services;
 using System.Web.Services.Protocols;
 using System.ComponentModel;
+using System.Diagnostics;
 using Groep9.NET.Models.Domein;
 
 namespace Groep9.NET {
@@ -42,7 +43,8 @@ namespace Groep9.NET {
             this.Uitleenbaarheid = uitleenbaarheid;
             this.Plaats = plaats;
             this.Firma = firma;
-        }
+
+            }
 
         public Product(string foto, int productnummer, string naam, string omschrijving, double prijs, int aantal, bool uitleenbaarheid, string plaats, string firma, List<Doelgroep> doelgroepen, List<Leergebied> leergebieden)
            : this(foto, naam, omschrijving, prijs, aantal, uitleenbaarheid, plaats, firma) {
@@ -58,11 +60,28 @@ namespace Groep9.NET {
                 leer.RegistreerLeergebied(this);
             }
 
-
+           
 
         }
 
+        public static DateTime BerekenReservatieWeek()
+        {
 
+            DateTime today = DateTime.Today;
+            if (DateTime.Now.Day >= 1 && DateTime.Now.Day <= 5 || (DateTime.Now.Day == 5 && DateTime.Now.Hour <= 17))
+            {
+                int daysUntilMonday= (((int) DayOfWeek.Monday - (int) today.DayOfWeek+7 )%7);
+                return today.AddDays(daysUntilMonday);
+            }
+            else
+            {
+                int daysUntilMonday = (((int)DayOfWeek.Monday - (int)today.DayOfWeek + 7) % 7 +7);
+                return today.AddDays(daysUntilMonday+7);
+            }
+
+            
+
+        }
 
     }
 }
