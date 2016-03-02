@@ -78,12 +78,12 @@ namespace Groep9.NET {
         public void Reserveer(int aantal)
         {
 
-            if (aantal > AantalReserveerbaar)
+            if (aantal > AantalBeschikbaar)
             {
                 throw new ArgumentException("Er zijn niet genoeg producten beschikbaar voor jouw gewenste hoeveelheid");
             }
             else {
-                AantalReserveerbaar -= aantal;
+                AantalBeschikbaar -= aantal;
                 AantalGereserveerd += aantal;
             }
             // nog de week instellen, als week van reservatie verlopen is, AantalReserveerbaar weer optellen, en AantalGereserveerd weer aftrekken
