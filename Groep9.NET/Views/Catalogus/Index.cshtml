@@ -19,8 +19,7 @@
 <p>
     @using (@Html.BeginForm("Index", "Catalogus"))
     {
-        @*@Html.RadioButton("zoekenNaar", "Naam", true)<text> Naam</text>
-            @Html.RadioButton("zoekenNaar", "Omschrijving") <text>Omschrijving </text><br />*@
+       
         <div class="row hidden-sm hidden-xs">
             <div class="col-md-3">
                 @Html.Label("trefwoord:", htmlAttributes: new { @class = "control-label " })
@@ -32,11 +31,7 @@
                 @Html.Label("leergebied:", htmlAttributes: new { @class = "control-label " })
             </div>
         </div>
-        @*<div class=" visible-sm visible-xs">
-                @Html.TextBox("trefwoord", "", "", new { @class = "form-control  hidden-lg hidden-md" })
-                <input type="submit" value="Zoeken" class="btn btn-default groen zoeken"  />
-            </div>*@
-        <div class="row ">
+           <div class="row ">
             <div class="col-md-3 col-xs-12">
                 <div class="input-group changethisone">
                     @Html.TextBox("trefwoord", "", "", new { @class = "form-control", @placeholder = "Geef hier uw trefwoord.." })
@@ -45,8 +40,7 @@
                     </span>
                     </div>
                 </div>
-
-            
+                          
 
             <div id="filter-panel">
                 <div id="panel">
@@ -61,31 +55,24 @@
                     </div>
                 </div>
             </div>
-
-
+               
             <div class="col-xs-12 hidden-md hidden-lg">
 
                 <button type="button" class="btn btn-default groen geavanceerd-zoeken" data-toggle="collapse" data-target="#filter-panel">
                     <span class="glyphicon glyphicon-cog"></span> Geavanceerd zoeken
                 </button>
-
-
+                
             </div>
-
-
+               
             <div class="col-md-3 col-xs-12 knoppen">
                 <input type="submit" value="Zoeken" class="btn btn-default groen col-xs-8 col-md-7" />
                 @Html.ActionLink("Reset", "index", "Catalogus", new { @class = "btn btn-default col-xs-3 col-md-4 pull-right" })
             </div>
-
-        </div>
+                       </div>
        
-
-    }
+            }
 
 </p>
-
-
             <div class="row">
                 <div class="col-xs-12">
                     @Html.Partial("Producten", Model)

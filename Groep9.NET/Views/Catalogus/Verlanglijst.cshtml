@@ -14,9 +14,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Omschrijving)
         </th>
-        @*<th>
-                @Html.DisplayNameFor(model => model.ProductNummer)
-            </th>*@
+        
         <th>
             @Html.DisplayNameFor(model => model.Prijs)
         </th>
@@ -24,7 +22,7 @@
             @Html.DisplayNameFor(model => model.Plaats)
         </th>
         <th>
-            <span>Gewenst</span>
+           Gewenst aantal producten
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Aantal)
@@ -32,15 +30,6 @@
         <th>
             @Html.DisplayNameFor(model => model.Uitleenbaarheid)
         </th>
-        @*<th>
-                @Html.DisplayNameFor(model => model.Firma)
-            </th>*@
-        @*<th>
-                @Html.DisplayNameFor(model => model.Doelgroepen)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Leergebieden)
-            </th>*@
         <th></th>
     </tr>
     @if (!Model.Any())
@@ -62,9 +51,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Omschrijving)
             </td>
-            @*<td>
-                    @Html.DisplayFor(modelItem => item.ProductNummer)
-                </td>*@
+            
             <td>
                 €@Html.DisplayFor(modelItem => item.Prijs)
             </td>
@@ -72,12 +59,12 @@
                 @Html.DisplayFor(modelItem => item.Plaats)
             </td>
             <td>
-                <input type="text"/>
-@*
-    <div class="col-md-10">
-        @Html.TextBoxFor("abc", new { @class = "form-control", style = "width:300px;" })
-    </div>
-        hier moet een textbox komen zodat de gebruiker kan invoeren hoeveel hij/zij er wenst te reserveren*@
+               
+
+   
+        @Html.TextBox("Aantal", "", "", new { @style = "width:200px;", @class = "form-control", @placeholder = "Aantal producten" })
+    
+        @*hier moet een textbox komen zodat de gebruiker kan invoeren hoeveel hij/zij er wenst te reserveren*@
 </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Aantal)
@@ -86,16 +73,7 @@
                 @Html.DisplayFor(modelItem => item.Uitleenbaarheid)
             </td>
 
-            @*<td>
-                    @Html.DisplayFor(modelItem => item.Firma)
-                </td>*@
-            @*<td>
-                    @Html.DisplayFor(modelItem => item.Doelgroepen.)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Leergebieden.Naam)
-                </td>*@
-            <td>
+             <td>
 
                 @Html.ActionLink("Details", "Details", new { id = item.ProductId })
 
@@ -110,8 +88,12 @@
         </tr>
     }
 
-</table>
-                </div>
+</table><br />    
+
+     </div><div>
+
+    @Html.ActionLink("Reserveren", "Reservatie", "Catalogus", new { @class = "btn btn-default groen right" })
+</div>
 <div class="visible-sm visible-xs">
     @if (!Model.Any())
     {
