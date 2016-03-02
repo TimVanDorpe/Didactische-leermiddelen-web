@@ -19,9 +19,9 @@ namespace Groep9.NET {
         [DisplayName("Beschikbaar")]
 
 
-        public int Aantal { get; set; }
+        public int Aantal { get; set; } // totaal in catalogus
 
-        public int AantalReserveerbaar { get; set; }
+        public int AantalBeschikbaar { get; set; } // enkel de beschikbare
 
         public int AantalGeblokkeerd { get; set; }//enkel geblokkeerd
         public int AantalGereserveerd { get; set; }//enkel gereserveerd
@@ -47,14 +47,14 @@ namespace Groep9.NET {
             : this() {
             this.Foto = foto;
 
-            this.Naam = naam;
-            this.Omschrijving = omschrijving;
-            this.Prijs = prijs;
-            this.Aantal = aantal;
-            this.Uitleenbaarheid = uitleenbaarheid;
-            this.Plaats = plaats;
-            this.Firma = firma;
-            AantalReserveerbaar = aantal;
+            Naam = naam;
+            Omschrijving = omschrijving;
+            Prijs = prijs;
+            Aantal = aantal;
+            Uitleenbaarheid = uitleenbaarheid;
+            Plaats = plaats;
+            Firma = firma;
+            AantalBeschikbaar = aantal;
         }
 
         public Product(string foto, int productnummer, string naam, string omschrijving, double prijs, int aantal, bool uitleenbaarheid, string plaats, string firma, List<Doelgroep> doelgroepen, List<Leergebied> leergebieden)
@@ -78,12 +78,12 @@ namespace Groep9.NET {
         public void Reserveer(int aantal)
         {
 
-            if (aantal > AantalReserveerbaar)
+            if (aantal > AantalBeschikbaar)
             {
                 throw new ArgumentException("Er zijn niet genoeg producten beschikbaar voor jouw gewenste hoeveelheid");
             }
             else {
-                AantalReserveerbaar -= aantal;
+                AantalBeschikbaar -= aantal;
                 AantalGereserveerd += aantal;
             }
             // nog de week instellen, als week van reservatie verlopen is, AantalReserveerbaar weer optellen, en AantalGereserveerd weer aftrekken
