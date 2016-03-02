@@ -38,7 +38,7 @@ namespace Groep9.NET.Controllers
                         {
                             doelgroep = "";
                         }
-                    if (leergebied.Equals("-- Selecteer doelgroep --"))
+                    if (leergebied.Equals("-- Selecteer leergebied --"))
                     {
                         leergebied = "";
                     }
@@ -46,25 +46,17 @@ namespace Groep9.NET.Controllers
                       if (!trefwoord.Equals(""))
                     {
                       producten = producten.Where(p => p.Naam.ToLower().Contains(trefwoord.ToLower()) || p.Omschrijving.ToLower().Contains(trefwoord.ToLower()));
-                        if (gebruiker.Rol == "Student")
+
+                            if (gebruiker.Rol.Equals("Student"))
                         {
-                    producten = producten.Where(p => p.Uitleenbaarheid);
+                    producten = producten.Where(p => p.Uitleenbaarheid == true);
 
                 }
 
             }
             
 
-            if (!doelgroep.Equals(""))
-                        {
-               producten = producten.Where(p => p.Doelgroepen.Any(d => d.Naam.Equals(doelgroep)));
-
-
-            }
-            if (!leergebied.Equals(""))
-                        {
-                  producten = producten.Where(p => p.Leergebieden.Any(d => d.Naam.Equals(leergebied)));
-            }
+         
 
             FillDropDownList();
 
@@ -172,6 +164,12 @@ namespace Groep9.NET.Controllers
             // Gebruiker currentUser =  gebruikerRepository.FindByEmail(User.Identity.Name);
             IList<Product> verlanglijst = gebruiker.VerlangLijst.ToList();
             return View(verlanglijst);
+        }
+
+        public ActionResult Reservatie()
+        {
+            
+            return View();
         }
 
         //methode voor reserveerknop, die aantal meegeeft aan methode product.Reserveer
