@@ -23,6 +23,7 @@ namespace Groep9.NET.Models.DAL
         public DbSet<Doelgroep> Doelgroepen { get; set; }
 
         public DbSet<Gebruiker> Gebruikers { get; set; }
+        public DbSet<Reservatie> Reservaties { get; set; }
 
 
 

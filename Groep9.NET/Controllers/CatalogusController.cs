@@ -1,5 +1,6 @@
 ﻿using Groep9.NET.Models.DAL;
 using Groep9.NET.Models.Domein;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -101,6 +102,18 @@ namespace Groep9.NET.Controllers
             ViewBag.doelgroep = GetDoelgroepSelectList();
 
         }
+        public ActionResult Verlanglijst(Gebruiker gebruiker)
+        {
+            if (!Request.IsAuthenticated)
+            {
+                return RedirectToAction("login", "Account");
+            }
+
+            //string email = gebruiker.Email;
+            // Gebruiker currentUser =  gebruikerRepository.FindByEmail(User.Identity.Name);
+            IList<Product> verlanglijst = gebruiker.VerlangLijst.ToList();
+            return View(verlanglijst);
+        }
 
         public ActionResult AddToVerlanglijst(int id, Gebruiker gebruiker)
         {
@@ -154,24 +167,23 @@ namespace Groep9.NET.Controllers
            
             return RedirectToAction("Index");
         }
-        public ActionResult Verlanglijst(Gebruiker gebruiker)
-        {
-            if (!Request.IsAuthenticated) {
-                return RedirectToAction("login", "Account");
-            }
-
-            //string email = gebruiker.Email;
-            // Gebruiker currentUser =  gebruikerRepository.FindByEmail(User.Identity.Name);
-            IList<Product> verlanglijst = gebruiker.VerlangLijst.ToList();
-            return View(verlanglijst);
-        }
-
-        public ActionResult Reservatie()
-        {
-            
-            return View();
-        }
+        
 
         //methode voor reserveerknop, die aantal meegeeft aan methode product.Reserveer
+        public ActionResult Reservatie(Gebruiker gebruiker, int aantal = 0)
+        {
+            if (!Request.IsAuthenticated)
+            {
+                return RedirectToAction("login", "Account");
+            }
+            DateTime start = DateTime.Now;
+            DateTime end = DateTime.Now ;
+            //Reservatie Niew = new Reservatie(Product product, start, end, aantal);
+            IList<Product> verlanglijst = gebruiker.VerlangLijst.ToList();
+            Reservatie x = new Reservatie(verlanglijst.Last(), start, end, aantal);
+            return View(x);
+        }
+
+       
     }
 }
