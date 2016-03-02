@@ -55,8 +55,9 @@ namespace Groep9.NET.Models.DAL
                 context.Gebruikers.Add(student);
                 context.Gebruikers.Add(personeelslid);
 
-                context.Producten.Add(landkaart);
+               
                 context.Producten.Add(rekenmachine);
+                context.Producten.Add(landkaart);
                 context.Producten.Add(dobbelsteenschatkist);
                 context.Producten.Add(blancodraaischijf);
                 context.Producten.Add(spinnersKlassAss);
