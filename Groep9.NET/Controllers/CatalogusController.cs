@@ -174,5 +174,7 @@ namespace Groep9.NET.Controllers
             IList<Product> verlanglijst = gebruiker.VerlangLijst.ToList();
             return View(verlanglijst);
         }
+
+        //methode voor reserveerknop, die aantal meegeeft aan methode product.Reserveer
     }
 }

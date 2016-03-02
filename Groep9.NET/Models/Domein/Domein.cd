@@ -11,26 +11,26 @@
   <Class Name="Groep9.NET.Product">
     <Position X="4.25" Y="0.75" Width="3" />
     <TypeIdentifier>
-      <HashCode>EAAACAAQAAAAAAAAAAAABAAAAAAAIgAAAAAAaACAAAA=</HashCode>
+      <HashCode>EAAACAAUAACBAAAAAAAABAAQAAAAIgAAAAAAaACBAAE=</HashCode>
       <FileName>Models\Domein\Product.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Groep9.NET.Firma">
-    <Position X="9.5" Y="0.75" Width="1.5" />
+    <Position X="8.5" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAACAAAAAAAAAAAAAAAhAAAAACAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Domein\Firma.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Groep9.NET.Models.Domein.Doelgroep">
-    <Position X="9.5" Y="4.25" Width="1.5" />
+    <Position X="10.25" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAACAQAABAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
       <FileName>Models\Domein\Doelgroep.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Groep9.NET.Plaats">
-    <Position X="9.5" Y="2.5" Width="1.5" />
+    <Position X="12" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAQAAAACAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Domein\Plaats.cs</FileName>
@@ -46,14 +46,14 @@
   <Class Name="Groep9.NET.Models.Domein.Gebruiker">
     <Position X="1.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAACCAAAAAAAAAAAAAAAAAIgAAAAAAAQAAQAA=</HashCode>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAIgAABAAAAQAAQAA=</HashCode>
       <FileName>Models\Domein\Gebruiker.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Groep9.NET.Models.Domein.Reservatie">
     <Position X="0.5" Y="8.25" Width="3.25" />
     <TypeIdentifier>
-      <HashCode>AAAAABAAAAAAAAAAAAAAAAAAACAAAAAAAgAAAAAAAAA=</HashCode>
+      <HashCode>AAAAABAEAAAAAAAAAAAAAAAAACAAAAAAAgAAAAAAAAA=</HashCode>
       <FileName>Models\Domein\Reservatie.cs</FileName>
     </TypeIdentifier>
   </Class>
