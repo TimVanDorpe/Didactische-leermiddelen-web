@@ -5,22 +5,20 @@ using System.Web;
 
 namespace Groep9.NET.Models.Domein {
     public class Reservatie {
-        public Reservatie()
+        public Reservatie(Product p, DateTime start, DateTime eind, int aantal )
         {
-           
-        }
-
-        public DateTime StartDatum { get; set; }
-        public DateTime EindDatum { get; set; }
-        public ICollection<Product> ProductenLijst { get; set; }
-
-
-        public void Reserveer(Product product, DateTime start, DateTime eind, int aantal)
-        {
-            product.Aantal -= aantal;
+            Product = p;
             StartDatum = start;
             EindDatum = eind;
+            Aantal = aantal;
         }
+        
+        public int ReservatieId { get; set; }
+        public DateTime StartDatum { get; set; }
+        public DateTime EindDatum { get; set; }
+        public Product Product { get; set; }
+        public int Aantal { get; set; }
+
 
 
     }
