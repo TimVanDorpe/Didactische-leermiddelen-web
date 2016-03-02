@@ -169,7 +169,11 @@ namespace Groep9.NET.Controllers
         }
         public ActionResult Verlanglijst(Gebruiker gebruiker)
         {
-            string email = gebruiker.Email;
+            if (!Request.IsAuthenticated) {
+                return RedirectToAction("login", "Account");
+            }
+
+            //string email = gebruiker.Email;
             // Gebruiker currentUser =  gebruikerRepository.FindByEmail(User.Identity.Name);
             IList<Product> verlanglijst = gebruiker.VerlangLijst.ToList();
             return View(verlanglijst);
