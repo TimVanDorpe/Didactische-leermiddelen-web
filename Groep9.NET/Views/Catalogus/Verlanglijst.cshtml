@@ -29,10 +29,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Aantal)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Uitleenbaarheid)
-        </th>
-        <th></th>
+               <th></th>
     </tr>
     @if (!Model.Any())
     {
@@ -75,9 +72,7 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.Aantal)
                         </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Uitleenbaarheid)
-                        </td>
+                        
 
                         <td>
                             <button type="button" class="btn btn-success" data-toggle="modal" data-target=".bs-example-modal-sm">Reserveren</button>
