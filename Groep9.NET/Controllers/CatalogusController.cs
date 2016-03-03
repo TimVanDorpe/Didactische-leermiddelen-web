@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace Groep9.NET.Controllers
 {
-    [AllowAnonymous]
+    [Authorize]
     public class CatalogusController : Controller
     {
         // GET: Catalogus
