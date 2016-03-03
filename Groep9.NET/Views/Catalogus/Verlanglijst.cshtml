@@ -17,9 +17,7 @@
             @Html.DisplayNameFor(model => model.Omschrijving)
         </th>
         
-        <th>
-            @Html.DisplayNameFor(model => model.Prijs)
-        </th>
+        
         <th>
             @Html.DisplayNameFor(model => model.Plaats)
         </th>
@@ -58,9 +56,7 @@
                             @Html.DisplayFor(modelItem => item.Omschrijving)
                         </td>
 
-                        <td>
-                            €@Html.DisplayFor(modelItem => item.Prijs)
-                        </td>
+                       
                         <td>
                             @Html.DisplayFor(modelItem => item.Plaats)
                         </td>
@@ -80,9 +76,9 @@
                         </td>
 
                         <td>
-                            <button type="button" class="btn btn-success" data-toggle="modal" data-target=".bs-example-modal-sm">Reserveren</button>
-
-                            <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog">
+                            <button type="button" class="btn btn-default groen pull-left" data-toggle="modal" data-target=".desktop-popup">Reserveren</button>
+                            &nbsp;
+                            <div class="modal fade bs-example-modal-sm desktop-popup" tabindex="-1" role="dialog">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -101,7 +97,7 @@
                             </div><!-- /.modal -->
 
                             @Html.ActionLink("Details", "Details", new {id = item.ProductId})
-
+                            &nbsp;
                             <a href="@Url.Action("RemoveFromVerlanglijst", new {id = item.ProductId})" class="btn btn-danger">
 
                                 <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
@@ -145,8 +141,36 @@
                 </h2>
 
                 <p>@Html.DisplayFor(modelItem => item.Omschrijving)</p>
+                    <button type="button" class="btn btn-default groen pull-left" data-toggle="modal" data-target=".mobile-popup">Reserveren</button>
 
-                <span class="pull-left">@Html.ActionLink("Details", "Details", new { id = item.ProductId })</span><span class="pull-right">Aantal: @Html.DisplayFor(modelItem => item.Aantal)</span>
+                    <div class="modal fade bs-example-modal-sm mobile-popup" tabindex="-1" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title">Reservatie voltooien</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Geef het aantal dat u wilt reserveren en druk op bevestigen om de reservatie te voltooien</p>
+
+                                    @Html.TextBox("aantal", "", "", new { @style = "width:200px;", @class = "form-control", @placeholder = item.Aantal + " bruikbaar" })
+
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Annuleren</button>
+                                    <button type="submit" name="productnummer" value="@item.ProductId" class="btn btn-default">Bevestigen</button>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
+                    &nbsp;
+                    <span class="pull-left">@Html.ActionLink("Details", "Details", new {id = item.ProductId})</span>
+                    &nbsp;
+                    <a href="@Url.Action("RemoveFromVerlanglijst", new {id = item.ProductId})" class="btn btn-danger">
+
+                        <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"> </span>
+                    </a>
             </div>
         </div>
         <br />
