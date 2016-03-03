@@ -44,17 +44,20 @@ namespace Groep9.NET.Controllers
                         leergebied = "";
                     }
                      IEnumerable<Product> producten = productRepository.VindAlleProducten().ToList();
-                      if (!trefwoord.Equals(""))
-                    {
-                      producten = producten.Where(p => p.Naam.ToLower().Contains(trefwoord.ToLower()) || p.Omschrijving.ToLower().Contains(trefwoord.ToLower()));
-
-                            if (gebruiker.Rol.Equals("Student"))
-                        {
-                    producten = producten.Where(p => p.Uitleenbaarheid == true);
+            if (!trefwoord.Equals(""))
+            {
+                producten =
+                    producten.Where(
+                        p =>
+                            p.Naam.ToLower().Contains(trefwoord.ToLower()) ||
+                            p.Omschrijving.ToLower().Contains(trefwoord.ToLower()));
+            }
+            if (gebruiker.Rol.Equals("Student")) {
+                    producten = producten.Where(p => p.Uitleenbaarheid);
 
                 }
 
-            }
+            
             
 
 
