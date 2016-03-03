@@ -121,6 +121,4 @@
     display:inline;
 }
 
-.addVerlanglijst {
-    
-}
+ a.addtoverlanglijst:focus { color: #66ff33; }
