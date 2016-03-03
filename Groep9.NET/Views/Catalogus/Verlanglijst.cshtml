@@ -1,139 +1,125 @@
-﻿@model IEnumerable<Groep9.NET.Product>
+﻿@using Groep9.NET.Models.Domein
+@model IEnumerable<Groep9.NET.Product>
 
 <h2>Verlanglijst</h2>
 
 <div class="hidden-sm hidden-xs">
-    @using (Html.BeginForm("ReserveerProducten","Catalogus"))
+   
+<table class="table table-responsive ">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Foto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Naam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Omschrijving)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.Prijs)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Plaats)
+        </th>
+        <th>
+           Gewenst aantal producten
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Aantal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Uitleenbaarheid)
+        </th>
+        <th></th>
+    </tr>
+    @if (!Model.Any())
     {
-        <table class="table table-responsive ">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Foto)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Naam)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Omschrijving)
-                </th>
-                @*<th>
-                        @Html.DisplayNameFor(model => model.ProductNummer)
-                    </th>*@
-                <th>
-                    @Html.DisplayNameFor(model => model.Prijs)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Plaats)
-                </th>
-                <th>
-                    <span>Gewenst</span>
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Aantal)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Uitleenbaarheid)
-                </th>
-                @*<th>
-                        @Html.DisplayNameFor(model => model.Firma)
-                    </th>*@
-                @*<th>
-                        @Html.DisplayNameFor(model => model.Doelgroepen)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Leergebieden)
-                    </th>*@
-                <th></th>
-            </tr>
-            @if (!Model.Any())
-            {
-                <tr>
-                    <td colspan="9">Er zijn geen materialen in de verlanglijst</td>
-                </tr>
+        <tr>
+            <td colspan="9">Er zijn geen materialen in de verlanglijst</td>
+        </tr>
 
-            }
+    }
 
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
+                using (Html.BeginForm("Reservatie", "Catalogus"))
+                {
+                    <tr>
+                        <td>
 
-                        <img style="width: 75px; height: 75px;" alt="@Html.DisplayFor(modelItem => item.Naam)" src="~/Content/images/@(@Html.DisplayFor(modelItem => item.Foto))" />
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Naam)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Omschrijving)
-                    </td>
-                    @*<td>
-                            @Html.DisplayFor(modelItem => item.ProductNummer)
-                        </td>*@
-                    <td>
-                        €@Html.DisplayFor(modelItem => item.Prijs)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Plaats)
-                    </td>
-                    <td>
-
-                        @Html.TextBox("aantal", "", "", new { @class = "form-control" })
-                        @Html.Hidden("id", @item.ProductId)
-
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Aantal)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Uitleenbaarheid)
-                    </td>
-
-                    @*<td>
-                            @Html.DisplayFor(modelItem => item.Firma)
-                        </td>*@
-                    @*<td>
-                            @Html.DisplayFor(modelItem => item.Doelgroepen.)
+                            <img style="width: 75px; height: 75px;" alt="@Html.DisplayFor(modelItem => item.Naam)" src="~/Content/images/@(@Html.DisplayFor(modelItem => item.Foto))"/>
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Leergebieden.Naam)
-                        </td>*@
-                    <td>
+                            @Html.DisplayFor(modelItem => item.Naam)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Omschrijving)
+                        </td>
 
-                        @Html.ActionLink("Details", "Details", new { id = item.ProductId })
+                        <td>
+                            €@Html.DisplayFor(modelItem => item.Prijs)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Plaats)
+                        </td>
+                        <td>
 
-                        <a href="@Url.Action("RemoveFromVerlanglijst", new {id = item.ProductId})" class="btn btn-danger">
-
-                            <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
-                        </a>
 
 
+                            @Html.TextBox("aantal", "", "", new {@style = "width:200px;", @class = "form-control", @placeholder = item.Aantal + " bruikbaar"})
 
-                    </td>
-                </tr>
+                            @*hier moet een textbox komen zodat de gebruiker kan invoeren hoeveel hij/zij er wenst te reserveren*@
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Aantal)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Uitleenbaarheid)
+                        </td>
+
+                        <td>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Reserveren</button>
+
+                            <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title">Reservatie voltooien</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Weet u zeker dat u deze reservatie wilt maken?</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Annuleren</button>
+                                            <button type="submit" name="productnummer" value="@item.ProductId" class="btn btn-default" >Bevestigen</button>
+                                        </div>
+                                    </div><!-- /.modal-content -->
+                                </div><!-- /.modal-dialog -->
+                            </div><!-- /.modal -->
+
+                            @Html.ActionLink("Details", "Details", new {id = item.ProductId})
+
+                            <a href="@Url.Action("RemoveFromVerlanglijst", new {id = item.ProductId})" class="btn btn-danger">
+
+                                <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
+                            </a>
+
+
+
+                        </td>
+                    </tr>
+                }
             }
 
-        </table>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Reserveren</button>
+</table><br />    
 
-        <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">Reservatie voltooien</h4>
-                    </div>
-                    <div class="modal-body">
-                        <p>Weet u zeker dat u deze reservatie wilt maken?</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Annuleren</button>
-                        <input type="submit" value="Reserveren" class="btn btn-default" />
-                    </div>
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
-    }
-</div>
+    
+      
+    
+ </div>
 <div class="visible-sm visible-xs">
     @if (!Model.Any())
     {
@@ -155,16 +141,16 @@
                 <div class="caption col-xs-8">
                     <h2>
                         @Html.DisplayFor(modelItem => item.Naam)
+                    
+                </h2>
 
-                    </h2>
+                <p>@Html.DisplayFor(modelItem => item.Omschrijving)</p>
 
-                    <p>@Html.DisplayFor(modelItem => item.Omschrijving)</p>
-
-                    <span class="pull-left">@Html.ActionLink("Details", "Details", new { id = item.ProductId })</span><span class="pull-right">Aantal: @Html.DisplayFor(modelItem => item.Aantal)</span>
-                </div>
+                <span class="pull-left">@Html.ActionLink("Details", "Details", new { id = item.ProductId })</span><span class="pull-right">Aantal: @Html.DisplayFor(modelItem => item.Aantal)</span>
             </div>
-            <br />
         </div>
+        <br />
+    </div>
 
     }
 </div>

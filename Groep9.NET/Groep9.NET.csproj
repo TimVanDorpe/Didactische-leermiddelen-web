@@ -199,6 +199,8 @@
     <Compile Include="Models\DAL\Mapping\LeergebiedMapper.cs" />
     <Compile Include="Models\DAL\ApplicationDbContext.cs" />
     <Compile Include="Models\DAL\ApplicationDbInitializer.cs" />
+    <Compile Include="Models\DAL\Mapping\ReservatieMapper.cs" />
+    <Compile Include="Models\DAL\ReservatieRepository.cs" />
     <Compile Include="Models\Domein\ApplicationUser.cs" />
     <Compile Include="Models\Domein\Gebruiker.cs" />
     <Compile Include="Models\Domein\Firma.cs" />
@@ -219,6 +221,7 @@
     <Compile Include="Models\Domein\ILeergebiedRepository.cs" />
     <Compile Include="Models\Domein\IProductRepository.cs" />
     <Compile Include="Models\DAL\ProductRepository.cs" />
+    <Compile Include="Models\Domein\IReservatieController.cs" />
     <Compile Include="Models\Domein\Leergebied.cs" />
     <Compile Include="Models\Domein\Product.cs" />
     <Compile Include="Models\DAL\Initializer.cs" />
@@ -228,6 +231,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\LogInViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
+    <Compile Include="ViewModels\ReservatieViewModel.cs" />
     <Compile Include="Views\App\AppViewPage.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -281,6 +285,7 @@
     <Content Include="Views\Catalogus\Producten.cshtml" />
     <Content Include="Views\Account\LogIn.cshtml" />
     <Content Include="Views\Account\ReedsIngelogd.cshtml" />
+    <Content Include="Views\Catalogus\Reservatie.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,5 +1,6 @@
 ﻿using Groep9.NET.Models.DAL;
 using Groep9.NET.Models.Domein;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -38,7 +39,7 @@ namespace Groep9.NET.Controllers
                         {
                             doelgroep = "";
                         }
-                    if (leergebied.Equals("-- Selecteer doelgroep --"))
+                    if (leergebied.Equals("-- Selecteer leergebied --"))
                     {
                         leergebied = "";
                     }
@@ -46,25 +47,17 @@ namespace Groep9.NET.Controllers
                       if (!trefwoord.Equals(""))
                     {
                       producten = producten.Where(p => p.Naam.ToLower().Contains(trefwoord.ToLower()) || p.Omschrijving.ToLower().Contains(trefwoord.ToLower()));
-                        if (gebruiker.Rol == "Student")
+
+                            if (gebruiker.Rol.Equals("Student"))
                         {
-                    producten = producten.Where(p => p.Uitleenbaarheid);
+                    producten = producten.Where(p => p.Uitleenbaarheid == true);
 
                 }
 
             }
             
 
-            if (!doelgroep.Equals(""))
-                        {
-               producten = producten.Where(p => p.Doelgroepen.Any(d => d.Naam.Equals(doelgroep)));
 
-
-            }
-            if (!leergebied.Equals(""))
-                        {
-                  producten = producten.Where(p => p.Leergebieden.Any(d => d.Naam.Equals(leergebied)));
-            }
 
             FillDropDownList();
 
@@ -108,6 +101,18 @@ namespace Groep9.NET.Controllers
             ViewBag.leergebied = GetLeergebiedSelectList();
             ViewBag.doelgroep = GetDoelgroepSelectList();
 
+        }
+        public ActionResult Verlanglijst(Gebruiker gebruiker)
+        {
+            if (!Request.IsAuthenticated)
+            {
+                return RedirectToAction("login", "Account");
+            }
+
+            //string email = gebruiker.Email;
+            // Gebruiker currentUser =  gebruikerRepository.FindByEmail(User.Identity.Name);
+            IList<Product> verlanglijst = gebruiker.VerlangLijst.ToList();
+            return View(verlanglijst);
         }
 
         public ActionResult AddToVerlanglijst(int id, Gebruiker gebruiker)
@@ -162,23 +167,25 @@ namespace Groep9.NET.Controllers
            
             return RedirectToAction("Index");
         }
-        public ActionResult Verlanglijst(Gebruiker gebruiker)
+        
+
+        //methode voor reserveerknop, die aantal meegeeft aan methode product.Reserveer
+        public ActionResult Reservatie(Gebruiker gebruiker, int aantal = 0,int productnummer = 0)
         {
-            if (!Request.IsAuthenticated) {
+            if (!Request.IsAuthenticated)
+            {
                 return RedirectToAction("login", "Account");
             }
-
-            //string email = gebruiker.Email;
-            // Gebruiker currentUser =  gebruikerRepository.FindByEmail(User.Identity.Name);
+            //productRepository.
+            
+            DateTime start = DateTime.Now;
+            DateTime end = DateTime.Now ;
+            //Reservatie Niew = new Reservatie(Product product, start, end, aantal);
             IList<Product> verlanglijst = gebruiker.VerlangLijst.ToList();
-            return View(verlanglijst);
-        }
-
-        public ActionResult ReserveerProducten()
-        {
-
+            Reservatie x = new Reservatie(verlanglijst.Last(), start, end, aantal);
             return RedirectToAction("Verlanglijst");
         }
+
         //methode voor reserveerknop, die aantal meegeeft aan methode product.Reserveer
     }
 }

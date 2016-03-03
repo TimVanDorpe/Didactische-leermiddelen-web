@@ -21,9 +21,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.Omschrijving)
             </th>
-            @*<th>
-                    @Html.DisplayNameFor(model => model.ProductNummer)
-                </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.Prijs)
             </th>
@@ -33,22 +30,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Plaats)
             </th>
-                        @*
-            <th>
-            @Html.DisplayNameFor(model => model.Aantal) 
-        </th>
-
-                        *@
-            
-            @*<th>
-                    @Html.DisplayNameFor(model => model.Firma)
-                </th>*@
-            @*<th>
-                @Html.DisplayNameFor(model => model.Doelgroepen)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Leergebieden)
-            </th>*@
+                  
             <th></th>
         </tr>
         @if (!Model.Any())
@@ -71,30 +53,18 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Omschrijving)
                 </td>
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.ProductNummer)
-                    </td>*@
+                
                 <td>
                     @Html.DisplayFor(modelItem => item.Prijs)
                 </td>
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.Aantal)
-                    </td>*@
+              
                 <td>
                     @Html.DisplayFor(modelItem => item.Uitleenbaarheid)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Plaats)
                 </td>
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.Firma)
-                    </td>*@
-                @*<td>
-                    @Html.DisplayFor(modelItem => item.Doelgroepen.)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Leergebieden.Naam)
-                </td>*@
+              
                 <td>
 
                   @Html.ActionLink("Details", "Details", new { id = item.ProductId })
@@ -138,11 +108,6 @@
                         <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
                     </a>
                     
-           
-
-
-               
-
                 </td>
             </tr>
         }

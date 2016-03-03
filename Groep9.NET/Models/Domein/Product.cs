@@ -14,14 +14,11 @@ namespace Groep9.NET {
         public string Foto { get; set; }
         public string Naam { get; set; }
         public string Omschrijving { get; set; }
-
         public double Prijs { get; set; }
-        [DisplayName("Beschikbaar")]
+    
+        public int Aantal { get; set; } // totaal in catalogus
 
-
-        public int Aantal { get; set; }
-
-        public int AantalReserveerbaar { get; set; }
+        public int AantalBeschikbaar { get; set; } // enkel de beschikbare
 
         public int AantalGeblokkeerd { get; set; }//enkel geblokkeerd
         public int AantalGereserveerd { get; set; }//enkel gereserveerd
@@ -47,14 +44,14 @@ namespace Groep9.NET {
             : this() {
             this.Foto = foto;
 
-            this.Naam = naam;
-            this.Omschrijving = omschrijving;
-            this.Prijs = prijs;
-            this.Aantal = aantal;
-            this.Uitleenbaarheid = uitleenbaarheid;
-            this.Plaats = plaats;
-            this.Firma = firma;
-            AantalReserveerbaar = aantal;
+            Naam = naam;
+            Omschrijving = omschrijving;
+            Prijs = prijs;
+            Aantal = aantal;
+            Uitleenbaarheid = uitleenbaarheid;
+            Plaats = plaats;
+            Firma = firma;
+            AantalBeschikbaar = aantal;
         }
 
         public Product(string foto, int productnummer, string naam, string omschrijving, double prijs, int aantal, bool uitleenbaarheid, string plaats, string firma, List<Doelgroep> doelgroepen, List<Leergebied> leergebieden)
@@ -75,46 +72,14 @@ namespace Groep9.NET {
         }
 
 
-        public void Reserveer(int aantal)
-        {
-
-            if (aantal > AantalReserveerbaar)
-            {
-                throw new ArgumentException("Er zijn niet genoeg producten beschikbaar voor jouw gewenste hoeveelheid");
-            }
-            else {
-                AantalReserveerbaar -= aantal;
-                AantalGereserveerd += aantal;
-            }
-            // nog de week instellen, als week van reservatie verlopen is, AantalReserveerbaar weer optellen, en AantalGereserveerd weer aftrekken
-            //bijhouden vanaf welke dag het uitgeleend ist , en tot welke dag. Als die laaste voorbij is, aantallen aanpassen
-
-        }
+        
 
         public void Blokkeer(int aantal)
         {
             throw new NotSupportedException();
         }
 
-        public static DateTime BerekenReservatieWeek()
-        {
-
-            DateTime today = DateTime.Today;
-            if (DateTime.Now.Day >= 1 && DateTime.Now.Day <= 5 || (DateTime.Now.Day == 5 && DateTime.Now.Hour <= 17))
-            {
-                int daysUntilMonday= (((int) DayOfWeek.Monday - (int) today.DayOfWeek+7 )%7);
-                return today.AddDays(daysUntilMonday);
-            }
-            else
-            {
-                int daysUntilMonday = (((int)DayOfWeek.Monday - (int)today.DayOfWeek + 7) % 7 +7);
-                return today.AddDays(daysUntilMonday+7);
-            }
-
-            
-
-        }
-
+       
     
     }
 }

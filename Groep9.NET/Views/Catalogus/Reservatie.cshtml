@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Groep9.NET.Models.Domein.Reservatie>
+
+<h2>Reservatie</h2>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Reservatie</title>
+</head>
+<body>
+    <table>
+        <tr>
+           <th>
+               @Html.DisplayNameFor(model => model.StartDatum)
+           </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EindDatum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.aantal)
+            </th>
+           
+
+
+        </tr>
+
+
+    </table>
+</body>
+</html>
