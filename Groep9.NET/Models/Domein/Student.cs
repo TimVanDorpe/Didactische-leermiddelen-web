@@ -10,20 +10,16 @@ using Groep9.NET.Models.Domein;
 namespace Groep9.NET {
     public class Student : Gebruiker {
 
-        
-        public override int  GebruikerId { get; set; }
-        public override string Email { get; set; }
-        public override string Rol { get; set; }
+    
         
         
         //public ICollection<Product> VerlangLijst { get; set; }
         public Student() : base() { }
         
         
-        public override void VoegProductAanVerlanglijstToe(Product p)
-        {
-            VerlangLijst.Add(p);
-        }
+    
+
+        //reserveer
         
         
     }

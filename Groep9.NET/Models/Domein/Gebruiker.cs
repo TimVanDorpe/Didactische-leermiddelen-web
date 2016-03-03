@@ -13,12 +13,12 @@ namespace Groep9.NET.Models.Domein
 
 
 
-        public virtual int GebruikerId { get; set; }
-        public virtual string Email { get; set; }
-        public virtual string Rol { get; set; }
+        public  int GebruikerId { get; set; }
+        public  string Email { get; set; }
+        public  string Rol { get; set; }
 
 
-        public ICollection<Product> VerlangLijst { get; set; }
+        public  virtual ICollection<Product> VerlangLijst { get; set; }
         public virtual ICollection<Reservatie> ReservatieLijst { get; set; } 
         public Gebruiker()
         {
