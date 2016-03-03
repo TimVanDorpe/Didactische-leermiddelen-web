@@ -16,16 +16,18 @@ function mobileViewUpdate() {
 $(window).load(mobileViewUpdate);
 $(window).resize(mobileViewUpdate);
 
-$("#myLink").click(function(e) {
+var items = $.map(
+    $(this).sortable('toArray'),
+    function (item, index) {
+        return { "item": item };
+    }
+);
 
-    e.preventDefault();
-    $.ajax({
-        url: $(this).attr("href")
-  
-
+$.ajax({
+    url: '/Catalogus/ReserveerProducten',
+    type: 'post',
+    data: { items: items }
 });
-});
-
 //$("#toggleButton").toggle(function () {
 //    $("#voegToe").show();
 //    $("#verwijder").hide();

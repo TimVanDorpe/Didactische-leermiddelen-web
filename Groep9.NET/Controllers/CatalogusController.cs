@@ -174,6 +174,11 @@ namespace Groep9.NET.Controllers
             return View(verlanglijst);
         }
 
+        public ActionResult ReserveerProducten()
+        {
+
+            return RedirectToAction("Verlanglijst");
+        }
         //methode voor reserveerknop, die aantal meegeeft aan methode product.Reserveer
     }
 }
