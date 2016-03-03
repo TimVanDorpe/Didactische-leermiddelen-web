@@ -56,11 +56,16 @@ namespace Groep9.NET.Controllers
                     producten = producten.Where(p => p.Uitleenbaarheid);
 
                 }
+            if (!doelgroep.Equals(""))
+            {
+                producten = producten.Where(p => p.Doelgroepen.Any(d => d.Naam.Equals(doelgroep)));
 
-            
-            
 
-
+            }
+            if (!leergebied.Equals(""))
+            {
+                producten = producten.Where(p => p.Leergebieden.Any(d => d.Naam.Equals(leergebied)));
+            }
 
             FillDropDownList();
 
