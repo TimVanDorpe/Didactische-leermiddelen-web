@@ -11,6 +11,7 @@ namespace Groep9.NET.Models.Domein
 
         void Add(Gebruiker gebruiker);
         Gebruiker FindByEmail(String email);
+        void ReserveerProduct(Product p, DateTime start, DateTime eind, int aantal, Gebruiker gebruiker);
         void SaveChanges();
 
     }

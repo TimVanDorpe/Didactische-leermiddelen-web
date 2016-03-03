@@ -176,13 +176,16 @@ namespace Groep9.NET.Controllers
             {
                 return RedirectToAction("login", "Account");
             }
-            //productRepository.
+            Product product= productRepository.FindByProductNummer(productnummer);
+            productRepository.ReserveerProduct(productnummer, aantal);
+           
             
-            DateTime start = DateTime.Now;
-            DateTime end = DateTime.Now ;
+            DateTime start = productRepository.BerekenStartDatumReservatieWeek();
+            DateTime end = productRepository.BerekenEindDatumReservatieWeek();
+            gebruikerRepository.ReserveerProduct(product, start, end,aantal, gebruiker);
             //Reservatie Niew = new Reservatie(Product product, start, end, aantal);
-            IList<Product> verlanglijst = gebruiker.VerlangLijst.ToList();
-            Reservatie x = new Reservatie(verlanglijst.Last(), start, end, aantal);
+            //IList<Product> verlanglijst = gebruiker.VerlangLijst.ToList();
+            //Reservatie x = new Reservatie(verlanglijst.Last(), start, end, aantal);
             return RedirectToAction("Verlanglijst");
         }
 
