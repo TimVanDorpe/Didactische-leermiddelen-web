@@ -27,10 +27,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Aantal)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Uitleenbaarheid)
-        </th>
-        <th></th>
+               <th></th>
     </tr>
     @if (!Model.Any())
     {
@@ -64,16 +61,14 @@
 
 
 
-                            @Html.TextBox("aantal", "", "", new {@style = "width:200px;", @class = "form-control", @placeholder = item.Aantal + " bruikbaar"})
+                            @Html.TextBox("aantal", "1", "", new {@style = "width:50px;", @class = "form-control"@*, @placeholder = item.AantalBeschikbaar+ " bruikbaar"*@})
 
                             @*hier moet een textbox komen zodat de gebruiker kan invoeren hoeveel hij/zij er wenst te reserveren*@
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Aantal)
                         </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Uitleenbaarheid)
-                        </td>
+                        
 
                         <td>
                             <button type="button" class="btn btn-default groen pull-left" data-toggle="modal" data-target=".desktop-popup">Reserveren</button>

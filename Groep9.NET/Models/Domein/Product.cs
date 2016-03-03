@@ -15,7 +15,8 @@ namespace Groep9.NET {
         public string Naam { get; set; }
         public string Omschrijving { get; set; }
         public double Prijs { get; set; }
-    
+
+        [DisplayName("Beschikbaar")]
         public int Aantal { get; set; } // totaal in catalogus
 
         public int AantalBeschikbaar { get; set; } // enkel de beschikbare
