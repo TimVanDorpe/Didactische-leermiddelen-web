@@ -142,3 +142,8 @@
 .btn.active span:last-child  {            	
 	display: none;			
 }
+
+.vanboven-rechts {
+    position: relative;
+
+}

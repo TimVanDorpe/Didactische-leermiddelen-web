@@ -1,13 +1,26 @@
 ﻿@using Groep9.NET.Controllers
-@model IEnumerable<Groep9.NET.Product>
-<script src="~/Scripts/jquery-1.10.2.js"></script>
-<script >
-    $(function () {
-        $('.radio').change(function () {
-            $('.radioform').submit();
+@using Groep9.NET.Models.Domein
+@model IEnumerable<Groep9.NET.ViewModels.ProductViewModel>
+@section scripts
+{
+    <script>
+        $(window).load(checkVerlanglijst);
+        $("[type='checkbox']").valueOf()
+        $(document).ready(function () {
+            // Connect to 'change' event in order to toggle glyphs
+            $("[type='checkbox']").change(function () {
+                if ($(this).prop('checked')) {
+                    $(this).prev().addClass('glyphicon-ok-circle');
+                    $(this).prev().removeClass('glyphicon-unchecked');
+                }
+                else {
+                    $(this).prev().removeClass('glyphicon-ok-circle');
+                    $(this).prev().addClass('glyphicon-unchecked');
+                }
+            });
         });
-    });
-</script>
+    </script>
+}
 
 <div class="hidden-sm hidden-xs">
     <table class="table table-responsive ">
@@ -68,7 +81,7 @@
                 <td>
 
                   @Html.ActionLink("Details", "Details", new { id = item.ProductId })
-    @*
+                    @*
 
                      @using (Html.BeginForm("AddOfVerwijderVerlanglijst", "Catalogus", FormMethod.Post, new {id = item.ProductId, @class = "radioform" }))
                      {
@@ -103,10 +116,17 @@
                              });
                          });
                      </script>*@
-                    <a href="@Url.Action("AddToVerlanglijst", new {id = item.ProductId})" class="btn btn-default">
+                    <label class="btn btn-default">
+                        
+                        @{
+                            var url = Url.Action("AddOfVerwijderVerlanglijst", new {id = item.ProductId});
+                        }
+                        @Html.CheckBoxFor(modelItem=>item.InVerlanglijst, new {id = item.ProductId, onclick = "window.location = '" + url + "'", @class = "toggle" }) toevoegen
+                    </label>
+                    @*<a href="@Url.Action("AddToVerlanglijst", new {id = item.ProductId})" class="btn btn-default">
 
                         <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
-                    </a>
+                    </a>*@
                     
                 </td>
             </tr>

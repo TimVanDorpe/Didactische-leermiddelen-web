@@ -27,12 +27,12 @@
         <th>
             @Html.DisplayNameFor(model => model.Aantal)
         </th>
-               <th></th>
+               <th colspan="2"></th>
     </tr>
     @if (!Model.Any())
     {
         <tr>
-            <td colspan="9">Er zijn geen materialen in de verlanglijst</td>
+            <td colspan="8">Er zijn geen materialen in de verlanglijst</td>
         </tr>
 
     }
@@ -61,7 +61,7 @@
 
 
 
-                            @Html.TextBox("aantal", "1", "", new {@style = "width:50px;", @class = "form-control"@*, @placeholder = item.AantalBeschikbaar+ " bruikbaar"*@})
+                            @Html.TextBox("aantal", "1", "", new { @class = "form-control", Type="number"@*, @placeholder = item.AantalBeschikbaar+ " bruikbaar"*@})
 
                             @*hier moet een textbox komen zodat de gebruiker kan invoeren hoeveel hij/zij er wenst te reserveren*@
                         </td>
@@ -70,10 +70,10 @@
                         </td>
                         
 
-                        <td>
+                        <td colspan="2">
                             <button type="button" class="btn btn-default groen pull-left" data-toggle="modal" data-target=".desktop-popup">Reserveren</button>
                             &nbsp;
-                            <div class="modal fade bs-example-modal-sm desktop-popup" tabindex="-1" role="dialog">
+                            <div class="modal fade bs-example-modal-sm desktop-popup" tabindex="-2" role="dialog">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -84,7 +84,7 @@
                                             <p>Weet u zeker dat u deze reservatie wilt maken?</p>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Annuleren</button>
+                                            <button type="button" class="btn btn-default " data-dismiss="modal">Annuleren</button>
                                             <button type="submit" name="productnummer" value="@item.ProductId" class="btn btn-default" >Bevestigen</button>
                                         </div>
                                     </div><!-- /.modal-content -->
@@ -138,7 +138,7 @@
                 <p>@Html.DisplayFor(modelItem => item.Omschrijving)</p>
                     <button type="button" class="btn btn-default groen pull-left" data-toggle="modal" data-target=".mobile-popup">Reserveren</button>
 
-                    <div class="modal fade bs-example-modal-sm mobile-popup" tabindex="-1" role="dialog">
+                    <div class="modal fade bs-example-modal-sm mobile-popup visible-sm visible-xs" tabindex="-2" role="dialog">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -148,12 +148,12 @@
                                 <div class="modal-body">
                                     <p>Geef het aantal dat u wilt reserveren en druk op bevestigen om de reservatie te voltooien</p>
 
-                                    @Html.TextBox("aantal", "", "", new { @style = "width:200px;", @class = "form-control", @placeholder = item.Aantal + " bruikbaar" })
+                                    @Html.TextBox("aantal", "1", "", new { @style = "width:200px;", @class = "form-control", @placeholder = item.Aantal + " bruikbaar", Type = "number" })
 
 
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Annuleren</button>
+                                    <button type="button" class="btn btn-default " data-dismiss="modal">Annuleren</button>
                                     <button type="submit" name="productnummer" value="@item.ProductId" class="btn btn-default">Bevestigen</button>
                                 </div>
                             </div><!-- /.modal-content -->
