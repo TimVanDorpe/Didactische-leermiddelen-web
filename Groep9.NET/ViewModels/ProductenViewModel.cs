@@ -11,6 +11,17 @@ using System.Web.Compilation;
 namespace Groep9.NET.ViewModels {
    
 
+    public class ProductenViewModel
+    {
+        public IEnumerable<ProductViewModel> Producten { get; set; }
+        
+        
+        public ProductenViewModel()
+        {
+        }
+       
+    }
+
     public class ProductViewModel
     {
         [Required]
@@ -29,17 +40,21 @@ namespace Groep9.NET.ViewModels {
         public int Aantal { get; private set; }
         public double Prijs { get; private set; }
         public string Firma { get; private set; }
-       // public Doelgroep Doelgroep { get; private set; }
+        // public Doelgroep Doelgroep { get; private set; }
         public string[] Leergebied { get; private set; }
 
         public string[] Doelgroep { get; private set; }
-        public ProductViewModel(Product p)
+        public string Plaats { get; set; }
+        public Boolean InVerlanglijst { get; private set; }
+        public Boolean Uitleenbaarheid { get; set; }
+        public ProductViewModel(Product p, Gebruiker g)
         {
 
             //Van het materiaal toon je de foto, de naam, omschrijving, 
             //aantalInCatalogus, artikelNr (van de firma), prijs,
             //firma, doelgroepen, leergebieden
-
+            Uitleenbaarheid= p.Uitleenbaarheid;
+            Plaats = p.Plaats;
             Foto = p.Foto;
             Naam = p.Naam;
             Omschrijving = p.Omschrijving;
@@ -49,11 +64,7 @@ namespace Groep9.NET.ViewModels {
             Firma = p.Firma;
             Doelgroep = p.Doelgroepen.Select(i => i.Naam).OrderBy(i => i).ToArray();
             Leergebied = p.Leergebieden.Select(i => i.Naam).OrderBy(i => i).ToArray();
-
-
-        }
-        public ProductViewModel()
-        {
+            InVerlanglijst = g.VerlangLijst.Contains(p);
 
         }
     }

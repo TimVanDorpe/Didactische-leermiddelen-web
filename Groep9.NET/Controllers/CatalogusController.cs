@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using Groep9.NET.ViewModels;
 
 namespace Groep9.NET.Controllers
 {
@@ -34,15 +35,8 @@ namespace Groep9.NET.Controllers
             //{
             //    AddToVerlanglijst(prodId, gebruikerRepository.FindByEmail(User.Identity.Name));
             //}
-          
-                    if (doelgroep.Equals("-- Selecteer doelgroep --"))
-                        {
-                            doelgroep = "";
-                        }
-                    if (leergebied.Equals("-- Selecteer leergebied --"))
-                    {
-                        leergebied = "";
-                    }
+           
+            
                      IEnumerable<Product> producten = productRepository.VindAlleProducten().ToList();
             if (!trefwoord.Equals(""))
             {
@@ -68,13 +62,17 @@ namespace Groep9.NET.Controllers
             }
 
             FillDropDownList();
-
+            ProductenViewModel vm = new ProductenViewModel()
+            {
+                
+                Producten  = producten.Select(p=> new ProductViewModel(p, gebruiker))
+            };
             if (Request.IsAjaxRequest())
-                        return PartialView("Producten", producten);
+                        return PartialView("Producten", vm.Producten);
                     
                     
 
-                    return View(producten);
+                    return View(vm);
                
                 
                       
@@ -150,13 +148,13 @@ namespace Groep9.NET.Controllers
             IList<Product> verlanglijst = gebruiker.VerlangLijst.ToList();
             return RedirectToAction("Verlanglijst");
         }
-        public ActionResult AddOfVerwijderVerlanglijst(int id, string actie, Gebruiker gebruiker)
+        public ActionResult AddOfVerwijderVerlanglijst(int id, Gebruiker gebruiker)
         {
             if (!Request.IsAuthenticated)
             {
                 return RedirectToAction("login", "Account");
             }
-            if (actie.Equals("toevoegen"))
+            if (!CheckVerlanglijst(id,gebruiker))
             {
                 Product product = productRepository.FindByProductNummer(id);
                 gebruiker.VoegProductAanVerlanglijstToe(product);
@@ -175,7 +173,18 @@ namespace Groep9.NET.Controllers
            
             return RedirectToAction("Index");
         }
-        
+        public Boolean CheckVerlanglijst(int id, Gebruiker gebruiker)
+        {
+            Product product = productRepository.FindByProductNummer(id);
+            if (gebruiker.VerlangLijst.Contains(product))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
         //methode voor reserveerknop, die aantal meegeeft aan methode product.Reserveer
         public ActionResult Reservatie(Gebruiker gebruiker, int aantal = 0,int productnummer = 0)

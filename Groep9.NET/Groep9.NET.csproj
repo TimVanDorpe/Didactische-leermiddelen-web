@@ -233,7 +233,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\LogInViewModel.cs" />
-    <Compile Include="ViewModels\ProductViewModel.cs" />
+    <Compile Include="ViewModels\ProductenViewModel.cs" />
     <Compile Include="ViewModels\ReservatieViewModel.cs" />
     <Compile Include="Views\App\AppViewPage.cs" />
   </ItemGroup>

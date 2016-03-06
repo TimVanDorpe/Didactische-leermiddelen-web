@@ -1,5 +1,5 @@
 ﻿@using System.Security.Policy
-@model IEnumerable<Groep9.NET.Product>
+@model Groep9.NET.ViewModels.ProductenViewModel
 
 @{
     ViewBag.Title = "Catalogus";
@@ -75,6 +75,6 @@
 </p>
             <div class="row">
                 <div class="col-xs-12">
-                    @Html.Partial("Producten", Model)
+                    @Html.Partial("Producten", Model.Producten)
                 </div>
             </div>
