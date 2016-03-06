@@ -7,12 +7,18 @@ using System.ComponentModel;
 using System.Diagnostics;
 using Groep9.NET.Models.Domein;
 using System.Diagnostics;
+using System.ComponentModel.DataAnnotations;
 
 namespace Groep9.NET {
     public class Product {
+
+        [Required]
         public int ProductId { get; set; }
+        [Required]
         public string Foto { get; set; }
+        [Required]
         public string Naam { get; set; }
+        [Required]
         public string Omschrijving { get; set; }
         public double Prijs { get; set; }
 

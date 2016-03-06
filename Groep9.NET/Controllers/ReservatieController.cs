@@ -9,10 +9,35 @@ namespace Groep9.NET.Controllers
 {
     public class ReservatieController : Controller
     {
-        // GET: Reservatie
-        public ActionResult Index(Gebruiker gebruiker)
+        private IProductRepository productRepository;
+        private IDoelgroepRepository doelgroepRepository;
+        private ILeergebiedRepository leergebiedRepository;
+        private IGebruikerRepository gebruikerRepository;
+
+        public ReservatieController(IProductRepository pr, IDoelgroepRepository dr, ILeergebiedRepository lr, IGebruikerRepository gr)
         {
-            
+            productRepository = pr;
+            doelgroepRepository = dr;
+            leergebiedRepository = lr;
+            gebruikerRepository = gr;
+
+        }
+
+        // GET: Reservatie
+        public ActionResult Reservatie(Gebruiker gebruiker, int aantal = 0, int productnummer = 0)
+        {
+            if (!Request.IsAuthenticated)
+            {
+                return RedirectToAction("login", "Account");
+            }
+            Product product = productRepository.FindByProductNummer(productnummer);
+            productRepository.ReserveerProduct(productnummer, aantal);
+
+
+            DateTime start = productRepository.BerekenStartDatumReservatieWeek();
+            DateTime eind = productRepository.BerekenEindDatumReservatieWeek();
+            gebruiker.ReservatieLijst.Add(new Reservatie(product, start, eind, aantal));
+
             return View(gebruiker.ReservatieLijst);
         }
     }

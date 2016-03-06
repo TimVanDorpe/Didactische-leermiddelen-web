@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Groep9.NET.Models.Domein.Reservatie>
+
+<h2>Reservatie</h2>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Reservatie</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.product.Foto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.product.Naam)
+            </th>
+           <th>
+               @Html.DisplayNameFor(model => model.StartDatum)
+           </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EindDatum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.aantal)
+            </th>           
+
+
+        </tr>
+@if (!Model.Any())
+{
+    <tr>
+        <td colspan="9">@User.Identity.Name heeft geen bestellingen</td>
+    </tr>
+
+}
+@foreach (var item in Model)
+{
+        <tr>
+            <td>
+                    @Html.DisplayFor(modelItem => item.product.Foto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.product.Naam)
+            </td>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDatum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EindDatum)
+            </td>
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.aantal)
+            </td>
+            
+           
+        </tr>
+}
+
+    </table>
+</body>
+</html>
