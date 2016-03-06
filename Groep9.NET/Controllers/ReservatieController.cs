@@ -36,7 +36,7 @@ namespace Groep9.NET.Controllers
 
             DateTime start = productRepository.BerekenStartDatumReservatieWeek();
             DateTime eind = productRepository.BerekenEindDatumReservatieWeek();
-            gebruiker.ReservatieLijst.Add(new Reservatie(product, start, eind, aantal));
+            gebruikerRepository.ReserveerProduct(product, start, eind, aantal, gebruiker);
 
             return View(gebruiker.ReservatieLijst);
         }

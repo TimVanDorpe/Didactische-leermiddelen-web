@@ -1,5 +1,6 @@
 ﻿using Groep9.NET.Models.DAL;
 using Groep9.NET.Models.Domein;
+using Groep9.NET.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -56,13 +57,18 @@ namespace Groep9.NET.Controllers
             }
 
             FillDropDownList();
+            ProductenViewModel vm = new ProductenViewModel()
+            {
+
+                Producten = producten.Select(p => new ProductViewModel(p, gebruiker))
+            };
 
             if (Request.IsAjaxRequest())
-                        return PartialView("Producten", producten);
+                        return PartialView("Producten", vm.Producten);
                     
                     
 
-                    return View(producten);
+                    return View(vm);
                
                 
         
@@ -94,7 +100,19 @@ namespace Groep9.NET.Controllers
             ViewBag.doelgroep = GetDoelgroepSelectList();
 
         }
-       
+        public Boolean CheckVerlanglijst(int id, Gebruiker gebruiker)
+        {
+            Product product = productRepository.FindByProductNummer(id);
+            if (gebruiker.VerlangLijst.Contains(product))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
 
         public ActionResult AddToVerlanglijst(int id, Gebruiker gebruiker)
         {
@@ -109,8 +127,33 @@ namespace Groep9.NET.Controllers
             gebruikerRepository.SaveChanges();
             return RedirectToAction("Index");
         }
-        
-        
+        public ActionResult AddOfVerwijderVerlanglijst(int id, Gebruiker gebruiker)
+        {
+            if (!Request.IsAuthenticated)
+            {
+                return RedirectToAction("login", "Account");
+            }
+            if (!CheckVerlanglijst(id, gebruiker))
+            {
+                Product product = productRepository.FindByProductNummer(id);
+                gebruiker.VoegProductAanVerlanglijstToe(product);
+                gebruikerRepository.SaveChanges();
+
+            }
+            else
+            {
+                Product product = productRepository.FindByProductNummer(id);
+                gebruiker.verwijderProductUitVerlanglijst(product);
+                gebruikerRepository.SaveChanges();
+            }
+            // Gebruiker currentUser = gebruikerRepository.FindByEmail(User.Identity.Name);
+
+
+
+            return RedirectToAction("Index");
+        }
+
+
 
     }
 }
