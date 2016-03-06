@@ -193,6 +193,7 @@
     <Compile Include="Controllers\CatalogusController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ReservatieController.cs" />
+    <Compile Include="Controllers\VerlanglijstController.cs" />
     <Compile Include="Infrastructure\GebruikerModelBinder.cs" />
     <Compile Include="Models\DAL\DoelgroepRepository.cs" />
     <Compile Include="Models\DAL\LeergebiedRepository.cs" />
@@ -267,7 +268,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Views\Catalogus\Verlanglijst.cshtml" />
+    <Content Include="Views\Verlanglijst\Verlanglijst.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -288,13 +289,11 @@
     <Content Include="Views\Catalogus\Producten.cshtml" />
     <Content Include="Views\Account\LogIn.cshtml" />
     <Content Include="Views\Account\ReedsIngelogd.cshtml" />
-    <Content Include="Views\Catalogus\Reservatie.cshtml" />
+    <Content Include="Views\Reservatie\Reservatie.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Manage\" />
-    <Folder Include="Views\Reservatie\" />
-    <Folder Include="Views\Verlanglijst\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
