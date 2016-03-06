@@ -1,26 +1,9 @@
 ﻿@using Groep9.NET.Controllers
 @using Groep9.NET.Models.Domein
 @model IEnumerable<Groep9.NET.ViewModels.ProductViewModel>
-@section scripts
-{
-    <script>
-        $(window).load(checkVerlanglijst);
-        $("[type='checkbox']").valueOf()
-        $(document).ready(function () {
-            // Connect to 'change' event in order to toggle glyphs
-            $("[type='checkbox']").change(function () {
-                if ($(this).prop('checked')) {
-                    $(this).prev().addClass('glyphicon-ok-circle');
-                    $(this).prev().removeClass('glyphicon-unchecked');
-                }
-                else {
-                    $(this).prev().removeClass('glyphicon-ok-circle');
-                    $(this).prev().addClass('glyphicon-unchecked');
-                }
-            });
-        });
-    </script>
-}
+
+    
+
 
 <div class="hidden-sm hidden-xs">
     <table class="table table-responsive ">
@@ -116,12 +99,13 @@
                              });
                          });
                      </script>*@
-                    <label class="btn btn-default">
-                        
+                    <label class="btn  verlanglijstlabel">
+                        <span class="glyphicon verlanglijstglyp"></span>
+
                         @{
-                            var url = Url.Action("AddOfVerwijderVerlanglijst", new {id = item.ProductId});
+                            var url = Url.Action("AddOfVerwijderVerlanglijst", new { id = item.ProductId });
                         }
-                        @Html.CheckBoxFor(modelItem=>item.InVerlanglijst, new {id = item.ProductId, onclick = "window.location = '" + url + "'", @class = "toggle" }) toevoegen
+                        @Html.CheckBoxFor(modelItem => item.InVerlanglijst, new { id = item.ProductId, onclick = "window.location = '" + url + "'", @class = "toggle" }) toevoegen
                     </label>
                     @*<a href="@Url.Action("AddToVerlanglijst", new {id = item.ProductId})" class="btn btn-default">
 

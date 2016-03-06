@@ -45,6 +45,7 @@
 
 .groen:hover {
     background-color: rgba(0, 156, 124, 0.61);
+     color: #fff;
 }
 .zoeken {
     margin-top: 10px;
@@ -125,7 +126,7 @@
     
 }
 
-.btn.active {                
+/*.btn.active {                
 	display: none;		
 }
 
@@ -141,7 +142,7 @@
 }
 .btn.active span:last-child  {            	
 	display: none;			
-}
+}*/
 
 .vanboven-rechts {
     position: relative;
