@@ -40,9 +40,9 @@ namespace Groep9.NET
             return Producten.Find(productnummer);
         }
 
-        public void ReserveerProduct(int productId, int hoeveelheid)
+        public void ReserveerProduct(Product p, int hoeveelheid)
         {
-            Product p = FindByProductNummer(productId);
+            //Product p = FindByProductNummer(productId);
 
             if (hoeveelheid > p.AantalBeschikbaar)
             {

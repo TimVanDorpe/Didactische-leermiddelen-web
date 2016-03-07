@@ -43,7 +43,7 @@ namespace Groep9.NET.Controllers
         public ActionResult Reservatie(Gebruiker gebruiker, int aantal = 0, int productnummer = 0)
         {
             Product product = productRepository.FindByProductNummer(productnummer);
-            productRepository.ReserveerProduct(productnummer, aantal);
+            productRepository.ReserveerProduct(product, aantal);
             
             DateTime start = productRepository.BerekenStartDatumReservatieWeek();
             DateTime eind = productRepository.BerekenEindDatumReservatieWeek();

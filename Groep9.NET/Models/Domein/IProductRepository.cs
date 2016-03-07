@@ -14,7 +14,7 @@ namespace Groep9.NET {
      
         Product FindByProductNummer(int productnummer);
 
-        void ReserveerProduct(int productId, int hoeveelheid);
+        void ReserveerProduct(Product p, int hoeveelheid);
 
         DateTime BerekenStartDatumReservatieWeek();
         DateTime BerekenEindDatumReservatieWeek();
