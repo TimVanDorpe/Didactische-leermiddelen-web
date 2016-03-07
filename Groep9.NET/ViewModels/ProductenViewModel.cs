@@ -36,8 +36,14 @@ namespace Groep9.NET.ViewModels {
         [DataType(DataType.MultilineText)]
         public string Omschrijving { get; private set; }
 
-        [DisplayName("Beschikbaar")]
-        public int Aantal { get; private set; }
+        public int Aantal { get; set; } // totaal in catalogus
+        [Display(Name = "Beschikbaar")]
+        public int AantalBeschikbaar { get; set; } // enkel de beschikbare
+
+        public int AantalGeblokkeerd { get; set; }//enkel geblokkeerd
+        public int AantalGereserveerd { get; set; }//enkel gereserveerd
+
+
         public double Prijs { get; private set; }
         public string Firma { get; private set; }
         // public Doelgroep Doelgroep { get; private set; }
@@ -65,6 +71,7 @@ namespace Groep9.NET.ViewModels {
             Doelgroep = p.Doelgroepen.Select(i => i.Naam).OrderBy(i => i).ToArray();
             Leergebied = p.Leergebieden.Select(i => i.Naam).OrderBy(i => i).ToArray();
             InVerlanglijst = g.VerlangLijst.Contains(p);
+            AantalBeschikbaar = p.AantalBeschikbaar;
 
         }
     }

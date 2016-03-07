@@ -46,10 +46,10 @@ namespace Groep9.NET {
             Leergebieden = new List<Leergebied>();
         }
 
-
+        /*
         public Product(string foto, string naam, string omschrijving, double prijs, int aantal, bool uitleenbaarheid, string plaats, string firma)
             : this() {
-            this.Foto = foto;
+            Foto = foto;
 
             Naam = naam;
             Omschrijving = omschrijving;
@@ -60,12 +60,10 @@ namespace Groep9.NET {
             Firma = firma;
             AantalBeschikbaar = aantal;
         }
-
-        public Product(string foto, int productnummer, string naam, string omschrijving, double prijs, int aantal, bool uitleenbaarheid, string plaats, string firma, List<Doelgroep> doelgroepen, List<Leergebied> leergebieden)
-           : this(foto, naam, omschrijving, prijs, aantal, uitleenbaarheid, plaats, firma) {
-
+        */
+        public Product(string foto, string naam, string omschrijving, double prijs, int aantal, bool uitleenbaarheid, string plaats, string firma, List<Doelgroep> doelgroepen, List<Leergebied> leergebieden)
+           : this() { 
             foreach (var doel in doelgroepen) {
-
                 Doelgroepen.Add(doel);
                 // doel.RegistreerProduct(this);
             }
@@ -75,11 +73,22 @@ namespace Groep9.NET {
                 leer.RegistreerLeergebied(this);
             }
 
+            Foto = foto;
+            Naam = naam;
+            Omschrijving = omschrijving;
+            Prijs = prijs;
+            Aantal = aantal;
+            Uitleenbaarheid = uitleenbaarheid;
+            Plaats = plaats;
+            Firma = firma;
+            AantalBeschikbaar = aantal;
+
+
 
         }
 
 
-        
+
 
         public void Blokkeer(int aantal)
         {
