@@ -78,15 +78,11 @@ namespace Groep9.NET.Controllers
                     return RedirectToAction("Index", "Home");
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Fout e-mail / wachtwoord.");
+                    ModelState.AddModelError("", "Foutief e-mail / wachtwoord.");
                     return View(model);
             }
         }
 
-        public ActionResult ReedsIngelogd()
-        {
-            return View();
-        }
         private ActionResult RedirectToLocal(string returnUrl)
         {
             if (Url.IsLocalUrl(returnUrl))

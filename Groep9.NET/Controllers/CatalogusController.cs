@@ -15,8 +15,6 @@ namespace Groep9.NET.Controllers {
         private IDoelgroepRepository doelgroepRepository;
         private ILeergebiedRepository leergebiedRepository;
         private IGebruikerRepository gebruikerRepository;
-        //  private ApplicationDbContext adc;
-
 
         public CatalogusController(IProductRepository pr, IDoelgroepRepository dr, ILeergebiedRepository lr, IGebruikerRepository gr) {
             productRepository = pr;
