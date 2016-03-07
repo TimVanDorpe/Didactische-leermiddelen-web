@@ -83,6 +83,9 @@ namespace Groep9.NET {
             Firma = firma;
             AantalBeschikbaar = aantal;
 
+            //Dit moet ook in de constuctor en dan in de init, even om iets te testen !!!
+            this.AantalBeschikbaar = 20;
+            this.AantalGereserveerd = 0;
 
 
         }

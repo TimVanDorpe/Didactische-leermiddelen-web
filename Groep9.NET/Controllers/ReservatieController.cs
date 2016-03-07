@@ -35,9 +35,9 @@ namespace Groep9.NET.Controllers
             DateTime eind = productRepository.BerekenEindDatumReservatieWeek();
                      
             gebruiker.ReservatieLijst.Add(new Reservatie(product, start, eind, aantal));
-            List<Reservatie> x = gebruiker.ReservatieLijst.ToList();   
+            
             //kijken of hij het wel opvult
-            return View(x);
+            return View(gebruiker.ReservatieLijst);
         }
     }
 }

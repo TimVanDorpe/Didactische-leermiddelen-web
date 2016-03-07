@@ -22,6 +22,10 @@ namespace Groep9.NET.Models.Domein {
             this.aantal = aantal;
             StartDatum = start;
             EindDatum = eind;
+            //product.AantalBeschikbaar = product.AantalBeschikbaar - aantal;
+            //product.AantalBeschikbaar = product.AantalGereserveerd + aantal;
+            //p.AantalBeschikbaar -= hoeveelheid;
+            //p.AantalGereserveerd += hoeveelheid;
         }
 
 

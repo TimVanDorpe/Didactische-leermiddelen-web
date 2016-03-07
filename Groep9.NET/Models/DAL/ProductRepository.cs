@@ -44,13 +44,13 @@ namespace Groep9.NET
         {
             //Product p = FindByProductNummer(productId);
 
-            if (hoeveelheid > p.AantalBeschikbaar)
-            {
-                throw new ArgumentException("Er zijn niet genoeg producten beschikbaar voor jouw gewenste hoeveelheid");
-            }
+            //if (hoeveelheid > p.AantalBeschikbaar)
+            //{
+            //    throw new ArgumentException("Er zijn niet genoeg producten beschikbaar voor jouw gewenste hoeveelheid");
+            //}
 
-            p.AantalBeschikbaar -= hoeveelheid;
-            p.AantalGereserveerd += hoeveelheid;
+            //p.AantalBeschikbaar -= hoeveelheid;
+            //p.AantalGereserveerd += hoeveelheid;
 
             //DateTime startDatum = BerekenStartDatumReservatieWeek();
             //DateTime eindDatum = BerekenStartDatumReservatieWeek().AddDays(4).AddHours(9);// van maandag 8u tot vrijdag 5u
