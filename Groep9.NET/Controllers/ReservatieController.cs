@@ -7,6 +7,7 @@ using Groep9.NET.Models.Domein;
 
 namespace Groep9.NET.Controllers
 {
+    [Authorize]
     public class ReservatieController : Controller
     {
         private IProductRepository productRepository;
@@ -20,24 +21,18 @@ namespace Groep9.NET.Controllers
             doelgroepRepository = dr;
             leergebiedRepository = lr;
             gebruikerRepository = gr;
-
         }
 
         // GET: Reservatie
         public ActionResult Reservatie(Gebruiker gebruiker, int aantal = 0, int productnummer = 0)
         {
-            if (!Request.IsAuthenticated)
-            {
-                return RedirectToAction("login", "Account");
-            }
             Product product = productRepository.FindByProductNummer(productnummer);
             productRepository.ReserveerProduct(productnummer, aantal);
-
-
+            
             DateTime start = productRepository.BerekenStartDatumReservatieWeek();
             DateTime eind = productRepository.BerekenEindDatumReservatieWeek();
-            gebruikerRepository.ReserveerProduct(product, start, eind, aantal, gebruiker);
 
+            gebruikerRepository.ReserveerProduct(product, start, eind, aantal, gebruiker);
             return View(gebruiker.ReservatieLijst);
         }
     }
