@@ -41,10 +41,12 @@ namespace Groep9.NET.Controllers
                             p.Naam.ToLower().Contains(trefwoord.ToLower()) ||
                             p.Omschrijving.ToLower().Contains(trefwoord.ToLower()));
             }
-            if (gebruiker.Rol.Equals("Student")) {
-                    producten = producten.Where(p => p.Uitleenbaarheid);
+            
+            if(gebruiker is Student)
+            {
+                producten = producten.Where(p => p.Uitleenbaarheid);
+            }
 
-                }
             if (!doelgroep.Equals(""))
             {
                 producten = producten.Where(p => p.Doelgroepen.Any(d => d.Naam.Equals(doelgroep)));
