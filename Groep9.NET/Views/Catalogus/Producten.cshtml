@@ -40,8 +40,10 @@
         {
             <tr>
                 <td>
-                   
-                    <img style="width: 75px; height: 75px;" alt="@Html.DisplayFor(modelItem => item.Naam)" src="~/Content/images/@(@Html.DisplayFor(modelItem =>item.Foto))" />
+                    <a href="~/Content/images/@(@Html.DisplayFor(modelItem =>item.Foto))" data-lightbox="image-@item.ProductId" data-title="@Html.DisplayFor(modelItem => item.Naam)">
+                       
+                        <img style="width: 75px; height: 75px;" alt="@Html.DisplayFor(modelItem => item.Naam)" src="~/Content/images/@(@Html.DisplayFor(modelItem =>item.Foto))" />
+                    </a>
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Naam)
