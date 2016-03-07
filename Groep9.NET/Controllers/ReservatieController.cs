@@ -24,7 +24,7 @@ namespace Groep9.NET.Controllers
         }
 
         // GET: Reservatie
-        public ActionResult Reservatie(Gebruiker gebruiker, int aantal = 0, int productnummer = 0)
+        public ActionResult Index(Gebruiker gebruiker, int aantal = 0, int productnummer = 0)
         {
             Product product = productRepository.FindByProductNummer(productnummer);
             productRepository.ReserveerProduct(productnummer, aantal);

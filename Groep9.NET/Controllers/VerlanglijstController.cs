@@ -24,7 +24,7 @@ namespace Groep9.NET.Controllers
             gebruikerRepository = gr;
         }
 
-        public ActionResult Verlanglijst(Gebruiker gebruiker)
+        public ActionResult Index(Gebruiker gebruiker)
         {
             IList<Product> verlanglijst = gebruiker.VerlangLijst.ToList();
             return View(verlanglijst);
@@ -36,7 +36,7 @@ namespace Groep9.NET.Controllers
             gebruiker.verwijderProductUitVerlanglijst(product);
             gebruikerRepository.SaveChanges();
             IList<Product> verlanglijst = gebruiker.VerlangLijst.ToList();
-            return RedirectToAction("Verlanglijst");
+            return RedirectToAction("Index");
         }
 
         //methode voor reserveerknop, die aantal meegeeft aan methode product.Reserveer
@@ -50,7 +50,7 @@ namespace Groep9.NET.Controllers
 
             gebruiker.ReservatieLijst.Add(new Reservatie(product, start, eind, aantal));
             //gebruikerRepository.ReserveerProduct(product, start, end, aantal, gebruiker);
-            return RedirectToAction("Verlanglijst");
+            return RedirectToAction("Index");
         }
 
     }
