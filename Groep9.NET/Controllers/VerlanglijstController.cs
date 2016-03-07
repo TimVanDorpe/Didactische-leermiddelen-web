@@ -39,18 +39,11 @@ namespace Groep9.NET.Controllers
             return RedirectToAction("Index");
         }
 
-        //methode voor reserveerknop, die aantal meegeeft aan methode product.Reserveer
-        public ActionResult Reservatie(Gebruiker gebruiker, int aantal = 0, int productnummer = 0)
+     
+        public ActionResult Details(int id)
         {
-            Product product = productRepository.FindByProductNummer(productnummer);
-            productRepository.ReserveerProduct(productnummer, aantal);
-            
-            DateTime start = productRepository.BerekenStartDatumReservatieWeek();
-            DateTime eind = productRepository.BerekenEindDatumReservatieWeek();
-
-            gebruiker.ReservatieLijst.Add(new Reservatie(product, start, eind, aantal));
-            //gebruikerRepository.ReserveerProduct(product, start, end, aantal, gebruiker);
-            return RedirectToAction("Index");
+            Product product = productRepository.FindByProductNummer(id);
+            return View(product);
         }
 
     }
