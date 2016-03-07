@@ -295,7 +295,6 @@
     <Content Include="Views\Catalogus\Details.cshtml" />
     <Content Include="Views\Catalogus\Producten.cshtml" />
     <Content Include="Views\Account\LogIn.cshtml" />
-    <Content Include="Views\Account\ReedsIngelogd.cshtml" />
     <Content Include="Views\Reservatie\Reservatie.cshtml" />
   </ItemGroup>
   <ItemGroup>
