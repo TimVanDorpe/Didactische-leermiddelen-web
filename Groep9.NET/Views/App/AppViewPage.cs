@@ -23,7 +23,7 @@ namespace Groep9.NET.Views.App {
             {
 
                 //maakt niet uit of het new Student of new Docent is, rare dingen (jens)
-                return new Gebruiker();
+                return new Student();
             }
         }
     }
