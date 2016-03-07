@@ -47,68 +47,6 @@ namespace Groep9.NET.Controllers
             }
         }
 
-        //public ActionResult LogIn() {
-        //    return View();
-        //}
-
-        //[HttpGet]
-        //public ActionResult LogIn(string returnUrl) {
-        //    var model = new LogInViewModel {
-        //        ReturnUrl = returnUrl
-        //    };
-
-        //    if (HttpContext.Request.IsAuthenticated)
-        //    {
-        //        //return RedirectToAction("index", "home");
-        //        return RedirectToAction("ReedsIngelogd", "Account");
-        //    }
-        //    else
-        //    {
-        //        return View(model);
-
-        //    }
-        //}
-
-        //public ActionResult ReedsIngelogd()
-        //{
-        //    return View();
-        //}
-
-        //[HttpPost]
-        //public ActionResult LogIn(LogInViewModel model) {
-        //    if (!ModelState.IsValid) {
-        //        return View();
-        //    }
-
-        //    // tijdelijke authenticatie, moet hier mee ingelogd worden of het is fout
-        //    if (model.Email == "user@user.com" && model.Wachtwoord == "password") {
-        //        var identity = new ClaimsIdentity(new[] {
-        //        new Claim(ClaimTypes.Name, "Voorlopige Gebruiker"),
-        //        new Claim(ClaimTypes.Email, "a@b.com"),
-        //        new Claim(ClaimTypes.Country, "Belgium")
-        //    },
-        //            "ApplicationCookie");
-
-        //        var ctx = Request.GetOwinContext();
-        //        var authManager = ctx.Authentication;
-
-        //        authManager.SignIn(identity);
-
-        //        return Redirect(GetRedirectUrl(model.ReturnUrl));
-        //    }
-
-        //    // user authN failed
-        //    ModelState.AddModelError("", "Foute e-mail of paswoord ingevoerd");
-        //    return View();
-        //}
-        // GET: /Account/Login
-        ////[AllowAnonymous]
-        //public ActionResult Login(string returnUrl)
-        //{
-        //    ViewBag.ReturnUrl = returnUrl;
-        //    return View();
-        //}
-
         // GET: /Account/Login
         [AllowAnonymous]
         public ActionResult Login(string returnUrl) {
@@ -140,7 +78,7 @@ namespace Groep9.NET.Controllers
                     return RedirectToAction("Index", "Home");
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
+                    ModelState.AddModelError("", "Fout e-mail / wachtwoord.");
                     return View(model);
             }
         }
