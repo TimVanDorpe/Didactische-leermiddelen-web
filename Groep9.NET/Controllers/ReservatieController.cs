@@ -29,7 +29,7 @@ namespace Groep9.NET.Controllers
                //methode voor reserveerknop, die aantal meegeeft aan methode product.Reserveer
         
             Product product = productRepository.FindByProductNummer(productnummer);
-            productRepository.ReserveerProduct(productnummer, aantal);
+            productRepository.ReserveerProduct(product, aantal);
             
             DateTime start = productRepository.BerekenStartDatumReservatieWeek();
             DateTime eind = productRepository.BerekenEindDatumReservatieWeek();
