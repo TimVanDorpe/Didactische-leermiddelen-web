@@ -28,11 +28,22 @@ namespace Groep9.NET.Models.Domein {
             //p.AantalGereserveerd += hoeveelheid;
         }
 
-        public DateTime BerekenStartDatumReservatieWeek() {
+        public DateTime BerekenStartDatumReservatieWeek(DateTime? d = null /* voor te testen*/)
+        {
 
-            DateTime today = DateTime.Today;
+            DateTime today;
+
+            if (d != null)
+            {
+                today = (DateTime) d;
+            }
+            else
+            {
+                today = DateTime.Today;
+            }
+            
             // returnt volgende week
-            if (DateTime.Now.Day >= 1 && DateTime.Now.Day <= 5 || (DateTime.Now.Day == 5 && DateTime.Now.Hour <= 17)) {
+            if (today.DayOfWeek >= DayOfWeek.Monday && today.DayOfWeek <= DayOfWeek.Friday || (today.DayOfWeek == DayOfWeek.Friday && today.Hour <= 17)) {
                 int daysUntilMonday = (((int)DayOfWeek.Monday - (int)today.DayOfWeek + 7) % 7);
                 return today.AddDays(daysUntilMonday).AddHours(8);
             }
@@ -43,8 +54,8 @@ namespace Groep9.NET.Models.Domein {
             }
         }
 
-        public DateTime BerekenEindDatumReservatieWeek() {
-            return BerekenStartDatumReservatieWeek().AddDays(4).AddHours(9);
+        public DateTime BerekenEindDatumReservatieWeek(DateTime? d = null) {
+            return BerekenStartDatumReservatieWeek(d).AddDays(4).AddHours(9);
         }
 
 
