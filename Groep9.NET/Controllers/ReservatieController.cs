@@ -31,10 +31,8 @@ namespace Groep9.NET.Controllers
             Product product = productRepository.FindByProductNummer(productnummer);
             productRepository.ReserveerProduct(product, aantal);
             
-            DateTime start = productRepository.BerekenStartDatumReservatieWeek();
-            DateTime eind = productRepository.BerekenEindDatumReservatieWeek();
                      
-            gebruiker.ReservatieLijst.Add(new Reservatie(product, start, eind, aantal));
+            gebruiker.ReservatieLijst.Add(new Reservatie(product, aantal));
             
             //kijken of hij het wel opvult
             return View(gebruiker.ReservatieLijst);

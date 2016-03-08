@@ -105,6 +105,9 @@
     <Compile Include="Controllers\CatalogusControllerTest.cs" />
     <Compile Include="Controllers\DummyContext.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
+    <Compile Include="Controllers\ReservatieControllerTest.cs" />
+    <Compile Include="Controllers\VerlanglijstControllerTest.cs" />
+    <Compile Include="Models\Domein\ReservatieTest.cs" />
     <Compile Include="Models\TestenUC2.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

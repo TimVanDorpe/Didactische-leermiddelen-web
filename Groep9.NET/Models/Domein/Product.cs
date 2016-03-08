@@ -90,14 +90,7 @@ namespace Groep9.NET {
 
         }
 
-
-
-
-        public void Blokkeer(int aantal)
-        {
-            throw new NotSupportedException();
-        }
-
+        
        
     
     }
