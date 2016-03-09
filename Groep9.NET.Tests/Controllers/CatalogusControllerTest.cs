@@ -18,21 +18,27 @@ namespace Groep9.NET.Tests.Controllers {
     [TestClass]
     public class CatalogusControllerTest {
 
-        private CatalogusController CC;
+        private CatalogusController cc;
         private Mock<IProductRepository> mockpr;
-        private ProductViewModel model;
         private Mock<ILeergebiedRepository> mocklr;
         private Mock<IDoelgroepRepository> mockdr;
         private Mock<IGebruikerRepository> mockgr;
+
+        //private ProductViewModel model;
+
+        private DummyContext context = new DummyContext();
+
         private Product product1;
         private Product product2;
         private Product product3;
-        private Gebruiker g = new Student();
+
+        private Gebruiker g;
+
         private IQueryable<Product> ProductenLijst;
 
         [TestInitialize]
         public void SetUpContext() {
-            DummyContext context = new DummyContext();
+            
             mockpr = new Mock<IProductRepository>();
             mockdr = new Mock<IDoelgroepRepository>();
             mocklr = new Mock<ILeergebiedRepository>();
@@ -44,28 +50,32 @@ namespace Groep9.NET.Tests.Controllers {
             ProductenLijst = context.producten.AsQueryable();
 
             mockpr.Setup(p => p.VindAlleProducten()).Returns(ProductenLijst);
-            CC = new CatalogusController(mockpr.Object, mockdr.Object, mocklr.Object, mockgr.Object);
+            mockpr.Setup(p => p.FindByProductNummer(1)).Returns(product1);
+
+            g = context.Gebruiker;
+
+            cc = new CatalogusController(mockpr.Object, mockdr.Object, mocklr.Object, mockgr.Object);
         }
 
 
         [TestMethod]
         public void IndexReturnsAlleProducten() {
             //Act
-            ViewResult result = CC.Index(g, "", "") as ViewResult;
+            ViewResult result = cc.Index(g) as ViewResult;
             List<Product> producten = (result.Model as IEnumerable<Product>).ToList();
 
 
             //Assert
-            Assert.AreEqual(3, producten.Count());
+            Assert.AreEqual(3, producten.Count);
             Assert.AreEqual(1, producten[0].ProductId);
-            Assert.AreEqual(2, producten[1].Naam);
+            Assert.AreEqual("B", producten[1].Naam);
             Assert.AreEqual("C", producten[2].Naam);
 
         }
 
         [TestMethod]
         public void DetailsReturnsDetails() {
-            ViewResult result = CC.Details(1) as ViewResult;
+            ViewResult result = cc.Details(1) as ViewResult;
             Product product = result.Model as Product;
 
             //Assert
@@ -73,5 +83,69 @@ namespace Groep9.NET.Tests.Controllers {
 
 
         }
+
+
+
+        [TestMethod]
+        public void GetdoelgroepSelectListReturnsDoelgroepSelectList()
+        {
+            
+        }
+
+
+        /*
+        private SelectList GetDoelgroepSelectList() {
+            return new SelectList(doelgroepRepository.VindAlleDoelgroepen().Select(p => p.Naam));
+
+        }
+        private SelectList GetLeergebiedSelectList() {
+            return new SelectList(leergebiedRepository.VindAlleLeergebieden().Select(p => p.Naam));
+
+        }
+        public ActionResult Details(int id) {
+            Product product = productRepository.FindByProductNummer(id);
+            return View(product);
+        }
+
+        public void FillDropDownList() {
+
+            ViewBag.leergebied = GetLeergebiedSelectList();
+            ViewBag.doelgroep = GetDoelgroepSelectList();
+
+        }
+        public Boolean CheckVerlanglijst(int id, Gebruiker gebruiker) {
+            Product product = productRepository.FindByProductNummer(id);
+            if (gebruiker.VerlangLijst.Contains(product)) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+
+        public ActionResult AddToVerlanglijst(int id, Gebruiker gebruiker) {
+            Product product = productRepository.FindByProductNummer(id);
+            gebruiker.VoegProductAanVerlanglijstToe(product);
+            gebruikerRepository.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        public ActionResult AddOfVerwijderVerlanglijst(int id, Gebruiker gebruiker) {
+            if (!CheckVerlanglijst(id, gebruiker)) {
+                Product product = productRepository.FindByProductNummer(id);
+                gebruiker.VoegProductAanVerlanglijstToe(product);
+                gebruikerRepository.SaveChanges();
+
+            }
+            else {
+                Product product = productRepository.FindByProductNummer(id);
+                gebruiker.VerwijderProductUitVerlanglijst(product);
+                gebruikerRepository.SaveChanges();
+            }
+            // Gebruiker currentUser = gebruikerRepository.FindByEmail(User.Identity.Name);
+
+            return RedirectToAction("Index");
+        }
+        */
     }
 }

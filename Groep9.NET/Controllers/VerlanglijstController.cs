@@ -33,7 +33,7 @@ namespace Groep9.NET.Controllers
         public ActionResult RemoveFromVerlanglijst(int id, Gebruiker gebruiker)
         {
             Product product = productRepository.FindByProductNummer(id);
-            gebruiker.verwijderProductUitVerlanglijst(product);
+            gebruiker.VerwijderProductUitVerlanglijst(product);
             gebruikerRepository.SaveChanges();
             IList<Product> verlanglijst = gebruiker.VerlangLijst.ToList();
             return RedirectToAction("Index");

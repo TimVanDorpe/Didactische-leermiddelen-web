@@ -30,9 +30,13 @@ namespace Groep9.NET.Tests.Models {
         Doelgroep peuters = new Doelgroep("Peuters");
         Doelgroep neuters = new Doelgroep("Neuters");
 
-        private Product p1;
-        private Product p2;
-        private Product p3;
+        Product p1;
+        Product p2;
+        Product p3;
+
+
+        public Gebruiker g = new Personeelslid{Email = "a@b.c", VerlangLijst = new List<Product>(), ReservatieLijst = new List<Reservatie>(), GebruikerId = 1};
+
 
         public DummyContext() {
             producten = new List<Product>();
@@ -74,15 +78,7 @@ namespace Groep9.NET.Tests.Models {
                 return new List<Doelgroep> { kleuters, peuters, neuters }.AsQueryable();
             }
         }
-        /*
-        public Customer Customer
-        {
-            get
-            {
-                return new Customer { CustomerName = "jan", Name = "Janneman", FirstName = "Jan", Street = "Nieuwstraat 100", City = gent };
-            }
-        }
-        */
+        
 
         public IQueryable Producten { get { return producten.AsQueryable(); } }
 
@@ -99,6 +95,8 @@ namespace Groep9.NET.Tests.Models {
         {
             get { return p3; }
         }
+
+        public Gebruiker Gebruiker { get { return g; } }
 
         public Product GetProduct(int id) {
             return producten.FirstOrDefault(p => p.ProductId == id);

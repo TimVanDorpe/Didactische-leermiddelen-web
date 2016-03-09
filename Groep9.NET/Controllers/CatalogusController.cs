@@ -102,7 +102,7 @@ namespace Groep9.NET.Controllers {
             }
             else {
                 Product product = productRepository.FindByProductNummer(id);
-                gebruiker.verwijderProductUitVerlanglijst(product);
+                gebruiker.VerwijderProductUitVerlanglijst(product);
                 gebruikerRepository.SaveChanges();
             }
             // Gebruiker currentUser = gebruikerRepository.FindByEmail(User.Identity.Name);
