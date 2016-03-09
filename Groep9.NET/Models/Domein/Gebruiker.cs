@@ -28,7 +28,7 @@ namespace Groep9.NET.Models.Domein
             
         }
 
-        public void verwijderProductUitVerlanglijst(Product p)
+        public void VerwijderProductUitVerlanglijst(Product p)
         {
             VerlangLijst.Remove(p);
         }

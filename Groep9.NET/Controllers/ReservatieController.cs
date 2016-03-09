@@ -26,18 +26,22 @@ namespace Groep9.NET.Controllers
         // GET: Reservatie
         public ActionResult Index(Gebruiker gebruiker, int aantal = 0, int productnummer = 0)
         {
-               //methode voor reserveerknop, die aantal meegeeft aan methode product.Reserveer
-        
-            Product product = productRepository.FindByProductNummer(productnummer);
-            productRepository.ReserveerProduct(product, aantal);
-            
-            DateTime start = productRepository.BerekenStartDatumReservatieWeek();
-            DateTime eind = productRepository.BerekenEindDatumReservatieWeek();
-                     
-            gebruiker.ReservatieLijst.Add(new Reservatie(product, start, eind, aantal));
-            List<Reservatie> x = gebruiker.ReservatieLijst.ToList();   
+            //methode voor reserveerknop, die aantal meegeeft aan methode product.Reserveer
+            try {
+                Product product = productRepository.FindByProductNummer(productnummer);
+                productRepository.ReserveerProduct(product, aantal);
+
+
+                gebruiker.ReservatieLijst.Add(new Reservatie(product, aantal)); }
+            catch 
+            {
+                ModelState.AddModelError("", "Reservatie is niet toegevoegd");
+              
+
+            }
+
             //kijken of hij het wel opvult
-            return View(x);
+            return View(gebruiker.ReservatieLijst);
         }
     }
 }

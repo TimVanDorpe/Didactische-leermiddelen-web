@@ -5,49 +5,104 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
 using Groep9.NET.Models.Domein;
 
-namespace Groep9.NET.Tests.Models
-{
+namespace Groep9.NET.Tests.Models {
     /// <summary>
     /// Summary description for DummyContext
     /// </summary>
     [TestClass]
-    public class DummyContext
-    {
+    public class DummyContext {
 
-        public IQueryable<Product> ProductenLijst { get; private set; }
+        public List<Product> Producten;
+        List<Doelgroep> doelgroepen = new List<Doelgroep>();
+        List<Leergebied> leergebieden = new List<Leergebied>();
+
+
+        /*
         public Product VoorbeeldProduct { get; private set; }
         public Product VoorbeeldProduct2 { get;  private set; }
         public Product VoorbeeldProduct3 { get; private set; }
+        */
 
-      
+        Leergebied tellen = new Leergebied("Tellen");
+        Leergebied spelen = new Leergebied("Spelen");
+        Leergebied zeveren = new Leergebied("Zeveren");
+        Doelgroep kleuters = new Doelgroep("Kleuters");
+        Doelgroep peuters = new Doelgroep("Peuters");
+        Doelgroep neuters = new Doelgroep("Neuters");
+
+        Product p1;
+        Product p2;
+        Product p3;
 
 
-        public DummyContext()
-        {
-            List<Doelgroep> doelgroepen =  new List<Doelgroep>();
-            List<Leergebied> leergebieden = new List<Leergebied>();
-            Leergebied x = new Leergebied("Tellen");
-            Doelgroep y = new Doelgroep("Kleuters");
+        public Gebruiker g = new Personeelslid{Email = "a@b.c", VerlangLijst = new List<Product>(), ReservatieLijst = new List<Reservatie>(), GebruikerId = 1};
 
-            doelgroepen.Add(y);
-            leergebieden.Add(x);
-            /*
 
-            VoorbeeldProduct = new Product("",1, "A","TestProd", 2.1, 1, true, "hier", "B", doelgroepen, leergebieden);
-            VoorbeeldProduct2 = new Product("",2, "B", "TestProd2", 5.8, 1, true, "hier", "B", doelgroepen, leergebieden);
-            VoorbeeldProduct3 = new Product("",3, "C", "TestProd3", 2.1, 1, true, "hier", "B", doelgroepen, leergebieden);
-            ProductenLijst =
-                (new Product[] { VoorbeeldProduct, VoorbeeldProduct2, VoorbeeldProduct3 }).ToList().AsQueryable();
-            */
+        public DummyContext() {
+            Producten = new List<Product>();
+            leergebieden.Add(tellen);
+            leergebieden.Add(spelen);
+            doelgroepen.Add(kleuters);
+            doelgroepen.Add(peuters);
+
+            p1 = new Product("", "A", "TestProd", 2.1, 1, true, "hier", "B", doelgroepen, leergebieden);
+            Producten.Add(p1);
+
+            leergebieden.Add(zeveren);
+            p2 = new Product("", "B", "TestProd2", 5.8, 1, true, "hier", "B", doelgroepen, leergebieden);
+            Producten.Add(p2);
+
+            doelgroepen.Add(neuters);
+            p3 = new Product("", "C", "TestProd3", 2.1, 1, true, "hier", "B", doelgroepen, leergebieden);
+            Producten.Add(p3);
 
         }
 
-        public Product GetProduct(int id)
+        public IQueryable<Leergebied> Leergebieden
         {
-            return ProductenLijst.FirstOrDefault(p=> p.ProductId== id);
+            get
+            {
+                return new List<Leergebied>
+                       {
+                           tellen,
+                           spelen,
+                           zeveren
+                       }.AsQueryable();
+            }
         }
 
+        public IQueryable<Doelgroep> Doelgroepen
+        {
+            get
+            {
+                return new List<Doelgroep> { kleuters, peuters, neuters }.AsQueryable();
+            }
+        }
         
+
+       // public IQueryable Producten { get { return Producten; } }
+
+        public Product P1
+        {
+            get { return p1; }
+        }
+
+        public Product P2
+        {
+            get { return p2; }
+        }
+        public Product P3
+        {
+            get { return p3; }
+        }
+
+        public Gebruiker Gebruiker { get { return g; } }
+
+        public Product GetProduct(int id) {
+            return Producten.FirstOrDefault(p => p.ProductId == id);
+        }
+
+
 
     }
 }

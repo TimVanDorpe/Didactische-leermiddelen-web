@@ -17,9 +17,12 @@ namespace Groep9.NET {
         [Required]
         public string Foto { get; set; }
         [Required]
+        [DisplayName("Naam product")]
         public string Naam { get; set; }
         [Required]
         public string Omschrijving { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:c}")]
         public double Prijs { get; set; }
 
         [DisplayName("Beschikbaar")]
@@ -83,18 +86,14 @@ namespace Groep9.NET {
             Firma = firma;
             AantalBeschikbaar = aantal;
 
+            //Dit moet ook in de constuctor en dan in de init, even om iets te testen !!!
+            this.AantalBeschikbaar = 20;
+            this.AantalGereserveerd = 0;
 
 
         }
 
-
-
-
-        public void Blokkeer(int aantal)
-        {
-            throw new NotSupportedException();
-        }
-
+        
        
     
     }
