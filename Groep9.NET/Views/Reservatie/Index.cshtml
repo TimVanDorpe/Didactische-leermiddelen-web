@@ -40,10 +40,12 @@
 }
 @foreach (var item in Model)
 {
-        <tr><td>
-                <img style="width: 75px; height: 75px;" alt="@Html.DisplayFor(modelItem => item.product.Naam)" 
-                     src="~/Content/images/@(@Html.DisplayFor(modelItem => item.product.Foto))" />
-   
+        <tr>
+            <td>
+                <a href="~/Content/images/@(@Html.DisplayFor(modelItem =>item.product.Foto))" data-lightbox="image-@item.product.ProductId" data-title="@Html.DisplayFor(modelItem => item.product.Naam)">
+
+        <img style="width: 75px; height: 75px;" alt="@Html.DisplayFor(modelItem => item.product.Naam)" src="~/Content/images/@(@Html.DisplayFor(modelItem =>item.product.Foto))" />
+    </a>
 </td>
             <td>
                 @Html.DisplayFor(modelItem => item.product.Naam)
