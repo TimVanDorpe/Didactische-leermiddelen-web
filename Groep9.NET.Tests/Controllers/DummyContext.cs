@@ -12,7 +12,7 @@ namespace Groep9.NET.Tests.Models {
     [TestClass]
     public class DummyContext {
 
-        public IList<Product> producten;
+        public List<Product> Producten;
         List<Doelgroep> doelgroepen = new List<Doelgroep>();
         List<Leergebied> leergebieden = new List<Leergebied>();
 
@@ -39,22 +39,22 @@ namespace Groep9.NET.Tests.Models {
 
 
         public DummyContext() {
-            producten = new List<Product>();
+            Producten = new List<Product>();
             leergebieden.Add(tellen);
             leergebieden.Add(spelen);
             doelgroepen.Add(kleuters);
             doelgroepen.Add(peuters);
 
             p1 = new Product("", "A", "TestProd", 2.1, 1, true, "hier", "B", doelgroepen, leergebieden);
-            producten.Add(p1);
+            Producten.Add(p1);
 
             leergebieden.Add(zeveren);
             p2 = new Product("", "B", "TestProd2", 5.8, 1, true, "hier", "B", doelgroepen, leergebieden);
-            producten.Add(p2);
+            Producten.Add(p2);
 
             doelgroepen.Add(neuters);
             p3 = new Product("", "C", "TestProd3", 2.1, 1, true, "hier", "B", doelgroepen, leergebieden);
-            producten.Add(p3);
+            Producten.Add(p3);
 
         }
 
@@ -80,7 +80,7 @@ namespace Groep9.NET.Tests.Models {
         }
         
 
-        public IQueryable Producten { get { return producten.AsQueryable(); } }
+       // public IQueryable Producten { get { return Producten; } }
 
         public Product P1
         {
@@ -99,7 +99,7 @@ namespace Groep9.NET.Tests.Models {
         public Gebruiker Gebruiker { get { return g; } }
 
         public Product GetProduct(int id) {
-            return producten.FirstOrDefault(p => p.ProductId == id);
+            return Producten.FirstOrDefault(p => p.ProductId == id);
         }
 
 

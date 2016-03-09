@@ -47,7 +47,7 @@ namespace Groep9.NET.Tests.Controllers {
             product2 = context.P2;
             product3 = context.P3;
             //model = new ProductViewModel();
-            ProductenLijst = context.producten.AsQueryable();
+            ProductenLijst = context.Producten.AsQueryable();
 
             mockpr.Setup(p => p.VindAlleProducten()).Returns(ProductenLijst);
             mockpr.Setup(p => p.FindByProductNummer(1)).Returns(product1);
@@ -80,11 +80,8 @@ namespace Groep9.NET.Tests.Controllers {
 
             //Assert
             Assert.AreEqual(product1.Omschrijving, product.Omschrijving);
-
-
         }
-
-
+        
 
         [TestMethod]
         public void GetdoelgroepSelectListReturnsDoelgroepSelectList()
@@ -93,59 +90,6 @@ namespace Groep9.NET.Tests.Controllers {
         }
 
 
-        /*
-        private SelectList GetDoelgroepSelectList() {
-            return new SelectList(doelgroepRepository.VindAlleDoelgroepen().Select(p => p.Naam));
-
-        }
-        private SelectList GetLeergebiedSelectList() {
-            return new SelectList(leergebiedRepository.VindAlleLeergebieden().Select(p => p.Naam));
-
-        }
-        public ActionResult Details(int id) {
-            Product product = productRepository.FindByProductNummer(id);
-            return View(product);
-        }
-
-        public void FillDropDownList() {
-
-            ViewBag.leergebied = GetLeergebiedSelectList();
-            ViewBag.doelgroep = GetDoelgroepSelectList();
-
-        }
-        public Boolean CheckVerlanglijst(int id, Gebruiker gebruiker) {
-            Product product = productRepository.FindByProductNummer(id);
-            if (gebruiker.VerlangLijst.Contains(product)) {
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
-
-
-        public ActionResult AddToVerlanglijst(int id, Gebruiker gebruiker) {
-            Product product = productRepository.FindByProductNummer(id);
-            gebruiker.VoegProductAanVerlanglijstToe(product);
-            gebruikerRepository.SaveChanges();
-            return RedirectToAction("Index");
-        }
-        public ActionResult AddOfVerwijderVerlanglijst(int id, Gebruiker gebruiker) {
-            if (!CheckVerlanglijst(id, gebruiker)) {
-                Product product = productRepository.FindByProductNummer(id);
-                gebruiker.VoegProductAanVerlanglijstToe(product);
-                gebruikerRepository.SaveChanges();
-
-            }
-            else {
-                Product product = productRepository.FindByProductNummer(id);
-                gebruiker.VerwijderProductUitVerlanglijst(product);
-                gebruikerRepository.SaveChanges();
-            }
-            // Gebruiker currentUser = gebruikerRepository.FindByEmail(User.Identity.Name);
-
-            return RedirectToAction("Index");
-        }
-        */
+        
     }
 }
