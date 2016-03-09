@@ -109,7 +109,8 @@ namespace Groep9.NET.Controllers {
                 {
                     Product product = productRepository.FindByProductNummer(id);
                     gebruiker.VoegProductAanVerlanglijstToe(product);
-                    gebruikerRepository.SaveChanges();
+                TempData["Info"] = "Product " + product.Naam + " is toegevoegd aan jouw verlanglijst";
+                gebruikerRepository.SaveChanges();
                     return RedirectToAction("Index");
                 }
                 catch 
@@ -127,12 +128,14 @@ namespace Groep9.NET.Controllers {
                 if (!CheckVerlanglijst(id, gebruiker)) {
                     Product product = productRepository.FindByProductNummer(id);
                     gebruiker.VoegProductAanVerlanglijstToe(product);
+                    TempData["Info"] = "Product " + product.Naam + " is toegevoegd aan jouw verlanglijst";
                     gebruikerRepository.SaveChanges();
 
                 }
                 else {
                     Product product = productRepository.FindByProductNummer(id);
                     gebruiker.VerwijderProductUitVerlanglijst(product);
+                    TempData["Info2"] = "Product " + product.Naam + " is verwijderd van jouw verlanglijst";
                     gebruikerRepository.SaveChanges();
                 }
                 // Gebruiker currentUser = gebruikerRepository.FindByEmail(User.Identity.Name);
