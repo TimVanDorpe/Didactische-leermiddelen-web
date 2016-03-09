@@ -39,7 +39,7 @@
 
             @foreach (var item in Model)
             {
-                using (Html.BeginForm("Index", "Reservatie", new { id = item.ProductId }))
+                using (Html.BeginForm("AddReservatie", "Verlanglijst", new { id = item.ProductId }))
                 {
                     <tr>
                         <td>

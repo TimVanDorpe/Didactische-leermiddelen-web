@@ -53,21 +53,26 @@
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            @if (Request.IsAuthenticated)
-            {
-                <p>
-                    Ingelogd als: @User.Identity.Name - <a href="@Url.Action("logout", "account")">Uitloggen</a>
-                </p>
-            }
+<div class="container body-content">
+    <br />
+    @if (TempData["Info"] != null)
+    {
+        <div class="alert alert-success">@TempData["Info"]</div>
+    }
+    @RenderBody()
+    <hr/>
+    <footer>
+        @if (Request.IsAuthenticated)
+        {
+            <p>
+                Ingelogd als: @User.Identity.Name - <a href="@Url.Action("logout", "account")">Uitloggen</a>
+            </p>
+        }
 
-            <p>&copy; 2016 - Hogent Didactische leermiddelen</p>
+        <p>&copy; 2016 - Hogent Didactische leermiddelen</p>
 
-        </footer>
-    </div>
+    </footer>
+</div>
     <script src="~/Scripts/lightbox.js"></script>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

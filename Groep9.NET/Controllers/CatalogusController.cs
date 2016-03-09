@@ -101,25 +101,26 @@ namespace Groep9.NET.Controllers {
         }
 
 
-        public ActionResult AddToVerlanglijst(int id, Gebruiker gebruiker)
-        {
+        //public ActionResult AddToVerlanglijst(int id, Gebruiker gebruiker)
+        //{
            
 
-                try
-                {
-                    Product product = productRepository.FindByProductNummer(id);
-                    gebruiker.VoegProductAanVerlanglijstToe(product);
-                    gebruikerRepository.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-                catch 
-                {
-                    ModelState.AddModelError("", "Reservatie is niet toegevoegd");
-                    return RedirectToAction("Index");
+        //        try
+        //        {
+        //            Product product = productRepository.FindByProductNummer(id);
+        //            gebruiker.VoegProductAanVerlanglijstToe(product);
+        //            gebruikerRepository.SaveChanges();
+               
+        //        return RedirectToAction("Index");
+        //        }
+        //        catch 
+        //        {
+        //            ModelState.AddModelError("", "Reservatie is niet toegevoegd");
+        //            return RedirectToAction("Index");
 
-                }
+        //        }
 
-        }
+        //}
     
     public ActionResult AddOfVerwijderVerlanglijst(int id, Gebruiker gebruiker) {
             try {
@@ -128,12 +129,13 @@ namespace Groep9.NET.Controllers {
                     Product product = productRepository.FindByProductNummer(id);
                     gebruiker.VoegProductAanVerlanglijstToe(product);
                     gebruikerRepository.SaveChanges();
-
+                    TempData["Info"] = "Product " + product.Naam + " is toegevoegd aan verlanglijst.";
                 }
                 else {
                     Product product = productRepository.FindByProductNummer(id);
                     gebruiker.VerwijderProductUitVerlanglijst(product);
                     gebruikerRepository.SaveChanges();
+                    TempData["Info"] = "Product " + product.Naam + " is verwijderd uit verlanglijst.";
                 }
                 // Gebruiker currentUser = gebruikerRepository.FindByEmail(User.Identity.Name);
 

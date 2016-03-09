@@ -17,14 +17,16 @@ namespace Groep9.NET.Models.Domein {
         [DataType(DataType.Date)]
         [Display(Name = "Einddatum van Reservatie")]
         public DateTime EindDatum { get; set; }
-        public Product product { get; set; }
-        public int aantal { get; set; }
+        public Product Product { get; set; }
+        public int Aantal { get; set; }
 
+        public Gebruiker Gebruiker { get; set; }
 
-        public Reservatie(Product product, int aantal)
+        public Reservatie(Product product, int aantal, Gebruiker gebruiker)
         {
-            this.product = product;
-            this.aantal = aantal;
+            this.Gebruiker = gebruiker;
+            this.Product = product;
+            this.Aantal = aantal;
             StartDatum = BerekenStartDatumReservatieWeek();
             EindDatum = BerekenEindDatumReservatieWeek();
             //product.AantalBeschikbaar = product.AantalBeschikbaar - aantal;

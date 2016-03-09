@@ -22,14 +22,16 @@ namespace Groep9.NET.Models.DAL.Mapping
 
             });
 
-            //HasMany(i => i.ReservatieLijst).WithMany().Map(m => {
-            //    m.ToTable("Reservaties");
+            //HasMany(i => i.ReservatieLijst).WithMany().Map(m =>
+            //{
+            //    m.ToTable("ReservatiesBijGebruiker");
             //    m.MapLeftKey("GebruikerId");
             //    m.MapRightKey("ProductId");
 
+            //    //});
+            //    // HasMany(t => t.VerlangLijst)
+            //    //.WithOptional().WillCascadeOnDelete(false);
             //});
-            // HasMany(t => t.VerlangLijst)
-            //.WithOptional().WillCascadeOnDelete(false);
         }
     }
 }
