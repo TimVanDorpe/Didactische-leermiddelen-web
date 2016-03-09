@@ -18,8 +18,8 @@ namespace Groep9.NET.Models.Domein {
 
         public Reservatie(Product product, DateTime start, DateTime eind, int aantal)
         {
-
-            product.Aantal -= aantal;
+            this.product = product;
+            this.aantal = aantal;
             StartDatum = start;
             EindDatum = eind;
         }

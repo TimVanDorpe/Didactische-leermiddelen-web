@@ -10,7 +10,8 @@
     <title>Reservatie</title>
 </head>
 <body>
-    <table>
+
+    <table class="table table-responsive" >
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.product.Foto)
@@ -45,7 +46,7 @@
 
                     <img style="width: 75px; height: 75px;" alt="@Html.DisplayFor(modelItem => item.product.Naam)" src="~/Content/images/@(@Html.DisplayFor(modelItem =>item.product.Foto))" />
                 </a>
-</td>
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.product.Naam)
             </td>
