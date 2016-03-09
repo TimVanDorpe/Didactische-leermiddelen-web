@@ -93,8 +93,35 @@ namespace Groep9.NET {
 
         }
 
-        
-       
-    
+        public DateTime BerekenStartDatumReservatieWeek(DateTime? d = null /* voor te testen*/)
+        {
+
+            DateTime today;
+
+            if (d != null)
+            {
+                today = (DateTime)d;
+            }
+            else
+            {
+                today = DateTime.Today;
+            }
+
+            // returnt volgende week
+            if (today.DayOfWeek >= DayOfWeek.Monday && today.DayOfWeek <= DayOfWeek.Friday || (today.DayOfWeek == DayOfWeek.Friday && today.Hour <= 17))
+            {
+                int daysUntilMonday = (((int)DayOfWeek.Monday - (int)today.DayOfWeek + 7) % 7);
+                return today.AddDays(daysUntilMonday).AddHours(8);
+            }
+            else {
+                // returnt volgende volgende week (indien na vrijdag 17h)
+                int daysUntilMonday = (((int)DayOfWeek.Monday - (int)today.DayOfWeek + 7) % 7 + 7);
+                return today.AddDays(daysUntilMonday).AddHours(8);
+            }
+        }
+
+
+
+
     }
 }

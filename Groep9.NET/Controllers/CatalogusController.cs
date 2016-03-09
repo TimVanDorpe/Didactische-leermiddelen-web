@@ -128,12 +128,14 @@ namespace Groep9.NET.Controllers {
                 if (!CheckVerlanglijst(id, gebruiker)) {
                     Product product = productRepository.FindByProductNummer(id);
                     gebruiker.VoegProductAanVerlanglijstToe(product);
+                    TempData["Info"] = "Product " + product.Naam + " is toegevoegd aan jouw verlanglijst";
                     gebruikerRepository.SaveChanges();
                     TempData["Info"] = "Product " + product.Naam + " is toegevoegd aan verlanglijst.";
                 }
                 else {
                     Product product = productRepository.FindByProductNummer(id);
                     gebruiker.VerwijderProductUitVerlanglijst(product);
+                    TempData["Info2"] = "Product " + product.Naam + " is verwijderd van jouw verlanglijst";
                     gebruikerRepository.SaveChanges();
                     TempData["Info"] = "Product " + product.Naam + " is verwijderd uit verlanglijst.";
                 }
