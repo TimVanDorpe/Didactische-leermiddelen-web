@@ -17,9 +17,12 @@ namespace Groep9.NET {
         [Required]
         public string Foto { get; set; }
         [Required]
+        [DisplayName("Naam product")]
         public string Naam { get; set; }
         [Required]
         public string Omschrijving { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:c}")]
         public double Prijs { get; set; }
 
         [DisplayName("Beschikbaar")]

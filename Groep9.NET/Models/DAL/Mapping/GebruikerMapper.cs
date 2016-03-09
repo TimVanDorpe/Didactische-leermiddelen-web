@@ -13,13 +13,7 @@ namespace Groep9.NET.Models.DAL.Mapping
         {
             ToTable("Gebruiker");
             HasKey(p => p.GebruikerId);
-            //Property(t => t.Naam).IsRequired();
-            ////Property(t => t.Leergebied).IsRequired();
-            //Property(t => t.Omschrijving).IsRequired();
-            //HasOptional(p=>p.GebruikerId).WithMany(p => p.VerlangLijst);
-            // HasOptional(t => t.VerlangLijst).WithMany().HasForeignKey(t => t.).WillCascadeOnDelete(true);
-            // HasMany(t => t.VerlangLijst).WithMany();
-            // HasMany(t => t.VerlangLijst);
+            Property(g => g.Email).IsRequired().HasMaxLength(200);
             HasMany(i => i.VerlangLijst).WithMany().Map(m =>
             {
                 m.ToTable("Verlanglijst");

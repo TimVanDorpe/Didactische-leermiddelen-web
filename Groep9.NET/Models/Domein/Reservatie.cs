@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -10,7 +11,11 @@ namespace Groep9.NET.Models.Domein {
            
         }
         public int ReservatieId { get; set; }
+        [DataType(DataType.Date)]
+        [Display(Name = "Startdatum van Reservatie")]
         public DateTime StartDatum { get; set; }
+        [DataType(DataType.Date)]
+        [Display(Name = "Einddatum van Reservatie")]
         public DateTime EindDatum { get; set; }
         public Product product { get; set; }
         public int aantal { get; set; }

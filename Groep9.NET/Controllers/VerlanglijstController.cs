@@ -32,18 +32,35 @@ namespace Groep9.NET.Controllers
 
         public ActionResult RemoveFromVerlanglijst(int id, Gebruiker gebruiker)
         {
-            Product product = productRepository.FindByProductNummer(id);
-            gebruiker.VerwijderProductUitVerlanglijst(product);
-            gebruikerRepository.SaveChanges();
-            IList<Product> verlanglijst = gebruiker.VerlangLijst.ToList();
-            return RedirectToAction("Index");
+            try {
+                Product product = productRepository.FindByProductNummer(id);
+                gebruiker.VerwijderProductUitVerlanglijst(product);
+                gebruikerRepository.SaveChanges();
+                IList<Product> verlanglijst = gebruiker.VerlangLijst.ToList();
+                return RedirectToAction("Index"); }
+            catch
+            {
+                ModelState.AddModelError("", "Verwijderen van verlanglijst is mislukt");
+                return RedirectToAction("Index");
+            }
+
         }
+    
 
      
         public ActionResult Details(int id)
         {
-            Product product = productRepository.FindByProductNummer(id);
-            return View(product);
+            try {
+                Product product = productRepository.FindByProductNummer(id);
+                return View(product);
+            }
+            catch 
+            {
+                ModelState.AddModelError("", "Details weergeven is niet gelukt");
+
+                return RedirectToAction("Index");
+            }
+            
         }
 
     }

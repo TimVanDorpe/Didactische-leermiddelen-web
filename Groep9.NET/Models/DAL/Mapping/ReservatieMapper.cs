@@ -14,9 +14,10 @@ namespace Groep9.NET.Models.DAL.Mapping
             {
                 ToTable("Reservatie");
                 HasKey(p => p.ReservatieId);
-                Property(t => t.StartDatum);
-                Property(t => t.EindDatum);
-               
+                Property(t => t.StartDatum).IsRequired();
+                Property(t => t.EindDatum).IsRequired();
+
+            HasRequired(r => r.product).WithMany().Map(t=>t.MapKey("ProductId")).WillCascadeOnDelete(false);
 
             }
 
