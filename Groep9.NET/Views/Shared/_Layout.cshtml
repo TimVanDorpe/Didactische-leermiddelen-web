@@ -55,10 +55,16 @@
     </div>
     <div class="container body-content">
     <br />
-    @if (TempData["Info"] != null)
-    {
-        <div class="alert alert-success">@TempData["Info"]</div>
-    }
+          @if (TempData["Info"] != null)
+          {
+          <div class="alert alert-success">@TempData["Info"]
+        
+        </div>          }
+        
+        @if (TempData["Info2"] != null)
+        {
+            <div class="alert alert-warning">@TempData["Info2"]</div>
+        }
         @RenderBody()
     <hr/>
         <footer>

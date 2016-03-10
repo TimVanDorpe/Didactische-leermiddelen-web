@@ -137,7 +137,7 @@ namespace Groep9.NET.Controllers {
                     gebruiker.VerwijderProductUitVerlanglijst(product);
                     TempData["Info2"] = "Product " + product.Naam + " is verwijderd van jouw verlanglijst";
                     gebruikerRepository.SaveChanges();
-                    TempData["Info"] = "Product " + product.Naam + " is verwijderd uit verlanglijst.";
+                    TempData["Info2"] = "Product " + product.Naam + " is verwijderd uit verlanglijst.";
                 }
                 // Gebruiker currentUser = gebruikerRepository.FindByEmail(User.Identity.Name);
 
