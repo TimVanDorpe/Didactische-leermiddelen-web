@@ -5,6 +5,11 @@ using System.Web.Mvc;
 using Groep9.NET.ViewModels;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using System.Net.Http;
+using System;
+using System.Net.Http.Headers;
+using System.Text;
+using Groep9.NET.Models.Domein;
 
 namespace Groep9.NET.Controllers {
     [AllowAnonymous]
@@ -62,7 +67,8 @@ namespace Groep9.NET.Controllers {
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Wachtwoord, model.RememberMe, shouldLockout: false);
+            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Wachtwoord, model.RememberMe, shouldLockout: false);//hiervoor aparte service maken, die dan enkel
+            //signinasinc nog doorgeeft
             switch (result) {
                 case SignInStatus.Success:
                     return RedirectToLocal(returnUrl);
@@ -110,5 +116,33 @@ namespace Groep9.NET.Controllers {
                 return HttpContext.GetOwinContext().Authentication;
             }
         }
+
+
+
+        //public async Task RunAsyncLoginRestAPi(LogInViewModel model)
+        //{
+
+        //    using (var client = new HttpClient())
+        //    {
+        //        //pw hashen
+        //        System.Security.Cryptography.SHA256Managed crypt = new System.Security.Cryptography.SHA256Managed();
+        //        System.Text.StringBuilder hash = new System.Text.StringBuilder();
+        //        byte[] crypto = crypt.ComputeHash(Encoding.UTF8.GetBytes(model.Wachtwoord), 0, Encoding.UTF8.GetByteCount(model.Wachtwoord));
+        //        foreach (byte theByte in crypto)
+        //        {
+        //            hash.Append(theByte.ToString("x2"));
+        //        }
+
+        //        string hashedpw = hash.ToString();
+
+        //        client.BaseAddress = new Uri("https://studservice.hogent.be/auth/" + model.Studentnummer + " / " + hashedpw);
+        //        client.DefaultRequestHeaders.Accept.Clear();
+        //        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                
+
+        //    }
+        //}
+
+
     }
 }
