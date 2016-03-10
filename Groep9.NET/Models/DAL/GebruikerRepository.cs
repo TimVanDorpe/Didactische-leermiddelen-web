@@ -24,6 +24,7 @@ namespace Groep9.NET.Models.DAL
         {
             Gebruikers.Add(gebruiker);
         }
+        
         public Gebruiker FindByEmail(string email)
         {
             return Gebruikers.FirstOrDefault(g => g.Email == email);
