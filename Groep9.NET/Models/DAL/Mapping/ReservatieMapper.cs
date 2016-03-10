@@ -17,8 +17,8 @@ namespace Groep9.NET.Models.DAL.Mapping
                 Property(t => t.StartDatum).IsRequired();
                 Property(t => t.EindDatum).IsRequired();
 
-              HasRequired(r => r.Product).WithMany().Map(t=>t.MapKey("ProductId")).WillCascadeOnDelete(false);
-               HasRequired(r => r.Gebruiker).WithMany().Map(m => m.MapKey("GebruikerId")).WillCascadeOnDelete(false); ;
+                HasRequired(r => r.Product);
+               HasRequired(r => r.Gebruiker).WithMany().Map(m => m.MapKey("GebruikerId")).WillCascadeOnDelete(false);
             }
 
         

@@ -24,9 +24,9 @@ namespace Groep9.NET.Models.Domein {
 
         public Reservatie(Product product, int aantal, Gebruiker gebruiker)
         {
-            this.Gebruiker = gebruiker;
-            this.Product = product;
-            this.Aantal = aantal;
+            Gebruiker = gebruiker;
+            Product = product;
+            Aantal = aantal;
             StartDatum = BerekenStartDatumReservatieWeek();
             EindDatum = BerekenEindDatumReservatieWeek();
             //product.AantalBeschikbaar = product.AantalBeschikbaar - aantal;

@@ -58,6 +58,7 @@ namespace Groep9.NET.Controllers
 
                 //methode voor reserveerknop, die aantal meegeeft aan methode product.Reserveer
                 Reservatie reservatie = new Reservatie(product, aantal,gebruiker);
+                gebruiker.ReservatieLijst.Add(reservatie);
                 reservatieRepository.AddReservatie(reservatie);
                 reservatieRepository.SaveChanges();
                 

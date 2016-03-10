@@ -27,6 +27,11 @@ namespace Groep9.NET.Models.DAL
         {
             reservaties.Add(reservatie);
         }
+        public void RemoveReservatie(Reservatie reservatie)
+        {
+            reservaties.Remove(reservatie);
+
+        }
 
         public void SaveChanges()
         {
