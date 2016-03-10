@@ -29,7 +29,26 @@ namespace Groep9.NET.Controllers
         public ActionResult Index(Gebruiker gebruiker)
         {
             IList<Reservatie> reservatielijst = reservatieRepository.VindAlleReservaties().Where(r=>r.Gebruiker.Email == gebruiker.Email).ToList();
+
             return View(reservatielijst);
+        }
+       
+             public ActionResult RemoveFromReservatieLijst(int id, Reservatie reservatie)
+        {
+            try
+            {
+                
+                reservatieRepository.RemoveReservatie(reservatie);
+                reservatieRepository.SaveChanges();
+               
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                ModelState.AddModelError("", "Verwijderen van reservatielijst is mislukt");
+                return RedirectToAction("Index");
+            }
+
         }
     }
 }

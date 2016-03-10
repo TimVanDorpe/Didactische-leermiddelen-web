@@ -32,6 +32,7 @@ namespace Groep9.NET.Models.Domein
         {
             VerlangLijst.Remove(p);
         }
+        
 
     }
 }
