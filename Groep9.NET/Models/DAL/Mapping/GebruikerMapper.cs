@@ -13,13 +13,7 @@ namespace Groep9.NET.Models.DAL.Mapping
         {
             ToTable("Gebruiker");
             HasKey(p => p.GebruikerId);
-            //Property(t => t.Naam).IsRequired();
-            ////Property(t => t.Leergebied).IsRequired();
-            //Property(t => t.Omschrijving).IsRequired();
-            //HasOptional(p=>p.GebruikerId).WithMany(p => p.VerlangLijst);
-            // HasOptional(t => t.VerlangLijst).WithMany().HasForeignKey(t => t.).WillCascadeOnDelete(true);
-            // HasMany(t => t.VerlangLijst).WithMany();
-            // HasMany(t => t.VerlangLijst);
+            Property(g => g.Email).IsRequired().HasMaxLength(200);
             HasMany(i => i.VerlangLijst).WithMany().Map(m =>
             {
                 m.ToTable("Verlanglijst");
@@ -28,14 +22,16 @@ namespace Groep9.NET.Models.DAL.Mapping
 
             });
 
-            //HasMany(i => i.ReservatieLijst).WithMany().Map(m => {
-            //    m.ToTable("Reservaties");
+            //HasMany(i => i.ReservatieLijst).WithMany().Map(m =>
+            //{
+            //    m.ToTable("ReservatiesBijGebruiker");
             //    m.MapLeftKey("GebruikerId");
             //    m.MapRightKey("ProductId");
 
+            //    //});
+            //    // HasMany(t => t.VerlangLijst)
+            //    //.WithOptional().WillCascadeOnDelete(false);
             //});
-            // HasMany(t => t.VerlangLijst)
-            //.WithOptional().WillCascadeOnDelete(false);
         }
     }
 }

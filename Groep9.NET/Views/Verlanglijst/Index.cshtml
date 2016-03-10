@@ -39,12 +39,14 @@
 
             @foreach (var item in Model)
             {
-                using (Html.BeginForm("Index", "Reservatie", new { id = item.ProductId }))
+                using (Html.BeginForm("AddReservatie", "Verlanglijst", new { id = item.ProductId }))
                 {
                     <tr>
                         <td>
+                            <a href="~/Content/images/@(@Html.DisplayFor(modelItem =>item.Foto))" data-lightbox="image-@item.ProductId" data-title="@Html.DisplayFor(modelItem => item.Naam)">
 
-                            <img style="width: 75px; height: 75px;" alt="@Html.DisplayFor(modelItem => item.Naam)" src="~/Content/images/@(@Html.DisplayFor(modelItem => item.Foto))"/>
+                                <img style="width: 75px; height: 75px;" alt="@Html.DisplayFor(modelItem => item.Naam)" src="~/Content/images/@(@Html.DisplayFor(modelItem =>item.Foto))" />
+                            </a>
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Naam)
@@ -82,7 +84,7 @@
                                                 <h4 class="modal-title">Reservatie voltooien</h4>
                                             </div>
                                             <div class="modal-body">
-                                                <p>Weet u zeker dat u deze reservatie wilt maken?</p>
+                                                <p>Weet u zeker dat u deze reservatie wilt maken, met als startdatum van de reservatie: @item.BerekenStartDatumReservatieWeek()</p>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-default " data-dismiss="modal">Annuleren</button>

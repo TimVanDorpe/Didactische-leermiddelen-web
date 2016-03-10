@@ -54,8 +54,13 @@
         </div>
     </div>
     <div class="container body-content">
+    <br />
+    @if (TempData["Info"] != null)
+    {
+        <div class="alert alert-success">@TempData["Info"]</div>
+    }
         @RenderBody()
-        <hr />
+    <hr/>
         <footer>
             @if (Request.IsAuthenticated)
             {

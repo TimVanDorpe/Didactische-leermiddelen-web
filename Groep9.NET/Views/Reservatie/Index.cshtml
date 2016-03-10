@@ -14,10 +14,10 @@
     <table class="table table-responsive" >
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.product.Foto)
+                @Html.DisplayNameFor(model => model.Product.Foto)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.product.Naam)
+                @Html.DisplayNameFor(model => model.Product.Naam)
             </th>
            <th>
                @Html.DisplayNameFor(model => model.StartDatum)
@@ -26,7 +26,7 @@
                 @Html.DisplayNameFor(model => model.EindDatum)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.aantal)
+                @Html.DisplayNameFor(model => model.Aantal)
             </th>           
 
 
@@ -40,13 +40,15 @@
 }
 @foreach (var item in Model)
 {
-        <tr><td>
-                <img style="width: 75px; height: 75px;" alt="@Html.DisplayFor(modelItem => item.product.Naam)" 
-                     src="~/Content/images/@(@Html.DisplayFor(modelItem => item.product.Foto))" />
-   
-</td>
+    <tr>
+        <td>
+            <a href="~/Content/images/@Html.DisplayFor(modelItem => item.Product.Foto)" data-lightbox="image-@item.Product.ProductId" data-title="@Html.DisplayFor(modelItem => item.Product.Naam)">
+
+                <img style="width: 75px; height: 75px;" alt="@Html.DisplayFor(modelItem => item.Product.Naam)" src="~/Content/images/@Html.DisplayFor(modelItem => item.Product.Foto)"/>
+            </a>
+        </td>
             <td>
-                @Html.DisplayFor(modelItem => item.product.Naam)
+                @Html.DisplayFor(modelItem => item.Product.Naam)
             </td>
             
             <td>
@@ -58,7 +60,7 @@
 
 
             <td>
-                @Html.DisplayFor(modelItem => item.aantal)
+                @Html.DisplayFor(modelItem => item.Aantal)
             </td>
             
            

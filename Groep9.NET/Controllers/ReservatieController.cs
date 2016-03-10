@@ -14,28 +14,22 @@ namespace Groep9.NET.Controllers
         private IDoelgroepRepository doelgroepRepository;
         private ILeergebiedRepository leergebiedRepository;
         private IGebruikerRepository gebruikerRepository;
+        private IReservatieRepository reservatieRepository;
 
-        public ReservatieController(IProductRepository pr, IDoelgroepRepository dr, ILeergebiedRepository lr, IGebruikerRepository gr)
+        public ReservatieController(IProductRepository pr, IDoelgroepRepository dr, ILeergebiedRepository lr, IGebruikerRepository gr, IReservatieRepository rr)
         {
             productRepository = pr;
             doelgroepRepository = dr;
             leergebiedRepository = lr;
             gebruikerRepository = gr;
+            reservatieRepository = rr;
         }
 
         // GET: Reservatie
-        public ActionResult Index(Gebruiker gebruiker, int aantal = 0, int productnummer = 0)
+        public ActionResult Index(Gebruiker gebruiker)
         {
-               //methode voor reserveerknop, die aantal meegeeft aan methode product.Reserveer
-        
-            Product product = productRepository.FindByProductNummer(productnummer);
-            productRepository.ReserveerProduct(product, aantal);
-            
-                     
-            gebruiker.ReservatieLijst.Add(new Reservatie(product, aantal));
-            
-            //kijken of hij het wel opvult
-            return View(gebruiker.ReservatieLijst);
+            IList<Reservatie> reservatielijst = reservatieRepository.VindAlleReservaties().Where(r=>r.Gebruiker.Email == gebruiker.Email).ToList();
+            return View(reservatielijst);
         }
     }
 }

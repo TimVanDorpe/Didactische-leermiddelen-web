@@ -35,7 +35,7 @@ namespace Groep9.NET.Tests.Models {
         Product p3;
 
 
-        public Gebruiker g = new Personeelslid{Email = "a@b.c", VerlangLijst = new List<Product>(), ReservatieLijst = new List<Reservatie>(), GebruikerId = 1};
+        public Gebruiker g = new Personeelslid{Email = "a@b.c", VerlangLijst = new List<Product>(), /*ReservatieLijst = new List<Reservatie>(), */GebruikerId = 1};
 
 
         public DummyContext() {

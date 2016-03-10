@@ -9,6 +9,7 @@ namespace Groep9.NET.Models.Domein
     {
 
         IQueryable<Reservatie> VindAlleReservaties();
-        
+        void AddReservatie(Reservatie reservatie);
+        void SaveChanges();
     }
 }
