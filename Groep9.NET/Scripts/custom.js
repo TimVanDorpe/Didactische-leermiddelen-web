@@ -23,11 +23,11 @@ var items = $.map(
     }
 );
 
-$.ajax({
-    url: '/Catalogus/ReserveerProducten',
-    type: 'post',
-    data: { items: items }
-});
+//$.ajax({
+//    url: '/Catalogus/ReserveerProducten',
+//    type: 'post',
+//    data: { items: items }
+//});
 //$("#toggleButton").toggle(function () {
 //    $("#voegToe").show();
 //    $("#verwijder").hide();
