@@ -3,7 +3,7 @@
   <Class Name="Groep9.NET.ProductRepository">
     <Position X="0.5" Y="1" Width="3.25" />
     <TypeIdentifier>
-      <HashCode>gAACAAAAAAAACAAAAAAAAAAAAAAAAEAAAAAAAAAAAAE=</HashCode>
+      <HashCode>gAACAAAAAAIACAAAAAAAAAAAAAAAAEAAAAAAAAAAAAE=</HashCode>
       <FileName>Models\DAL\ProductRepository.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -11,54 +11,79 @@
   <Class Name="Groep9.NET.Product">
     <Position X="4.25" Y="0.75" Width="3" />
     <TypeIdentifier>
-      <HashCode>EAAACAAUAACBAAAAAAAABAAQAAAAIgAAAAAAaACBAAE=</HashCode>
+      <HashCode>EAAACAAwBAAAAAAAAAAABAAAAAAAIgAAAAAAaACBAAE=</HashCode>
       <FileName>Models\Domein\Product.cs</FileName>
     </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Doelgroepen" />
+      <Property Name="Leergebieden" />
+    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Groep9.NET.Firma">
-    <Position X="8.5" Y="5" Width="1.5" />
+    <Position X="12" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAACAAAAAAAAAAAAAAAhAAAAACAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Domein\Firma.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Groep9.NET.Models.Domein.Doelgroep">
-    <Position X="10.25" Y="5" Width="1.5" />
+    <Position X="9.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAACAQAABAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
       <FileName>Models\Domein\Doelgroep.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Groep9.NET.Plaats">
-    <Position X="12" Y="5" Width="1.5" />
+    <Position X="12" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAQAAAACAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Domein\Plaats.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Groep9.NET.Verlanglijst">
-    <Position X="5.5" Y="5.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAQAAAAAAAAAAAAAIQAAAAAAAAAAAAAAgAAAAAAE=</HashCode>
-      <FileName>Models\Domein\Verlanglijst.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Groep9.NET.Models.Domein.Gebruiker">
     <Position X="1.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAIgAABAAAAQAAQAA=</HashCode>
+      <HashCode>AAAAAAAAACCAAAAAAAAAAAAAAAAAIAAAAAAAQQAAQAA=</HashCode>
       <FileName>Models\Domein\Gebruiker.cs</FileName>
     </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="ReservatieLijst" />
+    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Groep9.NET.Models.Domein.Reservatie">
-    <Position X="0.5" Y="8.25" Width="3.25" />
+    <Position X="6" Y="7" Width="3.25" />
     <TypeIdentifier>
-      <HashCode>AAAAABAEAAAAAAAAAAAAAAAAACAAAAAAAgAAAAAAAAA=</HashCode>
+      <HashCode>AAACAACABAAAAAAAAAAAAAIAACAAAgAAAgAgAAAAAAA=</HashCode>
       <FileName>Models\Domein\Reservatie.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Gebruiker" />
+      <Property Name="Product" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Groep9.NET.Models.Domein.Leergebied">
+    <Position X="9.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAhAAAAAAAAAAAAAAAAAEAAAE=</HashCode>
+      <FileName>Models\Domein\Leergebied.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Groep9.NET.Student">
+    <Position X="0.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Domein\Student.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Groep9.NET.Personeelslid">
+    <Position X="3.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Domein\Personeelslid.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Interface Name="System.Collections.Generic.ICollection&lt;T&gt;" Collapsed="true">
-    <Position X="4.25" Y="7.25" Width="1.5" />
+    <Position X="9.25" Y="6.75" Width="1.5" />
     <TypeIdentifier />
   </Interface>
   <Font Name="Segoe UI" Size="9" />

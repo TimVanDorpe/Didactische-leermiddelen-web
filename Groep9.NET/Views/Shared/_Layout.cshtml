@@ -65,6 +65,18 @@
         {
             <div class="alert alert-warning">@TempData["Info2"]</div>
         }
+        @if (TempData["DetailsFail"] != null)
+        {
+            <div class="alert alert-danger">@TempData["DetailsFail"]</div>
+        }
+        @if (TempData["DeleteFail"] != null)
+        {
+            <div class="alert alert-danger">@TempData["DeleteFail"]</div>
+        }
+        @if (TempData["ReservatieFail"] != null)
+        {
+            <div class="alert alert-danger">@TempData["ReservatieFail"]</div>
+        }
         @RenderBody()
     <hr/>
         <footer>

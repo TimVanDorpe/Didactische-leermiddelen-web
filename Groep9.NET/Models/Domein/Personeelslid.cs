@@ -12,7 +12,10 @@ namespace Groep9.NET {
 
         public Personeelslid(): base() {      }
      
-      //blokkeer
+        public void Blokkeer()
+        {
+            throw new NotImplementedException();
+        }
 
         }
     }

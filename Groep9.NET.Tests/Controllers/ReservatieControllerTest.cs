@@ -28,15 +28,15 @@ namespace Groep9.NET.Tests.Controllers {
             mockgr = new Mock<IGebruikerRepository>();
             mockpr.Setup(p => p.VindAlleProducten()).Returns(context.Producten.AsQueryable());
             mockpr.Setup(p => p.FindByProductNummer(1)).Returns(context.P1);
-            rController = new ReservatieController(mockpr.Object, mockdr.Object, mocklr.Object, mockgr.Object);
+         //   rController = new ReservatieController(mockpr.Object, mockdr.Object, mocklr.Object, mockgr.Object);
         }
 
         [TestMethod]
         public void IndexReturnsReservaties() {
             g = context.Gebruiker;
             g.VerlangLijst.Add(context.P1);
-            Reservatie r = new Reservatie(context.P1, 1);
-            g.ReservatieLijst.Add(r);
+        //    Reservatie r = new Reservatie(context.P1, 1);
+         //   g.ReservatieLijst.Add(r);
             ViewResult result = rController.Index(g) as ViewResult;
             List<Product> producten = (result.Model as IEnumerable<Product>).ToList();
             Assert.IsNotNull(result);

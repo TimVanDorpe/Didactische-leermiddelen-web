@@ -22,7 +22,7 @@ namespace Groep9.NET.Models.DAL.Mapping
 
             HasRequired(r => r.Product).WithMany().Map(m => m.MapKey("ProductId")).WillCascadeOnDelete(false);
 
-            HasRequired(r => r.Gebruiker).WithMany(r=>r.).Map(m => m.MapKey("GebruikerId")).WillCascadeOnDelete(false); 
+            HasRequired(r => r.Gebruiker).WithMany(r=>r.ReservatieLijst).Map(m => m.MapKey("GebruikerId")).WillCascadeOnDelete(false); 
             }
 
         
