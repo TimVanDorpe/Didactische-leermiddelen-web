@@ -17,7 +17,7 @@ namespace Groep9.NET.Models.Domein {
         [DataType(DataType.Date)]
         [Display(Name = "Einddatum van Reservatie")]
         public DateTime EindDatum { get; set; }
-        public Product Product { get; set; }
+        public virtual Product Product { get; set; }
         public int Aantal { get; set; }
 
         public Gebruiker Gebruiker { get; set; }

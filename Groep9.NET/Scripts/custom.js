@@ -23,15 +23,15 @@ var items = $.map(
     }
 );
 
-$.ajax({
-    url: '/Catalogus/ReserveerProducten',
-    type: 'post',
-    data: { items: items }
-});
-//$("#toggleButton").toggle(function () {
-//    $("#voegToe").show();
-//    $("#verwijder").hide();
-//}, function () {
-//    $("#verwijder").show();
-//    $("#voegToe").hide();
+//$.ajax({
+//    url: '/Catalogus/ReserveerProducten',
+//    type: 'post',
+//    data: { items: items }
 //});
+$(".toggle").change(function () {
+    $(".toggle").addClass("btn-succes");
+    $(".toggle").removeClass("btn-error");
+}, function () {
+    $(".toggle").show();
+    $(".toggle").hide();
+});

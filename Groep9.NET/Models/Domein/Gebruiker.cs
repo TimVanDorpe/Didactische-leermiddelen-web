@@ -18,7 +18,7 @@ namespace Groep9.NET.Models.Domein
         public Gebruiker()
         {
             VerlangLijst = new List<Product>();
-            //ReservatieLijst = new List<Reservatie>();
+            ReservatieLijst = new List<Reservatie>();
         }
 
         public void VoegProductAanVerlanglijstToe(Product p)
