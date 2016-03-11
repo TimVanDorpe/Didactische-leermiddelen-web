@@ -84,32 +84,9 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
     <script src="@Url.Content("~/Scripts/jquery-1.10.2.js")" type="text/javascript"></script>
-<script src="@Url.Content("~/Scripts/custom.js")" type="text/javascript"></script>
+    
     <script src="~/Scripts/lightbox-plus-jquery.min.js"></script>
 
-    @section scripts
-{
-        <script type="text/javascript">
-
-
-        $(document).ready(function() {
-            event.preventDefault();
-            // Connect to 'change' event in order to toggle glyphs
-
-            if ($('.toggle').prop('checked')) {
-                $('.verlanglijstglyp').prev().removeClass('glyphicon-ok-circle');
-                $('.verlanglijstglyp').prev().addClass('glyphicon-unchecked');
-                $('.verlanglijstglyp').prev().addClass('btn-danger');
-                $('.verlanglijstglyp').prev().removeClass('groen');
-            } else {
-                $('.verlanglijstglyp').prev().addClass('glyphicon-ok-circle');
-                $('.verlanglijstglyp').prev().removeClass('glyphicon-unchecked');
-                $('.verlanglijstglyp').prev().addClass('groen');
-                $('.verlanglijstglyp').prev().removeClass('btn-danger');
-            }
-
-        });
-        </script>
-    }
+    <script src="~/Scripts/custom.js"></script>
 </body>
 </html>

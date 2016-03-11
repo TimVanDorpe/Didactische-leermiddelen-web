@@ -64,57 +64,32 @@
                 </td>
               
                 <td>
+                    <div class="pull-right" style="min-width:168px" role="toolbar">
+                        <a href="@Url.Action("Details", new {id = item.ProductId})" class="btn btn-info btn-sm ">
 
-                  @Html.ActionLink("Details", "Details", new { id = item.ProductId })
-                    @*
-
-                     @using (Html.BeginForm("AddOfVerwijderVerlanglijst", "Catalogus", FormMethod.Post, new {id = item.ProductId, @class = "radioform" }))
-                     {
-                         <div class="" data-toggle="buttons">
-                             <label class="btn btn-lg btn-danger">
-                                 <input type="radio" name="actie" id="verwijderen" value="verwijderen" autocomplete="off" class="radio">
-                                 <i class="glyphicon glyphicon-remove-circle"></i>
-                             </label>
-                             <label class="btn btn-lg btn-default active">
-                                 <input type="radio" name="actie" id="toevoegen" value="toevoegen" autocomplete="off" class="radio">
-                                 <i class="glyphicon glyphicon glyphicon-ok-circle"></i>
-                             </label>
-
-                         </div>
-                     }
-
-                    <script type="text/javascript">
-                         $(function () {
-                             $(':radio[name="verlanglijst"]').change(function () {
-                                 $.ajax({
-                                     url: '@Url.Action("AddOfVerwijderVerlanglijst", "Catalogus", new { id = item.ProductId })',
-                                     type: 'POST',
-                                     data: { "actie": $('radio[name="actie"]:checked').val(),
-                                     success: function (result) {
-                                         //alert("success");
-                                         console.log("click");
-                                     },
-                                     error: function (result) {
-                                         alert("error!");
-                                     }
-                                 });
-                             });
-                         });
-                     </script>*@
-                    <label class="btn  verlanglijstlabel">
-                        <span class="glyphicon verlanglijstglyp"></span>
-
+                            <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                        </a>
+                        
+                            <label class="btn groen verlanglijstlabel">
+                                
+                                <span class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>
                         @{
                             var url = Url.Action("AddOfVerwijderVerlanglijst", new { id = item.ProductId });
                         }
-                        @Html.CheckBoxFor(modelItem => item.InVerlanglijst, new { id = item.ProductId, onclick = "window.location = '" + url + "'", @class = "toggle" }) toevoegen
-                    </label>
-                    @*<a href="@Url.Action("AddToVerlanglijst", new {id = item.ProductId})" class="btn btn-default">
+                        @Html.CheckBoxFor(modelItem => item.InVerlanglijst, new { id = item.ProductId, onclick = "window.location = '" + url + "'", @class = "toggle" })
+                               
+                                    Toevoegen
+                             
+                                
+                                
+                   </label>
+                
+                @*<a href="@Url.Action("AddToVerlanglijst", new {id = item.ProductId})" class="btn btn-default">
 
-                        <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
-                    </a>*@
-                    
-                </td>
+        <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
+    </a>*@
+                        </div>
+</td>
             </tr>
         }
 
