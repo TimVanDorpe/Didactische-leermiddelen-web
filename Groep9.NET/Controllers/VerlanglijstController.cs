@@ -42,7 +42,8 @@ namespace Groep9.NET.Controllers
                 return RedirectToAction("Index"); }
             catch
             {
-                ModelState.AddModelError("", "Verwijderen van verlanglijst is mislukt");
+                TempData["DeleteFail"] = "Verwijderen van verlanglijst is niet gelukt";
+
                 return RedirectToAction("Index");
             }
 
@@ -66,7 +67,8 @@ namespace Groep9.NET.Controllers
             }
             catch
             {
-                ModelState.AddModelError("", "Reservatie is niet toegevoegd");
+                TempData["ReservatieFail"] = "Reservatie toevoegen is niet gelukt";
+
 
 
             }
@@ -81,7 +83,8 @@ namespace Groep9.NET.Controllers
             }
             catch 
             {
-                ModelState.AddModelError("", "Details weergeven is niet gelukt");
+                TempData["DetailsFail"] = "Details weergeven is niet gelukt";
+
 
                 return RedirectToAction("Index");
             }

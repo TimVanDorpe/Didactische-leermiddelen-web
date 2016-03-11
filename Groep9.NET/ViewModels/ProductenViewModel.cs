@@ -71,7 +71,6 @@ namespace Groep9.NET.ViewModels {
             Doelgroep = p.Doelgroepen.Select(i => i.Naam).OrderBy(i => i).ToArray();
             Leergebied = p.Leergebieden.Select(i => i.Naam).OrderBy(i => i).ToArray();
             InVerlanglijst = g.VerlangLijst.Contains(p);
-            AantalBeschikbaar = p.AantalBeschikbaar;
 
         }
     }

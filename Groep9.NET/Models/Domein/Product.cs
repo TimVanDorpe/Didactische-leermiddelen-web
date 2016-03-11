@@ -28,12 +28,6 @@ namespace Groep9.NET {
         [DisplayName("Beschikbaar")]
         public int Aantal { get; set; } // totaal in catalogus
 
-        public int AantalBeschikbaar { get; set; } // enkel de beschikbare
-
-        public int AantalGeblokkeerd { get; set; }//enkel geblokkeerd
-        public int AantalGereserveerd { get; set; }//enkel gereserveerd
-
-
         public bool Uitleenbaarheid { get; set; }
 
         public virtual ICollection<Doelgroep> Doelgroepen { get; set; }
@@ -49,21 +43,7 @@ namespace Groep9.NET {
             Leergebieden = new List<Leergebied>();
         }
 
-        /*
-        public Product(string foto, string naam, string omschrijving, double prijs, int aantal, bool uitleenbaarheid, string plaats, string firma)
-            : this() {
-            Foto = foto;
-
-            Naam = naam;
-            Omschrijving = omschrijving;
-            Prijs = prijs;
-            Aantal = aantal;
-            Uitleenbaarheid = uitleenbaarheid;
-            Plaats = plaats;
-            Firma = firma;
-            AantalBeschikbaar = aantal;
-        }
-        */
+   
         public Product(string foto, string naam, string omschrijving, double prijs, int aantal, bool uitleenbaarheid, string plaats, string firma, List<Doelgroep> doelgroepen, List<Leergebied> leergebieden)
            : this() { 
             foreach (var doel in doelgroepen) {
@@ -84,11 +64,10 @@ namespace Groep9.NET {
             Uitleenbaarheid = uitleenbaarheid;
             Plaats = plaats;
             Firma = firma;
-            AantalBeschikbaar = aantal;
+           
 
             //Dit moet ook in de constuctor en dan in de init, even om iets te testen !!!
-            this.AantalBeschikbaar = 20;
-            this.AantalGereserveerd = 0;
+        
 
 
         }
@@ -119,6 +98,27 @@ namespace Groep9.NET {
                 return today.AddDays(daysUntilMonday).AddHours(8);
             }
         }
+
+
+
+
+        public int BerekenAantalGereserveerd(ICollection<Reservatie> reservaties)//VALIDATIE OOK NIET VERGETEN
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public int BerekenAantalGeblokkeerd()
+        {
+            throw new NotImplementedException();
+        }
+
+        public int BerekenAantalBeschikbaar()
+        {
+        throw new NotImplementedException();
+        }
+
+
 
 
 

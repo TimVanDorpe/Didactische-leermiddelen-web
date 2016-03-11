@@ -13,7 +13,10 @@ namespace Groep9.NET {
         {
         }
 
-        // reserveer?
+        public Reservatie Reserveer()
+        {
+            throw new NotImplementedException();
+        }
 
     }
 }

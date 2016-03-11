@@ -138,7 +138,9 @@ namespace Groep9.NET.Controllers {
         //        client.BaseAddress = new Uri("https://studservice.hogent.be/auth/" + model.Studentnummer + " / " + hashedpw);
         //        client.DefaultRequestHeaders.Accept.Clear();
         //        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                
+
+        //        JSONObject jsonobject = Newtonsoft.Json.JsonConvert.DeserializeObject<JSONOBject>(jsonstring);
+
 
         //    }
         //}
