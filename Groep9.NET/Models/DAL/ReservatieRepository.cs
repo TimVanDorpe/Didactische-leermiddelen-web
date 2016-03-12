@@ -23,15 +23,8 @@ namespace Groep9.NET.Models.DAL
             return reservaties;
         }
 
-        public void AddReservatie(Reservatie reservatie)
-        {
-            reservaties.Add(reservatie);
-        }
-        public void RemoveReservatie(Reservatie reservatie)
-        {
-            reservaties.Remove(reservatie);
-
-        }
+      
+        
 
         public void SaveChanges()
         {

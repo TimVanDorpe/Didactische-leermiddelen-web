@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Groep9.NET.ViewModels;
 
 namespace Groep9.NET.Controllers
 {
@@ -26,10 +27,19 @@ namespace Groep9.NET.Controllers
             reservatieRepository = rr;
         }
 
-        public ActionResult Index(Gebruiker gebruiker)
+        public ActionResult Index(Gebruiker gebruiker, string datum)
         {
-            IList<Product> verlanglijst = gebruiker.VerlangLijst.ToList();
-            return View(verlanglijst);
+            IEnumerable<Product> verlanglijst = gebruiker.VerlangLijst.ToList();
+
+            ProductenViewModel vm = new ProductenViewModel()
+            {
+                Producten = verlanglijst.Select(p => new ProductViewModel(p, gebruiker))
+            };
+
+            if (Request.IsAjaxRequest())
+                return PartialView("Producten", vm.Producten);
+
+            return View(vm);
         }
 
         public ActionResult RemoveFromVerlanglijst(int id, Gebruiker gebruiker)
@@ -59,9 +69,8 @@ namespace Groep9.NET.Controllers
 
                 //methode voor reserveerknop, die aantal meegeeft aan methode product.Reserveer
                 Reservatie reservatie = new Reservatie(product, aantal,gebruiker);
-                gebruiker.ReservatieLijst.Add(reservatie);
-                reservatieRepository.AddReservatie(reservatie);
-                reservatieRepository.SaveChanges();
+                gebruiker.VoegReservatieToe(reservatie);
+                gebruikerRepository.SaveChanges();
                 
                 TempData["Info"] = "Product " + product.Naam + " is gereserveerd.";
             }

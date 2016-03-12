@@ -110,15 +110,15 @@
 
 
 /*the second method - much cleaner look: Using 2 :pseudo classes from predefined bootstrap icons*/
-input[type='checkbox'].toggle + label:before,
-input[type='checkbox'].toggle + label:after{
+/*input[type='checkbox'].toggle,
+input[type='checkbox'].toggle{
     position: relative;
     top: 1px;
     display: inline-block;
     font-style: normal;
     font-weight: 400;
     line-height: 1;
-}
+}*/
 input[type='checkbox'].toggle, input[type='checkbox']:checked.toggle{/*unchecked icon*/
     display: none;
 }

@@ -29,22 +29,20 @@ $(window).resize(mobileViewUpdate);
 //    data: { items: items }
 //});
 
-alert("test1");
+
 $(document).ready(function () {
-    alert("test1");
     //event.preventDefault();
     // Connect to "change" event in order to toggle glyphs
     if ($(".toggle").prop("checked")) {
-        alert("test2");
         $(this).prev().addClass("glyphicon-ok-circle");
         $(this).prev().removeClass("glyphicon-unchecked");
-     //   $(this).prev().prev().addClass("btn-danger");
-     //   $(this).prev().prev().removeClass("groen");
+        $(this).prev().addClass("btn-danger");
+        $(this).prev().removeClass("groen");
     } else {
         $(this).prev().removeClass("glyphicon-ok-circle");
         $(this).prev().addClass("glyphicon-unchecked");
-      // $(this).prev().prev().addClass("groen");
-       //$(this).prev().prev().removeClass("btn-danger");
+       $(this).prev().addClass("groen");
+       $(this).prev().removeClass("btn-danger");
     }
     /*$('.toggle').click(function (e) {
         if ($(e.target).is('input')) { // prevent double-event due to bubbling

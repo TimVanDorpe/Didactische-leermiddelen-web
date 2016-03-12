@@ -33,13 +33,13 @@ namespace Groep9.NET.Controllers
             return View(reservatielijst);
         }
        
-             public ActionResult RemoveFromReservatieLijst(int id, Reservatie reservatie)
+             public ActionResult RemoveFromReservatieLijst(int id, Reservatie reservatie, Gebruiker gebruiker)
         {
             try
             {
                 
-                reservatieRepository.RemoveReservatie(reservatie);
-                reservatieRepository.SaveChanges();
+                gebruiker.VerwijderReservatie(reservatie);
+                gebruikerRepository.SaveChanges();
                
                 return RedirectToAction("Index");
             }

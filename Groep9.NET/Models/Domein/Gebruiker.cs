@@ -32,7 +32,17 @@ namespace Groep9.NET.Models.Domein
         {
             VerlangLijst.Remove(p);
         }
-        
+        public void VoegReservatieToe(Reservatie r)
+        {
+
+            ReservatieLijst.Add(r);
+
+        }
+
+        public void VerwijderReservatie(Reservatie r)
+        {
+            ReservatieLijst.Remove(r);
+        }
 
     }
 }
