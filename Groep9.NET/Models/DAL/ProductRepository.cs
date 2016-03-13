@@ -39,6 +39,10 @@ namespace Groep9.NET
         {
             return Producten.Find(productnummer);
         }
+        public Product FindByNaam(string naam)
+        {
+            return Producten.Find(naam);
+        }
 
         /*
         public void ReserveerProduct(Product p, int hoeveelheid)

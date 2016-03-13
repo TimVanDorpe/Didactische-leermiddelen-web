@@ -35,12 +35,16 @@ namespace Groep9.NET.Controllers
             return View(reservatielijst);
         }
        
-             public ActionResult RemoveFromReservatieLijst(int id, Reservatie reservatie, Gebruiker gebruiker)
+             public ActionResult RemoveFromReservatieLijst(int id,Gebruiker gebruiker)
         {
             try
-            {
-                
+            {               
+
+                //test of reservatie juist is 
+                Reservatie reservatie = gebruiker.ReservatieLijst.First();
                 gebruiker.VerwijderReservatie(reservatie);
+                reservatie.Product.AantalGereserveerd--;
+                reservatie.Product.AantalBeschikbaar++;
                 gebruikerRepository.SaveChanges();
                
                 return RedirectToAction("Index");

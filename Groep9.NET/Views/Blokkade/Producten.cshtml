@@ -13,19 +13,18 @@
                 @Html.DisplayNameFor(model => model.Naam)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Omschrijving)
+                @Html.DisplayNameFor(model => model.AantalBeschikbaar)
             </th>
-
-
             <th>
-                @Html.DisplayNameFor(model => model.Plaats)
+                @Html.DisplayNameFor(model => model.AantalGeblokkeerd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AantalGereserveerd)
             </th>
             <th style="max-width:140px;">
-                Gewenst aantal producten
+                Gewenst aantal blokkades
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Aantal)
-            </th>
+           
             <th></th>
         </tr>
         @if (!Model.Any())
@@ -38,8 +37,7 @@
 
         @foreach (var item in Model)
             {
-                using (Html.BeginForm("AddReservatie", "Verlanglijst", new { id = item.ProductId}))
-                {
+               
                 <tr>
                     <td>
                         <a href="~/Content/images/@(@Html.DisplayFor(modelItem =>item.Foto))" data-lightbox="image-@item.ProductId" data-title="@Html.DisplayFor(modelItem => item.Naam)">
@@ -51,12 +49,15 @@
                         @Html.DisplayFor(modelItem => item.Naam)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Omschrijving)
+                        @Html.DisplayFor(modelItem => item.AantalBeschikbaar)
                     </td>
 
 
                     <td>
-                        @Html.DisplayFor(modelItem => item.Plaats)
+                        @Html.DisplayFor(modelItem => item.AantalGeblokkeerd)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AantalGereserveerd)
                     </td>
                     <td>
 
@@ -70,50 +71,16 @@
 
                         @*hier moet een textbox komen zodat de gebruiker kan invoeren hoeveel hij/zij er wenst te reserveren*@
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Aantal)
-                    </td>
+                   <td>
 
+                        <a href="@Url.Action("Blokkeer", new {id = item.ProductId})" class="btn btn-default btn-sm ">
 
-                    <td colspan="2">
-                        <div class="btn-toolbar pull-right" style="min-width:168px" role="toolbar">
-                            <button type="button" class="btn btn-default groen  btn-sm" data-toggle="modal" data-target=".desktop-popup">Reserveren</button>
-
-                            <div class="modal fade bs-example-modal-sm desktop-popup" tabindex="-2" role="dialog">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                            <h4 class="modal-title">Reservatie voltooien</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>Weet u zeker dat u deze reservatie wilt maken, met als startdatum van de reservatie:</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default " data-dismiss="modal">Annuleren</button>
-                                            <button type="submit" name="productnummer" value="@item.ProductId" class="btn btn-default">Bevestigen</button>
-                                        </div>
-                                    </div><!-- /.modal-content -->
-                                </div><!-- /.modal-dialog -->
-                            </div><!-- /.modal -->
-
-
-
-                            <a href="@Url.Action("Details", new {id = item.ProductId})" class="btn btn-info btn-sm ">
-
-                                <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-                            </a>
-
-                            <a href="@Url.Action("RemoveFromVerlanglijst", new {id = item.ProductId})" class="btn btn-danger btn-sm ">
-
-                                <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
-                            </a>
-                        </div>
-
-
-                    </td>
+                            <span class="glyphicon glyphicon-remove-sign" aria-hidden="true">Blokkeer</span>
+                        </a>
+                   </td>
+                                        
                 </tr>
-            }
+            
         }
 
     </table><br />

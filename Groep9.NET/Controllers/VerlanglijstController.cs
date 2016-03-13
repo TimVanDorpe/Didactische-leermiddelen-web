@@ -45,8 +45,8 @@ namespace Groep9.NET.Controllers
         public ActionResult RemoveFromVerlanglijst(int id, Gebruiker gebruiker)
         {
             try {
-                Product product = productRepository.FindByProductNummer(id);
-                gebruiker.VerwijderProductUitVerlanglijst(product);
+                
+                gebruiker.VerwijderProductUitVerlanglijst(productRepository.FindByProductNummer(id));
                 gebruikerRepository.SaveChanges();
                 IList<Product> verlanglijst = gebruiker.VerlangLijst.ToList();
                 return RedirectToAction("Index"); }
@@ -60,19 +60,21 @@ namespace Groep9.NET.Controllers
         }
 
 
-        public ActionResult AddReservatie(Gebruiker gebruiker ,int aantal = 0, int productnummer = 0)
+        public ActionResult AddReservatie(Gebruiker gebruiker ,int aantal = 0, int id = 0)
         {
             try
             {
-                Product product = productRepository.FindByProductNummer(productnummer);
+                
                 //productRepository.ReserveerProduct(product, aantal);
 
                 //methode voor reserveerknop, die aantal meegeeft aan methode product.Reserveer
-                Reservatie reservatie = new Reservatie(product, aantal,gebruiker);
+                Reservatie reservatie = new Reservatie(productRepository.FindByProductNummer(id), aantal,gebruiker);
+                reservatie.Product.AantalGereserveerd += aantal;
+                reservatie.Product.AantalBeschikbaar -= aantal;               
                 gebruiker.VoegReservatieToe(reservatie);
                 gebruikerRepository.SaveChanges();
                 
-                TempData["Info"] = "Product " + product.Naam + " is gereserveerd.";
+                TempData["Info"] = "Product " + productRepository.FindByProductNummer(id).Naam + " is gereserveerd.";
             }
             catch
             {
@@ -87,8 +89,8 @@ namespace Groep9.NET.Controllers
         public ActionResult Details(int id)
         {
             try {
-                Product product = productRepository.FindByProductNummer(id);
-                return View(product);
+                
+                return View(productRepository.FindByProductNummer(id));
             }
             catch 
             {

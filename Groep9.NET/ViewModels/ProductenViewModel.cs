@@ -68,6 +68,9 @@ namespace Groep9.NET.ViewModels {
             ProductId = p.ProductId;
             Prijs = p.Prijs;
             Firma = p.Firma;
+            AantalBeschikbaar = p.AantalBeschikbaar;
+            AantalGeblokkeerd = p.AantalGeblokkeerd;
+            AantalGereserveerd = p.AantalGereserveerd;
             Doelgroep = p.Doelgroepen.Select(i => i.Naam).OrderBy(i => i).ToArray();
             Leergebied = p.Leergebieden.Select(i => i.Naam).OrderBy(i => i).ToArray();
             InVerlanglijst = g.VerlangLijst.Contains(p);

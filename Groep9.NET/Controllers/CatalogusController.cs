@@ -126,18 +126,18 @@ namespace Groep9.NET.Controllers {
             try {
 
                 if (!CheckVerlanglijst(id, gebruiker)) {
-                    Product product = productRepository.FindByProductNummer(id);
-                    gebruiker.VoegProductAanVerlanglijstToe(product);
-                    TempData["Info"] = "Product " + product.Naam + " is toegevoegd aan jouw verlanglijst";
+                    
+                    gebruiker.VoegProductAanVerlanglijstToe(productRepository.FindByProductNummer(id));
+                    TempData["Info"] = "Product " + productRepository.FindByProductNummer(id).Naam + " is toegevoegd aan jouw verlanglijst";
                     gebruikerRepository.SaveChanges();
-                    TempData["Info"] = "Product " + product.Naam + " is toegevoegd aan verlanglijst.";
+                    TempData["Info"] = "Product " + productRepository.FindByProductNummer(id).Naam + " is toegevoegd aan verlanglijst.";
                 }
                 else {
-                    Product product = productRepository.FindByProductNummer(id);
-                    gebruiker.VerwijderProductUitVerlanglijst(product);
-                    TempData["Info2"] = "Product " + product.Naam + " is verwijderd van jouw verlanglijst";
+                    
+                    gebruiker.VerwijderProductUitVerlanglijst(productRepository.FindByProductNummer(id));
+                    TempData["Info2"] = "Product " + productRepository.FindByProductNummer(id).Naam + " is verwijderd van jouw verlanglijst";
                     gebruikerRepository.SaveChanges();
-                    TempData["Info2"] = "Product " + product.Naam + " is verwijderd uit verlanglijst.";
+                    TempData["Info2"] = "Product " + productRepository.FindByProductNummer(id).Naam + " is verwijderd uit verlanglijst.";
                 }
                 // Gebruiker currentUser = gebruikerRepository.FindByEmail(User.Identity.Name);
 

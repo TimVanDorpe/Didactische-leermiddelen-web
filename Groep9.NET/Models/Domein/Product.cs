@@ -25,6 +25,11 @@ namespace Groep9.NET {
         [DisplayFormat(DataFormatString = "{0:c}")]
         public double Prijs { get; set; }
 
+        public int AantalBeschikbaar { get; set; } // enkel de beschikbare
+
+        public int AantalGeblokkeerd { get; set; }//enkel geblokkeerd
+        public int AantalGereserveerd { get; set; }//enkel gereserveerd
+
         [DisplayName("Beschikbaar")]
         public int Aantal { get; set; } // totaal in catalogus
 
@@ -64,7 +69,9 @@ namespace Groep9.NET {
             Uitleenbaarheid = uitleenbaarheid;
             Plaats = plaats;
             Firma = firma;
-           
+            AantalBeschikbaar = aantal;
+            AantalGeblokkeerd = 0;
+            AantalGereserveerd = 0;
 
             //Dit moet ook in de constuctor en dan in de init, even om iets te testen !!!
         
