@@ -60,11 +60,10 @@ namespace Groep9.NET.Controllers
         }
 
 
-        public ActionResult AddReservatie(Gebruiker gebruiker ,int aantal = 0, int id = 0)
+        public ActionResult AddReservatie(Gebruiker gebruiker ,int aantal, int id)
         {
             try
             {
-                
                 //productRepository.ReserveerProduct(product, aantal);
 
                 //methode voor reserveerknop, die aantal meegeeft aan methode product.Reserveer
