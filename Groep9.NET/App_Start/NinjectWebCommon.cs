@@ -68,7 +68,7 @@ namespace Groep9.NET.App_Start
             kernel.Bind<ILeergebiedRepository>().To<LeergebiedRepository>().InRequestScope();
             kernel.Bind<IDoelgroepRepository>().To<DoelgroepRepository>().InRequestScope();
             kernel.Bind<IGebruikerRepository>().To<GebruikerRepository>().InRequestScope();
-            kernel.Bind<IReservatieRepository>().To<ReservatieRepository>().InRequestScope();
+            //kernel.Bind<IReservatieRepository>().To<ReservatieRepository>().InRequestScope();
             kernel.Bind<Context>().ToSelf().InRequestScope();
         }        
     }

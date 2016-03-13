@@ -14,7 +14,8 @@ namespace Groep9.NET {
      
         Product FindByProductNummer(int productnummer);
 
-        void ReserveerProduct(Product p, int hoeveelheid);
+        
+        //void ReserveerProduct(Product p, int hoeveelheid);
         
     }
 }

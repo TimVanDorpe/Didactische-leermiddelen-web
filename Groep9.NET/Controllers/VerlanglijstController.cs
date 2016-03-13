@@ -15,16 +15,16 @@ namespace Groep9.NET.Controllers
         private IDoelgroepRepository doelgroepRepository;
         private ILeergebiedRepository leergebiedRepository;
         private IGebruikerRepository gebruikerRepository;
-        private IReservatieRepository reservatieRepository;
+        //private IReservatieRepository reservatieRepository;
         
         // GET: Verlanglijst
-        public VerlanglijstController(IProductRepository pr, IDoelgroepRepository dr, ILeergebiedRepository lr, IGebruikerRepository gr, IReservatieRepository rr)
+        public VerlanglijstController(IProductRepository pr, IDoelgroepRepository dr, ILeergebiedRepository lr, IGebruikerRepository gr/*, IReservatieRepository rr*/)
         {
             productRepository = pr;
             doelgroepRepository = dr;
             leergebiedRepository = lr;
             gebruikerRepository = gr;
-            reservatieRepository = rr;
+            //reservatieRepository = rr;
         }
 
         public ActionResult Index(Gebruiker gebruiker, string datum)
@@ -65,7 +65,7 @@ namespace Groep9.NET.Controllers
             try
             {
                 Product product = productRepository.FindByProductNummer(productnummer);
-                productRepository.ReserveerProduct(product, aantal);
+                //productRepository.ReserveerProduct(product, aantal);
 
                 //methode voor reserveerknop, die aantal meegeeft aan methode product.Reserveer
                 Reservatie reservatie = new Reservatie(product, aantal,gebruiker);

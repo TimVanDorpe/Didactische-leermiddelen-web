@@ -40,6 +40,7 @@ namespace Groep9.NET
             return Producten.Find(productnummer);
         }
 
+        /*
         public void ReserveerProduct(Product p, int hoeveelheid)
         {
             //Product p = FindByProductNummer(productId);
@@ -63,7 +64,7 @@ namespace Groep9.NET
             //bijhouden vanaf welke dag het uitgeleend ist , en tot welke dag. Als die laaste voorbij is, aantallen aanpassen
 
         }
-        
+        */
 
 
 

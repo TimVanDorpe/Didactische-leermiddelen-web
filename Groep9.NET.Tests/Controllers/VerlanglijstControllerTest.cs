@@ -29,7 +29,7 @@ namespace Groep9.NET.Tests.Controllers {
             mockgr = new Mock<IGebruikerRepository>();
             mockpr.Setup(p => p.VindAlleProducten()).Returns(context.Producten.AsQueryable());
             mockpr.Setup(p => p.FindByProductNummer(1)).Returns(context.P1);
-        //    vController = new VerlanglijstController(mockpr.Object, mockdr.Object, mocklr.Object, mockgr.Object);
+            vController = new VerlanglijstController(mockpr.Object, mockdr.Object, mocklr.Object, mockgr.Object);
         }
 
         [TestMethod]
@@ -37,7 +37,7 @@ namespace Groep9.NET.Tests.Controllers {
             g = context.Gebruiker;
             g.VerlangLijst.Add(context.P1);
             g.VerlangLijst.Add(context.P2);
-            ViewResult result = vController.Index(g) as ViewResult;
+            ViewResult result = vController.Index(g, "") as ViewResult;
             List<Product> producten = (result.Model as IEnumerable<Product>).ToList();
             Assert.IsNotNull(result);
             Assert.AreEqual(g.VerlangLijst.Count, producten.Count);
@@ -45,7 +45,7 @@ namespace Groep9.NET.Tests.Controllers {
         [TestMethod]
         public void IndexReturnsLegeVerlanglijstIndienLeeg() {
             g = context.Gebruiker;
-            ViewResult result = vController.Index(g) as ViewResult;
+            ViewResult result = vController.Index(g, "") as ViewResult;
             List<Product> producten = (result.Model as IEnumerable<Product>).ToList();
             Assert.IsNotNull(result);
             Assert.AreEqual(0, producten.Count);

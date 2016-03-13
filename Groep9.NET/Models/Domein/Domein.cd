@@ -11,7 +11,7 @@
   <Class Name="Groep9.NET.Product">
     <Position X="4.25" Y="0.75" Width="3" />
     <TypeIdentifier>
-      <HashCode>EAAACAAwBAAAAAAAAAAABAAAAAAAIgAAAAAAaACBAAE=</HashCode>
+      <HashCode>EAAACAAQBEAAAAAAAAAARAAAAAAAogAAAAAAaACAAAA=</HashCode>
       <FileName>Models\Domein\Product.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
@@ -43,7 +43,7 @@
   <Class Name="Groep9.NET.Models.Domein.Gebruiker">
     <Position X="1.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAACCAAAAAAAAAAAAAAAAAIAAAAAAAQQAAQAA=</HashCode>
+      <HashCode>AAAAAAAAACCAAAAAAAAAAAAAAAAAIABAAAAAQQAAQCA=</HashCode>
       <FileName>Models\Domein\Gebruiker.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
@@ -57,8 +57,8 @@
       <FileName>Models\Domein\Reservatie.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="Gebruiker" />
       <Property Name="Product" />
+      <Property Name="Gebruiker" />
     </ShowAsAssociation>
   </Class>
   <Class Name="Groep9.NET.Models.Domein.Leergebied">
@@ -82,9 +82,5 @@
       <FileName>Models\Domein\Personeelslid.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Interface Name="System.Collections.Generic.ICollection&lt;T&gt;" Collapsed="true">
-    <Position X="9.25" Y="6.75" Width="1.5" />
-    <TypeIdentifier />
-  </Interface>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
