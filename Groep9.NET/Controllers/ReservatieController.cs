@@ -51,7 +51,8 @@ namespace Groep9.NET.Controllers
             }
             catch
             {
-                ModelState.AddModelError("", "Verwijderen van reservatielijst is mislukt");
+                TempData["DeleteFail"] = "Verwijderen van reservatie is niet gelukt";
+
                 return RedirectToAction("Index");
             }
 
