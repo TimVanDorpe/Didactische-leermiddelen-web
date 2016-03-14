@@ -44,6 +44,13 @@ namespace Groep9.NET.Controllers
             return View(vm);
         }
 
+
+        //public ActionResult VerlanglijstMetDatum(DateTime date)//refreshed verlanglijst na klik op "toon beschikbare prod"
+        //{
+
+        //}
+
+
         public ActionResult RemoveFromVerlanglijst(int id, Gebruiker gebruiker)
         {
             try {
