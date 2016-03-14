@@ -109,9 +109,17 @@ namespace Groep9.NET {
 
 
 
-        public int BerekenAantalGereserveerd(ICollection<Reservatie> reservaties)//VALIDATIE OOK NIET VERGETEN
+        public int BerekenAantalGereserveerd(List<Reservatie> reservaties)//VALIDATIE OOK NIET VERGETEN
         {
-            throw new NotImplementedException();
+            int x = 0;
+            
+            for(int i = 0; i < reservaties.Count; i++)
+                {
+                if (this.ProductId == reservaties[i].Product.ProductId )
+                x += reservaties[i].Aantal;
+
+                    }
+            return x;
         }
 
 
@@ -120,9 +128,13 @@ namespace Groep9.NET {
             throw new NotImplementedException();
         }
 
-        public int BerekenAantalBeschikbaar()
+        public int BerekenAantalBeschikbaar(List<Reservatie> reservaties, List<Product> verlanglijst)
         {
-        throw new NotImplementedException();
+            int x = 0;
+
+
+            //dus al u aantallen - u reservaties , eigenlijk hebde zelf u reservaties niet nodig denkik *nog niet zker*
+            return x;
         }
 
 

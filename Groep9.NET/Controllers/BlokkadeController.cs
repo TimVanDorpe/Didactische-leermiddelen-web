@@ -15,16 +15,14 @@ namespace Groep9.NET.Controllers
         private IDoelgroepRepository doelgroepRepository;
         private ILeergebiedRepository leergebiedRepository;
         private IGebruikerRepository gebruikerRepository;
-        //private IReservatieRepository reservatieRepository;
-
-        // GET: Verlanglijst
+       
         public BlokkadeController(IProductRepository pr, IDoelgroepRepository dr, ILeergebiedRepository lr, IGebruikerRepository gr/*, IReservatieRepository rr*/)
         {
             productRepository = pr;
             doelgroepRepository = dr;
             leergebiedRepository = lr;
             gebruikerRepository = gr;
-            //reservatieRepository = rr;
+            
         }
 
         public ActionResult Index(Gebruiker gebruiker, string datum)
@@ -43,8 +41,8 @@ namespace Groep9.NET.Controllers
         }
         public ActionResult Blokkeer(int id = 0, int aantal = 1)
         {
-            productRepository.FindByProductNummer(id).AantalGeblokkeerd = +aantal;
-            productRepository.FindByProductNummer(id).AantalBeschikbaar = -aantal;
+            productRepository.FindByProductNummer(id).AantalGeblokkeerd += aantal;
+            productRepository.FindByProductNummer(id).AantalBeschikbaar -= aantal;
             
             
             return RedirectToAction("Index");

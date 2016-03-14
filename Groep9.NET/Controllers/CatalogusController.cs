@@ -99,28 +99,6 @@ namespace Groep9.NET.Controllers {
                 return false;
             }
         }
-
-
-        //public ActionResult AddToVerlanglijst(int id, Gebruiker gebruiker)
-        //{
-           
-
-        //        try
-        //        {
-        //            Product product = productRepository.FindByProductNummer(id);
-        //            gebruiker.VoegProductAanVerlanglijstToe(product);
-        //            gebruikerRepository.SaveChanges();
-               
-        //        return RedirectToAction("Index");
-        //        }
-        //        catch 
-        //        {
-        //            ModelState.AddModelError("", "Reservatie is niet toegevoegd");
-        //            return RedirectToAction("Index");
-
-        //        }
-
-        //}
     
     public ActionResult AddOfVerwijderVerlanglijst(int id, Gebruiker gebruiker) {
             try {
@@ -139,8 +117,7 @@ namespace Groep9.NET.Controllers {
                     gebruikerRepository.SaveChanges();
                     TempData["Info2"] = "Product " + productRepository.FindByProductNummer(id).Naam + " is verwijderd uit verlanglijst.";
                 }
-                // Gebruiker currentUser = gebruikerRepository.FindByEmail(User.Identity.Name);
-
+               
                 return RedirectToAction("Index"); }
             catch 
             {

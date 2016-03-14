@@ -39,8 +39,7 @@ namespace Groep9.NET.Controllers
         {
             try
             {               
-
-                //test of reservatie juist is 
+                
                 Reservatie reservatie = gebruiker.ReservatieLijst.First();
                 gebruiker.VerwijderReservatie(reservatie);
                 reservatie.Product.AantalGereserveerd--;
