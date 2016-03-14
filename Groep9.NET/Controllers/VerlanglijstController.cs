@@ -30,6 +30,8 @@ namespace Groep9.NET.Controllers
         public ActionResult Index(Gebruiker gebruiker, string datum)
         {
             IEnumerable<Product> verlanglijst = gebruiker.VerlangLijst.ToList();
+         
+
 
             ProductenViewModel vm = new ProductenViewModel()
             {
@@ -41,6 +43,13 @@ namespace Groep9.NET.Controllers
 
             return View(vm);
         }
+
+
+        //public ActionResult VerlanglijstMetDatum(DateTime date)//refreshed verlanglijst na klik op "toon beschikbare prod"
+        //{
+
+        //}
+
 
         public ActionResult RemoveFromVerlanglijst(int id, Gebruiker gebruiker)
         {
@@ -60,11 +69,10 @@ namespace Groep9.NET.Controllers
         }
 
 
-        public ActionResult AddReservatie(Gebruiker gebruiker ,int aantal = 0, int id = 0)
+        public ActionResult AddReservatie(Gebruiker gebruiker ,int aantal, int id)
         {
             try
             {
-                
                 //productRepository.ReserveerProduct(product, aantal);
 
                 //methode voor reserveerknop, die aantal meegeeft aan methode product.Reserveer

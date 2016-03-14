@@ -8,6 +8,7 @@ using System.Diagnostics;
 using Groep9.NET.Models.Domein;
 using System.Diagnostics;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 
 namespace Groep9.NET {
     public class Product {
@@ -37,6 +38,7 @@ namespace Groep9.NET {
 
         public virtual ICollection<Doelgroep> Doelgroepen { get; set; }
         public virtual ICollection<Leergebied> Leergebieden { get; set; }
+        public virtual ICollection<Reservatie> Reservaties { get; set; }
 
         public String Plaats { get; set; }
 
@@ -46,6 +48,7 @@ namespace Groep9.NET {
         public Product() {
             Doelgroepen = new List<Doelgroep>();
             Leergebieden = new List<Leergebied>();
+            Reservaties = new List<Reservatie>();
         }
 
    
@@ -79,34 +82,33 @@ namespace Groep9.NET {
 
         }
 
-        public DateTime BerekenStartDatumReservatieWeek(DateTime? d = null /* voor te testen*/)
+        public int BerekenWeek(string datum)
         {
-
-            DateTime today;
-
-            if (d != null)
-            {
-                today = (DateTime)d;
-            }
-            else
-            {
-                today = DateTime.Today;
-            }
-
-            // returnt volgende week
-            if (today.DayOfWeek >= DayOfWeek.Monday && today.DayOfWeek <= DayOfWeek.Friday || (today.DayOfWeek == DayOfWeek.Friday && today.Hour <= 17))
-            {
-                int daysUntilMonday = (((int)DayOfWeek.Monday - (int)today.DayOfWeek + 7) % 7);
-                return today.AddDays(daysUntilMonday).AddHours(8);
-            }
-            else {
-                // returnt volgende volgende week (indien na vrijdag 17h)
-                int daysUntilMonday = (((int)DayOfWeek.Monday - (int)today.DayOfWeek + 7) % 7 + 7);
-                return today.AddDays(daysUntilMonday).AddHours(8);
-            }
+           
+            var currentCulture = CultureInfo.CurrentCulture;
+            var weekNo = currentCulture.Calendar.GetWeekOfYear(
+                            //haalt jaar, maand en dag uit string en zet om in int
+                            new DateTime(Int32.Parse(datum.Substring(7, 10)), Int32.Parse(datum.Substring(0, 1)), Int32.Parse(datum.Substring(4, 5))),
+                            currentCulture.DateTimeFormat.CalendarWeekRule,
+                            currentCulture.DateTimeFormat.FirstDayOfWeek);
+            return weekNo;
+        }
+        public int BerekenReservatiesPerWeek(string datum)
+        {
+            throw new NotImplementedException();
         }
 
+        public void VoegReservatieToe(Reservatie r)
+        {
 
+            Reservaties.Add(r);
+
+        }
+
+        public void VerwijderReservatie(Reservatie r)
+        {
+            Reservaties.Remove(r);
+        }
 
 
         public int BerekenAantalGereserveerd(List<Reservatie> reservaties)//VALIDATIE OOK NIET VERGETEN
