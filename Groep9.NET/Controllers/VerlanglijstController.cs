@@ -30,6 +30,8 @@ namespace Groep9.NET.Controllers
         public ActionResult Index(Gebruiker gebruiker, string datum)
         {
             IEnumerable<Product> verlanglijst = gebruiker.VerlangLijst.ToList();
+         
+
 
             ProductenViewModel vm = new ProductenViewModel()
             {
