@@ -1,6 +1,7 @@
 ﻿using Groep9.NET.Models.Domein;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -74,6 +75,12 @@ namespace Groep9.NET.Controllers
             try
             {
                 //productRepository.ReserveerProduct(product, aantal);
+
+                if (TempData["datum"] == null)
+                {
+                    TempData["datum"] = DateTime.ParseExact(DateTime.Today.ToString().Substring(0, 10), "dd/MM/yyyy", null).ToString("MM/dd/yyyy");
+                }
+
 
                 Product prod = productRepository.FindByProductNummer(id);
 
