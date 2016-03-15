@@ -96,6 +96,7 @@ namespace Groep9.NET {
             // MM/DD/YYYY
             return weekNo;
         }
+        
         public int BerekenReservatiesPerWeek(string datum)
         {
             throw new NotImplementedException();
@@ -136,6 +137,8 @@ namespace Groep9.NET {
         public int BerekenAantalBeschikbaar(List<Reservatie> reservaties, List<Product> verlanglijst)
         {
             int x = 0;
+
+
 
 
             //dus al u aantallen - u reservaties , eigenlijk hebde zelf u reservaties niet nodig denkik *nog niet zker*

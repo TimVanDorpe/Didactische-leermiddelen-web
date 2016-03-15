@@ -30,9 +30,9 @@ namespace Groep9.NET.Controllers
         public ActionResult Index(Gebruiker gebruiker, string datum)
         {
             IEnumerable<Product> verlanglijst = gebruiker.VerlangLijst.ToList();
-         
 
 
+            TempData["datum"] = datum;
             ProductenViewModel vm = new ProductenViewModel()
             {
                 Producten = verlanglijst.Select(p => new ProductViewModel(p, gebruiker))
@@ -75,10 +75,15 @@ namespace Groep9.NET.Controllers
             {
                 //productRepository.ReserveerProduct(product, aantal);
 
+                Product prod = productRepository.FindByProductNummer(id);
+
                 //methode voor reserveerknop, die aantal meegeeft aan methode product.Reserveer
-                Reservatie reservatie = new Reservatie(productRepository.FindByProductNummer(id), aantal,gebruiker);
+                Reservatie reservatie = new Reservatie(prod, aantal,gebruiker, TempData["datum"].ToString());
                 reservatie.Product.AantalGereserveerd += aantal;
-                reservatie.Product.AantalBeschikbaar -= aantal;               
+                reservatie.Product.AantalBeschikbaar -= aantal;
+
+                prod.VoegReservatieToe(reservatie);
+
                 gebruiker.VoegReservatieToe(reservatie);
                 gebruikerRepository.SaveChanges();
                 

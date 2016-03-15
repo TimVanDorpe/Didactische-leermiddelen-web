@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 
@@ -22,47 +23,47 @@ namespace Groep9.NET.Models.Domein {
 
         public Gebruiker Gebruiker { get; set; }
 
-        public Reservatie(Product product, int aantal, Gebruiker gebruiker)
+        public Reservatie(Product product, int aantal, Gebruiker gebruiker, string datum)
         {
             Gebruiker = gebruiker;
             Product = product;
             Aantal = aantal;
-            StartDatum = BerekenStartDatumReservatieWeek();
-            EindDatum = BerekenEindDatumReservatieWeek();
+            StartDatum = BerekenStartDatumReservatieWeek(datum);
+            EindDatum = BerekenEindDatumReservatieWeek(datum);
             //product.AantalBeschikbaar = product.AantalBeschikbaar - aantal;
             //product.AantalBeschikbaar = product.AantalGereserveerd + aantal;
             //p.AantalBeschikbaar -= hoeveelheid;
             //p.AantalGereserveerd += hoeveelheid;
+
         }
 
-        public DateTime BerekenStartDatumReservatieWeek(DateTime? d = null /* voor te testen*/)
+        public DateTime BerekenStartDatumReservatieWeek(string datum, DateTime? d = null/* voor te testen*/)
         {
-
-            DateTime today;
+            DateTime date;
 
             if (d != null)
             {
-                today = (DateTime) d;
+                date = (DateTime) d;
             }
             else
             {
-                today = DateTime.Today;
+                date = new DateTime(Int32.Parse(datum.Substring(6, 4)), Int32.Parse(datum.Substring(0, 2)), Int32.Parse(datum.Substring(3, 2)));
             }
             
-            // returnt volgende week
-            if (today.DayOfWeek >= DayOfWeek.Monday && today.DayOfWeek <= DayOfWeek.Friday || (today.DayOfWeek == DayOfWeek.Friday && today.Hour <= 17)) {
-                int daysUntilMonday = (((int)DayOfWeek.Monday - (int)today.DayOfWeek + 7) % 7);
-                return today.AddDays(daysUntilMonday).AddHours(8);
+            // returnt datum van volgende week
+            if (date.DayOfWeek >= DayOfWeek.Monday && date.DayOfWeek <= DayOfWeek.Friday || (date.DayOfWeek == DayOfWeek.Friday && date.Hour <= 17)) {
+                int daysUntilMonday = (((int)DayOfWeek.Monday - (int)date.DayOfWeek + 7) % 7);
+                return date.AddDays(daysUntilMonday).AddHours(8);
             }
             else {
-                // returnt volgende volgende week (indien na vrijdag 17h)
-                int daysUntilMonday = (((int)DayOfWeek.Monday - (int)today.DayOfWeek + 7) % 7 + 7);
-                return today.AddDays(daysUntilMonday).AddHours(8);
+                // returnt datum van volgende volgende week (indien na vrijdag 17h)
+                int daysUntilMonday = (((int)DayOfWeek.Monday - (int)date.DayOfWeek + 7) % 7 + 7);
+                return date.AddDays(daysUntilMonday).AddHours(8);
             }
         }
 
-        public DateTime BerekenEindDatumReservatieWeek(DateTime? d = null) {
-            return BerekenStartDatumReservatieWeek(d).AddDays(4).AddHours(9);
+        public DateTime BerekenEindDatumReservatieWeek(string datum, DateTime? d = null) {
+            return BerekenStartDatumReservatieWeek(datum, d).AddDays(4).AddHours(9);
         }
 
 
