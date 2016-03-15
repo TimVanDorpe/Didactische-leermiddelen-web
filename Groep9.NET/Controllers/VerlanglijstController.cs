@@ -31,9 +31,17 @@ namespace Groep9.NET.Controllers
         public ActionResult Index(Gebruiker gebruiker, string datum)
         {
             IEnumerable<Product> verlanglijst = gebruiker.VerlangLijst.ToList();
-
+            Reservatie r = new Reservatie();
 
             TempData["datum"] = datum;
+
+            if (TempData["datum"] == null) {
+                TempData["datum"] = DateTime.ParseExact(DateTime.Today.ToString().Substring(0, 10), "dd/MM/yyyy", null).ToString("MM/dd/yyyy");
+            }
+
+            TempData["resdatum"] = r.BerekenStartDatumReservatieWeek(TempData["datum"].ToString());
+            TempData["einddatum"] = r.BerekenEindDatumReservatieWeek(TempData["datum"].ToString());
+
             ProductenViewModel vm = new ProductenViewModel()
             {
                 Producten = verlanglijst.Select(p => new ProductViewModel(p, gebruiker))
@@ -76,10 +84,6 @@ namespace Groep9.NET.Controllers
             {
                 //productRepository.ReserveerProduct(product, aantal);
 
-                if (TempData["datum"] == null)
-                {
-                    TempData["datum"] = DateTime.ParseExact(DateTime.Today.ToString().Substring(0, 10), "dd/MM/yyyy", null).ToString("MM/dd/yyyy");
-                }
 
 
                 Product prod = productRepository.FindByProductNummer(id);
