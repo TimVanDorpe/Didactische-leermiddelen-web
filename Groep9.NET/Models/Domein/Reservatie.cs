@@ -7,9 +7,8 @@ using System.Web;
 
 namespace Groep9.NET.Models.Domein {
     public class Reservatie {
-        public Reservatie()
-        {
-           
+        public Reservatie() {
+
         }
         public int ReservatieId { get; set; }
         [DataType(DataType.Date)]
@@ -23,8 +22,7 @@ namespace Groep9.NET.Models.Domein {
 
         public Gebruiker Gebruiker { get; set; }
 
-        public Reservatie(Product product, int aantal, Gebruiker gebruiker, string datum)
-        {
+        public Reservatie(Product product, int aantal, Gebruiker gebruiker, string datum) {
             Gebruiker = gebruiker;
             Product = product;
             Aantal = aantal;
@@ -37,29 +35,60 @@ namespace Groep9.NET.Models.Domein {
 
         }
 
-        public DateTime BerekenStartDatumReservatieWeek(string datum, DateTime? d = null/* voor te testen*/)
-        {
+        public DateTime BerekenStartDatumReservatieWeek(string datum, DateTime? d = null/* voor te testen*/) {
             DateTime date;
 
-            if (d != null)
-            {
-                date = (DateTime) d;
-            }
-            else
-            {
-                date = new DateTime(Int32.Parse(datum.Substring(6, 4)), Int32.Parse(datum.Substring(0, 2)), Int32.Parse(datum.Substring(3, 2)));
-            }
-            
-            // returnt datum van volgende week
-            if (date.DayOfWeek >= DayOfWeek.Monday && date.DayOfWeek <= DayOfWeek.Friday || (date.DayOfWeek == DayOfWeek.Friday && date.Hour <= 17)) {
-                int daysUntilMonday = (((int)DayOfWeek.Monday - (int)date.DayOfWeek + 7) % 7);
-                return date.AddDays(daysUntilMonday).AddHours(8);
+            if (d != null) {
+                date = (DateTime)d;
             }
             else {
-                // returnt datum van volgende volgende week (indien na vrijdag 17h)
-                int daysUntilMonday = (((int)DayOfWeek.Monday - (int)date.DayOfWeek + 7) % 7 + 7);
-                return date.AddDays(daysUntilMonday).AddHours(8);
+                date = new DateTime(Int32.Parse(datum.Substring(6, 4)), Int32.Parse(datum.Substring(0, 2)), Int32.Parse(datum.Substring(3, 2)));
             }
+
+
+            /*
+                ALS date.week = dateTime.today.week
+                    code hieronder
+                ANDERS
+                    return de geselecteerde week
+                  
+            */
+            if (BerekenWeek(datum) == BerekenWeek(DateTime.ParseExact(DateTime.Today.ToString()
+                .Substring(0,10), "dd/MM/yyyy", null).ToString("MM/dd/yyyy"))) {
+
+                //DateTime.ParseExact(DateTime.Today.ToString().Substring(0, 10), "dd/MM/yyyy", null)
+                    //   .ToString("MM/dd/yyyy");
+                // returnt datum van volgende week
+                if (date.DayOfWeek >= DayOfWeek.Monday && date.DayOfWeek <= DayOfWeek.Friday ||
+                    (date.DayOfWeek == DayOfWeek.Friday && date.Hour <= 17))
+                {
+                    int daysUntilMonday = (((int) DayOfWeek.Monday - (int) date.DayOfWeek + 7)%7);
+                    return date.AddDays(daysUntilMonday).AddHours(8);
+                }
+                else
+                {
+                    // returnt datum van volgende volgende week (indien na vrijdag 17h)
+                    int daysUntilMonday = (((int) DayOfWeek.Monday - (int) date.DayOfWeek + 7)%7 + 7);
+                    return date.AddDays(daysUntilMonday).AddHours(8);
+                }
+            }
+
+            int daysAfterMonday = (int) DayOfWeek.Monday - (int) date.DayOfWeek;
+            return date.AddDays(daysAfterMonday).AddHours(8);
+            
+        }
+        private int BerekenWeek(string datum) {
+
+            var currentCulture = CultureInfo.CurrentCulture;
+            var weekNo = currentCulture.Calendar.GetWeekOfYear(
+                            //haalt jaar, maand en dag uit string en zet om in int
+                            new DateTime(Int32.Parse(datum.Substring(6, 4)), Int32.Parse(datum.Substring(0, 2)), Int32.Parse(datum.Substring(3, 2))),
+                            currentCulture.DateTimeFormat.CalendarWeekRule,
+                            currentCulture.DateTimeFormat.FirstDayOfWeek);
+
+            // YYYY/MM/DD
+            // MM/DD/YYYY
+            return weekNo;
         }
 
         public DateTime BerekenEindDatumReservatieWeek(string datum, DateTime? d = null) {

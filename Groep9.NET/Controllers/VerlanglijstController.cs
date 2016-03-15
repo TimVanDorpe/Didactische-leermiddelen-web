@@ -33,18 +33,19 @@ namespace Groep9.NET.Controllers
 
             if (datum == null)
             {
+                //als er geen datum geselecteerd is, stel tempdata in op vandaag
                 TempData["datum"] =
                     DateTime.ParseExact(DateTime.Today.ToString().Substring(0, 10), "dd/MM/yyyy", null)
                         .ToString("MM/dd/yyyy");
             }
             else
             {
+                //anders op geselecteerde datum
                 TempData["datum"] = datum;
             }
 
-            var test = TempData["datum"];
-
-            TempData["resdatum"] = r.BerekenStartDatumReservatieWeek(TempData["datum"].ToString());
+            //stelt de start en einddatum in voor in de bevestigingspopup weer te geven
+            TempData["startdatum"] = r.BerekenStartDatumReservatieWeek(TempData["datum"].ToString());
             TempData["einddatum"] = r.BerekenEindDatumReservatieWeek(TempData["datum"].ToString());
 
 
@@ -80,24 +81,14 @@ namespace Groep9.NET.Controllers
         }
 
 
-        public ActionResult AddReservatie(Gebruiker gebruiker ,int aantal, int id)
+        public ActionResult AddReservatie(Gebruiker gebruiker ,int aantal, int id, string datum)
         {
             try
             {
-                //productRepository.ReserveerProduct(product, aantal);
-
-
-                if (TempData["datum"] == null)
-              {
-                   TempData["datum"] = DateTime.ParseExact(DateTime.Today.ToString().Substring(0, 10), "dd/MM/yyyy", null).ToString("MM/dd/yyyy");
-              }
-
-                var data = TempData["datum"];
-
                 Product prod = productRepository.FindByProductNummer(id);
 
                 //methode voor reserveerknop, die aantal meegeeft aan methode product.Reserveer
-                Reservatie reservatie = new Reservatie(prod, aantal,gebruiker, data.ToString());
+                Reservatie reservatie = new Reservatie(prod, aantal,gebruiker, datum);
         
 
                 prod.VoegReservatieToe(reservatie);
@@ -122,23 +113,14 @@ namespace Groep9.NET.Controllers
             return RedirectToAction("Index");
         }
 
-
-        public ActionResult AddBlokkering(Gebruiker gebruiker, int aantal, int id)
+        public ActionResult AddBlokkering(Gebruiker gebruiker, int aantal, int id, string datum)
         {
             try
             {
-
-
-                if (TempData["datum"] == null)
-                {
-                    TempData["datum"] = DateTime.ParseExact(DateTime.Today.ToString().Substring(0, 10), "dd/MM/yyyy", null).ToString("MM/dd/yyyy");
-                }
-
-
                 Product prod = productRepository.FindByProductNummer(id);
 
                 //methode voor reserveerknop, die aantal meegeeft aan methode product.Reserveer
-                Blokkering blokkering = new Blokkering(prod, aantal, gebruiker, TempData["datum"].ToString());
+                Blokkering blokkering = new Blokkering(prod, aantal, gebruiker, datum);
            
 
                 prod.VoegBlokkeringToe(blokkering);

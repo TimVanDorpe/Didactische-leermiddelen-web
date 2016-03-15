@@ -36,9 +36,10 @@
 
         }
 
+    
         @foreach (var item in Model)
             {
-                using (Html.BeginForm("AddReservatie", "Verlanglijst", new { id = item.ProductId}))
+                using (Html.BeginForm("AddReservatie", "Verlanglijst", new { id = item.ProductId, datum = TempData["datum"]}))
                 {
                 <tr>
                     <td>
@@ -89,7 +90,7 @@
                                         <div class="modal-body">
                                             <p>
                                                 Weet u zeker dat u deze reservatie wilt maken, voor de week van:<br/>
-                                                @TempData["resdatum"] tot @TempData["einddatum"] ?
+                                                @TempData["startdatum"] tot @TempData["einddatum"] ?
                                             </p>
                                         </div>
                                         <div class="modal-footer">
