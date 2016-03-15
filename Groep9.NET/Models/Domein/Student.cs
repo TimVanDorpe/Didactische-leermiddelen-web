@@ -13,9 +13,16 @@ namespace Groep9.NET {
         {
         }
 
-        public Reservatie Reserveer()
+        public override void VoegReservatieToe(Reservatie r)
         {
-            throw new NotImplementedException();
+
+            ReservatieLijst.Add(r);
+
+        }
+
+        public override void VerwijderReservatie(Reservatie r)
+        {
+            ReservatieLijst.Remove(r);
         }
 
     }

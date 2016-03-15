@@ -90,21 +90,33 @@ namespace Groep9.NET.Controllers
                 reservatie.Product.AantalBeschikbaar -= aantal;
 
                 prod.VoegReservatieToe(reservatie);
-
+                if(gebruiker is Student) { 
                 gebruiker.VoegReservatieToe(reservatie);
                 gebruikerRepository.SaveChanges();
-                
                 TempData["Info"] = "Product " + productRepository.FindByProductNummer(id).Naam + " is gereserveerd.";
+
+                }
+                else {
+                    TempData["ReservatieFail"] = "Reservatie toevoegen lukt niet als leerkracht";
+                }
+
             }
             catch
             {
                 TempData["ReservatieFail"] = "Reservatie toevoegen is niet gelukt";
 
-
-
+                
             }
             return RedirectToAction("Index");
         }
+
+
+
+
+
+
+
+
 
         public ActionResult Details(int id)
         {

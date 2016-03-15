@@ -204,6 +204,7 @@
     <Compile Include="Models\DAL\ApplicationDbInitializer.cs" />
     <Compile Include="Models\DAL\Mapping\ReservatieMapper.cs" />
     <Compile Include="Models\Domein\ApplicationUser.cs" />
+    <Compile Include="Models\Domein\Blokkade.cs" />
     <Compile Include="Models\Domein\Gebruiker.cs" />
     <Compile Include="Models\Domein\Firma.cs" />
     <Compile Include="Models\DAL\Context.cs" />
