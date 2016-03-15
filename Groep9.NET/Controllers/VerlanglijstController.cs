@@ -85,6 +85,11 @@ namespace Groep9.NET.Controllers
                 //productRepository.ReserveerProduct(product, aantal);
 
 
+                if (TempData["datum"] == null)
+              {
+                   TempData["datum"] = DateTime.ParseExact(DateTime.Today.ToString().Substring(0, 10), "dd/MM/yyyy", null).ToString("MM/dd/yyyy");
+              }
+
 
                 Product prod = productRepository.FindByProductNummer(id);
 
@@ -95,6 +100,7 @@ namespace Groep9.NET.Controllers
 
                 prod.VoegReservatieToe(reservatie);
                 if(gebruiker is Student) { 
+
                 gebruiker.VoegReservatieToe(reservatie);
                 gebruikerRepository.SaveChanges();
                 TempData["Info"] = "Product " + productRepository.FindByProductNummer(id).Naam + " is gereserveerd.";
