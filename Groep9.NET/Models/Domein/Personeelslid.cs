@@ -11,11 +11,19 @@ namespace Groep9.NET {
     public class Personeelslid : Gebruiker {
 
         public Personeelslid(): base() {      }
-     
-        public void Blokkeer()
+
+        public override void VoegBlokkeringToe(Blokkering b)
         {
-            throw new NotImplementedException();
-        }
+
+            BlokkeringLijst.Add(b);
 
         }
+
+        public override void VerwijderBlokkering(Blokkering b)
+        {
+            BlokkeringLijst.Remove(b);
+        }
+
+
     }
+}

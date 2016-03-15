@@ -40,6 +40,8 @@ namespace Groep9.NET {
         public virtual ICollection<Leergebied> Leergebieden { get; set; }
         public virtual ICollection<Reservatie> Reservaties { get; set; }
 
+        public virtual ICollection<Blokkering> Blokkeringen { get; set; }
+
         public String Plaats { get; set; }
 
 
@@ -112,6 +114,17 @@ namespace Groep9.NET {
         public void VerwijderReservatie(Reservatie r)
         {
             Reservaties.Remove(r);
+        }
+        public void VoegBlokkeringToe(Blokkering r)
+        {
+
+            Blokkeringen.Add(r);
+
+        }
+
+        public void VerwijderBlokkering(Blokkering r)
+        {
+            Blokkeringen.Remove(r);
         }
 
 
