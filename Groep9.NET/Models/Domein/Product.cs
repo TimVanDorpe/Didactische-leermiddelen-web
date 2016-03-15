@@ -88,9 +88,12 @@ namespace Groep9.NET {
             var currentCulture = CultureInfo.CurrentCulture;
             var weekNo = currentCulture.Calendar.GetWeekOfYear(
                             //haalt jaar, maand en dag uit string en zet om in int
-                            new DateTime(Int32.Parse(datum.Substring(7, 10)), Int32.Parse(datum.Substring(0, 1)), Int32.Parse(datum.Substring(4, 5))),
+                            new DateTime(Int32.Parse(datum.Substring(6, 4)), Int32.Parse(datum.Substring(0, 2)), Int32.Parse(datum.Substring(3, 2))),
                             currentCulture.DateTimeFormat.CalendarWeekRule,
                             currentCulture.DateTimeFormat.FirstDayOfWeek);
+
+            // YYYY/MM/DD
+            // MM/DD/YYYY
             return weekNo;
         }
         public int BerekenReservatiesPerWeek(string datum)

@@ -13,8 +13,9 @@
         <div class="pull-left col-md-2"><label> Kies een datum: </label></div>
         
         <div class="input-group date col-md-6" data-provide="datepicker">
-            <input type="text" class="form-control" id="datum"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-            
+            <!--<input type="text" class="form-control" id="datum">-->
+            @Html.TextBox("datum", "", "", new { @class = "form-control", @placeholder = "kies datum.." })
+            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
         </div>
         <input type="submit" value="Toon beschikbare producten" class="btn btn-default col-md-3  groen pull-right"/>
     </div>
