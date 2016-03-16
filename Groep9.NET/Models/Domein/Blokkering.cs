@@ -23,7 +23,7 @@ namespace Groep9.NET.Models.Domein
         public virtual Product Product { get; set; }
         public int Aantal { get; set; }
 
-        public Gebruiker Gebruiker { get; set; }
+        public virtual Gebruiker Gebruiker { get; set; }
 
         public virtual ICollection<Dag> Weekdagen { get; set; }
         public Blokkering(Product product, int aantal, Gebruiker gebruiker, string datum)

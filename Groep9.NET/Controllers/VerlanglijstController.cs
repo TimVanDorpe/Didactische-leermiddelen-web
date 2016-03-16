@@ -141,27 +141,21 @@ namespace Groep9.NET.Controllers {
             try
             {
                 
-                Product prod = productRepository.FindByProductNummer(id);                
-                Blokkering blokkering = new Blokkering(prod, aantal, gebruiker, datum);
-                addWeekdag(Maandag, Dinsdag, Woensdag, Donderdag, Vrijdag);
-                blokkering.Weekdagen = weekdagen;
-                prod.VoegBlokkeringToe(blokkering);
+                               
+              
                 if (gebruiker is Personeelslid)
                 {
                     if (prod.Aantal > (prod.BerekenAantalGereserveerdOpWeek(datum) + aantal))
                     {
                         if (aantal > 0)
                         {
-                   
                             Blokkering blokkering = new Blokkering(prod, aantal, gebruiker, datum);
-                            if (Maandag)
-                            {
-                                blokkering.addWeekdag("Maandag");
-                            }
+                            addWeekdag(Maandag, Dinsdag, Woensdag, Donderdag, Vrijdag);
+                            blokkering.Weekdagen = weekdagen;
                             prod.VoegBlokkeringToe(blokkering);
-                    gebruiker.VoegBlokkeringToe(blokkering);
-                    gebruikerRepository.SaveChanges();
-                    TempData["Info"] = "Product " + productRepository.FindByProductNummer(id).Naam + " is geblokkeerd.";
+                             gebruiker.VoegBlokkeringToe(blokkering);
+                               gebruikerRepository.SaveChanges();
+                               TempData["Info"] = "Product " + productRepository.FindByProductNummer(id).Naam + " is geblokkeerd.";
                         }
                         else
                         {
