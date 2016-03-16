@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Groep9.NET.Models.Domein.Blokkering>
+
+<h2>Blokkering</h2>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Blokkering</title>
+</head>
+<body>
+
+    <table class="table table-responsive">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Product.Foto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product.Naam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDatum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EindDatum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Aantal)
+            </th>
+
+
+        </tr>
+        @if (!Model.Any())
+        {
+            <tr>
+                <td colspan="9">@User.Identity.Name heeft geen blokkeringen</td>
+            </tr>
+
+        }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+
+
+                    <img style="width: 75px; height: 75px;" alt="@Html.DisplayFor(modelItem => item.Product.Naam)" src="~/Content/images/@Html.DisplayFor(modelItem => item.Product.Foto)" />
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.Naam)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDatum)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EindDatum)
+                </td>
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Aantal)
+                </td>
+                <td>
+                    <a href="@Url.Action("RemoveFromBlokkeringLijst", new {id = item.Product.ProductId})" class="btn btn-danger btn-sm ">
+
+                        <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
+                    </a>
+                </td>
+            </tr>
+        }
+
+    </table>
+</body>
+</html>
