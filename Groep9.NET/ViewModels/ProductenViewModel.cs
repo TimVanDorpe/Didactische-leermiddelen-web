@@ -42,6 +42,9 @@ namespace Groep9.NET.ViewModels {
 
         public int AantalGeblokkeerd { get; set; }//enkel geblokkeerd
         public int AantalGereserveerd { get; set; }//enkel gereserveerd
+        public virtual ICollection<Reservatie> Reservaties { get; set; }
+
+        public virtual ICollection<Blokkering> Blokkeringen { get; set; }
 
 
         public double Prijs { get; private set; }
@@ -74,6 +77,8 @@ namespace Groep9.NET.ViewModels {
             Doelgroep = p.Doelgroepen.Select(i => i.Naam).OrderBy(i => i).ToArray();
             Leergebied = p.Leergebieden.Select(i => i.Naam).OrderBy(i => i).ToArray();
             InVerlanglijst = g.VerlangLijst.Contains(p);
+            Reservaties = p.Reservaties;
+            Blokkeringen = p.Blokkeringen;
 
         }
     }

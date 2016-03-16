@@ -23,15 +23,15 @@
             <dd>
                 <img style="width: 150px; height: 150px;" alt="@Html.DisplayFor(model => model.Naam)" src="~/Content/images/@(@Html.DisplayFor(model =>model.Foto))" />
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.Naam)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.Naam)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.Omschrijving)
             </dt>
@@ -87,11 +87,11 @@
             <dd>
                 @Html.DisplayFor(model => model.Firma)
             </dd>
-    
-           <dt>
+
+            <dt>
                 @Html.DisplayNameFor(model => model.Doelgroepen)
             </dt>
-
+            
             <dd>
 
                 @{
@@ -112,22 +112,43 @@
             <dt>
                 @Html.DisplayNameFor(model => model.Leergebieden)
             </dt>
-    
+
             <dd>
                 @{
                     //teller voor komma op het einde van de lijst niet weer te geven
                     int teller2 = Model.Doelgroepen.Count;
-                    foreach (var leer in Model.Leergebieden.ToList()) {
+                    foreach (var leer in Model.Leergebieden.ToList())
+                    {
                         <span>@leer.Naam</span>
-                        if (teller2 > 1) {
+                        if (teller2 > 1)
+                        {
                             <span>, </span>
                             teller2--;
                         }
                     }
                 }
-                
+
             </dd>
-    
+
+            
+
+            @*<dt>
+                @Html.DisplayNameFor(model => model.Reservaties)
+            </dt>
+            <dd>
+                @if(Model.Reservaties.Count>0){
+                    foreach (var res in Model.Reservaties.ToList())
+                    {
+                        <span>@res.Gebruiker.Email: @res.Aantal</span>
+                    }
+                }
+            </dd>*@
+
+
+
+
+
+
         </dl>
     </div>
     <p>
