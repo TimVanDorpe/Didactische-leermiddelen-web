@@ -58,6 +58,11 @@ namespace Groep9.NET.ViewModels {
         public Boolean Uitleenbaarheid { get; set; }
         [Display(Name ="Aantal Beschikbaar")]
         public int AantalBeschikbaar { get; set; }
+
+
+
+
+
         public ProductViewModel(Product p, Gebruiker g, int aantalGereserveerd)
         {
 
@@ -80,6 +85,10 @@ namespace Groep9.NET.ViewModels {
             AantalBeschikbaar = p.Aantal - aantalGereserveerd;
             AantalGereserveerd = aantalGereserveerd;
             AantalGeblokkeerd = 0;
+
+            Reservaties = p.Reservaties;
+            Blokkeringen = p.Blokkeringen;
+
         }
         public ProductViewModel(Product p, Gebruiker g)
         {
