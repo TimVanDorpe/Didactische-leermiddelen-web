@@ -1,5 +1,6 @@
 ﻿using Groep9.NET.Models.Domein;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Groep9.NET.Models.Domein
@@ -23,6 +24,7 @@ namespace Groep9.NET.Models.Domein
 
         public Gebruiker Gebruiker { get; set; }
 
+        public List<String> Weekdagen { get; set; }
         public Blokkering(Product product, int aantal, Gebruiker gebruiker, string datum)
         {
             Gebruiker = gebruiker;
@@ -62,6 +64,10 @@ namespace Groep9.NET.Models.Domein
         public DateTime BerekenEindDatumReservatieWeek(string datum, DateTime? d = null)
         {
             return BerekenStartDatumReservatieWeek(datum, d).AddDays(4).AddHours(9);
+        }
+        public void addWeekdag(string weekdag)
+        {
+            Weekdagen.Add(weekdag);
         }
 
 

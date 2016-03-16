@@ -115,19 +115,18 @@ namespace Groep9.NET.Controllers {
 
             return RedirectToAction("Index");
         }
-        public ActionResult AddBlokkering(Gebruiker gebruiker, int aantal, int id, string datum)
+        public ActionResult AddBlokkering(Gebruiker gebruiker, int aantal, int id, string datum , bool Maandag = false)
         {
             try
             {
-                Product prod = productRepository.FindByProductNummer(id);
-                
+                Product prod = productRepository.FindByProductNummer(id);                
                 Blokkering blokkering = new Blokkering(prod, aantal, gebruiker, datum);
-
-
+                if (Maandag) {
+                    blokkering.addWeekdag("Maandag"); }
                 prod.VoegBlokkeringToe(blokkering);
                 if (gebruiker is Personeelslid)
                 {
-
+                   
                     gebruiker.VoegBlokkeringToe(blokkering);
                     gebruikerRepository.SaveChanges();
                     TempData["Info"] = "Product " + productRepository.FindByProductNummer(id).Naam + " is geblokkeerd.";
