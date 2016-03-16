@@ -45,37 +45,39 @@ namespace Groep9.NET.Models.Domein {
                 date = new DateTime(Int32.Parse(datum.Substring(6, 4)), Int32.Parse(datum.Substring(0, 2)), Int32.Parse(datum.Substring(3, 2)));
             }
 
-
             /*
                 ALS date.week = dateTime.today.week
                     code hieronder
                 ANDERS
                     return de geselecteerde week
-                  
             */
+
+            // als de gewenste datum al gepasseerd is
+            if (date<DateTime.Today) {
+                throw new ArgumentException("de gewenste datum kan niet in het verleden zijn");
+            }
+
             if (BerekenWeek(datum) == BerekenWeek(DateTime.ParseExact(DateTime.Today.ToString()
-                .Substring(0,10), "dd/MM/yyyy", null).ToString("MM/dd/yyyy"))) {
+            .Substring(0, 10), "dd/MM/yyyy", null).ToString("MM/dd/yyyy"))) {
 
                 //DateTime.ParseExact(DateTime.Today.ToString().Substring(0, 10), "dd/MM/yyyy", null)
-                    //   .ToString("MM/dd/yyyy");
+                //   .ToString("MM/dd/yyyy");
                 // returnt datum van volgende week
                 if (date.DayOfWeek >= DayOfWeek.Monday && date.DayOfWeek <= DayOfWeek.Friday ||
-                    (date.DayOfWeek == DayOfWeek.Friday && date.Hour <= 17))
-                {
-                    int daysUntilMonday = (((int) DayOfWeek.Monday - (int) date.DayOfWeek + 7)%7);
+                    (date.DayOfWeek == DayOfWeek.Friday && date.Hour <= 17)) {
+                    int daysUntilMonday = (((int)DayOfWeek.Monday - (int)date.DayOfWeek + 7) % 7);
                     return date.AddDays(daysUntilMonday).AddHours(8);
                 }
-                else
-                {
+                else {
                     // returnt datum van volgende volgende week (indien na vrijdag 17h)
-                    int daysUntilMonday = (((int) DayOfWeek.Monday - (int) date.DayOfWeek + 7)%7 + 7);
+                    int daysUntilMonday = (((int)DayOfWeek.Monday - (int)date.DayOfWeek + 7) % 7 + 7);
                     return date.AddDays(daysUntilMonday).AddHours(8);
                 }
             }
 
-            int daysAfterMonday = (int) DayOfWeek.Monday - (int) date.DayOfWeek;
+            int daysAfterMonday = (int)DayOfWeek.Monday - (int)date.DayOfWeek;
             return date.AddDays(daysAfterMonday).AddHours(8);
-            
+
         }
         private int BerekenWeek(string datum) {
 
