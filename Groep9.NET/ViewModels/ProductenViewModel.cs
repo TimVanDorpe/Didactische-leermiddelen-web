@@ -43,6 +43,9 @@ namespace Groep9.NET.ViewModels {
         public int AantalGeblokkeerd { get; set; }//enkel geblokkeerd
         [Display(Name = "Gereserveerd")]
         public int AantalGereserveerd { get; set; }//enkel gereserveerd
+        public virtual ICollection<Reservatie> Reservaties { get; set; }
+
+        public virtual ICollection<Blokkering> Blokkeringen { get; set; }
 
 
         public double Prijs { get; private set; }

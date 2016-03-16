@@ -14,6 +14,7 @@ namespace Groep9.NET.Controllers {
         private IDoelgroepRepository doelgroepRepository;
         private ILeergebiedRepository leergebiedRepository;
         private IGebruikerRepository gebruikerRepository;
+        List<Dag> weekdagen = new List<Dag>();
 
         // GET: Verlanglijst
         public VerlanglijstController(IProductRepository pr, IDoelgroepRepository dr, ILeergebiedRepository lr, IGebruikerRepository gr) {
@@ -91,21 +92,21 @@ namespace Groep9.NET.Controllers {
 
                 //methode voor reserveerknop, die aantal meegeeft aan methode product.Reserveer
 
-
+               
                 if (gebruiker is Student) {
                     if (prod.Aantal > (prod.BerekenAantalGereserveerdOpWeek(datum) + aantal))
                     {
                         if (aantal > 0)
                         {
-                            Reservatie reservatie = new Reservatie(prod, aantal, gebruiker, datum);
-                            prod.VoegReservatieToe(reservatie);
-                            gebruiker.VoegReservatieToe(reservatie);
-                            gebruikerRepository.SaveChanges();
-                            TempData["Info"] = "Product " + productRepository.FindByProductNummer(id).Naam +
-                                               " is gereserveerd.";
-                        }
-                        else
-                        {
+                        Reservatie reservatie = new Reservatie(prod, aantal, gebruiker, datum);
+                        prod.VoegReservatieToe(reservatie);
+                        gebruiker.VoegReservatieToe(reservatie);
+                        gebruikerRepository.SaveChanges();
+                        TempData["Info"] = "Product " + productRepository.FindByProductNummer(id).Naam +
+                                           " is gereserveerd.";
+                    }
+                    else
+                    {
                             TempData["ReservatieFail"] = "Aantal moet positief zijn";
                         }
                     }
@@ -113,13 +114,13 @@ namespace Groep9.NET.Controllers {
                     else
                     {
                         TempData["ReservatieFail"] = "Er zijn niet genoeg producten beschikbaar.";
-                    }    
                     }
+                }
                             
                 else {
-                        TempData["ReservatieFail"] = "Reservatie toevoegen lukt niet als leerkracht.";
-                    }
-                
+                    TempData["ReservatieFail"] = "Reservatie toevoegen lukt niet als leerkracht.";
+                }
+
 
             }
             catch (ArgumentException e) {
@@ -134,28 +135,33 @@ namespace Groep9.NET.Controllers {
 
             return RedirectToAction("Index");
         }
-        public ActionResult AddBlokkering(Gebruiker gebruiker, int aantal, int id, string datum , bool Maandag = false)
+        public ActionResult AddBlokkering(Gebruiker gebruiker, int aantal, int id, string datum , bool Maandag = false , bool Dinsdag = false, bool Woensdag = false, bool Donderdag = false, bool Vrijdag = false)
         {
             Product prod = productRepository.FindByProductNummer(id);
             try
             {
-               
+                
+                Product prod = productRepository.FindByProductNummer(id);                
+                Blokkering blokkering = new Blokkering(prod, aantal, gebruiker, datum);
+                addWeekdag(Maandag, Dinsdag, Woensdag, Donderdag, Vrijdag);
+                blokkering.Weekdagen = weekdagen;
+                prod.VoegBlokkeringToe(blokkering);
                 if (gebruiker is Personeelslid)
                 {
                     if (prod.Aantal > (prod.BerekenAantalGereserveerdOpWeek(datum) + aantal))
                     {
                         if (aantal > 0)
                         {
-
+                   
                             Blokkering blokkering = new Blokkering(prod, aantal, gebruiker, datum);
                             if (Maandag)
                             {
                                 blokkering.addWeekdag("Maandag");
                             }
                             prod.VoegBlokkeringToe(blokkering);
-                            gebruiker.VoegBlokkeringToe(blokkering);
-                            gebruikerRepository.SaveChanges();
-                            TempData["Info"] = "Product " + productRepository.FindByProductNummer(id).Naam + " is geblokkeerd.";
+                    gebruiker.VoegBlokkeringToe(blokkering);
+                    gebruikerRepository.SaveChanges();
+                    TempData["Info"] = "Product " + productRepository.FindByProductNummer(id).Naam + " is geblokkeerd.";
                         }
                         else
                         {
@@ -198,6 +204,35 @@ namespace Groep9.NET.Controllers {
 
 
                 return RedirectToAction("Index");
+            }
+
+        }
+        public void addWeekdag(bool Maandag, bool Dinsdag, bool Woensdag, bool Donderdag, bool Vrijdag)
+        {
+            if (Maandag == true)
+            {
+                Dag Ma = new Dag("Maandag");
+                weekdagen.Add(Ma);
+            }
+            if (Dinsdag == true)
+            {
+                Dag Di = new Dag("Dinsdag");
+                weekdagen.Add(Di);
+            }
+            if (Woensdag == true)
+            {
+                Dag Wo = new Dag("Woensdag");
+                weekdagen.Add(Wo);
+            }
+            if (Donderdag == true)
+            {
+                Dag Do = new Dag("Donderdag");
+                weekdagen.Add(Do);
+            }
+            if (Vrijdag == true)
+            {
+                Dag Vr = new Dag("Vrijdag");
+                weekdagen.Add(Vr);
             }
 
         }

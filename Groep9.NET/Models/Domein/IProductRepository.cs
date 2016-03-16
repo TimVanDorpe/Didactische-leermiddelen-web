@@ -17,5 +17,6 @@ namespace Groep9.NET {
         Product FindByNaam(string naam);
         //void ReserveerProduct(Product p, int hoeveelheid);
 
+
     }
 }
