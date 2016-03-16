@@ -1,0 +1,158 @@
+﻿@using Groep9.NET.Models.Domein
+@model IEnumerable<Groep9.NET.ViewModels.ProductViewModel>
+
+
+<div class="hidden-sm hidden-xs">
+
+    <table class="table table-responsive ">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Foto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Naam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AantalBeschikbaar)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AantalGeblokkeerd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AantalGereserveerd)
+            </th>
+            <th style="max-width:140px;">
+                Gewenst aantal blokkades
+            </th>
+
+            <th></th>
+        </tr>
+        @if (!Model.Any())
+        {
+            <tr>
+                <td colspan="8">Er zijn geen materialen in de verlanglijst</td>
+            </tr>
+
+        }
+
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td>
+                    <a href="~/Content/images/@(@Html.DisplayFor(modelItem =>item.Foto))" data-lightbox="image-@item.ProductId" data-title="@Html.DisplayFor(modelItem => item.Naam)">
+
+                        <img style="width: 75px; height: 75px;" alt="@Html.DisplayFor(modelItem => item.Naam)" src="~/Content/images/@(@Html.DisplayFor(modelItem =>item.Foto))" />
+                    </a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Naam)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AantalBeschikbaar)
+                </td>
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.AantalGeblokkeerd)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AantalGereserveerd)
+                </td>
+                <td>
+
+
+
+                    @Html.TextBox("aantal", "1", "", new
+                   {
+                       @class = "form-control",
+                       Type = "number",
+                       @style = "width:80px;"@*, @placeholder = item.AantalBeschikbaar+ " bruikbaar"*@})
+
+                    @*hier moet een textbox komen zodat de gebruiker kan invoeren hoeveel hij/zij er wenst te reserveren*@
+                </td>
+                <td>
+
+                    <a href="@Url.Action("Blokkeer", new {id = item.ProductId})" class="btn btn-default btn-sm ">
+
+                        <span class="glyphicon glyphicon-remove-sign" aria-hidden="true">Blokkeer</span>
+                    </a>
+                </td>
+
+            </tr>
+
+        }
+
+    </table><br />
+
+
+
+
+</div>
+<div class="visible-sm visible-xs">
+    @if (!Model.Any())
+    {
+
+        <h3>Geen producten gevonden</h3>
+
+    }
+    @foreach (var item in Model)
+    {
+
+
+        <div class="row ">
+
+            <div class="col-xs-12 product-small">
+                <div class="foto col-xs-4">
+                    <img alt="@Html.DisplayFor(modelItem => item.Naam)" src="~/Content/images/@(@Html.DisplayFor(modelItem =>item.Foto))" class="img-responsive" />
+                </div>
+
+                <div class="caption col-xs-8">
+                    <h2>
+                        @Html.DisplayFor(modelItem => item.Naam)
+
+                    </h2>
+
+                    <p>@Html.DisplayFor(modelItem => item.Omschrijving)</p>
+                    <div class="btn-toolbar pull-right" style="min-width: 168px" role="toolbar">
+                        <button type="button" class="btn btn-default groen " data-toggle="modal" data-target=".mobile-popup">Reserveren</button>
+
+                        <div class="modal fade bs-example-modal-sm mobile-popup visible-sm visible-xs" tabindex="-2" role="dialog">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title">Reservatie voltooien</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Geef het aantal dat u wilt reserveren en druk op bevestigen om de reservatie te voltooien</p>
+
+                                        @Html.TextBox("aantal", "1", "", new { @style = "width:200px;", @class = "form-control", @placeholder = item.Aantal + " bruikbaar", Type = "number" })
+
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default " data-dismiss="modal">Annuleren</button>
+                                        <button type="submit" name="productnummer" value="@item.ProductId" class="btn btn-default">Bevestigen</button>
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+
+                        <a href="@Url.Action("Details", new {id = item.ProductId})" class="btn btn-info btn-sm ">
+
+                            <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                        </a>
+
+                        <a href="@Url.Action("RemoveFromVerlanglijst", new {id = item.ProductId})" class="btn btn-danger btn-sm ">
+
+                            <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <br />
+        </div>
+
+    }
+</div>
