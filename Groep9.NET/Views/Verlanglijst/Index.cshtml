@@ -1,5 +1,11 @@
 ﻿@using Groep9.NET.Models.Domein
 @model Groep9.NET.ViewModels.ProductenViewModel
+
+
+@{
+    ViewBag.Title = "Verlanglijst";
+
+}
 <script>
   $(function() {
       $('.input-group.date').datepicker({
@@ -25,7 +31,14 @@
 <br >
 <div class="row">
     <div class="col-xs-12">
+       @if (User.IsInRole("studenten"))
+       {
         @Html.Partial("Producten", Model.Producten)
+       }
+       else
+       {
+           @Html.Partial("ProductenBlokkade", Model.Producten)
+       }
     </div>
 </div>
 

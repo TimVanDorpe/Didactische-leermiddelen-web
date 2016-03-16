@@ -19,12 +19,7 @@ namespace Groep9.NET.Views.App {
     public abstract class AppViewPage<TModel> : WebViewPage<TModel> {
         protected Gebruiker CurrentUser
         {
-            get
-            {
-
-                //maakt niet uit of het new Student of new Docent is, rare dingen (jens)
-                return new Student();
-            }
+            get;
         }
     }
 
