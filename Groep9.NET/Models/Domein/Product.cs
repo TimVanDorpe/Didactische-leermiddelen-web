@@ -26,10 +26,10 @@ namespace Groep9.NET {
         [DisplayFormat(DataFormatString = "{0:c}")]
         public double Prijs { get; set; }
 
-        public int AantalBeschikbaar { get; set; } // enkel de beschikbare
+        //public int AantalBeschikbaar { get; set; } // enkel de beschikbare
 
-        public int AantalGeblokkeerd { get; set; }//enkel geblokkeerd
-        public int AantalGereserveerd { get; set; }//enkel gereserveerd
+        //public int AantalGeblokkeerd { get; set; }//enkel geblokkeerd
+        //public int AantalGereserveerd { get; set; }//enkel gereserveerd
 
         [DisplayName("Beschikbaar")]
         public int Aantal { get; set; } // totaal in catalogus
@@ -74,9 +74,7 @@ namespace Groep9.NET {
             Uitleenbaarheid = uitleenbaarheid;
             Plaats = plaats;
             Firma = firma;
-            AantalBeschikbaar = aantal;
-            AantalGeblokkeerd = 0;
-            AantalGereserveerd = 0;
+        
 
             //Dit moet ook in de constuctor en dan in de init, even om iets te testen !!!
         
@@ -99,9 +97,30 @@ namespace Groep9.NET {
             return weekNo;
         }
         
-        public int BerekenReservatiesPerWeek(string datum)
+        public int BerekenAantalGereserveerdOpWeek(string datum)
         {
-            throw new NotImplementedException();
+            int aantalGereserveerd = 0;
+            int weekReservatie = 0;
+            if (BerekenWeek(datum) == BerekenWeek(DateTime.ParseExact(DateTime.Today.ToString()
+                .Substring(0, 10), "dd/MM/yyyy", null).ToString("MM/dd/yyyy")))
+            {
+                weekReservatie =  BerekenWeek(datum)+1;
+            }
+                 weekReservatie = BerekenWeek(datum);
+            foreach (Reservatie r in Reservaties)
+            {
+                int weekProduct =
+                    BerekenWeek(
+                        DateTime.ParseExact(r.StartDatum.ToString().Substring(0, 10), "dd/MM/yyyy", null)
+                            .ToString("MM/dd/yyyy"));
+
+                if (weekReservatie == weekProduct)
+                {
+                    aantalGereserveerd += r.Aantal;
+                }
+            }
+            return aantalGereserveerd;
+
         }
 
         public void VoegReservatieToe(Reservatie r)
@@ -128,17 +147,9 @@ namespace Groep9.NET {
         }
 
 
-        public int BerekenAantalGereserveerd(List<Reservatie> reservaties)//VALIDATIE OOK NIET VERGETEN
+        public int BerekenAantalGereserveerd()//VALIDATIE OOK NIET VERGETEN
         {
-            int x = 0;
-            
-            for(int i = 0; i < reservaties.Count; i++)
-                {
-                if (this.ProductId == reservaties[i].Product.ProductId )
-                x += reservaties[i].Aantal;
-
-                    }
-            return x;
+            return Reservaties.Count;
         }
 
 
@@ -147,18 +158,7 @@ namespace Groep9.NET {
             throw new NotImplementedException();
         }
 
-        public int BerekenAantalBeschikbaar(List<Reservatie> reservaties, List<Product> verlanglijst)
-        {
-            int x = 0;
-
-
-
-
-            //dus al u aantallen - u reservaties , eigenlijk hebde zelf u reservaties niet nodig denkik *nog niet zker*
-            return x;
-        }
-
-
+  
 
 
 

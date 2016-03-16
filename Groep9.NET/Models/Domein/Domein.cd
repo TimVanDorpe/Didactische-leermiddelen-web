@@ -11,7 +11,7 @@
   <Class Name="Groep9.NET.Product">
     <Position X="6" Y="1" Width="3" />
     <TypeIdentifier>
-      <HashCode>EAAACAAwBEAAAAAAAAAARAAAAAAAogAAAAAAaACBAAE=</HashCode>
+      <HashCode>EAAACAIwAEAAAAAEEAAAxAAAAAAAogBAAAAAaACBACE=</HashCode>
       <FileName>Models\Domein\Product.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
@@ -43,7 +43,7 @@
   <Class Name="Groep9.NET.Models.Domein.Gebruiker">
     <Position X="2.75" Y="6.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAACCAAAAAAAAAAAAAAAAAIABAAAAAQQAAQCA=</HashCode>
+      <HashCode>AACAAAAAACCAAAAEAAAAAAAAAAAAIABAAAAAQQAAQCA=</HashCode>
       <FileName>Models\Domein\Gebruiker.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
@@ -59,7 +59,7 @@
       </Path>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAACAACABAAAAAAAAAAAAAIAACAAAgAAAgAgAAAAAAA=</HashCode>
+      <HashCode>AAACAACABAAAAAAAEAAAAAIAACAAAgAAAgAgAAAAAAA=</HashCode>
       <FileName>Models\Domein\Reservatie.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -77,14 +77,14 @@
   <Class Name="Groep9.NET.Student">
     <Position X="1.5" Y="10.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAACA=</HashCode>
       <FileName>Models\Domein\Student.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Groep9.NET.Personeelslid">
     <Position X="4.25" Y="10.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
       <FileName>Models\Domein\Personeelslid.cs</FileName>
     </TypeIdentifier>
   </Class>

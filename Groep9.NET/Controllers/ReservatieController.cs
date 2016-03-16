@@ -36,7 +36,6 @@ namespace Groep9.NET.Controllers
             {    
                 Reservatie reservatie = gebruiker.ReservatieLijst.FirstOrDefault(b => b.ReservatieId == id);
                 gebruiker.VerwijderReservatie(reservatie);
-               
                 gebruikerRepository.SaveChanges();
                
                 return RedirectToAction("Index");

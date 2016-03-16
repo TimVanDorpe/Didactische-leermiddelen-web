@@ -28,7 +28,11 @@ $(window).resize(mobileViewUpdate);
 //    type: 'post',
 //    data: { items: items }
 //});
-
+$('.input-group.date').datepicker({
+    language: "nl-BE",
+    autoclose: true,
+    todayHighlight: true
+});
 
 $(document).ready(function () {
     //event.preventDefault();

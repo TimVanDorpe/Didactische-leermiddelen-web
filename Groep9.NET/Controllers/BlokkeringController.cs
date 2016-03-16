@@ -9,13 +9,11 @@ namespace Groep9.NET.Controllers
 {
     public class BlokkeringController : Controller
     {
-
-
         private IProductRepository productRepository;
         private IDoelgroepRepository doelgroepRepository;
         private ILeergebiedRepository leergebiedRepository;
         private IGebruikerRepository gebruikerRepository;
-
+        
         public BlokkeringController(IProductRepository pr, IDoelgroepRepository dr, ILeergebiedRepository lr, IGebruikerRepository gr/*, IReservatieRepository rr*/)
         {
             productRepository = pr;
@@ -31,7 +29,7 @@ namespace Groep9.NET.Controllers
         }
 
         public ActionResult RemoveFromBlokkeringLijst(int id, Gebruiker gebruiker)
-        {
+            {
             try
             {
 
@@ -40,8 +38,8 @@ namespace Groep9.NET.Controllers
 
                 gebruikerRepository.SaveChanges();
 
-                return RedirectToAction("Index");
-            }
+            return RedirectToAction("Index");
+        }
             catch
             {
                 TempData["DeleteFail"] = "Verwijderen van blokkering is niet gelukt";
