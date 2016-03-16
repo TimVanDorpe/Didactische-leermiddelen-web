@@ -1,0 +1,140 @@
+﻿@model Groep9.NET.Product
+
+@{
+    ViewBag.Title = "Detail";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Product</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Foto)
+            </dt>
+    
+            <dd>
+                <img style="width: 150px; height: 150px;" alt="@Html.DisplayFor(model => model.Naam)" src="~/Content/images/@(@Html.DisplayFor(model =>model.Foto))" />
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Naam)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Naam)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Omschrijving)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Omschrijving)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ProductId)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ProductId)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Prijs)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Prijs)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Aantal)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Aantal)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Uitleenbaarheid)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Uitleenbaarheid)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Plaats)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Plaats)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Firma)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Firma)
+            </dd>
+    
+           <dt>
+                @Html.DisplayNameFor(model => model.Doelgroepen)
+            </dt>
+
+            <dd>
+
+                @{
+                    //teller voor komma op het einde van de lijst niet weer te geven
+                    int teller = Model.Doelgroepen.Count;
+                    foreach (var doel in Model.Doelgroepen.ToList()) {
+                        <span>@doel.Naam</span>
+                        if (teller>1) {
+                            <span>, </span>
+                            teller--;
+                        }
+                    }
+                }
+
+                
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Leergebieden)
+            </dt>
+    
+            <dd>
+                @{
+                    //teller voor komma op het einde van de lijst niet weer te geven
+                    int teller2 = Model.Doelgroepen.Count;
+                    foreach (var leer in Model.Leergebieden.ToList()) {
+                        <span>@leer.Naam</span>
+                        if (teller2 > 1) {
+                            <span>, </span>
+                            teller2--;
+                        }
+                    }
+                }
+                
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @*@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |*@
+        @Html.ActionLink("Terug naar verlanglijst", "Index")
+        
+        
+    </p>
+</body>
+</html>
