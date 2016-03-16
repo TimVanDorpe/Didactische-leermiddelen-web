@@ -43,7 +43,7 @@
                     {
                         <li>@Html.ActionLink("Uw Reservaties", "Index", "Reservatie")</li>
                     }
-                    else
+                    else if(User.IsInRole("personeel"))
                     {
                         <li>@Html.ActionLink("Uw Blokkeringen", "Index", "Blokkering")</li>
                     }
