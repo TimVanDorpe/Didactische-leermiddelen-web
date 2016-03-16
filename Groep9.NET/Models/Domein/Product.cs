@@ -40,6 +40,8 @@ namespace Groep9.NET {
         public virtual ICollection<Leergebied> Leergebieden { get; set; }
         public virtual ICollection<Reservatie> Reservaties { get; set; }
 
+        public virtual ICollection<Blokkering> Blokkeringen { get; set; }
+
         public String Plaats { get; set; }
 
 
@@ -88,11 +90,15 @@ namespace Groep9.NET {
             var currentCulture = CultureInfo.CurrentCulture;
             var weekNo = currentCulture.Calendar.GetWeekOfYear(
                             //haalt jaar, maand en dag uit string en zet om in int
-                            new DateTime(Int32.Parse(datum.Substring(7, 10)), Int32.Parse(datum.Substring(0, 1)), Int32.Parse(datum.Substring(4, 5))),
+                            new DateTime(Int32.Parse(datum.Substring(6, 4)), Int32.Parse(datum.Substring(0, 2)), Int32.Parse(datum.Substring(3, 2))),
                             currentCulture.DateTimeFormat.CalendarWeekRule,
                             currentCulture.DateTimeFormat.FirstDayOfWeek);
+
+            // YYYY/MM/DD
+            // MM/DD/YYYY
             return weekNo;
         }
+        
         public int BerekenReservatiesPerWeek(string datum)
         {
             throw new NotImplementedException();
@@ -108,6 +114,17 @@ namespace Groep9.NET {
         public void VerwijderReservatie(Reservatie r)
         {
             Reservaties.Remove(r);
+        }
+        public void VoegBlokkeringToe(Blokkering r)
+        {
+
+            Blokkeringen.Add(r);
+
+        }
+
+        public void VerwijderBlokkering(Blokkering r)
+        {
+            Blokkeringen.Remove(r);
         }
 
 
@@ -133,6 +150,8 @@ namespace Groep9.NET {
         public int BerekenAantalBeschikbaar(List<Reservatie> reservaties, List<Product> verlanglijst)
         {
             int x = 0;
+
+
 
 
             //dus al u aantallen - u reservaties , eigenlijk hebde zelf u reservaties niet nodig denkik *nog niet zker*

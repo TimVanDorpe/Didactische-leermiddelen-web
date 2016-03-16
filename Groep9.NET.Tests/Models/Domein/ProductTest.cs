@@ -3,63 +3,31 @@ using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Groep9.NET.Tests.Models.Domein {
-    /// <summary>
-    /// Summary description for ProductTest
-    /// </summary>
+namespace Groep9.NET.Tests.Models.Domein
+{
     [TestClass]
-    public class ProductTest {
-        public ProductTest() {
-            //
-            // TODO: Add constructor logic here
-            //
-        }
+    public class ProductTest
+    {
+        private DummyContext context;
 
-        private TestContext testContextInstance;
-
-        /// <summary>
-        ///Gets or sets the test context which provides
-        ///information about and functionality for the current test run.
-        ///</summary>
-        public TestContext TestContext
+        [TestInitialize]
+        public void Initialize()
         {
-            get
-            {
-                return testContextInstance;
-            }
-            set
-            {
-                testContextInstance = value;
-            }
+            context = new DummyContext();
         }
-
-        #region Additional test attributes
-        //
-        // You can use the following additional attributes as you write your tests:
-        //
-        // Use ClassInitialize to run code before running the first test in the class
-        // [ClassInitialize()]
-        // public static void MyClassInitialize(TestContext testContext) { }
-        //
-        // Use ClassCleanup to run code after all tests in a class have run
-        // [ClassCleanup()]
-        // public static void MyClassCleanup() { }
-        //
-        // Use TestInitialize to run code before running each test 
-        // [TestInitialize()]
-        // public void MyTestInitialize() { }
-        //
-        // Use TestCleanup to run code after each test has run
-        // [TestCleanup()]
-        // public void MyTestCleanup() { }
-        //
-        #endregion
 
         [TestMethod]
-        public void TestMethod1() {
-            //
-            // TODO: Add test logic here
-            //
+        public void BerekenWeekReturntCorrecteWeekVoorWeek1()
+        {
+            string datum = "01/03/2017";
+            Assert.AreEqual(1,context.P1.BerekenWeek(datum));
         }
+        [TestMethod]
+        public void BerekenWeekReturntCorrecteWeekVoorWeek52() {
+            string datum = "12/31/2017";
+            Assert.AreEqual(52, context.P1.BerekenWeek(datum));
+        }
+
+
     }
 }

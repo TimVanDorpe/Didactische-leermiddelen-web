@@ -15,10 +15,13 @@ namespace Groep9.NET.Models.Domein
         public string Email { get; set; }
         public virtual ICollection<Product> VerlangLijst { get; set; }
         public virtual ICollection<Reservatie> ReservatieLijst { get; set; } 
+
+        public virtual ICollection<Blokkering> BlokkeringLijst { get; set; }
         public Gebruiker()
         {
             VerlangLijst = new List<Product>();
             ReservatieLijst = new List<Reservatie>();
+            BlokkeringLijst = new List<Blokkering>();
         }
 
         public void VoegProductAanVerlanglijstToe(Product p)
@@ -32,17 +35,31 @@ namespace Groep9.NET.Models.Domein
         {
             VerlangLijst.Remove(p);
         }
-        public void VoegReservatieToe(Reservatie r)
+        public virtual void  VoegReservatieToe(Reservatie r)
         {
 
             ReservatieLijst.Add(r);
 
         }
 
-        public void VerwijderReservatie(Reservatie r)
+        public virtual  void VerwijderReservatie(Reservatie r)
         {
             ReservatieLijst.Remove(r);
         }
+
+
+        public virtual void VoegBlokkeringToe(Blokkering b)
+        {
+
+            BlokkeringLijst.Add(b);
+
+        }
+
+        public virtual void VerwijderBlokkering(Blokkering b)
+        {
+            BlokkeringLijst.Remove(b);
+        }
+
 
     }
 }

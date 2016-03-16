@@ -190,7 +190,7 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\BlokkadeController.cs" />
+    <Compile Include="Controllers\BlokkeringController.cs" />
     <Compile Include="Controllers\CatalogusController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ReservatieController.cs" />
@@ -198,12 +198,14 @@
     <Compile Include="Infrastructure\GebruikerModelBinder.cs" />
     <Compile Include="Models\DAL\DoelgroepRepository.cs" />
     <Compile Include="Models\DAL\LeergebiedRepository.cs" />
+    <Compile Include="Models\DAL\Mapping\BlokkeringMapper.cs" />
     <Compile Include="Models\DAL\Mapping\GebruikerMapper.cs" />
     <Compile Include="Models\DAL\Mapping\LeergebiedMapper.cs" />
     <Compile Include="Models\DAL\ApplicationDbContext.cs" />
     <Compile Include="Models\DAL\ApplicationDbInitializer.cs" />
     <Compile Include="Models\DAL\Mapping\ReservatieMapper.cs" />
     <Compile Include="Models\Domein\ApplicationUser.cs" />
+    <Compile Include="Models\Domein\Blokkering.cs" />
     <Compile Include="Models\Domein\Gebruiker.cs" />
     <Compile Include="Models\Domein\Firma.cs" />
     <Compile Include="Models\DAL\Context.cs" />
@@ -318,9 +320,7 @@
     <Content Include="Views\Verlanglijst\Details.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Verlanglijst\Producten.cshtml" />
-    <Content Include="Views\Blokkade\Details.cshtml" />
-    <Content Include="Views\Blokkade\Index.cshtml" />
-    <Content Include="Views\Blokkade\Producten.cshtml" />
+    <Content Include="Views\Blokkering\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
