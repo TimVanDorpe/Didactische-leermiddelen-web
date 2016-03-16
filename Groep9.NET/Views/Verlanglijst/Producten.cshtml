@@ -90,7 +90,7 @@
                                         <div class="modal-body">
                                             <p>
                                                 Weet u zeker dat u deze reservatie wilt maken, voor de week van:<br/>
-                                                @TempData["startdatum"] tot @TempData["einddatum"] ?
+                                                maandag @TempData["startdatum"].ToString().Substring(0,15) tot vrijdag @TempData["einddatum"].ToString().Substring(0,16)?
                                             </p>
                                         </div>
                                         <div class="modal-footer">
