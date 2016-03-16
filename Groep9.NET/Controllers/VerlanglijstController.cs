@@ -50,7 +50,7 @@ namespace Groep9.NET.Controllers {
 
 
                 ProductenViewModel vm = new ProductenViewModel() {
-                    Producten = verlanglijst.Select(p => new ProductViewModel(p, gebruiker, p.BerekenAantalGereserveerdOpWeek(datum)))
+                    Producten = verlanglijst.Select(p => new ProductViewModel(p, gebruiker, p.BerekenAantalGereserveerdOpWeek(datum),p.BerekenAantalGeblokkeerdOpWeek(datum)))
                 };
 
                 if (Request.IsAjaxRequest())
@@ -91,25 +91,35 @@ namespace Groep9.NET.Controllers {
 
                 //methode voor reserveerknop, die aantal meegeeft aan methode product.Reserveer
 
-               
+
                 if (gebruiker is Student) {
                     if (prod.Aantal > (prod.BerekenAantalGereserveerdOpWeek(datum) + aantal))
                     {
-                        Reservatie reservatie = new Reservatie(prod, aantal, gebruiker, datum);
-                        prod.VoegReservatieToe(reservatie);
-                        gebruiker.VoegReservatieToe(reservatie);
-                        gebruikerRepository.SaveChanges();
-                        TempData["Info"] = "Product " + productRepository.FindByProductNummer(id).Naam +
-                                           " is gereserveerd.";
+                        if (aantal > 0)
+                        {
+                            Reservatie reservatie = new Reservatie(prod, aantal, gebruiker, datum);
+                            prod.VoegReservatieToe(reservatie);
+                            gebruiker.VoegReservatieToe(reservatie);
+                            gebruikerRepository.SaveChanges();
+                            TempData["Info"] = "Product " + productRepository.FindByProductNummer(id).Naam +
+                                               " is gereserveerd.";
+                        }
+                        else
+                        {
+                            TempData["ReservatieFail"] = "Aantal moet positief zijn";
+                        }
                     }
+
                     else
                     {
                         TempData["ReservatieFail"] = "Er zijn niet genoeg producten beschikbaar.";
+                    }    
                     }
-                }
+                            
                 else {
-                    TempData["ReservatieFail"] = "Reservatie toevoegen lukt niet als leerkracht.";
-                }
+                        TempData["ReservatieFail"] = "Reservatie toevoegen lukt niet als leerkracht.";
+                    }
+                
 
             }
             catch (ArgumentException e) {
@@ -126,19 +136,36 @@ namespace Groep9.NET.Controllers {
         }
         public ActionResult AddBlokkering(Gebruiker gebruiker, int aantal, int id, string datum , bool Maandag = false)
         {
+            Product prod = productRepository.FindByProductNummer(id);
             try
             {
-                Product prod = productRepository.FindByProductNummer(id);                
-                Blokkering blokkering = new Blokkering(prod, aantal, gebruiker, datum);
-                if (Maandag) {
-                    blokkering.addWeekdag("Maandag"); }
-                prod.VoegBlokkeringToe(blokkering);
+               
                 if (gebruiker is Personeelslid)
                 {
-                   
-                    gebruiker.VoegBlokkeringToe(blokkering);
-                    gebruikerRepository.SaveChanges();
-                    TempData["Info"] = "Product " + productRepository.FindByProductNummer(id).Naam + " is geblokkeerd.";
+                    if (prod.Aantal > (prod.BerekenAantalGereserveerdOpWeek(datum) + aantal))
+                    {
+                        if (aantal > 0)
+                        {
+
+                            Blokkering blokkering = new Blokkering(prod, aantal, gebruiker, datum);
+                            if (Maandag)
+                            {
+                                blokkering.addWeekdag("Maandag");
+                            }
+                            prod.VoegBlokkeringToe(blokkering);
+                            gebruiker.VoegBlokkeringToe(blokkering);
+                            gebruikerRepository.SaveChanges();
+                            TempData["Info"] = "Product " + productRepository.FindByProductNummer(id).Naam + " is geblokkeerd.";
+                        }
+                        else
+                        {
+                            TempData["ReservatieFail"] = "Aantal moet positief zijn";
+                        }
+                    }
+                    else
+                    {
+                        TempData["ReservatieFail"] = "Er zijn niet genoeg producten beschikbaar.";
+                    }
 
                 }
                 else {
