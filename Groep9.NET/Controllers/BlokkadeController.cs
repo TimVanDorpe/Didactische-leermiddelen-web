@@ -41,8 +41,8 @@ namespace Groep9.NET.Controllers
         }
         public ActionResult Blokkeer(int id = 0, int aantal = 1)
         {
-            productRepository.FindByProductNummer(id).AantalGeblokkeerd = +aantal;
-            productRepository.FindByProductNummer(id).AantalBeschikbaar = -aantal;
+            //productRepository.FindByProductNummer(id).AantalGeblokkeerd = +aantal;
+            //productRepository.FindByProductNummer(id).AantalBeschikbaar = -aantal;
 
 
             return RedirectToAction("Index");

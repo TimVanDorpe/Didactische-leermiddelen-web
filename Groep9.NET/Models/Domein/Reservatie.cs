@@ -56,6 +56,7 @@ namespace Groep9.NET.Models.Domein {
             if (date<DateTime.Today) {
                 throw new ArgumentException("de gewenste datum kan niet in het verleden zijn");
             }
+            
 
             if (BerekenWeek(datum) == BerekenWeek(DateTime.ParseExact(DateTime.Today.ToString()
             .Substring(0, 10), "dd/MM/yyyy", null).ToString("MM/dd/yyyy"))) {
@@ -64,15 +65,20 @@ namespace Groep9.NET.Models.Domein {
                 //   .ToString("MM/dd/yyyy");
                 // returnt datum van volgende week
                 if (date.DayOfWeek >= DayOfWeek.Monday && date.DayOfWeek <= DayOfWeek.Friday ||
-                    (date.DayOfWeek == DayOfWeek.Friday && date.Hour <= 17)) {
+                    (date.DayOfWeek == DayOfWeek.Friday && date.Hour <= 17))
+                {
                     int daysUntilMonday = (((int)DayOfWeek.Monday - (int)date.DayOfWeek + 7) % 7);
                     return date.AddDays(daysUntilMonday).AddHours(8);
                 }
-                else {
+                else
+                {
                     // returnt datum van volgende volgende week (indien na vrijdag 17h)
                     int daysUntilMonday = (((int)DayOfWeek.Monday - (int)date.DayOfWeek + 7) % 7 + 7);
                     return date.AddDays(daysUntilMonday).AddHours(8);
                 }
+
+                throw new ArgumentException("kan niet reserveren voor deze week, selecteer ten vroegste volgende week");
+
             }
 
             int daysAfterMonday = (int)DayOfWeek.Monday - (int)date.DayOfWeek;

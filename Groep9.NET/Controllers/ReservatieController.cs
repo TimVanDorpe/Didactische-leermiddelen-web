@@ -37,8 +37,6 @@ namespace Groep9.NET.Controllers
                 
                 Reservatie reservatie = gebruiker.ReservatieLijst.First();
                 gebruiker.VerwijderReservatie(reservatie);
-                reservatie.Product.AantalGereserveerd--;
-                reservatie.Product.AantalBeschikbaar++;
                 gebruikerRepository.SaveChanges();
                
                 return RedirectToAction("Index");

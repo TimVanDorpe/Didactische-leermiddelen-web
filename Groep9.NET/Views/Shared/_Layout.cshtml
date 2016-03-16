@@ -39,14 +39,11 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Catalogus", "Index", "Catalogus")</li>
                     <li>@Html.ActionLink("Verlanglijst", "Index", "Verlanglijst")</li>
-                    @if (User.IsInRole("Student"))
-                    {
+                  
                         <li>@Html.ActionLink("Reservaties", "Index", "Reservatie")</li>
-                    }
-                    else
-                    {
+                  
                         <li>@Html.ActionLink("Blokkeren", "Index", "Blokkade")</li>
-                    }
+                    
                    
                 </ul>
                 <div class="navbar-right nav-rechts">

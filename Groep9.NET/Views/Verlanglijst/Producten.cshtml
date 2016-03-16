@@ -24,7 +24,7 @@
                 Gewenst aantal producten
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Aantal)
+                @Html.DisplayNameFor(model => model.AantalBeschikbaar)
             </th>
             <th></th>
         </tr>
@@ -72,7 +72,7 @@
                         @*hier moet een textbox komen zodat de gebruiker kan invoeren hoeveel hij/zij er wenst te reserveren*@
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Aantal)
+                        @Html.DisplayFor(modelItem => item.AantalBeschikbaar) van de @Html.DisplayFor(modelItem => item.Aantal)
                     </td>
 
 
