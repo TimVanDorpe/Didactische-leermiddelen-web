@@ -140,7 +140,7 @@
                 {
                     foreach (var res in Model.Reservaties.ToList())
                     {
-                        <span>@res.Gebruiker.Email: @res.Aantal</span>
+                        <span>STUDENT: @res.Gebruiker.Email  AANTAL @res.Aantal  <br /></span>
                     }
                 }
                 else
@@ -159,13 +159,31 @@
                 {
                     foreach (var blok in Model.Blokkeringen.ToList())
                     {
-                        <span>@blok.Gebruiker.Email: @blok.Aantal</span>
+                        <span> LECTOR: @blok.Gebruiker.Email  AANTAL: @blok.Aantal  WEEKDAGEN: 
+
+                 
+                 @{   int teller6 = blok.Weekdagen.Count();
+                 }
+                    @foreach (var week in blok.Weekdagen.ToList())
+                            {
+                              <span>  @week.Naam </span>
+                                if (teller6 > 1)
+                                {
+                                <span>, </span>
+                                    teller6--;
+                                }
+                            }
+                    
+
+                <br />
+                </span>
                     }
                 }
                 else
                 {
                     <span>--</span>
                 }
+                <br />
             </dd>
 
 
