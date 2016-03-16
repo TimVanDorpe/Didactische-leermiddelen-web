@@ -33,8 +33,7 @@ namespace Groep9.NET.Controllers
              public ActionResult RemoveFromReservatieLijst(int id,Gebruiker gebruiker)
         {
             try
-            {               
-                
+            {    
                 Reservatie reservatie = gebruiker.ReservatieLijst.FirstOrDefault(b => b.ReservatieId == id);
                 gebruiker.VerwijderReservatie(reservatie);
                
