@@ -37,50 +37,62 @@
 
         @foreach (var item in Model)
         {
+            
 
-            <tr>
-                <td>
-                    <a href="~/Content/images/@(@Html.DisplayFor(modelItem =>item.Foto))" data-lightbox="image-@item.ProductId" data-title="@Html.DisplayFor(modelItem => item.Naam)">
+                <tr>
+                    <td>
+                        <a href="~/Content/images/@(@Html.DisplayFor(modelItem => item.Foto))" data-lightbox="image-@item.ProductId" data-title="@Html.DisplayFor(modelItem => item.Naam)">
 
-                        <img style="width: 75px; height: 75px;" alt="@Html.DisplayFor(modelItem => item.Naam)" src="~/Content/images/@(@Html.DisplayFor(modelItem =>item.Foto))" />
-                    </a>
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Naam)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AantalBeschikbaar)
-                </td>
-
-
-                <td>
-                    @Html.DisplayFor(modelItem => item.AantalGeblokkeerd)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AantalGereserveerd)
-                </td>
-                <td>
+                            <img style="width: 75px; height: 75px;" alt="@Html.DisplayFor(modelItem => item.Naam)" src="~/Content/images/@(@Html.DisplayFor(modelItem => item.Foto))" />
+                        </a>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Naam)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AantalBeschikbaar)
+                    </td>
 
 
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AantalGeblokkeerd)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AantalGereserveerd)
+                    </td>
+                    <td>
 
-                    @Html.TextBox("aantal", "1", "", new
-                   {
-                       @class = "form-control",
-                       Type = "number",
-                       @style = "width:80px;"@*, @placeholder = item.AantalBeschikbaar+ " bruikbaar"*@})
 
-                    @*hier moet een textbox komen zodat de gebruiker kan invoeren hoeveel hij/zij er wenst te reserveren*@
-                </td>
-                <td>
 
-                    <a href="@Url.Action("Blokkeer", new {id = item.ProductId})" class="btn btn-default btn-sm ">
+                        @Html.TextBox("aantal", "1", "", new
+               {
+                   @class = "form-control",
+                   Type = "number",
+                   @style = "width:80px;"@*, @placeholder = item.AantalBeschikbaar+ " bruikbaar"*@})
 
-                        <span class="glyphicon glyphicon-remove-sign" aria-hidden="true">Blokkeer</span>
-                    </a>
-                </td>
+                        @*hier moet een textbox komen zodat de gebruiker kan invoeren hoeveel hij/zij er wenst te reserveren*@
+                    </td>
 
-            </tr>
+                    <td>
+                        
 
+                            <a href="@Url.Action("Details", new { id = item.ProductId })" class="btn btn-info btn-sm ">
+
+                                <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                            </a>
+
+                            <a href="@Url.Action("RemoveFromBlokkering", new { id = item.ProductId })" class="btn btn-danger btn-sm ">
+
+                                <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
+                            </a>
+                        </div>
+
+
+                    </td>
+
+
+                </tr>
+            
         }
 
     </table><br />
@@ -144,10 +156,7 @@
                             <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
                         </a>
 
-                        <a href="@Url.Action("RemoveFromVerlanglijst", new {id = item.ProductId})" class="btn btn-danger btn-sm ">
-
-                            <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
-                        </a>
+                        
                     </div>
                 </div>
             </div>

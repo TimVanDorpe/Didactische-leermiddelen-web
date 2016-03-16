@@ -30,11 +30,7 @@ namespace Groep9.NET.Models.Domein
             Aantal = aantal;
             StartDatum = BerekenStartDatumReservatieWeek(datum);
             EindDatum = BerekenEindDatumReservatieWeek(datum);
-            //product.AantalBeschikbaar = product.AantalBeschikbaar - aantal;
-            //product.AantalBeschikbaar = product.AantalGereserveerd + aantal;
-            //p.AantalBeschikbaar -= hoeveelheid;
-            //p.AantalGereserveerd += hoeveelheid;
-
+           
         }
 
         public DateTime BerekenStartDatumReservatieWeek(string datum, DateTime? d = null/* voor te testen*/)

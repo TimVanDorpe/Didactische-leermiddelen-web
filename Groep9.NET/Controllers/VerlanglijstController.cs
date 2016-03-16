@@ -115,44 +115,44 @@ namespace Groep9.NET.Controllers {
 
             return RedirectToAction("Index");
         }
-
-        public ActionResult AddBlokkering(Gebruiker gebruiker, int aantal, int id, string datum) {
-            try {
+        public ActionResult AddBlokkering(Gebruiker gebruiker, int aantal, int id, string datum)
+        {
+            try
+            {
                 Product prod = productRepository.FindByProductNummer(id);
-
-                //methode voor reserveerknop, die aantal meegeeft aan methode product.Reserveer
+                
                 Blokkering blokkering = new Blokkering(prod, aantal, gebruiker, datum);
 
 
                 prod.VoegBlokkeringToe(blokkering);
-                if (gebruiker is Personeelslid) {
+                if (gebruiker is Personeelslid)
+                {
 
                     gebruiker.VoegBlokkeringToe(blokkering);
                     gebruikerRepository.SaveChanges();
-                    TempData["Info"] = "Product " + productRepository.FindByProductNummer(id).Naam + " is gereserveerd.";
+                    TempData["Info"] = "Product " + productRepository.FindByProductNummer(id).Naam + " is geblokkeerd.";
 
                 }
                 else {
-                    TempData["ReservatieFail"] = "Blokkeringen toevoegen lukt niet als leerling";
+                    TempData["ReservatieFail"] = "Blokkering toevoegen lukt niet als Student";
                 }
 
             }
-            catch {
+            catch (ArgumentException e)
+            {
+                TempData["ReservatieFail"] = e.Message;
+            }
+            catch
+            {
                 TempData["ReservatieFail"] = "Blokkering toevoegen is niet gelukt";
 
 
             }
+
+
             return RedirectToAction("Index");
         }
-
-
-
-
-
-
-
-
-
+        
         public ActionResult Details(int id) {
             try {
 

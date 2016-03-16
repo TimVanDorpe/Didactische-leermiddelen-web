@@ -323,6 +323,7 @@
     <Content Include="Views\Blokkade\Details.cshtml" />
     <Content Include="Views\Blokkade\Index.cshtml" />
     <Content Include="Views\Blokkade\Producten.cshtml" />
+    <Content Include="Views\Verlanglijst\ProductenBlokkade.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
