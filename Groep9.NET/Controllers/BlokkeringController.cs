@@ -1,50 +1,50 @@
-﻿using System;
+﻿using Groep9.NET.Models.Domein;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Groep9.NET.Models.Domein;
 
 namespace Groep9.NET.Controllers
 {
-    [Authorize]
-    public class ReservatieController : Controller
+    public class BlokkeringController : Controller
     {
+
+
         private IProductRepository productRepository;
         private IDoelgroepRepository doelgroepRepository;
         private ILeergebiedRepository leergebiedRepository;
         private IGebruikerRepository gebruikerRepository;
 
-        public ReservatieController(IProductRepository pr, IDoelgroepRepository dr, ILeergebiedRepository lr, IGebruikerRepository gr/*, IReservatieRepository rr*/)
+        public BlokkeringController(IProductRepository pr, IDoelgroepRepository dr, ILeergebiedRepository lr, IGebruikerRepository gr/*, IReservatieRepository rr*/)
         {
             productRepository = pr;
             doelgroepRepository = dr;
             leergebiedRepository = lr;
             gebruikerRepository = gr;
         }
-
-        // GET: Reservatie
+        // GET: Blokkering
         public ActionResult Index(Gebruiker gebruiker)
         {
-            IList<Reservatie> reservatielijst = gebruiker.ReservatieLijst.ToList();
-            return View(reservatielijst);
+            IList<Blokkering> blokkeringlijst = gebruiker.BlokkeringLijst.ToList();
+            return View(blokkeringlijst);
         }
-       
-             public ActionResult RemoveFromReservatieLijst(int id,Gebruiker gebruiker)
+
+        public ActionResult RemoveFromBlokkeringLijst(int id, Gebruiker gebruiker)
         {
             try
-            {               
-                
-                Reservatie reservatie = gebruiker.ReservatieLijst.FirstOrDefault(b => b.ReservatieId == id);
-                gebruiker.VerwijderReservatie(reservatie);
-               
+            {
+
+                Blokkering blokkering = gebruiker.BlokkeringLijst.FirstOrDefault(b=> b.BlokkeringId == id);
+                gebruiker.VerwijderBlokkering(blokkering);
+
                 gebruikerRepository.SaveChanges();
-               
+
                 return RedirectToAction("Index");
             }
             catch
             {
-                TempData["DeleteFail"] = "Verwijderen van reservatie is niet gelukt";
+                TempData["DeleteFail"] = "Verwijderen van blokkering is niet gelukt";
 
                 return RedirectToAction("Index");
             }

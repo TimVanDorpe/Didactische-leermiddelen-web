@@ -63,7 +63,7 @@
                 @Html.DisplayFor(modelItem => item.Aantal)
             </td>
         <td>
-            <a href="@Url.Action("RemoveFromReservatieLijst", new {id = item.Product.ProductId})" class="btn btn-danger btn-sm ">
+            <a href="@Url.Action("RemoveFromReservatieLijst", new {id = item.ReservatieId})" class="btn btn-danger btn-sm ">
 
                 <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
             </a>

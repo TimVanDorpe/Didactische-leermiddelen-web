@@ -190,7 +190,7 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\BlokkadeController.cs" />
+    <Compile Include="Controllers\BlokkeringController.cs" />
     <Compile Include="Controllers\CatalogusController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ReservatieController.cs" />
@@ -320,9 +320,8 @@
     <Content Include="Views\Verlanglijst\Details.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Verlanglijst\Producten.cshtml" />
-    <Content Include="Views\Blokkade\Details.cshtml" />
-    <Content Include="Views\Blokkade\Index.cshtml" />
-    <Content Include="Views\Blokkade\Producten.cshtml" />
+    <Content Include="Views\Blokkering\Details.cshtml" />
+    <Content Include="Views\Blokkering\Index.cshtml" />
     <Content Include="Views\Verlanglijst\ProductenBlokkade.cshtml" />
   </ItemGroup>
   <ItemGroup>
