@@ -56,8 +56,8 @@ namespace Groep9.NET.Controllers {
                 return View(vm);
             }
 
-            catch (ArgumentException) {
-                TempData["ReservatieFail"] = "De gewenste datum kan niet in het verleden zijn";
+            catch (ArgumentException e) {
+                TempData["ReservatieFail"] = e.Message;
                 return RedirectToAction("Index");
             }
         }
@@ -103,8 +103,8 @@ namespace Groep9.NET.Controllers {
                 }
 
             }
-            catch (ArgumentException) {
-                TempData["ReservatieFail"] = "De gewenste datum kan niet in het verleden zijn";
+            catch (ArgumentException e) {
+                TempData["ReservatieFail"] = e.Message;
             }
             catch {
                 TempData["ReservatieFail"] = "Reservatie toevoegen is niet gelukt";
