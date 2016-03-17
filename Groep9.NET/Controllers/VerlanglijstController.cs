@@ -14,7 +14,7 @@ namespace Groep9.NET.Controllers {
         private IDoelgroepRepository doelgroepRepository;
         private ILeergebiedRepository leergebiedRepository;
         private IGebruikerRepository gebruikerRepository;
-        List<Dag> weekdagen = new List<Dag>();
+        //List<Dag> weekdagen = new List<Dag>();
 
         // GET: Verlanglijst
         public VerlanglijstController(IProductRepository pr, IDoelgroepRepository dr, ILeergebiedRepository lr, IGebruikerRepository gr) {
@@ -150,12 +150,12 @@ namespace Groep9.NET.Controllers {
                         if (aantal > 0)
                         {
                             Blokkering blokkering = new Blokkering(prod, aantal, gebruiker, datum);
-                            addWeekdag(Maandag, Dinsdag, Woensdag, Donderdag, Vrijdag);
-                            blokkering.Weekdagen = weekdagen;
+                            blokkering.addWeekdag(Maandag, Dinsdag, Woensdag, Donderdag, Vrijdag);
+                            
                             prod.VoegBlokkeringToe(blokkering);
-                             gebruiker.VoegBlokkeringToe(blokkering);
-                               gebruikerRepository.SaveChanges();
-                               TempData["Info"] = "Product " + productRepository.FindByProductNummer(id).Naam + " is geblokkeerd.";
+                            gebruiker.VoegBlokkeringToe(blokkering);
+                            gebruikerRepository.SaveChanges();
+                            TempData["Info"] = "Product " + productRepository.FindByProductNummer(id).Naam + " is geblokkeerd.";
                         }
                         else
                         {
@@ -201,35 +201,7 @@ namespace Groep9.NET.Controllers {
             }
 
         }
-        public void addWeekdag(bool Maandag, bool Dinsdag, bool Woensdag, bool Donderdag, bool Vrijdag)
-        {
-            if (Maandag == true)
-            {
-                Dag Ma = new Dag("Maandag");
-                weekdagen.Add(Ma);
-            }
-            if (Dinsdag == true)
-            {
-                Dag Di = new Dag("Dinsdag");
-                weekdagen.Add(Di);
-            }
-            if (Woensdag == true)
-            {
-                Dag Wo = new Dag("Woensdag");
-                weekdagen.Add(Wo);
-            }
-            if (Donderdag == true)
-            {
-                Dag Do = new Dag("Donderdag");
-                weekdagen.Add(Do);
-            }
-            if (Vrijdag == true)
-            {
-                Dag Vr = new Dag("Vrijdag");
-                weekdagen.Add(Vr);
-            }
-
-        }
+        
 
     }
 }
