@@ -51,6 +51,7 @@ namespace Groep9.NET {
             Doelgroepen = new List<Doelgroep>();
             Leergebieden = new List<Leergebied>();
             Reservaties = new List<Reservatie>();
+            Blokkeringen = new List<Blokkering>();
         }
 
    
@@ -122,6 +123,31 @@ namespace Groep9.NET {
             return aantalGereserveerd;
 
         }
+        public int BerekenAantalGeblokkeerdOpWeek(string datum)
+        {
+            int aantalGeblokkeerd = 0;
+            int weekBlokkering = 0;
+            if (BerekenWeek(datum) == BerekenWeek(DateTime.ParseExact(DateTime.Today.ToString()
+                .Substring(0, 10), "dd/MM/yyyy", null).ToString("MM/dd/yyyy")))
+            {
+                weekBlokkering = BerekenWeek(datum) + 1;
+            }
+            weekBlokkering = BerekenWeek(datum);
+            foreach (Blokkering b in Blokkeringen)
+            {
+                int weekProduct =
+                    BerekenWeek(
+                        DateTime.ParseExact(b.StartDatum.ToString().Substring(0, 10), "dd/MM/yyyy", null)
+                            .ToString("MM/dd/yyyy"));
+
+                if (weekBlokkering == weekProduct)
+                {
+                    aantalGeblokkeerd += b.Aantal;
+                }
+            }
+            return aantalGeblokkeerd;
+
+        }
 
         public void VoegReservatieToe(Reservatie r)
         {
@@ -155,7 +181,7 @@ namespace Groep9.NET {
 
         public int BerekenAantalGeblokkeerd()
         {
-            throw new NotImplementedException();
+            return Blokkeringen.Count;
         }
 
   

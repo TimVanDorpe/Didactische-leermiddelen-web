@@ -132,17 +132,61 @@
 
             
 
-            @*<dt>
+            <dt>
                 @Html.DisplayNameFor(model => model.Reservaties)
             </dt>
             <dd>
-                @if(Model.Reservaties.Count>0){
+                @if (Model.Reservaties.Count > 0)
+                {
                     foreach (var res in Model.Reservaties.ToList())
                     {
-                        <span>@res.Gebruiker.Email: @res.Aantal</span>
+                        <span>STUDENT: @res.Gebruiker.Email  AANTAL @res.Aantal  <br /></span>
                     }
                 }
-            </dd>*@
+                else
+                {
+                    <span>--</span>
+                }
+            </dd>
+
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Blokkeringen)
+            </dt>
+            <dd>
+                @if (Model.Blokkeringen.Count > 0)
+                {
+                    foreach (var blok in Model.Blokkeringen.ToList())
+                    {
+                        <span> LECTOR: @blok.Gebruiker.Email  AANTAL: @blok.Aantal  WEEKDAGEN: 
+
+                 
+                 @{   int teller6 = blok.Weekdagen.Count();
+                 }
+                    @foreach (var week in blok.Weekdagen.ToList())
+                            {
+                              <span>  @week.Naam </span>
+                                if (teller6 > 1)
+                                {
+                                <span>, </span>
+                                    teller6--;
+                                }
+                            }
+                    
+
+                <br />
+                </span>
+                    }
+                }
+                else
+                {
+                    <span>--</span>
+                }
+                <br />
+            </dd>
+
+
 
 
 

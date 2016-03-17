@@ -37,10 +37,11 @@ namespace Groep9.NET.ViewModels {
         public string Omschrijving { get; private set; }
 
         public int Aantal { get; set; } // totaal in catalogus
-        [Display(Name = "Beschikbaar")]
+        [Display(Name = "Geblokkeerd")]
         //public int AantalBeschikbaar { get; set; } // enkel de beschikbare
 
         public int AantalGeblokkeerd { get; set; }//enkel geblokkeerd
+        [Display(Name = "Gereserveerd")]
         public int AantalGereserveerd { get; set; }//enkel gereserveerd
         public virtual ICollection<Reservatie> Reservaties { get; set; }
 
@@ -56,9 +57,9 @@ namespace Groep9.NET.ViewModels {
         public string Plaats { get; set; }
         public Boolean InVerlanglijst { get; private set; }
         public Boolean Uitleenbaarheid { get; set; }
-        [Display(Name ="Aantal Beschikbaar")]
+        [Display(Name ="Beschikbaar")]
         public int AantalBeschikbaar { get; set; }
-        public ProductViewModel(Product p, Gebruiker g, int aantalGereserveerd)
+        public ProductViewModel(Product p, Gebruiker g, int aantalGereserveerd, int aantalGeblokkeerd)
         {
 
             //Van het materiaal toon je de foto, de naam, omschrijving, 
@@ -77,9 +78,9 @@ namespace Groep9.NET.ViewModels {
             Doelgroep = p.Doelgroepen.Select(i => i.Naam).OrderBy(i => i).ToArray();
             Leergebied = p.Leergebieden.Select(i => i.Naam).OrderBy(i => i).ToArray();
             InVerlanglijst = g.VerlangLijst.Contains(p);
-            AantalBeschikbaar = p.Aantal - aantalGereserveerd;
+            AantalBeschikbaar = p.Aantal - aantalGereserveerd- aantalGeblokkeerd;
             AantalGereserveerd = aantalGereserveerd;
-            AantalGeblokkeerd = 0;
+            AantalGeblokkeerd = aantalGeblokkeerd;
         }
         public ProductViewModel(Product p, Gebruiker g)
         {

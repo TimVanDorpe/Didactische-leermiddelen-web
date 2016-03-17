@@ -22,7 +22,7 @@
                 @Html.DisplayNameFor(model => model.AantalGereserveerd)
             </th>
             <th style="max-width:140px;">
-                Gewenst aantal blokkades
+                Gewenst aantal blokkeringen
             </th>
 
             <th></th>
@@ -71,11 +71,11 @@
                     @*hier moet een textbox komen zodat de gebruiker kan invoeren hoeveel hij/zij er wenst te reserveren*@
                 </td>
                 <td>
-                    <input id="Maandag" name="Maandag" value="false" type="checkbox" /> Ma<br>
-                     @Html.CheckBox("Dinsdag") Di<br>
-                    @Html.CheckBox("Woensdag") Wo<br>
-                     @Html.CheckBox("Donderdag") Do<br>
-                     @Html.CheckBox("Vrijdag") Vr
+                    <input id="Maandag" name="Maandag" value="true" type="checkbox" /> Ma<br>
+                    <input id="Dinsdag" name="Dinsdag" value="true" type="checkbox" /> Di<br>
+                    <input id="Woensdag" name="Woensdag" value="true" type="checkbox" /> Wo<br>
+                    <input id="Donderdag" name="Donderdag" value="true" type="checkbox" /> Do<br>
+                    <input id="Vrijdag" name="Vrijdag" value="true" type="checkbox" /> Vr
                 </td>
                
                 <td colspan="2">

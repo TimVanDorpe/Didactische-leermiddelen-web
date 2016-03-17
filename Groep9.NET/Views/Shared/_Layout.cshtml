@@ -38,14 +38,14 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Catalogus", "Index", "Catalogus")</li>
-                    <li>@Html.ActionLink("Verlanglijst", "Index", "Verlanglijst")</li>
+                    <li>@Html.ActionLink("Uw Verlanglijst", "Index", "Verlanglijst")</li>
                     @if (User.IsInRole("studenten"))
                     {
-                        <li>@Html.ActionLink("Reservaties", "Index", "Reservatie")</li>
+                        <li>@Html.ActionLink("Uw Reservaties", "Index", "Reservatie")</li>
                     }
-                    else
+                    else if(User.IsInRole("personeel"))
                     {
-                        <li>@Html.ActionLink("Blokkeren", "Index", "Blokkering")</li>
+                        <li>@Html.ActionLink("Uw Blokkeringen", "Index", "Blokkering")</li>
                     }
                    
                 </ul>
