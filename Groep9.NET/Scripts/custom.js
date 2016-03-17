@@ -34,6 +34,7 @@ $('.input-group.date').datepicker({
     todayHighlight: true
 });
 
+
 $(document).ready(function () {
     //event.preventDefault();
     // Connect to "change" event in order to toggle glyphs
