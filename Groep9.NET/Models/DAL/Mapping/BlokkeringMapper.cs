@@ -17,7 +17,13 @@ namespace Groep9.NET.Models.DAL.Mapping
             Property(t => t.EindDatum).IsRequired();
 
             //HasRequired(i => i.Product).WithMany().HasForeignKey(p=>p.Product).WillCascadeOnDelete(false));
-           
+            HasMany(b => b.Weekdagen).WithMany().Map(m =>
+            {
+                m.ToTable("Weekdagen");
+                m.MapLeftKey("BlokkeringId");
+                m.MapRightKey("DagId");
+
+            });
 
             HasRequired(r => r.Product).WithMany().Map(m => m.MapKey("ProductId")).WillCascadeOnDelete(false);
 
