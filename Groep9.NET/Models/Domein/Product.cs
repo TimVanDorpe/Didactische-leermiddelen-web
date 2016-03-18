@@ -41,7 +41,7 @@ namespace Groep9.NET {
         public String Plaats { get; set; }
 
 
-        public string Firma { get; set; }
+        public virtual Firma Firma { get; set; }
 
         public Product() {
             Doelgroepen = new List<Doelgroep>();
@@ -51,7 +51,7 @@ namespace Groep9.NET {
         }
 
    
-        public Product(string foto, string naam, string omschrijving, double prijs, int aantal, bool uitleenbaarheid, string plaats, string firma, List<Doelgroep> doelgroepen, List<Leergebied> leergebieden)
+        public Product(string foto, string naam, string omschrijving, double prijs, int aantal, bool uitleenbaarheid, string plaats, Firma firma, List<Doelgroep> doelgroepen, List<Leergebied> leergebieden)
            : this() { 
             foreach (var doel in doelgroepen) {
                 Doelgroepen.Add(doel);

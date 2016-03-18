@@ -200,6 +200,7 @@
     <Compile Include="Models\DAL\LeergebiedRepository.cs" />
     <Compile Include="Models\DAL\Mapping\BlokkeringMapper.cs" />
     <Compile Include="Content\DagMapper.cs" />
+    <Compile Include="Models\DAL\Mapping\FirmaMapper.cs" />
     <Compile Include="Models\DAL\Mapping\GebruikerMapper.cs" />
     <Compile Include="Models\DAL\Mapping\LeergebiedMapper.cs" />
     <Compile Include="Models\DAL\ApplicationDbContext.cs" />

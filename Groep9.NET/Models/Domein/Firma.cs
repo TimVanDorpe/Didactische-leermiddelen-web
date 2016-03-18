@@ -8,52 +8,27 @@ namespace Groep9.NET
 {
     public class Firma
     {
-        public string Naam
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
+        public int FirmaId { get; set; }
+        [DisplayName("Naam firma")]
+        public string Naam{ get; set;   }
+        [DisplayName("Website firma")]
+        public string FirmaUrl { get; set; }
+        [DisplayName("Firma E-Mail")]
+        public string Contactemail { get; set; }
 
-            set
-            {
-            }
+        public Firma()
+        {
+
         }
 
-        public String Straat
+        public Firma(string naam, string firmaurl, string contactemail)
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
+            Naam = naam;
+            FirmaUrl = firmaurl;
+            Contactemail = contactemail;
 
-            set
-            {
-            }
         }
 
-        public int Postcode
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
 
-            set
-            {
-            }
-        }
-
-        public String Plaats
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-
-            set
-            {
-            }
-        }
     }
 }

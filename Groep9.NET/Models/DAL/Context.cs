@@ -25,6 +25,8 @@ namespace Groep9.NET.Models.DAL
         public DbSet<Gebruiker> Gebruikers { get; set; }
         public DbSet<Reservatie> Reservaties { get; set; }
 
+        public DbSet<Firma> Firmas { get; set; }
+
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

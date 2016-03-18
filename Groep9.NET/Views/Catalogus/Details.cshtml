@@ -81,11 +81,25 @@
             </dd>
     
             <dt>
-                @Html.DisplayNameFor(model => model.Firma)
+                @Html.DisplayNameFor(model => model.Firma.Naam)
             </dt>
-    
+
             <dd>
-                @Html.DisplayFor(model => model.Firma)
+                @Html.DisplayFor(model => model.Firma.Naam)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Firma.Contactemail)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Firma.Contactemail)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Firma.FirmaUrl)
+            </dt>
+
+            <dd>
+              <a href=@Model.Firma.FirmaUrl>@Model.Firma.FirmaUrl</a>
             </dd>
     
            <dt>
