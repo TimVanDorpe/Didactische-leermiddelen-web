@@ -67,12 +67,12 @@ namespace Groep9.NET.Tests.Controllers {
             mockpr.Verify(p => p.FindByProductNummer(1), Times.Once());
         }
 
-        [TestMethod]
-        public void DetailsToontDetails() {
-            ViewResult result = vController.Details(1) as ViewResult;
-            Product product = result.Model as Product;
-            Assert.AreEqual(context.P1.Omschrijving, product.Omschrijving);
-        }
+        //[TestMethod]
+        //public void DetailsToontDetails() {
+        //    ViewResult result = vController.Details(1) as ViewResult;
+        //    Product product = result.Model as Product;
+        //    Assert.AreEqual(context.P1.Omschrijving, product.Omschrijving);
+        //}
        
     }
 }

@@ -11,20 +11,16 @@
   <Class Name="Groep9.NET.Product">
     <Position X="6" Y="1" Width="3" />
     <TypeIdentifier>
-      <HashCode>EAAACAIQAAAAAAAEEAAAxAAAAAgAogBAAAAAaACAACA=</HashCode>
+      <HashCode>EAAACAIQAAAAAAAEAAAAxAAAAAgAogBAAAAAaACAACA=</HashCode>
       <FileName>Models\Domein\Product.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Firma" />
+    </ShowAsAssociation>
     <ShowAsCollectionAssociation>
       <Property Name="Doelgroepen" />
       <Property Name="Leergebieden" />
     </ShowAsCollectionAssociation>
-  </Class>
-  <Class Name="Groep9.NET.Firma">
-    <Position X="13" Y="2" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAACAAAAAAAAAAAAAAAhAAAAACAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\Domein\Firma.cs</FileName>
-    </TypeIdentifier>
   </Class>
   <Class Name="Groep9.NET.Models.Domein.Doelgroep">
     <Position X="11.25" Y="4.5" Width="1.5" />
@@ -78,7 +74,7 @@
   <Class Name="Groep9.NET.Models.Domein.ReservatieAbstr">
     <Position X="9.25" Y="6.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAACABAAAAAAAEAAAAAAAACAAAgAAAgAgAAIAAAA=</HashCode>
+      <HashCode>AAACAAAAABAAAAAAEAAAAAAAACAAAgAAAgAgAAIAAAE=</HashCode>
       <FileName>Models\Domein\ReservatieAbstr.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -87,6 +83,13 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAACAAAACAAAAAAAAAA=</HashCode>
       <FileName>Models\Domein\Blokkering.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Groep9.NET.Firma">
+    <Position X="13.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAABAAAAAAAAAAAAAAAgAAAQAA=</HashCode>
+      <FileName>Models\Domein\Firma.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
