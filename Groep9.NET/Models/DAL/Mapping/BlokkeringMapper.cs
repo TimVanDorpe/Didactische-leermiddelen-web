@@ -15,9 +15,7 @@ namespace Groep9.NET.Models.DAL.Mapping
             HasKey(p => p.BlokkeringId);
             Property(t => t.StartDatum).IsRequired();
             Property(t => t.EindDatum).IsRequired();
-
-            //HasRequired(i => i.Product).WithMany().HasForeignKey(p=>p.Product).WillCascadeOnDelete(false));
-           
+         
 
             HasRequired(r => r.Product).WithMany().Map(m => m.MapKey("ProductId")).WillCascadeOnDelete(false);
 

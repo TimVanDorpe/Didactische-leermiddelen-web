@@ -14,12 +14,12 @@ namespace Groep9.NET.Models.DAL
             {
 
                Doelgroep Kleuters = new Doelgroep("Kleuters");
-                Doelgroep LagereSchool = new Doelgroep("Lagere School"); //manier 1
+                Doelgroep LagereSchool = new Doelgroep("Lagere School"); 
 
-                Leergebied Kaarten = new Leergebied("Kaartprojectie");//manier 2
+                Leergebied Kaarten = new Leergebied("Kaartprojectie");
                 Leergebied Kansen = new Leergebied("Kansberekening");
                 Leergebied Tellen = new Leergebied("Tellen");
-                Leergebied Behendigheid = new Leergebied("Behendigheid"); // 2 vss manieren om dit te proberen doen werken, geen van beide die dus werkt..
+                Leergebied Behendigheid = new Leergebied("Behendigheid");
                 
                 context.Doelgroepen.Add(Kleuters);
                 context.Doelgroepen.Add(LagereSchool);

@@ -31,7 +31,7 @@ namespace Groep9.NET.Tests.Controllers
             mockgr = new Mock<IGebruikerRepository>();
             mockpr.Setup(p => p.VindAlleProducten()).Returns(context.Producten.AsQueryable());
             mockpr.Setup(p => p.FindByProductNummer(1)).Returns(context.P1);
-            rController = new ReservatieController(mockpr.Object, mockdr.Object, mocklr.Object, mockgr.Object);
+            rController = new ReservatieController(mockgr.Object);
         }
 
         [TestMethod]

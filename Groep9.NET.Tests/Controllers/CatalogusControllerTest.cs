@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Groep9.NET.Controllers;
 using Groep9.NET.Models.Domein;
-using System;
 using System.Linq;
 using System.Web.Mvc;
 using Groep9.NET.ViewModels;

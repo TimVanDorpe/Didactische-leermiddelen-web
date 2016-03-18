@@ -10,16 +10,12 @@ namespace Groep9.NET.Controllers
     [Authorize]
     public class ReservatieController : Controller
     {
-        private IProductRepository productRepository;
-        private IDoelgroepRepository doelgroepRepository;
-        private ILeergebiedRepository leergebiedRepository;
+      
         private IGebruikerRepository gebruikerRepository;
 
-        public ReservatieController(IProductRepository pr, IDoelgroepRepository dr, ILeergebiedRepository lr, IGebruikerRepository gr/*, IReservatieRepository rr*/)
+        public ReservatieController( IGebruikerRepository gr)
         {
-            productRepository = pr;
-            doelgroepRepository = dr;
-            leergebiedRepository = lr;
+            
             gebruikerRepository = gr;
         }
 

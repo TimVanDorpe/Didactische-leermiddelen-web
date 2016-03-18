@@ -29,7 +29,7 @@ namespace Groep9.NET.Tests.Controllers {
             mockgr = new Mock<IGebruikerRepository>();
             mockpr.Setup(p => p.VindAlleProducten()).Returns(context.Producten.AsQueryable());
             mockpr.Setup(p => p.FindByProductNummer(1)).Returns(context.P1);
-            vController = new VerlanglijstController(mockpr.Object, mockdr.Object, mocklr.Object, mockgr.Object);
+            vController = new VerlanglijstController( mockpr.Object, mockgr.Object);
         }
 
         [TestMethod]

@@ -14,15 +14,13 @@ namespace Groep9.NET.Models.Domein
         public int GebruikerId { get; set; }
         public string Email { get; set; }
         public virtual ICollection<Product> VerlangLijst { get; set; }
-        //public virtual ICollection<Reservatie> ReservatieLijst { get; set; } 
-        //  public virtual ICollection<Blokkering> BlokkeringLijst { get; set; }
+        
 
         public virtual ICollection<ReservatieAbstr> ReservAbstrLijst { get; set; }
         public Gebruiker()
         {
             VerlangLijst = new List<Product>();
-            //ReservatieLijst = new List<Reservatie>();
-            //BlokkeringLijst = new List<Blokkering>();
+            
             ReservAbstrLijst = new List<ReservatieAbstr>();
         }
 
