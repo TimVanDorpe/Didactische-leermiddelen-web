@@ -86,7 +86,7 @@ namespace Groep9.NET.Controllers {
                     //methode voor reserveerknop, die aantal meegeeft aan methode product.Reserveer
 
                     DateTime date = Helper.ZetDatumOm(datum);
-                    if (prod.Aantal > (prod.BerekenAantalGereserveerdOpWeek(date) + aantal))
+                    if (prod.Aantal >= (prod.BerekenAantalGereserveerdOpWeek(date) + aantal))
                     {
                         if (aantal > 0)
                         {
@@ -135,7 +135,7 @@ namespace Groep9.NET.Controllers {
                 if (gebruiker is Personeelslid)
                 {
                     DateTime date = Helper.ZetDatumOm(datum);
-                    if (prod.Aantal > (prod.BerekenAantalGereserveerdOpWeek(date) + aantal))
+                    if (prod.Aantal >= (prod.BerekenAantalGereserveerdOpWeek(date) + aantal))
                     {
                         if (aantal > 0)
                         {

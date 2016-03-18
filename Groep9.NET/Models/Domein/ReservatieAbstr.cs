@@ -21,18 +21,7 @@ namespace Groep9.NET.Models.Domein
         public virtual Gebruiker Gebruiker { get; set; }
 
         public int ReservatieAbstrId { get; set; }
-        //public ReservatieAbstr(Product product, int aantal, Gebruiker gebruiker, string datum)
-        //{
-        //    Gebruiker = gebruiker;
-        //    Product = product;
-        //    Aantal = aantal;
-        //    StartDatum = BerekenStartDatumReservatieWeek(datum);
-        //    EindDatum = BerekenEindDatumReservatieWeek(datum);
-        //}
-
-
-
-
+       
         public DateTime SetStartDatumReservatieWeek(DateTime date)
         {
             // als de gewenste datum al gepasseerd is
@@ -42,32 +31,7 @@ namespace Groep9.NET.Models.Domein
             }
 
             return Helper.BerekenStartDatumReservatieWeek(date);
-
-            /*
-            if (BerekenWeek(date) == BerekenWeek(DateTime.Today))
-            {
-
-                // returnt datum van volgende week
-                if (date.DayOfWeek >= DayOfWeek.Monday && date.DayOfWeek <= DayOfWeek.Friday ||
-                    (date.DayOfWeek == DayOfWeek.Friday && date.Hour <= 17))
-                {
-                    int daysUntilMonday = (((int)DayOfWeek.Monday - (int)date.DayOfWeek + 7) % 7);
-                    return date.AddDays(daysUntilMonday).AddHours(8);
-                }
-                else
-                {
-                    // returnt datum van volgende volgende week (indien na vrijdag 17h)
-                    int daysUntilMonday = (((int)DayOfWeek.Monday - (int)date.DayOfWeek + 7) % 7 + 7);
-                    return date.AddDays(daysUntilMonday).AddHours(8);
-                }
-
-                throw new ArgumentException("kan niet reserveren voor deze week, selecteer ten vroegste volgende week");
-
-            }
-
-            int daysAfterMonday = (int)DayOfWeek.Monday - (int)date.DayOfWeek;
-            return date.AddDays(daysAfterMonday).AddHours(8);
-            */
+            
         }
 
 
