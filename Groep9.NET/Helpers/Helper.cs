@@ -15,7 +15,7 @@ namespace Groep9.NET.Helpers
             if (BerekenWeek(date) == BerekenWeek(DateTime.Today)) {
 
                 // returnt datum van volgende week
-                if (date.DayOfWeek >= DayOfWeek.Monday && date.DayOfWeek <= DayOfWeek.Friday ||
+                if (date.DayOfWeek >= DayOfWeek.Monday && date.DayOfWeek <= DayOfWeek.Thursday ||
                     (date.DayOfWeek == DayOfWeek.Friday && date.Hour <= 17)) {
                     int daysUntilMonday = (((int)DayOfWeek.Monday - (int)date.DayOfWeek + 7) % 7);
                     return date.AddDays(daysUntilMonday).AddHours(8);
