@@ -24,6 +24,17 @@ namespace Groep9.NET.Controllers {
             gebruikerRepository = gr;
         }
 
+        private DateTime ZetDatumOm(string datum)
+        {
+            if (datum == null)
+            {
+                //als er geen datum geselecteerd is, stel tempdata in op vandaag
+                datum = DateTime.ParseExact(DateTime.Today.ToString().Substring(0, 10), "dd/MM/yyyy", null).ToString("dd/MM/yyyy");
+
+            }
+            return new DateTime(Int32.Parse(datum.Substring(6, 4)), Int32.Parse(datum.Substring(3, 2)), Int32.Parse(datum.Substring(0, 2)));
+        }
+
         public ActionResult Index(Gebruiker gebruiker, string datum ) {
 
             try {
@@ -31,27 +42,22 @@ namespace Groep9.NET.Controllers {
                 IEnumerable<Product> verlanglijst = gebruiker.VerlangLijst.ToList();
                 Reservatie r = new Reservatie();
 
-                if (datum == null) {
-                    //als er geen datum geselecteerd is, stel tempdata in op vandaag
-                    datum =
-                        DateTime.ParseExact(DateTime.Today.ToString().Substring(0, 10), "dd/MM/yyyy", null)
-                            .ToString("MM/dd/yyyy");
-                   
-                }
+                DateTime date = ZetDatumOm(datum);
+                
                 
                     //anders op geselecteerde datum
-                    TempData["datum"] = datum;
-                
+                    TempData["datum"] = date.ToString("dd/MM/yyyy");
 
+               
 
 
                 //stelt de start en einddatum in voor in de bevestigingspopup weer te geven
-                TempData["startdatum"] = r.BerekenStartDatumReservatieWeek(datum);
-                TempData["einddatum"] = r.BerekenEindDatumReservatieWeek(datum);
+                TempData["startdatum"] = r.BerekenStartDatumReservatieWeek(date);
+                TempData["einddatum"] = r.BerekenEindDatumReservatieWeek(date);
 
 
                 ProductenViewModel vm = new ProductenViewModel() {
-                    Producten = verlanglijst.Select(p => new ProductViewModel(p, gebruiker, p.BerekenAantalGereserveerdOpWeek(datum),p.BerekenAantalGeblokkeerdOpWeek(datum)))
+                    Producten = verlanglijst.Select(p => new ProductViewModel(p, gebruiker, p.BerekenAantalGereserveerdOpWeek(date),p.BerekenAantalGeblokkeerdOpWeek(date)))
                 };
 
                 if (Request.IsAjaxRequest())
@@ -92,13 +98,13 @@ namespace Groep9.NET.Controllers {
 
                 //methode voor reserveerknop, die aantal meegeeft aan methode product.Reserveer
 
-               
+                DateTime date = ZetDatumOm(datum);
                 if (gebruiker is Student) {
-                    if (prod.Aantal > (prod.BerekenAantalGereserveerdOpWeek(datum) + aantal))
+                    if (prod.Aantal > (prod.BerekenAantalGereserveerdOpWeek(date) + aantal))
                     {
                         if (aantal > 0)
                         {
-                        Reservatie reservatie = new Reservatie(prod, aantal, gebruiker, datum);
+                        Reservatie reservatie = new Reservatie(prod, aantal, gebruiker, date);
                         prod.VoegReservatieToe(reservatie);
                         gebruiker.VoegReservatieToe(reservatie);
                         gebruikerRepository.SaveChanges();
@@ -145,7 +151,8 @@ namespace Groep9.NET.Controllers {
               
                 if (gebruiker is Personeelslid)
                 {
-                    if (prod.Aantal > (prod.BerekenAantalGereserveerdOpWeek(datum) + aantal))
+                    DateTime date = ZetDatumOm(datum);
+                    if (prod.Aantal > (prod.BerekenAantalGereserveerdOpWeek(date) + aantal))
                     {
                         if (aantal > 0)
                         {

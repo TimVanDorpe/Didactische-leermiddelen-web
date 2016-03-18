@@ -6,19 +6,14 @@
     ViewBag.Title = "Verlanglijst";
 
 }
-<script>
-  $(function() {
-      $('.input-group.date').datepicker({
-      });
-  });
-</script>
+
 <h2>Verlanglijst</h2> 
 @using (Html.BeginForm("Index", "Verlanglijst"))
 {
-    <div class="col-md-12">
+    <div class="col-md-12" id="sandbox-container">
         <div class="pull-left col-md-2"><label> Kies een datum: </label></div>
         
-        <div class="input-group date col-md-6" data-provide="datepicker">
+        <div class="input-group date col-md-6">
             <!--<input type="text" class="form-control" id="datum">-->
             @Html.TextBox("datum", "", "", new { @class = "form-control", @placeholder = DateTime.Today.ToString().Substring(0,10) + ".."})
           

@@ -11,7 +11,7 @@
   <Class Name="Groep9.NET.Product">
     <Position X="6" Y="1" Width="3" />
     <TypeIdentifier>
-      <HashCode>EAAACAIwAEAAAAAEEAAAxAAAAAAAogBAAAAAaACBACE=</HashCode>
+      <HashCode>EAAACAIQAAAAAAAEEAAAxAAAAAgAogBAAAAAaACAACA=</HashCode>
       <FileName>Models\Domein\Product.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
@@ -86,6 +86,20 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
       <FileName>Models\Domein\Personeelslid.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Groep9.NET.Models.Domein.Dag">
+    <Position X="14.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Models\Domein\Dag.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Groep9.NET.Models.Domein.Blokkering">
+    <Position X="11.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAACABAAAAAAAEAAAIAAAACACAgAACgAgAAAAAAA=</HashCode>
+      <FileName>Models\Domein\Blokkering.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

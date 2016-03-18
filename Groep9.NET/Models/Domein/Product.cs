@@ -83,13 +83,13 @@ namespace Groep9.NET {
 
         }
 
-        public int BerekenWeek(string datum)
+        public int BerekenWeek(DateTime datum)
         {
            
             var currentCulture = CultureInfo.CurrentCulture;
             var weekNo = currentCulture.Calendar.GetWeekOfYear(
-                            //haalt jaar, maand en dag uit string en zet om in int
-                            new DateTime(Int32.Parse(datum.Substring(6, 4)), Int32.Parse(datum.Substring(0, 2)), Int32.Parse(datum.Substring(3, 2))),
+                             //haalt jaar, maand en dag uit string en zet om in int
+                             new DateTime(datum.Year, datum.Month, datum.Day),
                             currentCulture.DateTimeFormat.CalendarWeekRule,
                             currentCulture.DateTimeFormat.FirstDayOfWeek);
 
@@ -98,12 +98,11 @@ namespace Groep9.NET {
             return weekNo;
         }
         
-        public int BerekenAantalGereserveerdOpWeek(string datum)
+        public int BerekenAantalGereserveerdOpWeek(DateTime datum)
         {
             int aantalGereserveerd = 0;
             int weekReservatie = 0;
-            if (BerekenWeek(datum) == BerekenWeek(DateTime.ParseExact(DateTime.Today.ToString()
-                .Substring(0, 10), "dd/MM/yyyy", null).ToString("MM/dd/yyyy")))
+            if (BerekenWeek(datum) == BerekenWeek(DateTime.Today))
             {
                 weekReservatie =  BerekenWeek(datum)+1;
             }
@@ -111,9 +110,7 @@ namespace Groep9.NET {
             foreach (Reservatie r in Reservaties)
             {
                 int weekProduct =
-                    BerekenWeek(
-                        DateTime.ParseExact(r.StartDatum.ToString().Substring(0, 10), "dd/MM/yyyy", null)
-                            .ToString("MM/dd/yyyy"));
+                    BerekenWeek(r.StartDatum);
 
                 if (weekReservatie == weekProduct)
                 {
@@ -123,12 +120,11 @@ namespace Groep9.NET {
             return aantalGereserveerd;
 
         }
-        public int BerekenAantalGeblokkeerdOpWeek(string datum)
+        public int BerekenAantalGeblokkeerdOpWeek(DateTime datum)
         {
             int aantalGeblokkeerd = 0;
             int weekBlokkering = 0;
-            if (BerekenWeek(datum) == BerekenWeek(DateTime.ParseExact(DateTime.Today.ToString()
-                .Substring(0, 10), "dd/MM/yyyy", null).ToString("MM/dd/yyyy")))
+            if (BerekenWeek(datum) == BerekenWeek(DateTime.Today))
             {
                 weekBlokkering = BerekenWeek(datum) + 1;
             }
@@ -136,9 +132,7 @@ namespace Groep9.NET {
             foreach (Blokkering b in Blokkeringen)
             {
                 int weekProduct =
-                    BerekenWeek(
-                        DateTime.ParseExact(b.StartDatum.ToString().Substring(0, 10), "dd/MM/yyyy", null)
-                            .ToString("MM/dd/yyyy"));
+                    BerekenWeek(b.StartDatum);
 
                 if (weekBlokkering == weekProduct)
                 {

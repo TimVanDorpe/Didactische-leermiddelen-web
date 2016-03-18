@@ -22,7 +22,7 @@ namespace Groep9.NET.Models.Domein {
 
         public virtual Gebruiker Gebruiker { get; set; }
 
-        public Reservatie(Product product, int aantal, Gebruiker gebruiker, string datum) {
+        public Reservatie(Product product, int aantal, Gebruiker gebruiker, DateTime datum) {
             Gebruiker = gebruiker;
             Product = product;
             Aantal = aantal;
@@ -35,15 +35,13 @@ namespace Groep9.NET.Models.Domein {
 
         }
 
-        public DateTime BerekenStartDatumReservatieWeek(string datum, DateTime? d = null/* voor te testen*/) {
-            DateTime date;
+        public DateTime BerekenStartDatumReservatieWeek(DateTime date) {
+           // DateTime date;
 
-            if (d != null) {
-                date = (DateTime)d;
-            }
-            else {
-                date = new DateTime(Int32.Parse(datum.Substring(6, 4)), Int32.Parse(datum.Substring(0, 2)), Int32.Parse(datum.Substring(3, 2)));
-            }
+            
+            //else {
+            //    date = new DateTime(Int32.Parse(datum.Substring(6, 4)), Int32.Parse(datum.Substring(0, 2)), Int32.Parse(datum.Substring(3, 2)));
+            //}
 
             /*
                 ALS date.week = dateTime.today.week
@@ -58,8 +56,7 @@ namespace Groep9.NET.Models.Domein {
             }
             
 
-            if (BerekenWeek(datum) == BerekenWeek(DateTime.ParseExact(DateTime.Today.ToString()
-            .Substring(0, 10), "dd/MM/yyyy", null).ToString("MM/dd/yyyy"))) {
+            if (BerekenWeek(date) == BerekenWeek(DateTime.Today)) {
 
                 //DateTime.ParseExact(DateTime.Today.ToString().Substring(0, 10), "dd/MM/yyyy", null)
                 //   .ToString("MM/dd/yyyy");
@@ -85,12 +82,19 @@ namespace Groep9.NET.Models.Domein {
             return date.AddDays(daysAfterMonday).AddHours(8);
 
         }
-        private int BerekenWeek(string datum) {
+      
+
+        public DateTime BerekenEindDatumReservatieWeek(DateTime datum) {
+            return BerekenStartDatumReservatieWeek(datum).AddDays(4).AddHours(9);
+        }
+
+        public int BerekenWeek(DateTime datum)
+        {
 
             var currentCulture = CultureInfo.CurrentCulture;
             var weekNo = currentCulture.Calendar.GetWeekOfYear(
-                            //haalt jaar, maand en dag uit string en zet om in int
-                            new DateTime(Int32.Parse(datum.Substring(6, 4)), Int32.Parse(datum.Substring(0, 2)), Int32.Parse(datum.Substring(3, 2))),
+                             //haalt jaar, maand en dag uit string en zet om in int
+                             new DateTime(datum.Year, datum.Month, datum.Day),
                             currentCulture.DateTimeFormat.CalendarWeekRule,
                             currentCulture.DateTimeFormat.FirstDayOfWeek);
 
@@ -98,12 +102,6 @@ namespace Groep9.NET.Models.Domein {
             // MM/DD/YYYY
             return weekNo;
         }
-
-        public DateTime BerekenEindDatumReservatieWeek(string datum, DateTime? d = null) {
-            return BerekenStartDatumReservatieWeek(datum, d).AddDays(4).AddHours(9);
-        }
-
-
 
     }
 }
