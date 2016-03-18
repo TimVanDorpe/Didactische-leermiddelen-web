@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Groep9.NET.Models.Domein.Blokkering>
+﻿@model IEnumerable<Groep9.NET.Models.Domein.ReservatieAbstr>
 
 @{
     ViewBag.Title = "Blokkeren";
@@ -33,9 +33,9 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Aantal)
                 </th>
-                <th>
+                @*<th>
                     @Html.DisplayNameFor(model => model.Weekdagen)
-                </th>
+                </th>*@
 
 
             </tr>
@@ -73,13 +73,13 @@
                     @Html.DisplayFor(modelItem => item.Aantal)
                 </td>
                 
-                <td>@foreach (var week in item.Weekdagen)
+                @*<td>@foreach (var week in item.Weekdagen)
                 {
                     @week.Naam <br>
                 }
-                </td>
+                </td>*@
                 <td>
-                    <a href="@Url.Action("RemoveFromBlokkeringLijst", new {id=item.BlokkeringId})" class="btn btn-danger btn-sm ">
+                    <a href="@Url.Action("RemoveFromBlokkeringLijst", new {id=item.ReservatieAbstrId})" class="btn btn-danger btn-sm ">
 
                         <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
                     </a>

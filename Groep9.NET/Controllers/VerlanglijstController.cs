@@ -43,12 +43,12 @@ namespace Groep9.NET.Controllers {
                 Reservatie r = new Reservatie();
 
                 DateTime date = ZetDatumOm(datum);
-                
+                   
                 
                     //anders op geselecteerde datum
                     TempData["datum"] = date.ToString("dd/MM/yyyy");
+                
 
-               
 
 
                 //stelt de start en einddatum in voor in de bevestigingspopup weer te geven
@@ -94,19 +94,20 @@ namespace Groep9.NET.Controllers {
 
         public ActionResult AddReservatie(Gebruiker gebruiker, int aantal, int id, string datum) {
             try {
-                Product prod = productRepository.FindByProductNummer(id);
-
-                //methode voor reserveerknop, die aantal meegeeft aan methode product.Reserveer
-
-                DateTime date = ZetDatumOm(datum);
+              
                 if (gebruiker is Student) {
+                    Product prod = productRepository.FindByProductNummer(id);
+
+                    //methode voor reserveerknop, die aantal meegeeft aan methode product.Reserveer
+
+                    DateTime date = ZetDatumOm(datum);
                     if (prod.Aantal > (prod.BerekenAantalGereserveerdOpWeek(date) + aantal))
                     {
                         if (aantal > 0)
                         {
-                        Reservatie reservatie = new Reservatie(prod, aantal, gebruiker, date);
-                        prod.VoegReservatieToe(reservatie);
-                        gebruiker.VoegReservatieToe(reservatie);
+                        ReservatieAbstr reservatie = new Reservatie(prod, aantal, gebruiker, date);
+                       // prod.VoegReservatieToe(reservatie);
+                        gebruiker.VoegReservatieAbstrToe(reservatie);
                         gebruikerRepository.SaveChanges();
                         TempData["Info"] = "Product " + productRepository.FindByProductNummer(id).Naam +
                                            " is gereserveerd.";
@@ -156,11 +157,11 @@ namespace Groep9.NET.Controllers {
                     {
                         if (aantal > 0)
                         {
-                            Blokkering blokkering = new Blokkering(prod, aantal, gebruiker, datum);
-                            blokkering.addWeekdag(Maandag, Dinsdag, Woensdag, Donderdag, Vrijdag);
+                            ReservatieAbstr blokkering = new Blokkering(prod, aantal, gebruiker, date);
+                           // blokkering.addWeekdag(Maandag, Dinsdag, Woensdag, Donderdag, Vrijdag);
                             
-                            prod.VoegBlokkeringToe(blokkering);
-                            gebruiker.VoegBlokkeringToe(blokkering);
+                           // prod.VoegBlokkeringToe(blokkering);
+                            gebruiker.VoegReservatieAbstrToe(blokkering);
                             gebruikerRepository.SaveChanges();
                             TempData["Info"] = "Product " + productRepository.FindByProductNummer(id).Naam + " is geblokkeerd.";
                         }
