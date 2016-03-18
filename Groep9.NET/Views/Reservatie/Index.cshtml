@@ -102,8 +102,11 @@
 
                     </h2>
 
-                    <p> Op te halen op: @Html.DisplayFor(modelItem => item.StartDatum) en terugbrengen op @Html.DisplayFor(modelItem => item.EindDatum)</p>
+                    <p> Op te halen op @Html.DisplayFor(modelItem => item.StartDatum) en terug te brengen op @Html.DisplayFor(modelItem => item.EindDatum)</p>
+                        <a href="@Url.Action("RemoveFromReservatieLijst", new {id = item.ReservatieAbstrId})" class="btn btn-danger btn-sm ">
 
+                            <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
+                        </a>
                  
                 </div>
             </div>
