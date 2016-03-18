@@ -11,7 +11,7 @@
   <Class Name="Groep9.NET.Product">
     <Position X="6" Y="1" Width="3" />
     <TypeIdentifier>
-      <HashCode>EAAACAIwAEAAAAAEEAAAxAAAAAAAogBAAAAAaACBACE=</HashCode>
+      <HashCode>EAAACAIQAAAAAAAEEAAAxAAAAAgAogBAAAAAaACAACA=</HashCode>
       <FileName>Models\Domein\Product.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
@@ -20,42 +20,48 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Groep9.NET.Firma">
-    <Position X="13" Y="2" Width="1.5" />
+    <Position X="15.25" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAACAAAAAAAAAAAAAAAhAAAAACAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Domein\Firma.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Groep9.NET.Models.Domein.Doelgroep">
-    <Position X="11.25" Y="4.5" Width="1.5" />
+    <Position X="14.25" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAACAQAABAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
       <FileName>Models\Domein\Doelgroep.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Groep9.NET.Plaats">
-    <Position X="13" Y="4.5" Width="1.5" />
+    <Position X="15.25" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAQAAAACAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Domein\Plaats.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Groep9.NET.Models.Domein.Gebruiker">
-    <Position X="2.75" Y="6.75" Width="1.5" />
+    <Position X="2.75" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACAAAAAACCAAAAEAAAAAAAAAAAAIABAAAAAQQAAQCA=</HashCode>
       <FileName>Models\Domein\Gebruiker.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
       <Property Name="ReservatieLijst" />
+      <Property Name="BlokkeringLijst" />
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Groep9.NET.Models.Domein.Reservatie">
-    <Position X="6.75" Y="6.75" Width="3.25" />
+    <Position X="7" Y="8" Width="3.25" />
     <AssociationLine Name="Gebruiker" Type="Groep9.NET.Models.Domein.Gebruiker" FixedToPoint="true">
       <Path>
-        <Point X="6.75" Y="8.688" />
-        <Point X="4.25" Y="8.688" />
+        <Point X="8.828" Y="8" />
+        <Point X="8.828" Y="6.825" />
+        <Point X="8.083" Y="6.825" Type="JumpStart" />
+        <Point X="7.917" Y="6.825" Type="JumpEnd" />
+        <Point X="6.552" Y="6.825" Type="JumpStart" />
+        <Point X="6.385" Y="6.825" Type="JumpEnd" />
+        <Point X="4.25" Y="6.825" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>
@@ -68,25 +74,35 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Groep9.NET.Models.Domein.Leergebied">
-    <Position X="11" Y="0.5" Width="1.5" />
+    <Position X="11" Y="1" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAhAAAAAAAAAAAAAAAAAEAAAE=</HashCode>
       <FileName>Models\Domein\Leergebied.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Groep9.NET.Student">
-    <Position X="1.5" Y="10.25" Width="1.5" />
+    <Position X="1.5" Y="8.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAACA=</HashCode>
       <FileName>Models\Domein\Student.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Groep9.NET.Personeelslid">
-    <Position X="4.25" Y="10.25" Width="1.5" />
+    <Position X="4.25" Y="8.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
       <FileName>Models\Domein\Personeelslid.cs</FileName>
     </TypeIdentifier>
+  </Class>
+  <Class Name="Groep9.NET.Models.Domein.Blokkering">
+    <Position X="11.25" Y="6.25" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAACABAAAAAAAEAAAIAAAACACAgAACgAgAAAAAAA=</HashCode>
+      <FileName>Models\Domein\Blokkering.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Product" />
+    </ShowAsAssociation>
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
