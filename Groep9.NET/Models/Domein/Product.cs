@@ -6,7 +6,6 @@ using System.Web.Services.Protocols;
 using System.ComponentModel;
 using System.Diagnostics;
 using Groep9.NET.Models.Domein;
-using System.Diagnostics;
 using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 
