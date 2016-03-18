@@ -21,12 +21,7 @@ namespace Groep9.NET.Models.Domein {
             StartDatum = BerekenStartDatumReservatieWeek(datum);
             EindDatum = BerekenEindDatumReservatieWeek(datum);
             product.VoegReservatieToe(this);
-
-            //product.AantalBeschikbaar = product.AantalBeschikbaar - aantal;
-            //product.AantalBeschikbaar = product.AantalGereserveerd + aantal;
-            //p.AantalBeschikbaar -= hoeveelheid;
-            //p.AantalGereserveerd += hoeveelheid;
-
+            
         }
 
   
