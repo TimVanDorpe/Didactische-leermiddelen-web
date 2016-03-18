@@ -12,16 +12,18 @@ namespace Groep9.NET.Helpers
 
         public static DateTime BerekenStartDatumReservatieWeek(DateTime date)
         {
+            //als huidige week gelijk is aan geselecteerde week
             if (BerekenWeek(date) == BerekenWeek(DateTime.Today)) {
 
-                // returnt datum van volgende week
+                // als het maandag tot donderdag is OF vrijdag & vroeger dan 5 uur
+                // return volgende week
                 if (date.DayOfWeek >= DayOfWeek.Monday && date.DayOfWeek <= DayOfWeek.Thursday ||
                     (date.DayOfWeek == DayOfWeek.Friday && DateTime.Now.Hour < 17)) {
                     int daysUntilMonday = (((int)DayOfWeek.Monday - (int)date.DayOfWeek + 7) % 7);
                     return date.AddDays(daysUntilMonday).AddHours(8);
                 }
+                // return binnen 2 weken (indien na vrijdag 5 uur deze week of weekend deze week)
                 else {
-                    // returnt datum van volgende volgende week (indien na vrijdag 17h)
                     int daysUntilMonday = (((int)DayOfWeek.Monday - (int)date.DayOfWeek + 7) % 7 + 7);
                     return date.AddDays(daysUntilMonday).AddHours(8);
                 }
@@ -29,7 +31,14 @@ namespace Groep9.NET.Helpers
                 //throw new ArgumentException("kan niet reserveren voor deze week, selecteer ten vroegste volgende week");
 
             }
+            // indien de geselecteerde week volgende week is, EN het is vrijdag na 5 uur, return binnen 2 weken
+            if (BerekenWeek(date) == BerekenWeek(DateTime.Today) +1 && (DateTime.Today.DayOfWeek == DayOfWeek.Friday && DateTime.Now.Hour >= 17)) {
+                int daysUntilMonday = (((int)DayOfWeek.Monday - (int)date.DayOfWeek + 7) % 7);
+                return date.AddDays(daysUntilMonday).AddHours(8);
+            }
 
+            // ALS de gekozen datum niet deze week is of niet volgende week is en de huidige niet vrijdag na 5 uur
+            // return dan de gekozen week
             int daysAfterMonday = (int)DayOfWeek.Monday - (int)date.DayOfWeek;
             return date.AddDays(daysAfterMonday).AddHours(8);
         }
