@@ -103,7 +103,7 @@
 
 
 
-                            <a href="@Url.Action("Details", new {id = item.ProductId})" class="btn btn-info btn-sm ">
+                            <a href="@Url.Action("Details", new {id = item.ProductId, datum = TempData["datum"]})" class="btn btn-info btn-sm ">
 
                                 <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
                             </a>
@@ -136,60 +136,68 @@
     @foreach (var item in Model)
     {
 
+        using (Html.BeginForm("AddReservatie", "Verlanglijst", new {id = item.ProductId, datum = TempData["datum"]}))
+        {
+            <div class="row ">
 
-        <div class="row ">
+                <div class="col-xs-12 product-small">
+                    <div class="foto col-xs-4">
+                        <img alt="@Html.DisplayFor(modelItem => item.Naam)" src="~/Content/images/@(@Html.DisplayFor(modelItem => item.Foto))" class="img-responsive"/>
+                    </div>
 
-            <div class="col-xs-12 product-small">
-                <div class="foto col-xs-4">
-                    <img alt="@Html.DisplayFor(modelItem => item.Naam)" src="~/Content/images/@(@Html.DisplayFor(modelItem =>item.Foto))" class="img-responsive" />
-                </div>
+                    <div class="caption col-xs-8">
+                        <h2>
+                            @Html.DisplayFor(modelItem => item.Naam)
 
-                <div class="caption col-xs-8">
-                    <h2>
-                        @Html.DisplayFor(modelItem => item.Naam)
+                        </h2>
 
-                    </h2>
-
-                    <p>@Html.DisplayFor(modelItem => item.Omschrijving)</p>
-                    <div class="btn-toolbar pull-right" style="min-width: 168px" role="toolbar">
-                        <button type="button" class="btn btn-default groen " data-toggle="modal" data-target=".mobile-popup">Reserveren</button>
-
-                        <div class="modal fade bs-example-modal-sm mobile-popup visible-sm visible-xs" tabindex="-2" role="dialog">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                        <h4 class="modal-title">Reservatie voltooien</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p>Geef het aantal dat u wilt reserveren en druk op bevestigen om de reservatie te voltooien</p>
-
-                                        @Html.TextBox("aantal", "1", "", new { @style = "width:200px;", @class = "form-control", @placeholder = item.Aantal + " bruikbaar", Type = "number" })
+                        <p>@Html.DisplayFor(modelItem => item.Omschrijving)</p>
 
 
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default " data-dismiss="modal">Annuleren</button>
-                                        <button type="submit" name="productnummer" value="@item.ProductId" class="btn btn-default">Bevestigen</button>
-                                    </div>
-                                </div><!-- /.modal-content -->
-                            </div><!-- /.modal-dialog -->
-                        </div><!-- /.modal -->
+                        <div class="btn-toolbar pull-right" role="toolbar">
+                            @Html.TextBox("aantal", "1", "", new
+                         {
+                             @class = "form-control",
+                             Type = "number",
+                             @style = "max-width:80px;"@*, @placeholder = item.AantalBeschikbaar+ " bruikbaar"*@})
 
-                        <a href="@Url.Action("Details", new {id = item.ProductId})" class="btn btn-info btn-sm ">
 
-                            <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-                        </a>
+                            <button type="button" class="btn btn-default groen  btn-sm" data-toggle="modal" data-target=".2popup@(item.ProductId)">Reserveren</button>
 
-                        <a href="@Url.Action("RemoveFromVerlanglijst", new {id = item.ProductId})" class="btn btn-danger btn-sm ">
+                            <div class="modal fade bs-example-modal-sm desktop-popup 2popup@(item.ProductId)" tabindex="-2" role="dialog">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title">Reservatie voltooien</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            Weet u zeker dat u deze reservatie wilt maken, voor de week van:<br/>
+                                            maandag @TempData["startdatum"].ToString().Substring(0, 15) tot vrijdag @TempData["einddatum"].ToString().Substring(0, 16)?
 
-                            <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
-                        </a>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default " data-dismiss="modal">Annuleren</button>
+                                            <button type="submit" name="productnummer" value="@item.ProductId" class="btn btn-default">Bevestigen</button>
+                                        </div>
+                                    </div><!-- /.modal-content -->
+                                </div><!-- /.modal-dialog -->
+                            </div><!-- /.modal -->
+
+                            <a href="@Url.Action("Details", new {id = item.ProductId})" class="btn btn-info btn-sm ">
+
+                                <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                            </a>
+
+                            <a href="@Url.Action("RemoveFromVerlanglijst", new {id = item.ProductId})" class="btn btn-danger btn-sm ">
+
+                                <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
+                            </a>
+                        </div>
                     </div>
                 </div>
+                <br/>
             </div>
-            <br />
-        </div>
-
+        }
     }
 </div>

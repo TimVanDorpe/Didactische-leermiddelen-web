@@ -8,6 +8,7 @@ using System.Diagnostics;
 using Groep9.NET.Models.Domein;
 using System.ComponentModel.DataAnnotations;
 using System.Globalization;
+using Groep9.NET.Helpers;
 
 namespace Groep9.NET {
     public class Product {
@@ -77,34 +78,20 @@ namespace Groep9.NET {
 
         }
 
-        public int BerekenWeek(DateTime datum)
-        {
-           
-            var currentCulture = CultureInfo.CurrentCulture;
-            var weekNo = currentCulture.Calendar.GetWeekOfYear(
-                             //haalt jaar, maand en dag uit string en zet om in int
-                             new DateTime(datum.Year, datum.Month, datum.Day),
-                            currentCulture.DateTimeFormat.CalendarWeekRule,
-                            currentCulture.DateTimeFormat.FirstDayOfWeek);
-
-            // YYYY/MM/DD
-            // MM/DD/YYYY
-            return weekNo;
-        }
         
         public int BerekenAantalGereserveerdOpWeek(DateTime datum)
         {
             int aantalGereserveerd = 0;
             int weekReservatie = 0;
-            if (BerekenWeek(datum) == BerekenWeek(DateTime.Today))
+            if (Helper.BerekenWeek(datum) == Helper.BerekenWeek(DateTime.Today))
             {
-                weekReservatie =  BerekenWeek(datum)+1;
+                weekReservatie =  Helper.BerekenWeek(datum)+1;
             }
-                 weekReservatie = BerekenWeek(datum);
+                 weekReservatie = Helper.BerekenWeek(datum);
             foreach (Reservatie r in Reservaties)
             {
                 int weekProduct =
-                    BerekenWeek(r.StartDatum);
+                    Helper.BerekenWeek(r.StartDatum);
 
                 if (weekReservatie == weekProduct)
                 {
@@ -118,15 +105,15 @@ namespace Groep9.NET {
         {
             int aantalGeblokkeerd = 0;
             int weekBlokkering = 0;
-            if (BerekenWeek(datum) == BerekenWeek(DateTime.Today))
+            if (Helper.BerekenWeek(datum) == Helper.BerekenWeek(DateTime.Today))
             {
-                weekBlokkering = BerekenWeek(datum) + 1;
+                weekBlokkering = Helper.BerekenWeek(datum) + 1;
             }
-            weekBlokkering = BerekenWeek(datum);
+            weekBlokkering = Helper.BerekenWeek(datum);
             foreach (Blokkering b in Blokkeringen)
             {
                 int weekProduct =
-                    BerekenWeek(b.StartDatum);
+                    Helper.BerekenWeek(b.StartDatum);
 
                 if (weekBlokkering == weekProduct)
                 {
