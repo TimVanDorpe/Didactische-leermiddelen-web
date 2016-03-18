@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Groep9.NET.Models.Domein.Reservatie>
+﻿@model IEnumerable<Groep9.NET.Models.Domein.ReservatieAbstr>
 
 
 @{
@@ -69,7 +69,7 @@
                 @Html.DisplayFor(modelItem => item.Aantal)
             </td>
         <td>
-            <a href="@Url.Action("RemoveFromReservatieLijst", new {id = item.ReservatieId})" class="btn btn-danger btn-sm ">
+            <a href="@Url.Action("RemoveFromReservatieLijst", new {id = item.ReservatieAbstrId})" class="btn btn-danger btn-sm ">
 
                 <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
             </a>

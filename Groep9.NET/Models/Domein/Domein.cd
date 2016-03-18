@@ -11,7 +11,7 @@
   <Class Name="Groep9.NET.Product">
     <Position X="6" Y="1" Width="3" />
     <TypeIdentifier>
-      <HashCode>EAAACAIwAEAAAAAEEAAAxAAAAAAAogBAAAAAaACBACE=</HashCode>
+      <HashCode>EAAACAIQAAAAAAAEEAAAxAAAAAgAogBAAAAAaACAACA=</HashCode>
       <FileName>Models\Domein\Product.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
@@ -43,29 +43,16 @@
   <Class Name="Groep9.NET.Models.Domein.Gebruiker">
     <Position X="2.75" Y="6.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AACAAAAAACCAAAAEAAAAAAAAAAAAIABAAAAAQQAAQCA=</HashCode>
+      <HashCode>CAAAAAAAACAAAAAAAAAAQAAAAAAAIAAAAAAAQQAAQEA=</HashCode>
       <FileName>Models\Domein\Gebruiker.cs</FileName>
     </TypeIdentifier>
-    <ShowAsCollectionAssociation>
-      <Property Name="ReservatieLijst" />
-    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Groep9.NET.Models.Domein.Reservatie">
-    <Position X="6.75" Y="6.75" Width="3.25" />
-    <AssociationLine Name="Gebruiker" Type="Groep9.NET.Models.Domein.Gebruiker" FixedToPoint="true">
-      <Path>
-        <Point X="6.75" Y="8.688" />
-        <Point X="4.25" Y="8.688" />
-      </Path>
-    </AssociationLine>
+    <Position X="7" Y="10.25" Width="3.25" />
     <TypeIdentifier>
-      <HashCode>AAACAACABAAAAAAAEAAAAAIAACAAAgAAAgAgAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Domein\Reservatie.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Product" />
-      <Property Name="Gebruiker" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="Groep9.NET.Models.Domein.Leergebied">
     <Position X="11" Y="0.5" Width="1.5" />
@@ -77,15 +64,29 @@
   <Class Name="Groep9.NET.Student">
     <Position X="1.5" Y="10.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAACA=</HashCode>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Domein\Student.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Groep9.NET.Personeelslid">
     <Position X="4.25" Y="10.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Domein\Personeelslid.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Groep9.NET.Models.Domein.ReservatieAbstr">
+    <Position X="9.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAACABAAAAAAAEAAAAAAAACAAAgAAAgAgAAIAAAA=</HashCode>
+      <FileName>Models\Domein\ReservatieAbstr.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Groep9.NET.Models.Domein.Blokkering">
+    <Position X="12" Y="10.25" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAACAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Models\Domein\Blokkering.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

@@ -26,7 +26,7 @@ namespace Groep9.NET.Controllers
         // GET: Reservatie
         public ActionResult Index(Gebruiker gebruiker)
         {
-            IList<Reservatie> reservatielijst = gebruiker.ReservatieLijst.ToList();
+            IList<ReservatieAbstr> reservatielijst = gebruiker.ReservAbstrLijst.ToList();
             return View(reservatielijst);
         }
        
@@ -34,8 +34,8 @@ namespace Groep9.NET.Controllers
         {
             try
             {    
-                Reservatie reservatie = gebruiker.ReservatieLijst.FirstOrDefault(b => b.ReservatieId == id);
-                gebruiker.VerwijderReservatie(reservatie);
+                ReservatieAbstr reservatie = gebruiker.ReservAbstrLijst.FirstOrDefault(b => b.ReservatieAbstrId == id);
+                gebruiker.VerwijderReservatieAbstr(reservatie);
                 gebruikerRepository.SaveChanges();
                
                 return RedirectToAction("Index");

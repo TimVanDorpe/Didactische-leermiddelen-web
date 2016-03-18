@@ -98,9 +98,9 @@ namespace Groep9.NET.Controllers {
                     {
                         if (aantal > 0)
                         {
-                        Reservatie reservatie = new Reservatie(prod, aantal, gebruiker, datum);
-                        prod.VoegReservatieToe(reservatie);
-                        gebruiker.VoegReservatieToe(reservatie);
+                        ReservatieAbstr reservatie = new Reservatie(prod, aantal, gebruiker, datum);
+                       // prod.VoegReservatieToe(reservatie);
+                        gebruiker.VoegReservatieAbstrToe(reservatie);
                         gebruikerRepository.SaveChanges();
                         TempData["Info"] = "Product " + productRepository.FindByProductNummer(id).Naam +
                                            " is gereserveerd.";
@@ -149,11 +149,11 @@ namespace Groep9.NET.Controllers {
                     {
                         if (aantal > 0)
                         {
-                            Blokkering blokkering = new Blokkering(prod, aantal, gebruiker, datum);
-                            blokkering.addWeekdag(Maandag, Dinsdag, Woensdag, Donderdag, Vrijdag);
+                            ReservatieAbstr blokkering = new Blokkering(prod, aantal, gebruiker, datum);
+                           // blokkering.addWeekdag(Maandag, Dinsdag, Woensdag, Donderdag, Vrijdag);
                             
-                            prod.VoegBlokkeringToe(blokkering);
-                            gebruiker.VoegBlokkeringToe(blokkering);
+                           // prod.VoegBlokkeringToe(blokkering);
+                            gebruiker.VoegReservatieAbstrToe(blokkering);
                             gebruikerRepository.SaveChanges();
                             TempData["Info"] = "Product " + productRepository.FindByProductNummer(id).Naam + " is geblokkeerd.";
                         }

@@ -24,7 +24,7 @@ namespace Groep9.NET.Controllers
         // GET: Blokkering
         public ActionResult Index(Gebruiker gebruiker)
         {
-            IList<Blokkering> blokkeringlijst = gebruiker.BlokkeringLijst.ToList();
+            IList<ReservatieAbstr> blokkeringlijst = gebruiker.ReservAbstrLijst.ToList();
             return View(blokkeringlijst);
         }
 
@@ -33,8 +33,8 @@ namespace Groep9.NET.Controllers
             try
             {
 
-                Blokkering blokkering = gebruiker.BlokkeringLijst.FirstOrDefault(b=> b.BlokkeringId == id);
-                gebruiker.VerwijderBlokkering(blokkering);
+                ReservatieAbstr blokkering = gebruiker.ReservAbstrLijst.FirstOrDefault(b=> b.ReservatieAbstrId == id);
+                gebruiker.VerwijderReservatieAbstr(blokkering);
 
                 gebruikerRepository.SaveChanges();
 
