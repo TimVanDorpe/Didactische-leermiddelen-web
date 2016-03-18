@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 using System.Linq;
 using System.Web;
+using Groep9.NET.Helpers;
 
 namespace Groep9.NET.Models.Domein
 {
@@ -32,34 +33,20 @@ namespace Groep9.NET.Models.Domein
 
 
 
-        public DateTime BerekenStartDatumReservatieWeek(DateTime date)
+        public DateTime SetStartDatumReservatieWeek(DateTime date)
         {
-            // DateTime date;
-
-
-            //else {
-            //    date = new DateTime(Int32.Parse(datum.Substring(6, 4)), Int32.Parse(datum.Substring(0, 2)), Int32.Parse(datum.Substring(3, 2)));
-            //}
-
-            /*
-                ALS date.week = dateTime.today.week
-                    code hieronder
-                ANDERS
-                    return de geselecteerde week
-            */
-
             // als de gewenste datum al gepasseerd is
             if (date < DateTime.Today)
             {
                 throw new ArgumentException("de gewenste datum kan niet in het verleden zijn");
             }
 
+            return Helper.BerekenStartDatumReservatieWeek(date);
 
+            /*
             if (BerekenWeek(date) == BerekenWeek(DateTime.Today))
             {
 
-                //DateTime.ParseExact(DateTime.Today.ToString().Substring(0, 10), "dd/MM/yyyy", null)
-                //   .ToString("MM/dd/yyyy");
                 // returnt datum van volgende week
                 if (date.DayOfWeek >= DayOfWeek.Monday && date.DayOfWeek <= DayOfWeek.Friday ||
                     (date.DayOfWeek == DayOfWeek.Friday && date.Hour <= 17))
@@ -80,28 +67,19 @@ namespace Groep9.NET.Models.Domein
 
             int daysAfterMonday = (int)DayOfWeek.Monday - (int)date.DayOfWeek;
             return date.AddDays(daysAfterMonday).AddHours(8);
-
+            */
         }
 
 
-        public DateTime BerekenEindDatumReservatieWeek(DateTime datum)
+        public DateTime SetEindDatumReservatieWeek(DateTime datum)
         {
-            return BerekenStartDatumReservatieWeek(datum).AddDays(4).AddHours(9);
+            return Helper.BerekenEindDatumReservatieWeek(datum);
         }
 
         public int BerekenWeek(DateTime datum)
         {
 
-            var currentCulture = CultureInfo.CurrentCulture;
-            var weekNo = currentCulture.Calendar.GetWeekOfYear(
-                             //haalt jaar, maand en dag uit string en zet om in int
-                             new DateTime(datum.Year, datum.Month, datum.Day),
-                            currentCulture.DateTimeFormat.CalendarWeekRule,
-                            currentCulture.DateTimeFormat.FirstDayOfWeek);
-
-            // YYYY/MM/DD
-            // MM/DD/YYYY
-            return weekNo;
+            return Helper.BerekenWeek(datum);
         }
 
     }

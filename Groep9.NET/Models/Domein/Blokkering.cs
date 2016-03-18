@@ -26,8 +26,8 @@ namespace Groep9.NET.Models.Domein
             Gebruiker = gebruiker;
             Product = product;
             Aantal = aantal;
-            StartDatum = BerekenStartDatumReservatieWeek(datum);
-            EindDatum = BerekenEindDatumReservatieWeek(datum);
+            StartDatum = SetStartDatumReservatieWeek(datum);
+            EindDatum = SetEindDatumReservatieWeek(datum);
             product.VoegBlokkeringToe(this);
             
 

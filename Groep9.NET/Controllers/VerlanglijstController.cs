@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Groep9.NET.Helpers;
 using Groep9.NET.ViewModels;
 
 namespace Groep9.NET.Controllers {
@@ -24,25 +25,13 @@ namespace Groep9.NET.Controllers {
             gebruikerRepository = gr;
         }
 
-        private DateTime ZetDatumOm(string datum)
-        {
-            if (datum == null)
-            {
-                //als er geen datum geselecteerd is, stel tempdata in op vandaag
-                datum = DateTime.ParseExact(DateTime.Today.ToString().Substring(0, 10), "dd/MM/yyyy", null).ToString("dd/MM/yyyy");
-
-            }
-            return new DateTime(Int32.Parse(datum.Substring(6, 4)), Int32.Parse(datum.Substring(3, 2)), Int32.Parse(datum.Substring(0, 2)));
-        }
-
         public ActionResult Index(Gebruiker gebruiker, string datum ) {
 
             try {
 
                 IEnumerable<Product> verlanglijst = gebruiker.VerlangLijst.ToList();
-                Reservatie r = new Reservatie();
 
-                DateTime date = ZetDatumOm(datum);
+                DateTime date = Helper.ZetDatumOm(datum);
                    
                 
                     //anders op geselecteerde datum
@@ -52,9 +41,9 @@ namespace Groep9.NET.Controllers {
 
 
                 //stelt de start en einddatum in voor in de bevestigingspopup weer te geven
-                TempData["startdatum"] = r.BerekenStartDatumReservatieWeek(date);
-                TempData["einddatum"] = r.BerekenEindDatumReservatieWeek(date);
-
+                TempData["startdatum"] = Helper.BerekenStartDatumReservatieWeek(date);
+                TempData["einddatum"] = Helper.BerekenEindDatumReservatieWeek(date);
+                
 
                 ProductenViewModel vm = new ProductenViewModel() {
                     Producten = verlanglijst.Select(p => new ProductViewModel(p, gebruiker, p.BerekenAantalGereserveerdOpWeek(date),p.BerekenAantalGeblokkeerdOpWeek(date)))
@@ -100,7 +89,7 @@ namespace Groep9.NET.Controllers {
 
                     //methode voor reserveerknop, die aantal meegeeft aan methode product.Reserveer
 
-                    DateTime date = ZetDatumOm(datum);
+                    DateTime date = Helper.ZetDatumOm(datum);
                     if (prod.Aantal > (prod.BerekenAantalGereserveerdOpWeek(date) + aantal))
                     {
                         if (aantal > 0)
@@ -147,12 +136,10 @@ namespace Groep9.NET.Controllers {
             Product prod = productRepository.FindByProductNummer(id);
             try
             {
-                
-                               
-              
+
                 if (gebruiker is Personeelslid)
                 {
-                    DateTime date = ZetDatumOm(datum);
+                    DateTime date = Helper.ZetDatumOm(datum);
                     if (prod.Aantal > (prod.BerekenAantalGereserveerdOpWeek(date) + aantal))
                     {
                         if (aantal > 0)
@@ -196,8 +183,11 @@ namespace Groep9.NET.Controllers {
             return RedirectToAction("Index");
         }
         
-        public ActionResult Details(int id) {
-            try {
+        public ActionResult Details(int id, string datum) {
+            try
+            {
+
+                TempData["selectedDate"] = Helper.ZetDatumOm(datum);
 
                 return View(productRepository.FindByProductNummer(id));
             }
