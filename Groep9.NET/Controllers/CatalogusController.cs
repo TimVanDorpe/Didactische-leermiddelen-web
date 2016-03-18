@@ -121,7 +121,7 @@ namespace Groep9.NET.Controllers {
                 return RedirectToAction("Index"); }
             catch 
             {
-                ModelState.AddModelError("", "Toevoegen/Verwijderen aan verlanglijst is niet gelukt");
+                TempData["ReservatieFail"] = "Toevoegen/Verwijderen van verlanglijst is mislukt";
                 return RedirectToAction("Index");
 
             }

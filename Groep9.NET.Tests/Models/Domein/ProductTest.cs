@@ -16,17 +16,17 @@ namespace Groep9.NET.Tests.Models.Domein
             context = new DummyContext();
         }
 
-        [TestMethod]
-        public void BerekenWeekReturntCorrecteWeekVoorWeek1()
-        {
-            string datum = "01/03/2017";
-            Assert.AreEqual(1,context.P1.BerekenWeek(datum));
-        }
-        [TestMethod]
-        public void BerekenWeekReturntCorrecteWeekVoorWeek52() {
-            string datum = "12/31/2017";
-            Assert.AreEqual(52, context.P1.BerekenWeek(datum));
-        }
+        //[TestMethod]
+        //public void BerekenWeekReturntCorrecteWeekVoorWeek1()
+        //{
+        //    string datum = "01/03/2017";
+        //    Assert.AreEqual(1,context.P1.BerekenWeek(datum));
+        //}
+        //[TestMethod]
+        //public void BerekenWeekReturntCorrecteWeekVoorWeek52() {
+        //    string datum = "12/31/2017";
+        //    Assert.AreEqual(52, context.P1.BerekenWeek(datum));
+        //}
 
 
     }

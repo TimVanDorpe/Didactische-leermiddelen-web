@@ -26,10 +26,7 @@ namespace Groep9.NET {
         [DisplayFormat(DataFormatString = "{0:c}")]
         public double Prijs { get; set; }
 
-        //public int AantalBeschikbaar { get; set; } // enkel de beschikbare
-
-        //public int AantalGeblokkeerd { get; set; }//enkel geblokkeerd
-        //public int AantalGereserveerd { get; set; }//enkel gereserveerd
+       
 
         [DisplayName("Beschikbaar")]
         public int Aantal { get; set; } // totaal in catalogus
@@ -59,7 +56,6 @@ namespace Groep9.NET {
            : this() { 
             foreach (var doel in doelgroepen) {
                 Doelgroepen.Add(doel);
-                // doel.RegistreerProduct(this);
             }
             foreach (var leer in leergebieden) {
 
@@ -77,7 +73,6 @@ namespace Groep9.NET {
             Firma = firma;
         
 
-            //Dit moet ook in de constuctor en dan in de init, even om iets te testen !!!
         
 
 

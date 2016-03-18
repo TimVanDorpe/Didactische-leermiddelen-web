@@ -45,31 +45,7 @@ namespace Groep9.NET
         }
 
 
-        /*
-        public void ReserveerProduct(Product p, int hoeveelheid)
-        {
-            //Product p = FindByProductNummer(productId);
-
-            //if (hoeveelheid > p.AantalBeschikbaar)
-            //{
-            //    throw new ArgumentException("Er zijn niet genoeg producten beschikbaar voor jouw gewenste hoeveelheid");
-            //}
-
-            //p.AantalBeschikbaar -= hoeveelheid;
-            //p.AantalGereserveerd += hoeveelheid;
-
-            //DateTime startDatum = BerekenStartDatumReservatieWeek();
-            //DateTime eindDatum = BerekenStartDatumReservatieWeek().AddDays(4).AddHours(9);// van maandag 8u tot vrijdag 5u
-
-            
-            
-            // vvv niet zeker of dit nog nodig is
-
-            // nog de week instellen, als week van reservatie verlopen is, AantalReserveerbaar weer optellen, en AantalGereserveerd weer aftrekken
-            //bijhouden vanaf welke dag het uitgeleend ist , en tot welke dag. Als die laaste voorbij is, aantallen aanpassen
-
-        }
-        */
+      
 
 
 

@@ -10,17 +10,13 @@ using Groep9.NET.ViewModels;
 namespace Groep9.NET.Controllers {
     [Authorize]
     public class VerlanglijstController : Controller {
-        private IProductRepository productRepository;
-        private IDoelgroepRepository doelgroepRepository;
-        private ILeergebiedRepository leergebiedRepository;
+        private IProductRepository productRepository;        
         private IGebruikerRepository gebruikerRepository;
         //List<Dag> weekdagen = new List<Dag>();
 
         // GET: Verlanglijst
-        public VerlanglijstController(IProductRepository pr, IDoelgroepRepository dr, ILeergebiedRepository lr, IGebruikerRepository gr) {
+        public VerlanglijstController(IProductRepository pr, IGebruikerRepository gr) {
             productRepository = pr;
-            doelgroepRepository = dr;
-            leergebiedRepository = lr;
             gebruikerRepository = gr;
         }
 
@@ -106,7 +102,6 @@ namespace Groep9.NET.Controllers {
                         if (aantal > 0)
                         {
                         ReservatieAbstr reservatie = new Reservatie(prod, aantal, gebruiker, date);
-                       // prod.VoegReservatieToe(reservatie);
                         gebruiker.VoegReservatieAbstrToe(reservatie);
                         gebruikerRepository.SaveChanges();
                         TempData["Info"] = "Product " + productRepository.FindByProductNummer(id).Naam +
@@ -160,7 +155,6 @@ namespace Groep9.NET.Controllers {
                             ReservatieAbstr blokkering = new Blokkering(prod, aantal, gebruiker, date);
                            // blokkering.addWeekdag(Maandag, Dinsdag, Woensdag, Donderdag, Vrijdag);
                             
-                           // prod.VoegBlokkeringToe(blokkering);
                             gebruiker.VoegReservatieAbstrToe(blokkering);
                             gebruikerRepository.SaveChanges();
                             TempData["Info"] = "Product " + productRepository.FindByProductNummer(id).Naam + " is geblokkeerd.";
