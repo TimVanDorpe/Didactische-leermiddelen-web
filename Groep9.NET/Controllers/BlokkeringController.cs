@@ -8,17 +8,10 @@ using System.Web.Mvc;
 namespace Groep9.NET.Controllers
 {
     public class BlokkeringController : Controller
-    {
-        private IProductRepository productRepository;
-        private IDoelgroepRepository doelgroepRepository;
-        private ILeergebiedRepository leergebiedRepository;
+    {               
         private IGebruikerRepository gebruikerRepository;
-        
-        public BlokkeringController(IProductRepository pr, IDoelgroepRepository dr, ILeergebiedRepository lr, IGebruikerRepository gr/*, IReservatieRepository rr*/)
-        {
-            productRepository = pr;
-            doelgroepRepository = dr;
-            leergebiedRepository = lr;
+        public BlokkeringController(IGebruikerRepository gr/*, IReservatieRepository rr*/)
+        {                    
             gebruikerRepository = gr;
         }
         // GET: Blokkering

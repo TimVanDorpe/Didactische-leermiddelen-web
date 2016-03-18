@@ -44,7 +44,7 @@ namespace Groep9.NET
             }
         }
 
-        public String Plaats
+        public string Plaats
         {
             get
             {

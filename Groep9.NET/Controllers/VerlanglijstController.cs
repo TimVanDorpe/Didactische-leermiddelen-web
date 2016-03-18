@@ -11,47 +11,37 @@ namespace Groep9.NET.Controllers {
     [Authorize]
     public class VerlanglijstController : Controller {
         private IProductRepository productRepository;
-        private IDoelgroepRepository doelgroepRepository;
-        private ILeergebiedRepository leergebiedRepository;
         private IGebruikerRepository gebruikerRepository;
-        //List<Dag> weekdagen = new List<Dag>();
-
-        // GET: Verlanglijst
-        public VerlanglijstController(IProductRepository pr, IDoelgroepRepository dr, ILeergebiedRepository lr, IGebruikerRepository gr) {
-            productRepository = pr;
-            doelgroepRepository = dr;
-            leergebiedRepository = lr;
+        
+        public VerlanglijstController(IProductRepository pr, IGebruikerRepository gr) {
+            productRepository = pr;           
             gebruikerRepository = gr;
         }
 
         public ActionResult Index(Gebruiker gebruiker, string datum ) {
 
             try {
-
                 IEnumerable<Product> verlanglijst = gebruiker.VerlangLijst.ToList();
                 Reservatie r = new Reservatie();
 
                 if (datum == null) {
-                    //als er geen datum geselecteerd is, stel tempdata in op vandaag
-                    datum =
-                        DateTime.ParseExact(DateTime.Today.ToString().Substring(0, 10), "dd/MM/yyyy", null)
+                 //als er geen datum geselecteerd is, stel tempdata in op vandaag
+                 datum =    DateTime.ParseExact
+                            (DateTime.Today.ToString().Substring(0, 10), "dd/MM/yyyy", null)
                             .ToString("MM/dd/yyyy");
                    
                 }
-                
-                    //anders op geselecteerde datum
-                    TempData["datum"] = datum;
-                
-
-
-
+                //anders op geselecteerde datum
+                TempData["datum"] = datum;                
                 //stelt de start en einddatum in voor in de bevestigingspopup weer te geven
                 TempData["startdatum"] = r.BerekenStartDatumReservatieWeek(datum);
                 TempData["einddatum"] = r.BerekenEindDatumReservatieWeek(datum);
 
 
                 ProductenViewModel vm = new ProductenViewModel() {
-                    Producten = verlanglijst.Select(p => new ProductViewModel(p, gebruiker, p.BerekenAantalGereserveerdOpWeek(datum),p.BerekenAantalGeblokkeerdOpWeek(datum)))
+                Producten = verlanglijst.Select(p => new ProductViewModel
+                                               (p, gebruiker, p.BerekenAantalGereserveerdOpWeek(datum),
+                                                p.BerekenAantalGeblokkeerdOpWeek(datum)))
                 };
 
                 if (Request.IsAjaxRequest())
@@ -65,16 +55,11 @@ namespace Groep9.NET.Controllers {
                 return RedirectToAction("Index");
             }
         }
-
-
-
-
         public ActionResult RemoveFromVerlanglijst(int id, Gebruiker gebruiker) {
             try {
 
                 gebruiker.VerwijderProductUitVerlanglijst(productRepository.FindByProductNummer(id));
-                gebruikerRepository.SaveChanges();
-                IList<Product> verlanglijst = gebruiker.VerlangLijst.ToList();
+                gebruikerRepository.SaveChanges();                
                 return RedirectToAction("Index");
             }
             catch {
@@ -89,10 +74,7 @@ namespace Groep9.NET.Controllers {
         public ActionResult AddReservatie(Gebruiker gebruiker, int aantal, int id, string datum) {
             try {
                 Product prod = productRepository.FindByProductNummer(id);
-
                 //methode voor reserveerknop, die aantal meegeeft aan methode product.Reserveer
-
-               
                 if (gebruiker is Student) {
                     if (prod.Aantal > (prod.BerekenAantalGereserveerdOpWeek(datum) + aantal))
                     {
@@ -140,9 +122,6 @@ namespace Groep9.NET.Controllers {
             Product prod = productRepository.FindByProductNummer(id);
             try
             {
-                
-                               
-              
                 if (gebruiker is Personeelslid)
                 {
                     if (prod.Aantal > (prod.BerekenAantalGereserveerdOpWeek(datum) + aantal))
@@ -180,8 +159,6 @@ namespace Groep9.NET.Controllers {
             catch
             {
                 TempData["ReservatieFail"] = "Blokkering toevoegen is niet gelukt";
-
-
             }
 
 

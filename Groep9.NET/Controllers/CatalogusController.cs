@@ -10,8 +10,6 @@ namespace Groep9.NET.Controllers {
     [Authorize]
     public class CatalogusController : Controller
     {
-        // GET: Catalogus
-
         private IProductRepository productRepository;
         private IDoelgroepRepository doelgroepRepository;
         private ILeergebiedRepository leergebiedRepository;
@@ -121,7 +119,7 @@ namespace Groep9.NET.Controllers {
                 return RedirectToAction("Index"); }
             catch 
             {
-                ModelState.AddModelError("", "Toevoegen/Verwijderen aan verlanglijst is niet gelukt");
+               
                 return RedirectToAction("Index");
 
             }

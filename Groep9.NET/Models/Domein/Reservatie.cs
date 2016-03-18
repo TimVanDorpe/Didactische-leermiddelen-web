@@ -35,7 +35,7 @@ namespace Groep9.NET.Models.Domein {
 
         }
 
-        public DateTime BerekenStartDatumReservatieWeek(string datum, DateTime? d = null/* voor te testen*/) {
+       public DateTime BerekenStartDatumReservatieWeek(string datum, DateTime? d = null/* voor te testen*/) {
             DateTime date;
 
             if (d != null) {
