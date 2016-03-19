@@ -17,7 +17,8 @@ namespace Groep9.NET.Models.Domein
         
 
         public virtual ICollection<ReservatieAbstr> ReservAbstrLijst { get; set; }
-        public Gebruiker()
+
+        protected Gebruiker()
         {
             VerlangLijst = new List<Product>();
             

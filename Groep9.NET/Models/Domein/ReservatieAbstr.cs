@@ -21,7 +21,32 @@ namespace Groep9.NET.Models.Domein
         public virtual Gebruiker Gebruiker { get; set; }
 
         public int ReservatieAbstrId { get; set; }
-       
+
+        protected ReservatieAbstr()
+        {
+            
+        }
+        protected ReservatieAbstr(Product product, int aantal, Gebruiker gebruiker, DateTime datum)
+        {
+            
+            if (aantal < 0)
+            {
+                throw new ArgumentException("Aantal moet positief zijn");
+            }
+            if (product.Aantal < (product.BerekenAantalReservatiesOfBlokkeringenOpWeek(datum, "reservatie") + Aantal))
+            {
+                throw new ArgumentException("Er zijn niet genoeg producten beschikbaar op de gewenste datum.");
+            }
+
+            Gebruiker = gebruiker;
+            Product = product;
+            Aantal = aantal;
+            StartDatum = SetStartDatumReservatieWeek(datum);
+            EindDatum = SetEindDatumReservatieWeek(datum);
+
+        }
+
+
         public DateTime SetStartDatumReservatieWeek(DateTime date)
         {
             // als de gewenste datum al gepasseerd is

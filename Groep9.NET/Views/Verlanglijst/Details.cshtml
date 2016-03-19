@@ -1,5 +1,6 @@
 ﻿@using System.Linq
 @using Groep9.NET.Helpers
+@using Groep9.NET.Models.Domein
 @model Groep9.NET.Product
 
 @{
@@ -147,38 +148,42 @@
 
             </dd>
 
-            
+
 
             <dt>
-                @Html.DisplayNameFor(model => model.Reservaties)
+                Reservaties
+                
             </dt>
             <dd>
                 @{
-                    var reservatiesInWeek = Model.Reservaties.Where(r => Helper.BerekenWeek(r.StartDatum) == Helper.BerekenWeek((DateTime) TempData["selectedDate"])).ToList();
-                    if (reservatiesInWeek.Count > 0) {
-                        foreach (var res in reservatiesInWeek) {
+                        var reservatiesInWeek = Model.ReservatiesAbstr.Where(r => Helper.BerekenWeek(r.StartDatum) == Helper.BerekenWeek((DateTime) TempData["selectedDate"]) && r is Reservatie).ToList();
+                        if (reservatiesInWeek.Count > 0) {
+                            foreach (var res in reservatiesInWeek) {
                             <span>STUDENT: @res.Gebruiker.Email  AANTAL: @res.Aantal  <br /></span>
+                            }
+                        }
+                        else {
+                        <span>--</span>
                         }
                     }
-                    else {
-                        <span>--</span>
-                    }
-                }
                
             </dd>
 
 
 
             <dt>
-                @Html.DisplayNameFor(model => model.Blokkeringen)
+                Blokkeringen
+               
             </dt>
             <dd>
                 @{
 
-                    var blokkeringenInWeek = Model.Blokkeringen.Where(b => Helper.BerekenWeek(b.StartDatum) == Helper.BerekenWeek((DateTime)TempData["selectedDate"])).ToList();
+                    var blokkeringenInWeek = Model.ReservatiesAbstr.Where(b => Helper.BerekenWeek(b.StartDatum) == Helper.BerekenWeek((DateTime)TempData["selectedDate"]) && b is Blokkering).ToList();
 
                     if (blokkeringenInWeek.Count > 0) {
-                        foreach (var blok in blokkeringenInWeek) {
+                        foreach (var reservatieAbstr in blokkeringenInWeek) {
+                            var blok = (Blokkering) reservatieAbstr;
+
                             <span>
                                 LECTOR: @blok.Gebruiker.Email  AANTAL: @blok.Aantal  WEEKDAGEN:
 

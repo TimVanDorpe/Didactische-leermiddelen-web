@@ -9,26 +9,26 @@ namespace Groep9.NET.Models.Domein
     public class Blokkering :ReservatieAbstr
     {
 
-        public Blokkering()
-        {
-
-        }
-        public int BlokkeringId { get; set; }
+        
+        
+       
      
 
        
 
         public virtual ICollection<Dag> Weekdagen { get; set; }
 
-
-        public Blokkering(Product product, int aantal, Gebruiker gebruiker, DateTime datum): base()
+        public Blokkering()
         {
-            Gebruiker = gebruiker;
-            Product = product;
-            Aantal = aantal;
-            StartDatum = SetStartDatumReservatieWeek(datum);
-            EindDatum = SetEindDatumReservatieWeek(datum);
-            product.VoegBlokkeringToe(this);
+            
+        }
+        public Blokkering(Product product, int aantal, Gebruiker gebruiker, DateTime datum) : base(product, aantal, gebruiker, datum)
+        {
+            if (!(gebruiker is Personeelslid))
+            {
+                throw new ArgumentException("U moet ingelogd zijn als personeelslid om te reserveren.");
+            }
+            product.voegReservatieOfBlokkeringToe(this);
             
 
 

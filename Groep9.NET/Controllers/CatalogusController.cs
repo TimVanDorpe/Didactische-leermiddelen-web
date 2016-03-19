@@ -106,25 +106,31 @@ namespace Groep9.NET.Controllers {
                 if (!CheckVerlanglijst(id, gebruiker)) {
                     
                     gebruiker.VoegProductAanVerlanglijstToe(productRepository.FindByProductNummer(id));
-                    TempData["Info"] = "Product " + productRepository.FindByProductNummer(id).Naam + " is toegevoegd aan jouw verlanglijst";
+                    
                     gebruikerRepository.SaveChanges();
                     TempData["Info"] = "Product " + productRepository.FindByProductNummer(id).Naam + " is toegevoegd aan verlanglijst.";
                 }
                 else {
                     
                     gebruiker.VerwijderProductUitVerlanglijst(productRepository.FindByProductNummer(id));
-                    TempData["Info2"] = "Product " + productRepository.FindByProductNummer(id).Naam + " is verwijderd van jouw verlanglijst";
+                    
                     gebruikerRepository.SaveChanges();
-                    TempData["Info2"] = "Product " + productRepository.FindByProductNummer(id).Naam + " is verwijderd uit verlanglijst.";
+                    TempData["Info2"] = "Product " + productRepository.FindByProductNummer(id).Naam + " is verwijderd uit uw verlanglijst.";
                 }
                
-                return RedirectToAction("Index"); }
+                return RedirectToAction("Index");
+            }
+            catch (ArgumentException e)
+            {
+                TempData["ReservatieFail"] = e.Message;
+            }
             catch 
             {
                 TempData["ReservatieFail"] = "Toevoegen/Verwijderen van verlanglijst is mislukt";
-                return RedirectToAction("Index");
+               
 
             }
+            return RedirectToAction("Index");
         }
 
 
