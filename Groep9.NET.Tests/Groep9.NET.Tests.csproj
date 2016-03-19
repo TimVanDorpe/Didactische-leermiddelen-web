@@ -107,6 +107,7 @@
     <Compile Include="Controllers\HomeControllerTest.cs" />
     <Compile Include="Controllers\ReservatieControllerTest.cs" />
     <Compile Include="Controllers\VerlanglijstControllerTest.cs" />
+    <Compile Include="Helpers\HelperTest.cs" />
     <Compile Include="Models\Domein\GebruikerTest.cs" />
     <Compile Include="Models\Domein\ProductTest.cs" />
     <Compile Include="Models\Domein\ReservatieTest.cs" />
