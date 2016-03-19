@@ -19,7 +19,17 @@ namespace Groep9.NET.Tests.Models.Domein {
 
             Assert.AreEqual(1, lg.Producten.Count);
         }
+        [TestMethod]
+        public void TestLeergebiedNaam() {
+            Leergebied lg = new Leergebied("lg");
+            Assert.AreEqual("lg", lg.Naam);
+        }
 
-       
+        [TestMethod]
+        public void TestLeergebiedId() {
+            Leergebied lg = new Leergebied();
+            lg.LeergebiedId = 1;
+            Assert.AreEqual(1, lg.LeergebiedId);
+        }
     }
 }

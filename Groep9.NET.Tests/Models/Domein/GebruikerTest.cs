@@ -13,14 +13,14 @@ namespace Groep9.NET.Tests.Models.Domein {
         [TestMethod]
         public void VoegProductAanVerlanglijstToeVoegtProductToe()
         {
-            context.Gebruiker.VoegProductAanVerlanglijstToe(context.P1);
+            context.Gebruiker.VoegProductAanVerlanglijstToe(context.P1ZonderReservatiesOfBlokkeringen);
             Assert.AreEqual(1, context.Gebruiker.VerlangLijst.Count);
         }
 
         [TestMethod]
         public void VerwijderProductUitVerlanglijstVerwijdertProduct()
         {
-            context.Gebruiker.VerwijderProductUitVerlanglijst(context.P1);
+            context.Gebruiker.VerwijderProductUitVerlanglijst(context.P1ZonderReservatiesOfBlokkeringen);
             Assert.AreEqual(0, context.Gebruiker.VerlangLijst.Count);
         }
     }

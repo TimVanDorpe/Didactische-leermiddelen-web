@@ -42,9 +42,9 @@ namespace Groep9.NET.Tests.Controllers {
             mockdr = new Mock<IDoelgroepRepository>();
             mocklr = new Mock<ILeergebiedRepository>();
             mockgr = new Mock<IGebruikerRepository>();
-            product1 = context.P1;
-            product2 = context.P2;
-            product3 = context.P3;
+            product1 = context.P1ZonderReservatiesOfBlokkeringen;
+            product2 = context.P2ZonderReservatiesOfBlokkeringen;
+            product3 = context.P3ZonderReservatiesOfBlokkeringen;
             //model = new ProductViewModel();
             ProductenLijst = context.Producten.AsQueryable();
 

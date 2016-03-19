@@ -10,10 +10,7 @@ namespace Groep9.NET.Models.Domein {
 
         public int ReservatieId { get;  set;}
 
-        public Reservatie() {
-
-        }
-
+        
         public Reservatie(Product product, int aantal, Gebruiker gebruiker, DateTime datum) : base() {
             Gebruiker = gebruiker;
             Product = product;
