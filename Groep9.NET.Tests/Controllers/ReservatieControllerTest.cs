@@ -30,7 +30,7 @@ namespace Groep9.NET.Tests.Controllers
             mocklr = new Mock<ILeergebiedRepository>();
             mockgr = new Mock<IGebruikerRepository>();
             mockpr.Setup(p => p.VindAlleProducten()).Returns(context.Producten.AsQueryable());
-            mockpr.Setup(p => p.FindByProductNummer(1)).Returns(context.P1);
+            mockpr.Setup(p => p.FindByProductNummer(1)).Returns(context.P1ZonderReservatiesOfBlokkeringen);
             rController = new ReservatieController(mockgr.Object);
         }
 
@@ -38,7 +38,7 @@ namespace Groep9.NET.Tests.Controllers
         public void IndexReturnsReservaties()
         {
             g = context.Gebruiker;
-            g.VerlangLijst.Add(context.P1);
+            g.VerlangLijst.Add(context.P1ZonderReservatiesOfBlokkeringen);
             //    Reservatie r = new Reservatie(context.P1, 1);
             //   g.ReservatieLijst.Add(r);
             ViewResult result = rController.Index(g) as ViewResult;

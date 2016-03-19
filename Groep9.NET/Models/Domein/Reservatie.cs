@@ -10,7 +10,7 @@ namespace Groep9.NET.Models.Domein {
 
         public Reservatie()
         {
-            
+
         }
 
         

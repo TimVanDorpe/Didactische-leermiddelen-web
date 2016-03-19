@@ -107,11 +107,16 @@
     <Compile Include="Controllers\HomeControllerTest.cs" />
     <Compile Include="Controllers\ReservatieControllerTest.cs" />
     <Compile Include="Controllers\VerlanglijstControllerTest.cs" />
+    <Compile Include="Helpers\HelperTest.cs" />
     <Compile Include="Models\Domein\GebruikerTest.cs" />
     <Compile Include="Models\Domein\ProductTest.cs" />
     <Compile Include="Models\Domein\ReservatieTest.cs" />
     <Compile Include="Models\Domein\LeergebiedTest.cs" />
     <Compile Include="Models\Domein\DoelgroepTest.cs" />
+    <Compile Include="Models\Domein\BlokkeringTest.cs" />
+    <Compile Include="Models\Domein\DagTest.cs" />
+    <Compile Include="Models\Domein\ReservatieAbstrTest.cs" />
+    <Compile Include="Models\Domein\FirmaTest.cs" />
     <Compile Include="Models\TestenUC2.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -28,15 +28,15 @@ namespace Groep9.NET.Tests.Controllers {
             mocklr = new Mock<ILeergebiedRepository>();
             mockgr = new Mock<IGebruikerRepository>();
             mockpr.Setup(p => p.VindAlleProducten()).Returns(context.Producten.AsQueryable());
-            mockpr.Setup(p => p.FindByProductNummer(1)).Returns(context.P1);
+            mockpr.Setup(p => p.FindByProductNummer(1)).Returns(context.P1ZonderReservatiesOfBlokkeringen);
             vController = new VerlanglijstController( mockpr.Object, mockgr.Object);
         }
 
         [TestMethod]
         public void IndexReturnsVerlanglijstVanGebruiker() {
             g = context.Gebruiker;
-            g.VerlangLijst.Add(context.P1);
-            g.VerlangLijst.Add(context.P2);
+            g.VerlangLijst.Add(context.P1ZonderReservatiesOfBlokkeringen);
+            g.VerlangLijst.Add(context.P2ZonderReservatiesOfBlokkeringen);
             ViewResult result = vController.Index(g, "") as ViewResult;
             List<Product> producten = (result.Model as IEnumerable<Product>).ToList();
             Assert.IsNotNull(result);
@@ -61,7 +61,7 @@ namespace Groep9.NET.Tests.Controllers {
         [TestMethod]
         public void RemoveWillRemoveFromVerlanglijst() {
             g = context.Gebruiker;
-            g.VerlangLijst.Add(context.P1);
+            g.VerlangLijst.Add(context.P1ZonderReservatiesOfBlokkeringen);
             RedirectToRouteResult result = vController.RemoveFromVerlanglijst(1, g) as RedirectToRouteResult;
             Assert.AreEqual(0, g.VerlangLijst.Count);
             mockpr.Verify(p => p.FindByProductNummer(1), Times.Once());

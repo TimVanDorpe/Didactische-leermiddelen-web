@@ -30,9 +30,19 @@ namespace Groep9.NET.Tests.Models {
         Doelgroep peuters = new Doelgroep("Peuters");
         Doelgroep neuters = new Doelgroep("Neuters");
 
-        Product p1;
-        Product p2;
-        Product p3;
+
+        Firma testFirma = new Firma("testFirma", "testFirma.be", "test@TestFirma.be");
+
+
+        Product p1ZonderReservatiesOfBlokkeringen;
+        Product p2ZonderReservatiesOfBlokkeringen;
+        Product p3ZonderReservatiesOfBlokkeringen;
+
+
+        
+        DateTime datum = new DateTime(2016,03,16,0,0,0);
+
+
 
 
         public Gebruiker g = new Personeelslid{Email = "a@b.c", VerlangLijst = new List<Product>(), /*ReservatieLijst = new List<Reservatie>(), */GebruikerId = 1};
@@ -45,16 +55,16 @@ namespace Groep9.NET.Tests.Models {
             doelgroepen.Add(kleuters);
             doelgroepen.Add(peuters);
 
-            //p1 = new Product("", "A", "TestProd", 2.1, 1, true, "hier", "B", doelgroepen, leergebieden);
-            //Producten.Add(p1);
+            p1ZonderReservatiesOfBlokkeringen = new Product("", "A", "TestProd", 2.1, 1, true, "hier", testFirma, doelgroepen, leergebieden);
+            Producten.Add(p1ZonderReservatiesOfBlokkeringen);
 
-            //leergebieden.Add(zeveren);
-            //p2 = new Product("", "B", "TestProd2", 5.8, 1, true, "hier", "B", doelgroepen, leergebieden);
-            //Producten.Add(p2);
+            leergebieden.Add(zeveren);
+            p2ZonderReservatiesOfBlokkeringen = new Product("", "B", "TestProd2", 5.8, 1, true, "hier", testFirma, doelgroepen, leergebieden);
+            Producten.Add(p2ZonderReservatiesOfBlokkeringen);
 
-            //doelgroepen.Add(neuters);
-            //p3 = new Product("", "C", "TestProd3", 2.1, 1, true, "hier", "B", doelgroepen, leergebieden);
-            //Producten.Add(p3);
+            doelgroepen.Add(neuters);
+            p3ZonderReservatiesOfBlokkeringen = new Product("", "C", "TestProd3", 2.1, 1, true, "hier", testFirma, doelgroepen, leergebieden);
+            Producten.Add(p3ZonderReservatiesOfBlokkeringen);
 
         }
 
@@ -82,18 +92,18 @@ namespace Groep9.NET.Tests.Models {
 
        // public IQueryable Producten { get { return Producten; } }
 
-        public Product P1
+        public Product P1ZonderReservatiesOfBlokkeringen
         {
-            get { return p1; }
+            get { return p1ZonderReservatiesOfBlokkeringen; }
         }
 
-        public Product P2
+        public Product P2ZonderReservatiesOfBlokkeringen
         {
-            get { return p2; }
+            get { return p2ZonderReservatiesOfBlokkeringen; }
         }
-        public Product P3
+        public Product P3ZonderReservatiesOfBlokkeringen
         {
-            get { return p3; }
+            get { return p3ZonderReservatiesOfBlokkeringen; }
         }
 
         public Gebruiker Gebruiker { get { return g; } }
@@ -102,6 +112,11 @@ namespace Groep9.NET.Tests.Models {
             return Producten.FirstOrDefault(p => p.ProductId == id);
         }
 
+
+        public DateTime Datum
+        {
+            get { return datum; }
+        }
 
 
     }
