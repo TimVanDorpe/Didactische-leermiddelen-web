@@ -14,8 +14,15 @@ namespace Groep9.NET.Models.DAL.Mapping
             ToTable("ReservatieBlokering");
             HasKey(p => p.ReservatieAbstrId);
 
-            HasRequired(r => r.Product).WithMany().Map(m => m.MapKey("ProductId")).WillCascadeOnDelete(false);
+            HasMany(i => i.Weekdagen).WithMany().Map(m =>
+            {
+                m.ToTable("Weekdagen");
+                m.MapLeftKey("ReservatieAbstrId");
+                m.MapRightKey("DagId");
 
+            });
+
+            HasRequired(r => r.Product).WithMany().Map(m => m.MapKey("ProductId")).WillCascadeOnDelete(false);
             HasRequired(r => r.Gebruiker).WithMany().Map(m => m.MapKey("GebruikerId")).WillCascadeOnDelete(false);
         }
     }

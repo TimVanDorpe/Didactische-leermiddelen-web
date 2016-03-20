@@ -16,6 +16,7 @@ namespace Groep9.NET.Tests.Models.Domein
         public void Initialize()
         {
             context = new DummyContext();
+            
         }
 
         /* VOOR IN HELPER TEST

@@ -37,7 +37,7 @@ namespace Groep9.NET.Tests.Controllers
         [TestMethod]
         public void IndexReturnsReservaties()
         {
-            g = context.Gebruiker;
+            g = context.Student;
             g.VerlangLijst.Add(context.P1ZonderReservatiesOfBlokkeringen);
             //    Reservatie r = new Reservatie(context.P1, 1);
             //   g.ReservatieLijst.Add(r);
@@ -49,7 +49,7 @@ namespace Groep9.NET.Tests.Controllers
         [TestMethod]
         public void IndexReturnsLegeReservatieLijstIndienLeeg()
         {
-            g = context.Gebruiker;
+            g = context.Student;
             ViewResult result = rController.Index(g) as ViewResult;
             List<Product> producten = (result.Model as IEnumerable<Product>).ToList();
             Assert.IsNotNull(result);

@@ -15,8 +15,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.Omschrijving)
             </th>
-
-
             <th>
                 @Html.DisplayNameFor(model => model.Plaats)
             </th>
@@ -67,9 +65,7 @@
                        {
                            @class = "form-control",
                            Type = "number",
-                           @style = "width:80px;"@*, @placeholder = item.AantalBeschikbaar+ " bruikbaar"*@})
-
-                        @*hier moet een textbox komen zodat de gebruiker kan invoeren hoeveel hij/zij er wenst te reserveren*@
+                           @style = "width:80px;"})
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.AantalBeschikbaar) van de @Html.DisplayFor(modelItem => item.Aantal)
@@ -121,10 +117,6 @@
         }
 
     </table><br />
-
-
-
-
 </div>
 <div class="visible-sm visible-xs">
     @if (!Model.Any())

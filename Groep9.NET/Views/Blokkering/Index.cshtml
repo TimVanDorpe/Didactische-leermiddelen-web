@@ -34,9 +34,10 @@
                     <th>
                         @Html.DisplayNameFor(model => model.Aantal)
                     </th>
-                    @*<th>
+              
+                    <th>
                         @Html.DisplayNameFor(model => model.Weekdagen)
-                    </th>*@
+                    </th>
 
 
                 </tr>
@@ -73,12 +74,16 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.Aantal)
                         </td>
-
-                        @*<td>@foreach (var week in item.Weekdagen)
+                      
+                        <td>
+                            
+                            @foreach (var week in item.Weekdagen)
                         {
                             @week.Naam <br>
                         }
-                        </td>*@
+                        </td>
+                       
+
                         <td>
                             <a href="@Url.Action("RemoveFromBlokkeringLijst", new {id = item.ReservatieAbstrId})" class="btn btn-danger btn-sm ">
 
