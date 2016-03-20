@@ -37,14 +37,14 @@
   </Class>
   <Class Name="Groep9.NET.Models.Domein.Gebruiker">
     <Position X="0.75" Y="4.75" Width="3.5" />
-    <AssociationLine Name="ReservAbstrLijst" Type="Groep9.NET.Models.Domein.ReservatieAbstr">
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="0.082" Y="-0.257" />
-      </MemberNameLabel>
-    </AssociationLine>
     <AssociationLine Name="VerlangLijst" Type="Groep9.NET.Product">
       <MemberNameLabel ManuallyPlaced="true">
         <Position X="0.041" Y="0.088" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="ReservAbstrLijst" Type="Groep9.NET.Models.Domein.ReservatieAbstr">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.082" Y="-0.257" />
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
@@ -52,8 +52,8 @@
       <FileName>Models\Domein\Gebruiker.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
-      <Property Name="ReservAbstrLijst" />
       <Property Name="VerlangLijst" />
+      <Property Name="ReservAbstrLijst" />
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Groep9.NET.Models.Domein.Reservatie">
@@ -87,7 +87,7 @@
   <Class Name="Groep9.NET.Models.Domein.ReservatieAbstr">
     <Position X="8" Y="6" Width="4.25" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAABAAAAAAEAAAAAAAACAAAgAAAgAgAAIAAAE=</HashCode>
+      <HashCode>AAECAAAAABAAAAAAEAAAAAAAACAAAgAACgAgAAIAAAE=</HashCode>
       <FileName>Models\Domein\ReservatieAbstr.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -97,12 +97,9 @@
   <Class Name="Groep9.NET.Models.Domein.Blokkering">
     <Position X="10" Y="10.25" Width="3.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Domein\Blokkering.cs</FileName>
     </TypeIdentifier>
-    <ShowAsCollectionAssociation>
-      <Property Name="Weekdagen" />
-    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Groep9.NET.Firma">
     <Position X="15.5" Y="1.5" Width="1.5" />

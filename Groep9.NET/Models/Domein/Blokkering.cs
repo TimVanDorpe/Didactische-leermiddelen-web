@@ -12,18 +12,20 @@ namespace Groep9.NET.Models.Domein
         
         public Blokkering()
         {
-            
+           
         }
         public Blokkering(Product product, int aantal, Gebruiker gebruiker, DateTime datum) : base(product, aantal, gebruiker, datum)
         {
+         
             if (!(gebruiker is Personeelslid))
             {
                 throw new ArgumentException("U moet ingelogd zijn als personeelslid om te reserveren.");
             }
             product.VoegReservatieOfBlokkeringToe(this);
-                        
+           //AddWeekdag(maandag, dinsdag, woensdag, donderdag, vrijdag);
         }
-      
 
+       
+       
     }
 }

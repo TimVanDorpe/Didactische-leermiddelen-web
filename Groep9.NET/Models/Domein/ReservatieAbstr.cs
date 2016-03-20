@@ -27,10 +27,11 @@ namespace Groep9.NET.Models.Domein
 
         protected ReservatieAbstr()
         {
-            
+            Weekdagen = new List<Dag>();
         }
         protected ReservatieAbstr(Product product, int aantal, Gebruiker gebruiker, DateTime datum)
         {
+            Weekdagen = new List<Dag>();
             if (datum < DateTime.Today)
             {
                 throw new ArgumentException("Je kan niet in het verleden reserveren");
@@ -76,34 +77,38 @@ namespace Groep9.NET.Models.Domein
 
             return Helper.BerekenWeek(datum);
         }
+
+        private void VoegDagToe(Dag dag)
+        {
+            Weekdagen.Add(dag);
+        }
         public void AddWeekdag(bool maandag, bool dinsdag, bool woensdag, bool donderdag, bool vrijdag)
         {
             if (maandag == true)
             {
                 Dag Ma = new Dag("maandag");
-                Weekdagen.Add(Ma);
+                VoegDagToe(Ma);
             }
             if (dinsdag == true)
             {
                 Dag Di = new Dag("dinsdag");
-                Weekdagen.Add(Di);
+                VoegDagToe(Di);
             }
             if (woensdag == true)
             {
                 Dag Wo = new Dag("woensdag");
-                Weekdagen.Add(Wo);
+                VoegDagToe(Wo);
             }
             if (donderdag == true)
             {
                 Dag Do = new Dag("donderdag");
-                Weekdagen.Add(Do);
+                VoegDagToe(Do);
             }
             if (vrijdag == true)
             {
                 Dag Vr = new Dag("vrijdag");
-                Weekdagen.Add(Vr);
+                VoegDagToe(Vr);
             }
         }
-
     }
 }

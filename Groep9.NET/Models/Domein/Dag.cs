@@ -8,6 +8,11 @@
             this.Naam = naam;
         }
 
+        public Dag()
+        {
+            
+        }
+
         public string Naam { get; set; }
         public int DagId { get; set; }
     }

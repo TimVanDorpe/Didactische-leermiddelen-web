@@ -21,7 +21,7 @@ namespace Groep9.NET.Models.DAL.Mapping
                 m.MapRightKey("DagId");
 
             });
-
+            //HasMany(r => r.Weekdagen).WithRequired().Map(m => m.MapKey("ProductId")).WillCascadeOnDelete(false);
             HasRequired(r => r.Product).WithMany().Map(m => m.MapKey("ProductId")).WillCascadeOnDelete(false);
             HasRequired(r => r.Gebruiker).WithMany().Map(m => m.MapKey("GebruikerId")).WillCascadeOnDelete(false);
         }
