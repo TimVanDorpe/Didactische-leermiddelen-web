@@ -37,7 +37,7 @@ namespace Groep9.NET.Tests.Controllers {
 
         [TestInitialize]
         public void SetUpContext() {
-            
+
             mockpr = new Mock<IProductRepository>();
             mockdr = new Mock<IDoelgroepRepository>();
             mocklr = new Mock<ILeergebiedRepository>();
@@ -60,14 +60,32 @@ namespace Groep9.NET.Tests.Controllers {
         [TestMethod]
         public void IndexReturnsAlleProducten() {
             //Act
-            ViewResult result = cc.Index(gebruiker,"","","") as ViewResult;
+            ViewResult result = cc.Index(gebruiker, "", "", "") as ViewResult;
             List<ProductViewModel> producten = result.ViewData.Model as List<ProductViewModel>;
 
 
             //Assert
             Assert.AreEqual(3, producten.Count);
-          
+
         }
+
+        [TestMethod]
+        public void Index()
+        {
+
+            // Act
+            ViewResult result = cc.Index(context.Personeelslid) as ViewResult;
+
+            ProductenViewModel vm = new ProductenViewModel()
+            {
+                Producten = ProductenLijst.Select(p => new ProductViewModel(p, context.Personeelslid))
+            };
+            // Assert
+            Assert.AreEqual(result.Model, vm);
+
+        } 
+
+
 
         [TestMethod]
         public void DetailsReturnsDetails() {
