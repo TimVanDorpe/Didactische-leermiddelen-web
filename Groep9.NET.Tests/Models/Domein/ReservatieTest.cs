@@ -14,19 +14,27 @@ namespace Groep9.NET.Tests.Models.Domein {
             context = new DummyContext();
         }
 
+        
         [TestMethod]
         public void ReservatieConstructorTest()
         {
-            Reservatie r = new Reservatie(context.P1ZonderReservatiesOfBlokkeringen, 2, context.g, new DateTime(2016,7,8,0,0,0));
+            Reservatie r = new Reservatie(context.P1ZonderReservatiesOfBlokkeringen, 2, context.Student, new DateTime(2016,7,8,0,0,0));
   
             Assert.AreEqual(context.P1ZonderReservatiesOfBlokkeringen, r.Product);
             Assert.AreEqual(2, r.Aantal);
-            Assert.AreEqual(context.g, r.Gebruiker);
+            Assert.AreEqual(context.Student, r.Gebruiker);
             Assert.AreEqual(new DateTime(2016,7,4,8,0,0), r.StartDatum);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void ReserverenAlsPersoneelslid()
+        {
+            Reservatie r = new Reservatie(context.P1ZonderReservatiesOfBlokkeringen, 2, context.Personeelslid, new DateTime(2016, 7, 8, 0, 0, 0));
+
         }
 
 
 
-        
     }
 }

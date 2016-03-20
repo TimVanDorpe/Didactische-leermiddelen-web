@@ -46,7 +46,7 @@ namespace Groep9.NET.Tests.Controllers {
         public void IndexReturnsLegeVerlanglijstIndienLeeg() {
             g = context.Gebruiker;
             ViewResult result = vController.Index(g, "") as ViewResult;
-            List<Product> producten = (result.Model as IEnumerable<Product>).ToList();
+            List<Product> producten = (result.ViewData.Model as IEnumerable<Product>).ToList();
             Assert.IsNotNull(result);
             Assert.AreEqual(0, producten.Count);
         }

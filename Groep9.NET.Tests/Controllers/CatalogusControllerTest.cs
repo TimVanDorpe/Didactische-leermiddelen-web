@@ -51,7 +51,7 @@ namespace Groep9.NET.Tests.Controllers {
             mockpr.Setup(p => p.VindAlleProducten()).Returns(ProductenLijst);
             mockpr.Setup(p => p.FindByProductNummer(1)).Returns(product1);
 
-            gebruiker = context.Gebruiker;
+            gebruiker = context.Personeelslid;
 
             cc = new CatalogusController(mockpr.Object, mockdr.Object, mocklr.Object, mockgr.Object);
         }
@@ -60,16 +60,13 @@ namespace Groep9.NET.Tests.Controllers {
         [TestMethod]
         public void IndexReturnsAlleProducten() {
             //Act
-            ViewResult result = cc.Index(gebruiker) as ViewResult;
-            List<Product> producten = (result.Model as IEnumerable<Product>).ToList();
+            ViewResult result = cc.Index(gebruiker,"","","") as ViewResult;
+            List<ProductViewModel> producten = result.ViewData.Model as List<ProductViewModel>;
 
 
             //Assert
             Assert.AreEqual(3, producten.Count);
-            Assert.AreEqual(1, producten[0].ProductId);
-            Assert.AreEqual("B", producten[1].Naam);
-            Assert.AreEqual("C", producten[2].Naam);
-
+          
         }
 
         [TestMethod]

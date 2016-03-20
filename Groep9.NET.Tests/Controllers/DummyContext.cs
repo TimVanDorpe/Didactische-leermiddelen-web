@@ -44,7 +44,8 @@ namespace Groep9.NET.Tests.Controllers {
 
 
 
-        public Gebruiker g = new Personeelslid{Email = "a@b.c", VerlangLijst = new List<Product>(), /*ReservatieLijst = new List<Reservatie>(), */GebruikerId = 1};
+        public Gebruiker Personeelslid = new Personeelslid{Email = "a@b.c", VerlangLijst = new List<Product>(), /*ReservatieLijst = new List<Reservatie>(), */GebruikerId = 1};
+        public Gebruiker Student = new Student { Email = "a@b.c", VerlangLijst = new List<Product>(), /*ReservatieLijst = new List<Reservatie>(), */GebruikerId = 1 };
 
 
         public DummyContext() {
@@ -105,7 +106,7 @@ namespace Groep9.NET.Tests.Controllers {
             get { return p3ZonderReservatiesOfBlokkeringen; }
         }
 
-        public Gebruiker Gebruiker { get { return g; } }
+        public Gebruiker Gebruiker { get { return Personeelslid; } }
 
         public Product GetProduct(int id) {
             return Producten.FirstOrDefault(p => p.ProductId == id);
