@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
   <Class Name="Groep9.NET.ProductRepository">
-    <Position X="0.5" Y="1" Width="3.25" />
+    <Position X="2.5" Y="1" Width="3.25" />
     <TypeIdentifier>
       <HashCode>gAACAAAAAAAACAAAAAAAAAAAAAAAAEAAAAAAAAAAAgE=</HashCode>
       <FileName>Models\DAL\ProductRepository.cs</FileName>
@@ -9,9 +9,14 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Groep9.NET.Product">
-    <Position X="6" Y="1" Width="3" />
+    <Position X="6" Y="1" Width="6" />
+    <AssociationLine Name="ReservatiesAbstr" Type="Groep9.NET.Models.Domein.ReservatieAbstr">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.082" Y="0.184" />
+      </MemberNameLabel>
+    </AssociationLine>
     <TypeIdentifier>
-      <HashCode>EAAACAIQAAAAAAAEAAAAxAAAAAgAogBAAAAAaACAACA=</HashCode>
+      <HashCode>EAAACAAQAAAAAAAAAAAgBAAAIAAAIgAQAAAAaACAAAA=</HashCode>
       <FileName>Models\Domein\Product.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -20,76 +25,105 @@
     <ShowAsCollectionAssociation>
       <Property Name="Doelgroepen" />
       <Property Name="Leergebieden" />
+      <Property Name="ReservatiesAbstr" />
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Groep9.NET.Models.Domein.Doelgroep">
-    <Position X="11.25" Y="4.5" Width="1.5" />
+    <Position X="12.75" Y="3.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAACAQAABAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
       <FileName>Models\Domein\Doelgroep.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Groep9.NET.Plaats">
-    <Position X="13" Y="4.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAQAAAACAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\Domein\Plaats.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Groep9.NET.Models.Domein.Gebruiker">
-    <Position X="2.75" Y="6.75" Width="1.5" />
+    <Position X="0.75" Y="4.75" Width="3.5" />
+    <AssociationLine Name="ReservAbstrLijst" Type="Groep9.NET.Models.Domein.ReservatieAbstr">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.082" Y="-0.257" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="VerlangLijst" Type="Groep9.NET.Product">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.041" Y="0.088" />
+      </MemberNameLabel>
+    </AssociationLine>
     <TypeIdentifier>
       <HashCode>CAAAAAAAACAAAAAAAAAAQAAAAAAAIAAAAAAAQQAAQEA=</HashCode>
       <FileName>Models\Domein\Gebruiker.cs</FileName>
     </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="ReservAbstrLijst" />
+      <Property Name="VerlangLijst" />
+    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Groep9.NET.Models.Domein.Reservatie">
-    <Position X="7" Y="10.25" Width="3.25" />
+    <Position X="6.25" Y="10.25" Width="3.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Domein\Reservatie.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Groep9.NET.Models.Domein.Leergebied">
-    <Position X="11" Y="0.5" Width="1.5" />
+    <Position X="12.75" Y="0.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAhAAAAAAAAAAAAAAAAAEAAAE=</HashCode>
       <FileName>Models\Domein\Leergebied.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Groep9.NET.Student">
-    <Position X="1.5" Y="10.25" Width="1.5" />
+    <Position X="0.5" Y="8.5" Width="3.25" />
     <TypeIdentifier>
       <HashCode>CAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Domein\Student.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Groep9.NET.Personeelslid">
-    <Position X="4.25" Y="10.25" Width="1.5" />
+    <Position X="4.25" Y="8.5" Width="3.5" />
     <TypeIdentifier>
       <HashCode>CAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Domein\Personeelslid.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Groep9.NET.Models.Domein.ReservatieAbstr">
-    <Position X="9.25" Y="6.25" Width="1.5" />
+    <Position X="8" Y="6" Width="4.25" />
     <TypeIdentifier>
       <HashCode>AAACAAAAABAAAAAAEAAAAAAAACAAAgAAAgAgAAIAAAE=</HashCode>
       <FileName>Models\Domein\ReservatieAbstr.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Gebruiker" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Groep9.NET.Models.Domein.Blokkering">
-    <Position X="12" Y="10.25" Width="3.25" />
+    <Position X="10" Y="10.25" Width="3.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAACAAAACAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAACAAAAAAAAAA=</HashCode>
       <FileName>Models\Domein\Blokkering.cs</FileName>
     </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Weekdagen" />
+    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Groep9.NET.Firma">
-    <Position X="13.75" Y="1.5" Width="1.5" />
+    <Position X="15.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAACAAAAAAABAAAAAAAAAAAAAAAgAAAQAA=</HashCode>
       <FileName>Models\Domein\Firma.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Groep9.NET.Models.DAL.GebruikerRepository">
+    <Position X="0.5" Y="1" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>gAICAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAQAAIAA=</HashCode>
+      <FileName>Models\DAL\GebruikerRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Groep9.NET.Models.Domein.Dag">
+    <Position X="14.25" Y="6.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Models\Domein\Dag.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
