@@ -12,16 +12,16 @@ namespace Groep9.NET {
 
         public Personeelslid(): base() {      }
 
-        public override void VoegBlokkeringToe(Blokkering b)
+        public override void VoegReservatieAbstrToe(ReservatieAbstr r)
         {
-
-            BlokkeringLijst.Add(b);
-
+            
+            ReservAbstrLijst.Add(r);
         }
 
-        public override void VerwijderBlokkering(Blokkering b)
+        public override void VerwijderReservatieAbstr(ReservatieAbstr r)
         {
-            BlokkeringLijst.Remove(b);
+            r.Product.VerwijderReservatieOfBlokkering(r);
+            ReservAbstrLijst.Remove(r);
         }
 
 

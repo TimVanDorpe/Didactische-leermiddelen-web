@@ -2,16 +2,15 @@
 {
     public class Dag
     {
-        public Dag()
-        {
-            
-        }
-
-
-
+      
         public Dag(string naam)
         {
             this.Naam = naam;
+        }
+
+        public Dag()
+        {
+            
         }
 
         public string Naam { get; set; }

@@ -1,4 +1,7 @@
-﻿@model Groep9.NET.Product
+﻿@using System.Linq
+@using Groep9.NET.Helpers
+@using Groep9.NET.Models.Domein
+@model Groep9.NET.Product
 
 @{
     ViewBag.Title = "Detail";
@@ -81,13 +84,28 @@
             </dd>
     
             <dt>
-                @Html.DisplayNameFor(model => model.Firma)
+                @Html.DisplayNameFor(model => model.Firma.Naam)
             </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Firma)
-            </dd>
 
+            <dd>
+                @Html.DisplayFor(model => model.Firma.Naam)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Firma.Contactemail)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Firma.Contactemail)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Firma.FirmaUrl)
+            </dt>
+
+            <dd>
+                <a href="http://@Model.Firma.FirmaUrl" target="_blank">@Model.Firma.FirmaUrl</a>  
+            </dd>
+    
+        
             <dt>
                 @Html.DisplayNameFor(model => model.Doelgroepen)
             </dt>
@@ -130,60 +148,66 @@
 
             </dd>
 
-            
+
 
             <dt>
-                @Html.DisplayNameFor(model => model.Reservaties)
+                Reservaties
+                
             </dt>
             <dd>
-                @if (Model.Reservaties.Count > 0)
-                {
-                    foreach (var res in Model.Reservaties.ToList())
-                    {
-                        <span>STUDENT: @res.Gebruiker.Email  AANTAL @res.Aantal  <br /></span>
+                @{
+                        var reservatiesInWeek = Model.ReservatiesAbstr.Where(r => Helper.BerekenWeek(r.StartDatum) == Helper.BerekenWeek((DateTime) TempData["selectedDate"]) && r is Reservatie).ToList();
+                        if (reservatiesInWeek.Count > 0) {
+                            foreach (var res in reservatiesInWeek) {
+                            <span>STUDENT: @res.Gebruiker.Email  AANTAL: @res.Aantal  <br /></span>
+                            }
+                        }
+                        else {
+                        <span>--</span>
+                        }
                     }
-                }
-                else
-                {
-                    <span>--</span>
-                }
+               
             </dd>
 
 
 
             <dt>
-                @Html.DisplayNameFor(model => model.Blokkeringen)
+                Blokkeringen
+               
             </dt>
             <dd>
-                @if (Model.Blokkeringen.Count > 0)
-                {
-                    foreach (var blok in Model.Blokkeringen.ToList())
-                    {
-                        <span> LECTOR: @blok.Gebruiker.Email  AANTAL: @blok.Aantal  WEEKDAGEN: 
+                @{
 
-                 
-                 @{   int teller6 = blok.Weekdagen.Count();
-                 }
-                    @foreach (var week in blok.Weekdagen.ToList())
-                            {
-                              <span>  @week.Naam </span>
-                                if (teller6 > 1)
-                                {
-                                <span>, </span>
-                                    teller6--;
+                    var blokkeringenInWeek = Model.ReservatiesAbstr.Where(b => Helper.BerekenWeek(b.StartDatum) == Helper.BerekenWeek((DateTime)TempData["selectedDate"]) && b is Blokkering).ToList();
+
+                    if (blokkeringenInWeek.Count > 0) {
+                        foreach (var reservatieAbstr in blokkeringenInWeek) {
+                            var blok = (Blokkering) reservatieAbstr;
+
+                            <span>
+                                LECTOR: @blok.Gebruiker.Email  AANTAL: @blok.Aantal  WEEKDAGEN:
+
+                                @*weekdagen worden niet weergegeven ?*@
+                                @{ int teller6 = blok.Weekdagen.Count(); }
+                                @foreach (var week in blok.Weekdagen.ToList()) {
+                                    <span>  @week.Naam </span>
+                                    if (teller6 > 1) {
+                                        <span>, </span>
+                                        teller6--;
+                                    }
                                 }
-                            }
-                    
 
-                <br />
-                </span>
-                    }
+
+                                <br />
+                            </span>
+                                        }
+                                    }
+                                    else {
+                                        <span>--</span>
+                                    }
+                                    <br />
                 }
-                else
-                {
-                    <span>--</span>
-                }
-                <br />
+               
             </dd>
 
 

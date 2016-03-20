@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Groep9.NET.Controllers;
 using Groep9.NET.Models.Domein;
-using System;
 using System.Linq;
 using System.Web.Mvc;
 using Groep9.NET.ViewModels;
@@ -32,7 +31,7 @@ namespace Groep9.NET.Tests.Controllers {
         private Product product2;
         private Product product3;
 
-        private Gebruiker g;
+        private Gebruiker gebruiker;
 
         private IQueryable<Product> ProductenLijst;
 
@@ -43,16 +42,16 @@ namespace Groep9.NET.Tests.Controllers {
             mockdr = new Mock<IDoelgroepRepository>();
             mocklr = new Mock<ILeergebiedRepository>();
             mockgr = new Mock<IGebruikerRepository>();
-            product1 = context.P1;
-            product2 = context.P2;
-            product3 = context.P3;
+            product1 = context.P1ZonderReservatiesOfBlokkeringen;
+            product2 = context.P2ZonderReservatiesOfBlokkeringen;
+            product3 = context.P3ZonderReservatiesOfBlokkeringen;
             //model = new ProductViewModel();
             ProductenLijst = context.Producten.AsQueryable();
 
             mockpr.Setup(p => p.VindAlleProducten()).Returns(ProductenLijst);
             mockpr.Setup(p => p.FindByProductNummer(1)).Returns(product1);
 
-            g = context.Gebruiker;
+            gebruiker = context.Personeelslid;
 
             cc = new CatalogusController(mockpr.Object, mockdr.Object, mocklr.Object, mockgr.Object);
         }
@@ -61,7 +60,8 @@ namespace Groep9.NET.Tests.Controllers {
         [TestMethod]
         public void IndexReturnsAlleProducten() {
             //Act
-            ViewResult result = cc.Index(g) as ViewResult;
+
+            ViewResult result = cc.Index(gebruiker) as ViewResult;
             List<Product> producten = (result.Model as IEnumerable<Product>).ToList();
 
 
@@ -70,8 +70,26 @@ namespace Groep9.NET.Tests.Controllers {
             Assert.AreEqual(1, producten[0].ProductId);
             Assert.AreEqual("B", producten[1].Naam);
             Assert.AreEqual("C", producten[2].Naam);
-
+          
         }
+
+        [TestMethod]
+        public void Index()
+        {
+
+            // Act
+            ViewResult result = cc.Index(context.Personeelslid) as ViewResult;
+
+            ProductenViewModel vm = new ProductenViewModel()
+            {
+                Producten = ProductenLijst.Select(p => new ProductViewModel(p, context.Personeelslid))
+            };
+            // Assert
+            Assert.AreEqual(result.Model, vm);
+
+        } 
+
+
 
         [TestMethod]
         public void DetailsReturnsDetails() {
@@ -84,12 +102,22 @@ namespace Groep9.NET.Tests.Controllers {
         
 
         [TestMethod]
-        public void GetdoelgroepSelectListReturnsDoelgroepSelectList()
+        public void AddOfVerwijderVerlanglijstWillRedirectToIndex()
         {
-            
+            RedirectToRouteResult result = cc.AddOfVerwijderVerlanglijst(1, gebruiker) as RedirectToRouteResult;
+            Assert.IsNotNull(result, "Should have redirected");
+            Assert.AreEqual("Index", result.RouteValues["action"]);
         }
 
 
-        
+            
+        [TestMethod]
+        public void AddOfVerwijderVerlanglijstWillAddToVerlanglijst() {
+            RedirectToRouteResult result = cc.AddOfVerwijderVerlanglijst(1, gebruiker) as RedirectToRouteResult;
+            Assert.AreEqual(1, gebruiker.VerlangLijst.Count);
+            mockpr.Verify(p => p.FindByProductNummer(1), Times.Once());
+        }
+
+
     }
 }

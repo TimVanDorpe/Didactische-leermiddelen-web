@@ -49,7 +49,9 @@ namespace Groep9.NET.ViewModels {
 
 
         public double Prijs { get; private set; }
-        public string Firma { get; private set; }
+        public string FirmaNaam { get; private set; }
+        public string FirmaUrl { get; private set; }
+        public string FirmaMail { get; private set; }
         // public Doelgroep Doelgroep { get; private set; }
         public string[] Leergebied { get; private set; }
 
@@ -73,7 +75,9 @@ namespace Groep9.NET.ViewModels {
             Aantal = p.Aantal;
             ProductId = p.ProductId;
             Prijs = p.Prijs;
-            Firma = p.Firma;
+            FirmaNaam = p.Firma.Naam;
+            FirmaUrl = p.Firma.FirmaUrl;
+            FirmaMail = p.Firma.Contactemail;
           
             Doelgroep = p.Doelgroepen.Select(i => i.Naam).OrderBy(i => i).ToArray();
             Leergebied = p.Leergebieden.Select(i => i.Naam).OrderBy(i => i).ToArray();
@@ -96,7 +100,9 @@ namespace Groep9.NET.ViewModels {
             Aantal = p.Aantal;
             ProductId = p.ProductId;
             Prijs = p.Prijs;
-            Firma = p.Firma;
+            FirmaNaam = p.Firma.Naam;
+            FirmaUrl = p.Firma.FirmaUrl;
+            FirmaMail = p.Firma.Contactemail;
 
             Doelgroep = p.Doelgroepen.Select(i => i.Naam).OrderBy(i => i).ToArray();
             Leergebied = p.Leergebieden.Select(i => i.Naam).OrderBy(i => i).ToArray();

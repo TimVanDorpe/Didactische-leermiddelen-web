@@ -9,22 +9,17 @@ namespace Groep9.NET.Controllers
 {
     public class BlokkeringController : Controller
     {
-        private IProductRepository productRepository;
-        private IDoelgroepRepository doelgroepRepository;
-        private ILeergebiedRepository leergebiedRepository;
         private IGebruikerRepository gebruikerRepository;
         
-        public BlokkeringController(IProductRepository pr, IDoelgroepRepository dr, ILeergebiedRepository lr, IGebruikerRepository gr/*, IReservatieRepository rr*/)
+        public BlokkeringController(IGebruikerRepository gr)
         {
-            productRepository = pr;
-            doelgroepRepository = dr;
-            leergebiedRepository = lr;
+        
             gebruikerRepository = gr;
         }
         // GET: Blokkering
         public ActionResult Index(Gebruiker gebruiker)
         {
-            IList<Blokkering> blokkeringlijst = gebruiker.BlokkeringLijst.ToList();
+            IList<ReservatieAbstr> blokkeringlijst = gebruiker.ReservAbstrLijst.ToList();
             return View(blokkeringlijst);
         }
 
@@ -33,8 +28,8 @@ namespace Groep9.NET.Controllers
             try
             {
 
-                Blokkering blokkering = gebruiker.BlokkeringLijst.FirstOrDefault(b=> b.BlokkeringId == id);
-                gebruiker.VerwijderBlokkering(blokkering);
+                ReservatieAbstr blokkering = gebruiker.ReservAbstrLijst.FirstOrDefault(b=> b.ReservatieAbstrId == id);
+                gebruiker.VerwijderReservatieAbstr(blokkering);
 
                 gebruikerRepository.SaveChanges();
 

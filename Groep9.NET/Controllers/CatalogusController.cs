@@ -101,30 +101,30 @@ namespace Groep9.NET.Controllers {
         }
     
     public ActionResult AddOfVerwijderVerlanglijst(int id, Gebruiker gebruiker) {
-            try {
-
-                if (!CheckVerlanglijst(id, gebruiker)) {
-                    
-                    gebruiker.VoegProductAanVerlanglijstToe(productRepository.FindByProductNummer(id));
-                    TempData["Info"] = "Product " + productRepository.FindByProductNummer(id).Naam + " is toegevoegd aan jouw verlanglijst";
-                    gebruikerRepository.SaveChanges();
-                    TempData["Info"] = "Product " + productRepository.FindByProductNummer(id).Naam + " is toegevoegd aan verlanglijst.";
-                }
-                else {
-                    
-                    gebruiker.VerwijderProductUitVerlanglijst(productRepository.FindByProductNummer(id));
-                    TempData["Info2"] = "Product " + productRepository.FindByProductNummer(id).Naam + " is verwijderd van jouw verlanglijst";
-                    gebruikerRepository.SaveChanges();
-                    TempData["Info2"] = "Product " + productRepository.FindByProductNummer(id).Naam + " is verwijderd uit verlanglijst.";
-                }
-               
-                return RedirectToAction("Index"); }
-            catch 
+        try
+        {
+            
+       
+            Product product = productRepository.FindByProductNummer(id);
+            gebruiker.VoegProductAanVerlanglijstToe(product);
+            if (gebruiker.VerlangLijst.Contains(product))
             {
-                ModelState.AddModelError("", "Toevoegen/Verwijderen aan verlanglijst is niet gelukt");
-                return RedirectToAction("Index");
-
+                TempData["Info"] = "Product " + product.Naam + " is toegevoegd aan verlanglijst.";
             }
+            else
+            {
+                TempData["Info2"] = "Product " + product.Naam + " is verwijderd uit uw verlanglijst.";
+            }
+                gebruikerRepository.SaveChanges();
+            }
+           
+
+            catch (ArgumentException e)
+            {
+                TempData["ReservatieFail"] = e.Message;
+            }
+            
+          return RedirectToAction("Index");
         }
 
 

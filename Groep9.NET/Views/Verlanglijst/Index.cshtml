@@ -6,25 +6,21 @@
     ViewBag.Title = "Verlanglijst";
 
 }
-<script>
-  $(function() {
-      $('.input-group.date').datepicker({
-      });
-  });
-</script>
-<h2>Verlanglijst</h2> 
+
+<h2>Verlanglijst</h2>
+
 @using (Html.BeginForm("Index", "Verlanglijst"))
 {
-    <div class="col-md-12">
-        <div class="pull-left col-md-2"><label> Kies een datum: </label></div>
+    <div class="row" id="sandbox-container">
+        <div class="pull-left col-md-2 col-xs-12"><label> Kies een datum: </label></div>
         
-        <div class="input-group date col-md-6" data-provide="datepicker">
+        <div class="input-group date col-md-6 col-sm-6 col-xs-12">
             <!--<input type="text" class="form-control" id="datum">-->
             @Html.TextBox("datum", "", "", new { @class = "form-control", @placeholder = DateTime.Today.ToString().Substring(0,10) + ".."})
           
             <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
         </div>
-        <input type="submit" value="Toon beschikbare producten" class="btn btn-default col-md-3  groen pull-right"/>
+        <div class="col-sm-6 col-xs-12 col-md-3 pull-right"><input type="submit" value="Toon beschikbare producten" class="btn btn-default col-xs-12  groen "/></div>
     </div>
 }
 <br />

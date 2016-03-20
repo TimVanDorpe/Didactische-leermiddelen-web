@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Groep9.NET.Models.Domein.Reservatie>
+﻿@model IEnumerable<Groep9.NET.Models.Domein.ReservatieAbstr>
 
 
 @{
@@ -16,8 +16,9 @@
     <title>Reservatie</title>
 </head>
 <body>
+<div class="hidden-sm hidden-xs">
 
-    <table class="table table-responsive" >
+    <table class="table table-responsive ">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Product.Foto)
@@ -25,58 +26,94 @@
             <th>
                 @Html.DisplayNameFor(model => model.Product.Naam)
             </th>
-           <th>
-               @Html.DisplayNameFor(model => model.StartDatum)
-           </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDatum)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.EindDatum)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Aantal)
-            </th>           
+            </th>
 
 
         </tr>
-@if (!Model.Any())
-{
-    <tr>
-        <td colspan="9">@User.Identity.Name heeft geen reservaties</td>
-    </tr>
+        @if (!Model.Any())
+        {
+            <tr>
+                <td colspan="9">@User.Identity.Name heeft geen reservaties</td>
+            </tr>
 
-}
-@foreach (var item in Model)
-{
-    <tr>
-        <td>
-           
-
-                <img style="width: 75px; height: 75px;" alt="@Html.DisplayFor(modelItem => item.Product.Naam)" src="~/Content/images/@Html.DisplayFor(modelItem => item.Product.Foto)"/>
-            
-        </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Product.Naam)
-            </td>
-            
-            <td>
-                @Html.DisplayFor(modelItem => item.StartDatum)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EindDatum)
-            </td>
+        }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
 
 
-            <td>
-                @Html.DisplayFor(modelItem => item.Aantal)
-            </td>
-        <td>
-            <a href="@Url.Action("RemoveFromReservatieLijst", new {id = item.ReservatieId})" class="btn btn-danger btn-sm ">
+                    <img style="width: 75px; height: 75px;" alt="@Html.DisplayFor(modelItem => item.Product.Naam)" src="~/Content/images/@Html.DisplayFor(modelItem => item.Product.Foto)"/>
 
-                <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
-            </a>
-        </td>
-        </tr>
-}
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.Naam)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDatum)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EindDatum)
+                </td>
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Aantal)
+                </td>
+                <td>
+                    <a href="@Url.Action("RemoveFromReservatieLijst", new {id = item.ReservatieAbstrId})" class="btn btn-danger btn-sm ">
+
+                        <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
+                    </a>
+                </td>
+            </tr>
+        }
 
     </table>
+</div>
+    <div class="visible-sm visible-xs">
+        @if (!Model.Any())
+        {
+
+            <td colspan="9">@User.Identity.Name heeft geen reservaties</td>
+
+        }
+        @foreach (var item in Model)
+        {
+            <div class="row ">
+
+                <div class="col-xs-12 product-small">
+                    <div class="foto col-xs-4">
+                        <img alt="@Html.DisplayFor(modelItem => item.Product.Naam)" src="~/Content/images/@(@Html.DisplayFor(modelItem =>item.Product.Foto))" class="img-responsive" />
+                    </div>
+
+                    <div class="caption col-xs-8">
+                        <h2> 
+                           @Html.DisplayFor(modelItem => item.Aantal) X @Html.DisplayFor(modelItem => item.Product.Naam)
+
+                    </h2>
+
+                    <p> Op te halen op @Html.DisplayFor(modelItem => item.StartDatum) en terug te brengen op @Html.DisplayFor(modelItem => item.EindDatum)</p>
+                        <a href="@Url.Action("RemoveFromReservatieLijst", new {id = item.ReservatieAbstrId})" class="btn btn-danger btn-sm ">
+
+                            <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
+                        </a>
+                 
+                </div>
+            </div>
+            <br />
+        </div>
+                                    
+        }
+    </div>
 </body>
 </html>

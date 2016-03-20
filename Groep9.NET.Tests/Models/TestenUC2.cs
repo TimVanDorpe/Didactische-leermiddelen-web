@@ -28,11 +28,11 @@ namespace Groep9.NET.Tests.Models
         public void ZoekenMetResultaat()
         {
 
-              //ProductRepository pr = new ProductRepository(context);
-            //Product VoorbeeldProduct = new Product(1, "A", "TestProd", 2.1, 1, true, "hier", "B", "C", "D");
-            //Assert.AreEqual(pr.Zoeken("A"), VoorbeeldProduct);
+           //   ProductRepository pr = new ProductRepository(context);
+           //Product VoorbeeldProduct = new Product(1, "A", "TestProd", 2.1, 1, true, "hier", "B", "C", "D");
+           // Assert.AreEqual(pr.Zoeken("A"), VoorbeeldProduct);
         }
-        [ExpectedException(typeof(ArgumentException))]
+       
         [TestMethod]
         public void ZoekenZonderResultaat()
         {

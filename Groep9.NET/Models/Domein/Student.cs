@@ -13,17 +13,18 @@ namespace Groep9.NET {
         {
         }
 
-        public override void VoegReservatieToe(Reservatie r)
+     
+
+        public override void VoegReservatieAbstrToe(ReservatieAbstr r)
         {
-
-            ReservatieLijst.Add(r);
-
+            
+            ReservAbstrLijst.Add(r);
         }
 
-        public override void VerwijderReservatie(Reservatie r)
+        public override void VerwijderReservatieAbstr(ReservatieAbstr r)
         {
-            ReservatieLijst.Remove(r);
+            r.Product.VerwijderReservatieOfBlokkering(r);
+            ReservAbstrLijst.Remove(r);
         }
-
     }
 }

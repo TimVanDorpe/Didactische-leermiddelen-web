@@ -57,25 +57,41 @@
 
                             <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
                         </a>
-                        
-                            <label class="btn groen verlanglijstlabel">
-                                
-                                <span class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>
-                        @{
-                            var url = Url.Action("AddOfVerwijderVerlanglijst", new { id = item.ProductId });
-                        }
-                        @Html.CheckBoxFor(modelItem => item.InVerlanglijst, new { id = item.ProductId, onclick = "window.location = '" + url + "'", @class = "toggle" })
-                               
-                                    Toevoegen
-                             
-                                
-                                
-                   </label>
-                
-                @*<a href="@Url.Action("AddToVerlanglijst", new {id = item.ProductId})" class="btn btn-default">
+                        @if (!item.InVerlanglijst)
+                        {
+                            <label class="btn groen verlanglijstlabel" style="width:130px;">
 
-        <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
-    </a>*@
+                                <span class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>
+                                @{
+                                    var url = Url.Action("AddOfVerwijderVerlanglijst", new {id = item.ProductId});
+                                }
+                                @Html.CheckBoxFor(modelItem => item.InVerlanglijst, new {id = item.ProductId, onclick = "window.location = '" + url + "'", @class = "toggle"})
+
+                                Toevoegen
+
+
+
+                            </label>
+                                    }
+                                    else
+                                    {
+                                        <label class="btn btn-default verlanglijstlabel" style="width:130px;">
+
+                                            <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+                                            @{
+                                                var url = Url.Action("AddOfVerwijderVerlanglijst", new { id = item.ProductId });
+                                            }
+                                            @Html.CheckBoxFor(modelItem => item.InVerlanglijst, new { id = item.ProductId, onclick = "window.location = '" + url + "'", @class = "toggle" })
+
+                                            In verlanglijst
+
+
+
+                                        </label>
+                           }
+
+
+
                         </div>
 </td>
             </tr>
@@ -103,17 +119,49 @@
                 
                 <div class="caption col-xs-8">
                     <h2>@Html.DisplayFor(modelItem => item.Naam) 
-                    @using (Html.BeginForm("AddToVerlanglijst", "Catalogus", new { id = item.ProductId }))
-                    {
-                        <button type="submit" class="btn btn-default ">
-                            <span class="glyphicon glyphicon glyphicon-ok-sign"></span>
-                        </button>
-                    }
+                       
                 </h2> 
                    
                     <p>@Html.DisplayFor(modelItem => item.Omschrijving)</p>
                    
-                    <span class="pull-left">@Html.ActionLink("Details", "Details", new {id = item.ProductId })</span><span class="pull-right">Aantal: @Html.DisplayFor(modelItem => item.Aantal)</span>
+                    <span class="pull-left">@Html.ActionLink("Details", "Details", new {id = item.ProductId })</span><span class="pull-right"><div class="pull-right" style="min-width:168px" role="toolbar">
+    <a href="@Url.Action("Details", new {id = item.ProductId})" class="btn btn-info btn-sm ">
+
+        <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+</a>
+        @if (!item.InVerlanglijst)
+        {
+            <label class="btn groen verlanglijstlabel" style="width:130px;">
+
+                <span class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>
+                @{
+                    var url = Url.Action("AddOfVerwijderVerlanglijst", new { id = item.ProductId });
+                }
+                @Html.CheckBoxFor(modelItem => item.InVerlanglijst, new { id = item.ProductId, onclick = "window.location = '" + url + "'", @class = "toggle" })
+
+                Toevoegen
+
+
+
+            </label>
+                    }
+                    else
+                    {
+                        <label class="btn btn-default verlanglijstlabel" style="width:130px;">
+
+                            <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+                            @{
+                                var url = Url.Action("AddOfVerwijderVerlanglijst", new { id = item.ProductId });
+                            }
+                            @Html.CheckBoxFor(modelItem => item.InVerlanglijst, new { id = item.ProductId, onclick = "window.location = '" + url + "'", @class = "toggle" })
+
+                            In verlanglijst
+
+
+
+                        </label>
+                                }
+</div></span>
                 </div>
             </div>
             <br />

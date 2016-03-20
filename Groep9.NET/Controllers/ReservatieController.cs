@@ -10,23 +10,19 @@ namespace Groep9.NET.Controllers
     [Authorize]
     public class ReservatieController : Controller
     {
-        private IProductRepository productRepository;
-        private IDoelgroepRepository doelgroepRepository;
-        private ILeergebiedRepository leergebiedRepository;
+      
         private IGebruikerRepository gebruikerRepository;
 
-        public ReservatieController(IProductRepository pr, IDoelgroepRepository dr, ILeergebiedRepository lr, IGebruikerRepository gr/*, IReservatieRepository rr*/)
+        public ReservatieController( IGebruikerRepository gr)
         {
-            productRepository = pr;
-            doelgroepRepository = dr;
-            leergebiedRepository = lr;
+            
             gebruikerRepository = gr;
         }
 
         // GET: Reservatie
         public ActionResult Index(Gebruiker gebruiker)
         {
-            IList<Reservatie> reservatielijst = gebruiker.ReservatieLijst.ToList();
+            IList<ReservatieAbstr> reservatielijst = gebruiker.ReservAbstrLijst.ToList();
             return View(reservatielijst);
         }
        
@@ -34,8 +30,8 @@ namespace Groep9.NET.Controllers
         {
             try
             {    
-                Reservatie reservatie = gebruiker.ReservatieLijst.FirstOrDefault(b => b.ReservatieId == id);
-                gebruiker.VerwijderReservatie(reservatie);
+                ReservatieAbstr reservatie = gebruiker.ReservAbstrLijst.FirstOrDefault(b => b.ReservatieAbstrId == id);
+                gebruiker.VerwijderReservatieAbstr(reservatie);
                 gebruikerRepository.SaveChanges();
                
                 return RedirectToAction("Index");

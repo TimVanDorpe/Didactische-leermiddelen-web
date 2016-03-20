@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Text;
 using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
 using Groep9.NET.Models.Domein;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Groep9.NET.Tests.Models {
+namespace Groep9.NET.Tests.Controllers {
     /// <summary>
     /// Summary description for DummyContext
     /// </summary>
@@ -30,12 +29,23 @@ namespace Groep9.NET.Tests.Models {
         Doelgroep peuters = new Doelgroep("Peuters");
         Doelgroep neuters = new Doelgroep("Neuters");
 
-        Product p1;
-        Product p2;
-        Product p3;
+
+        Firma testFirma = new Firma("testFirma", "testFirma.be", "test@TestFirma.be");
 
 
-        public Gebruiker g = new Personeelslid{Email = "a@b.c", VerlangLijst = new List<Product>(), /*ReservatieLijst = new List<Reservatie>(), */GebruikerId = 1};
+        Product p1ZonderReservatiesOfBlokkeringen;
+        Product p2ZonderReservatiesOfBlokkeringen;
+        Product p3ZonderReservatiesOfBlokkeringen;
+
+
+        
+        DateTime datum = new DateTime(2016,03,16,0,0,0);
+
+
+
+
+        public Gebruiker Personeelslid = new Personeelslid{Email = "a@b.c", VerlangLijst = new List<Product>(), /*ReservatieLijst = new List<Reservatie>(), */GebruikerId = 1};
+        public Gebruiker Student = new Student { Email = "a@b.c", VerlangLijst = new List<Product>(), /*ReservatieLijst = new List<Reservatie>(), */GebruikerId = 1 };
 
 
         public DummyContext() {
@@ -45,16 +55,16 @@ namespace Groep9.NET.Tests.Models {
             doelgroepen.Add(kleuters);
             doelgroepen.Add(peuters);
 
-            p1 = new Product("", "A", "TestProd", 2.1, 1, true, "hier", "B", doelgroepen, leergebieden);
-            Producten.Add(p1);
+            p1ZonderReservatiesOfBlokkeringen = new Product("", "A", "TestProd", 2.1, 1, true, "hier", testFirma, doelgroepen, leergebieden);
+            Producten.Add(p1ZonderReservatiesOfBlokkeringen);
 
             leergebieden.Add(zeveren);
-            p2 = new Product("", "B", "TestProd2", 5.8, 1, true, "hier", "B", doelgroepen, leergebieden);
-            Producten.Add(p2);
+            p2ZonderReservatiesOfBlokkeringen = new Product("", "B", "TestProd2", 5.8, 1, true, "hier", testFirma, doelgroepen, leergebieden);
+            Producten.Add(p2ZonderReservatiesOfBlokkeringen);
 
             doelgroepen.Add(neuters);
-            p3 = new Product("", "C", "TestProd3", 2.1, 1, true, "hier", "B", doelgroepen, leergebieden);
-            Producten.Add(p3);
+            p3ZonderReservatiesOfBlokkeringen = new Product("", "C", "TestProd3", 2.1, 1, true, "hier", testFirma, doelgroepen, leergebieden);
+            Producten.Add(p3ZonderReservatiesOfBlokkeringen);
 
         }
 
@@ -82,26 +92,31 @@ namespace Groep9.NET.Tests.Models {
 
        // public IQueryable Producten { get { return Producten; } }
 
-        public Product P1
+        public Product P1ZonderReservatiesOfBlokkeringen
         {
-            get { return p1; }
+            get { return p1ZonderReservatiesOfBlokkeringen; }
         }
 
-        public Product P2
+        public Product P2ZonderReservatiesOfBlokkeringen
         {
-            get { return p2; }
+            get { return p2ZonderReservatiesOfBlokkeringen; }
         }
-        public Product P3
+        public Product P3ZonderReservatiesOfBlokkeringen
         {
-            get { return p3; }
+            get { return p3ZonderReservatiesOfBlokkeringen; }
         }
 
-        public Gebruiker Gebruiker { get { return g; } }
+        public Gebruiker Gebruiker { get { return Personeelslid; } }
 
         public Product GetProduct(int id) {
             return Producten.FirstOrDefault(p => p.ProductId == id);
         }
 
+
+        public DateTime Datum
+        {
+            get { return datum; }
+        }
 
 
     }

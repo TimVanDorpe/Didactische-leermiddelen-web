@@ -6,30 +6,31 @@ using System.Web.Services.Protocols;
 using System.ComponentModel;
 using System.Diagnostics;
 using Groep9.NET.Models.Domein;
-using System.Diagnostics;
 using System.ComponentModel.DataAnnotations;
 using System.Globalization;
+using Groep9.NET.Helpers;
 
 namespace Groep9.NET {
-    public class Product {
+    public class Product
+    {
 
         [Required]
         public int ProductId { get; set; }
+
         [Required]
         public string Foto { get; set; }
+
         [Required]
         [DisplayName("Naam product")]
         public string Naam { get; set; }
+
         [Required]
         public string Omschrijving { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:c}")]
         public double Prijs { get; set; }
 
-        //public int AantalBeschikbaar { get; set; } // enkel de beschikbare
 
-        //public int AantalGeblokkeerd { get; set; }//enkel geblokkeerd
-        //public int AantalGereserveerd { get; set; }//enkel gereserveerd
 
         [DisplayName("Beschikbaar")]
         public int Aantal { get; set; } // totaal in catalogus
@@ -38,30 +39,34 @@ namespace Groep9.NET {
 
         public virtual ICollection<Doelgroep> Doelgroepen { get; set; }
         public virtual ICollection<Leergebied> Leergebieden { get; set; }
-        public virtual ICollection<Reservatie> Reservaties { get; set; }
+        public virtual ICollection<ReservatieAbstr> ReservatiesAbstr { get; set; }
 
-        public virtual ICollection<Blokkering> Blokkeringen { get; set; }
+        //  public virtual ICollection<Blokkering> Blokkeringen { get; set; }
 
         public String Plaats { get; set; }
 
 
-        public string Firma { get; set; }
+        public virtual Firma Firma { get; set; }
 
-        public Product() {
+        public Product()
+        {
             Doelgroepen = new List<Doelgroep>();
             Leergebieden = new List<Leergebied>();
-            Reservaties = new List<Reservatie>();
-            Blokkeringen = new List<Blokkering>();
+            ReservatiesAbstr = new List<ReservatieAbstr>();
+            // Blokkeringen = new List<Blokkering>();
         }
 
-   
-        public Product(string foto, string naam, string omschrijving, double prijs, int aantal, bool uitleenbaarheid, string plaats, string firma, List<Doelgroep> doelgroepen, List<Leergebied> leergebieden)
-           : this() { 
-            foreach (var doel in doelgroepen) {
+
+        public Product(string foto, string naam, string omschrijving, double prijs, int aantal, bool uitleenbaarheid,
+            string plaats, Firma firma, List<Doelgroep> doelgroepen, List<Leergebied> leergebieden)
+            : this()
+        {
+            foreach (var doel in doelgroepen)
+            {
                 Doelgroepen.Add(doel);
-                // doel.RegistreerProduct(this);
             }
-            foreach (var leer in leergebieden) {
+            foreach (var leer in leergebieden)
+            {
 
                 Leergebieden.Add(leer);
                 leer.RegistreerLeergebied(this);
@@ -75,115 +80,66 @@ namespace Groep9.NET {
             Uitleenbaarheid = uitleenbaarheid;
             Plaats = plaats;
             Firma = firma;
-        
-
-            //Dit moet ook in de constuctor en dan in de init, even om iets te testen !!!
-        
-
-
         }
 
-        public int BerekenWeek(string datum)
+
+        public int BerekenAantalReservatiesOfBlokkeringenOpWeek(DateTime datum, string klasse)
         {
            
-            var currentCulture = CultureInfo.CurrentCulture;
-            var weekNo = currentCulture.Calendar.GetWeekOfYear(
-                            //haalt jaar, maand en dag uit string en zet om in int
-                            new DateTime(Int32.Parse(datum.Substring(6, 4)), Int32.Parse(datum.Substring(0, 2)), Int32.Parse(datum.Substring(3, 2))),
-                            currentCulture.DateTimeFormat.CalendarWeekRule,
-                            currentCulture.DateTimeFormat.FirstDayOfWeek);
-
-            // YYYY/MM/DD
-            // MM/DD/YYYY
-            return weekNo;
-        }
-        
-        public int BerekenAantalGereserveerdOpWeek(string datum)
-        {
-            int aantalGereserveerd = 0;
+            int aantalReservaties = 0;
+            int aantalBlokkeringen = 0;
             int weekReservatie = 0;
-            if (BerekenWeek(datum) == BerekenWeek(DateTime.ParseExact(DateTime.Today.ToString()
-                .Substring(0, 10), "dd/MM/yyyy", null).ToString("MM/dd/yyyy")))
+            if (Helper.BerekenWeek(datum) == Helper.BerekenWeek(DateTime.Today))
             {
-                weekReservatie =  BerekenWeek(datum)+1;
+                weekReservatie = Helper.BerekenWeek(datum) + 1;
             }
-                 weekReservatie = BerekenWeek(datum);
-            foreach (Reservatie r in Reservaties)
+            weekReservatie = Helper.BerekenWeek(datum);
+
+            foreach (ReservatieAbstr r in ReservatiesAbstr)
             {
                 int weekProduct =
-                    BerekenWeek(
-                        DateTime.ParseExact(r.StartDatum.ToString().Substring(0, 10), "dd/MM/yyyy", null)
-                            .ToString("MM/dd/yyyy"));
-
+                    Helper.BerekenWeek(r.StartDatum);
+                                
                 if (weekReservatie == weekProduct)
                 {
-                    aantalGereserveerd += r.Aantal;
+                    if (r is Reservatie)
+                    {
+                        aantalReservaties += r.Aantal;
+                    }
+                    else if (r is Blokkering)
+                    {
+                        aantalBlokkeringen += r.Aantal;
+                    }
                 }
+               
             }
-            return aantalGereserveerd;
-
-        }
-        public int BerekenAantalGeblokkeerdOpWeek(string datum)
-        {
-            int aantalGeblokkeerd = 0;
-            int weekBlokkering = 0;
-            if (BerekenWeek(datum) == BerekenWeek(DateTime.ParseExact(DateTime.Today.ToString()
-                .Substring(0, 10), "dd/MM/yyyy", null).ToString("MM/dd/yyyy")))
+            if (klasse.Equals("reservatie"))
             {
-                weekBlokkering = BerekenWeek(datum) + 1;
+                return aantalReservaties;
             }
-            weekBlokkering = BerekenWeek(datum);
-            foreach (Blokkering b in Blokkeringen)
+            else if (klasse.Equals("blokkering"))
             {
-                int weekProduct =
-                    BerekenWeek(
-                        DateTime.ParseExact(b.StartDatum.ToString().Substring(0, 10), "dd/MM/yyyy", null)
-                            .ToString("MM/dd/yyyy"));
-
-                if (weekBlokkering == weekProduct)
-                {
-                    aantalGeblokkeerd += b.Aantal;
-                }
+                return aantalBlokkeringen;
             }
-            return aantalGeblokkeerd;
-
+            else
+            {
+                return 0;
+            }
         }
 
-        public void VoegReservatieToe(Reservatie r)
+     
+
+        public void VoegReservatieOfBlokkeringToe(ReservatieAbstr r)
         {
-
-            Reservaties.Add(r);
-
+            ReservatiesAbstr.Add(r);
         }
 
-        public void VerwijderReservatie(Reservatie r)
+        public void VerwijderReservatieOfBlokkering(ReservatieAbstr r)
         {
-            Reservaties.Remove(r);
-        }
-        public void VoegBlokkeringToe(Blokkering r)
-        {
-
-            Blokkeringen.Add(r);
-
+            ReservatiesAbstr.Remove(r);
         }
 
-        public void VerwijderBlokkering(Blokkering r)
-        {
-            Blokkeringen.Remove(r);
-        }
-
-
-        public int BerekenAantalGereserveerd()//VALIDATIE OOK NIET VERGETEN
-        {
-            return Reservaties.Count;
-        }
-
-
-        public int BerekenAantalGeblokkeerd()
-        {
-            return Blokkeringen.Count;
-        }
-
+    
   
 
 

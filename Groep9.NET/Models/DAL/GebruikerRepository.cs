@@ -50,11 +50,7 @@ namespace Groep9.NET.Models.DAL
         }
 
 
-        //public void ReserveerProduct(Product p, DateTime start, DateTime eind, int aantal, Gebruiker gebruiker)
-        //{
-        //    gebruiker.ReservatieLijst.Add(new Reservatie(p, start, eind, aantal));
-        //}
-
+       
 
 
         

@@ -14,19 +14,28 @@ namespace Groep9.NET.Models.Domein
         public int GebruikerId { get; set; }
         public string Email { get; set; }
         public virtual ICollection<Product> VerlangLijst { get; set; }
-        public virtual ICollection<Reservatie> ReservatieLijst { get; set; } 
-        public virtual ICollection<Blokkering> BlokkeringLijst { get; set; }
-        public Gebruiker()
+        
+
+        public virtual ICollection<ReservatieAbstr> ReservAbstrLijst { get; set; }
+
+        protected Gebruiker()
         {
             VerlangLijst = new List<Product>();
-            ReservatieLijst = new List<Reservatie>();
-            BlokkeringLijst = new List<Blokkering>();
+            
+            ReservAbstrLijst = new List<ReservatieAbstr>();
         }
 
         public void VoegProductAanVerlanglijstToe(Product p)
         {
-
-            VerlangLijst.Add(p);
+            if (VerlangLijst.Contains(p))
+            {
+                VerwijderProductUitVerlanglijst(p);
+            }
+            else
+            {
+                VerlangLijst.Add(p);
+            }
+            
             
         }
 
@@ -34,31 +43,14 @@ namespace Groep9.NET.Models.Domein
         {
             VerlangLijst.Remove(p);
         }
-        public virtual void  VoegReservatieToe(Reservatie r)
-        {
-
-            ReservatieLijst.Add(r);
-
-        }
-
-        public virtual  void VerwijderReservatie(Reservatie r)
-        {
-            ReservatieLijst.Remove(r);
-        }
+        public abstract void VoegReservatieAbstrToe(ReservatieAbstr r);
 
 
-        public virtual void VoegBlokkeringToe(Blokkering b)
-        {
+        public abstract void VerwijderReservatieAbstr(ReservatieAbstr r);
+        
 
-            BlokkeringLijst.Add(b);
 
-        }
-
-        public virtual void VerwijderBlokkering(Blokkering b)
-        {
-            BlokkeringLijst.Remove(b);
-        }
-
+   
 
     }
 }

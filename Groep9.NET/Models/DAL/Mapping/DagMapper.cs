@@ -1,9 +1,9 @@
-﻿using Groep9.NET.Models.Domein;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity.ModelConfiguration;
 using System.Linq;
 using System.Web;
+using Groep9.NET.Models.Domein;
 
 namespace Groep9.NET.Models.DAL.Mapping
 {
@@ -13,8 +13,7 @@ namespace Groep9.NET.Models.DAL.Mapping
         {
             ToTable("Dag");
             HasKey(p => p.DagId);
-            Property(p => p.Naam).IsRequired();
-
+            Property(f => f.Naam).IsRequired().HasMaxLength(100);
            
         }
     }

@@ -5,22 +5,19 @@ using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Groep9.NET.Helpers;
 using Groep9.NET.ViewModels;
 
 namespace Groep9.NET.Controllers {
     [Authorize]
     public class VerlanglijstController : Controller {
-        private IProductRepository productRepository;
-        private IDoelgroepRepository doelgroepRepository;
-        private ILeergebiedRepository leergebiedRepository;
+        private IProductRepository productRepository;        
         private IGebruikerRepository gebruikerRepository;
-        List<Dag> weekdagen = new List<Dag>();
+     
 
         // GET: Verlanglijst
-        public VerlanglijstController(IProductRepository pr, IDoelgroepRepository dr, ILeergebiedRepository lr, IGebruikerRepository gr) {
+        public VerlanglijstController(IProductRepository pr, IGebruikerRepository gr) {
             productRepository = pr;
-            doelgroepRepository = dr;
-            leergebiedRepository = lr;
             gebruikerRepository = gr;
         }
 
@@ -29,29 +26,23 @@ namespace Groep9.NET.Controllers {
             try {
 
                 IEnumerable<Product> verlanglijst = gebruiker.VerlangLijst.ToList();
-                Reservatie r = new Reservatie();
 
-                if (datum == null) {
-                    //als er geen datum geselecteerd is, stel tempdata in op vandaag
-                    datum =
-                        DateTime.ParseExact(DateTime.Today.ToString().Substring(0, 10), "dd/MM/yyyy", null)
-                            .ToString("MM/dd/yyyy");
+                DateTime date = Helper.ZetDatumOm(datum);
                    
-                }
                 
                     //anders op geselecteerde datum
-                    TempData["datum"] = datum;
+                    TempData["datum"] = date.ToString("dd/MM/yyyy");
                 
 
 
 
                 //stelt de start en einddatum in voor in de bevestigingspopup weer te geven
-                TempData["startdatum"] = r.BerekenStartDatumReservatieWeek(datum);
-                TempData["einddatum"] = r.BerekenEindDatumReservatieWeek(datum);
-
+                TempData["startdatum"] = Helper.BerekenStartDatumReservatieWeek(date).ToShortDateString();
+                TempData["einddatum"] = Helper.BerekenEindDatumReservatieWeek(date).ToShortDateString();
+                
 
                 ProductenViewModel vm = new ProductenViewModel() {
-                    Producten = verlanglijst.Select(p => new ProductViewModel(p, gebruiker, p.BerekenAantalGereserveerdOpWeek(datum),p.BerekenAantalGeblokkeerdOpWeek(datum)))
+                    Producten = verlanglijst.Select(p => new ProductViewModel(p, gebruiker, p.BerekenAantalReservatiesOfBlokkeringenOpWeek(date, "reservatie"),p.BerekenAantalReservatiesOfBlokkeringenOpWeek(date, "blokkering")))
                 };
 
                 if (Request.IsAjaxRequest())
@@ -88,39 +79,21 @@ namespace Groep9.NET.Controllers {
 
         public ActionResult AddReservatie(Gebruiker gebruiker, int aantal, int id, string datum) {
             try {
-                Product prod = productRepository.FindByProductNummer(id);
-
-                //methode voor reserveerknop, die aantal meegeeft aan methode product.Reserveer
-
+              
                
-                if (gebruiker is Student) {
-                    if (prod.Aantal > (prod.BerekenAantalGereserveerdOpWeek(datum) + aantal))
-                    {
-                        if (aantal > 0)
-                        {
-                        Reservatie reservatie = new Reservatie(prod, aantal, gebruiker, datum);
-                        prod.VoegReservatieToe(reservatie);
-                        gebruiker.VoegReservatieToe(reservatie);
+                    Product prod = productRepository.FindByProductNummer(id);
+
+                    //methode voor reserveerknop, die aantal meegeeft aan methode product.Reserveer
+
+                    DateTime date = Helper.ZetDatumOm(datum);
+                    ReservatieAbstr reservatie = new Reservatie(prod, aantal, gebruiker, date);
+
+
+                        gebruiker.VoegReservatieAbstrToe(reservatie);
                         gebruikerRepository.SaveChanges();
                         TempData["Info"] = "Product " + productRepository.FindByProductNummer(id).Naam +
                                            " is gereserveerd.";
-                    }
-                    else
-                    {
-                            TempData["ReservatieFail"] = "Aantal moet positief zijn";
-                        }
-                    }
-
-                    else
-                    {
-                        TempData["ReservatieFail"] = "Er zijn niet genoeg producten beschikbaar.";
-                    }
-                }
-                            
-                else {
-                    TempData["ReservatieFail"] = "Reservatie toevoegen lukt niet als leerkracht.";
-                }
-
+                   
 
             }
             catch (ArgumentException e) {
@@ -135,42 +108,19 @@ namespace Groep9.NET.Controllers {
 
             return RedirectToAction("Index");
         }
-        public ActionResult AddBlokkering(Gebruiker gebruiker, int aantal, int id, string datum , bool Maandag = false , bool Dinsdag = false, bool Woensdag = false, bool Donderdag = false, bool Vrijdag = false)
+        public ActionResult AddBlokkering(Gebruiker gebruiker, int aantal, int id, string datum , bool maandag = false , bool dinsdag = false, bool woensdag = false, bool donderdag = false, bool vrijdag = false)
         {
-            Product prod = productRepository.FindByProductNummer(id);
+            
             try
             {
-                
-                               
-              
-                if (gebruiker is Personeelslid)
-                {
-                    if (prod.Aantal > (prod.BerekenAantalGereserveerdOpWeek(datum) + aantal))
-                    {
-                        if (aantal > 0)
-                        {
-                            Blokkering blokkering = new Blokkering(prod, aantal, gebruiker, datum);
-                            addWeekdag(Maandag, Dinsdag, Woensdag, Donderdag, Vrijdag);
-                            blokkering.Weekdagen = weekdagen;
-                            prod.VoegBlokkeringToe(blokkering);
-                             gebruiker.VoegBlokkeringToe(blokkering);
-                               gebruikerRepository.SaveChanges();
-                               TempData["Info"] = "Product " + productRepository.FindByProductNummer(id).Naam + " is geblokkeerd.";
-                        }
-                        else
-                        {
-                            TempData["ReservatieFail"] = "Aantal moet positief zijn";
-                        }
-                    }
-                    else
-                    {
-                        TempData["ReservatieFail"] = "Er zijn niet genoeg producten beschikbaar.";
-                    }
-
-                }
-                else {
-                    TempData["ReservatieFail"] = "Blokkering toevoegen lukt niet als Student";
-                }
+                Product prod = productRepository.FindByProductNummer(id);
+                DateTime date = Helper.ZetDatumOm(datum);
+                ReservatieAbstr blokkering = new Blokkering(prod, aantal, gebruiker, date);
+                blokkering.AddWeekdag(maandag, dinsdag, woensdag, donderdag, vrijdag);
+                gebruiker.VoegReservatieAbstrToe(blokkering);
+                            gebruikerRepository.SaveChanges();
+                            TempData["Info"] = "Product " + productRepository.FindByProductNummer(id).Naam + " is geblokkeerd.";
+                      
 
             }
             catch (ArgumentException e)
@@ -188,8 +138,11 @@ namespace Groep9.NET.Controllers {
             return RedirectToAction("Index");
         }
         
-        public ActionResult Details(int id) {
-            try {
+        public ActionResult Details(int id, string datum) {
+            try
+            {
+
+                TempData["selectedDate"] = Helper.ZetDatumOm(datum);
 
                 return View(productRepository.FindByProductNummer(id));
             }
@@ -201,35 +154,7 @@ namespace Groep9.NET.Controllers {
             }
 
         }
-        public void addWeekdag(bool Maandag, bool Dinsdag, bool Woensdag, bool Donderdag, bool Vrijdag)
-        {
-            if (Maandag == true)
-            {
-                Dag Ma = new Dag("Maandag");
-                weekdagen.Add(Ma);
-            }
-            if (Dinsdag == true)
-            {
-                Dag Di = new Dag("Dinsdag");
-                weekdagen.Add(Di);
-            }
-            if (Woensdag == true)
-            {
-                Dag Wo = new Dag("Woensdag");
-                weekdagen.Add(Wo);
-            }
-            if (Donderdag == true)
-            {
-                Dag Do = new Dag("Donderdag");
-                weekdagen.Add(Do);
-            }
-            if (Vrijdag == true)
-            {
-                Dag Vr = new Dag("Vrijdag");
-                weekdagen.Add(Vr);
-            }
-
-        }
+        
 
     }
 }

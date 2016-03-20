@@ -15,9 +15,10 @@ namespace Groep9.NET.Models.DAL
             HasKey(p => p.ProductId);
             Property(t => t.Naam).IsRequired().HasMaxLength(100);            
             Property(t => t.Omschrijving).IsRequired().HasMaxLength(300);
-            Property(t => t.Firma).IsRequired().HasMaxLength(100);
             Property(t => t.Plaats).IsRequired().HasMaxLength(100);
             Property(t => t.Foto).IsRequired().HasMaxLength(300);
+
+            HasRequired(p => p.Firma);
 
 
 
