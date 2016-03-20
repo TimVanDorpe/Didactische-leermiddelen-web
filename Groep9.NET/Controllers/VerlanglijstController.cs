@@ -37,8 +37,8 @@ namespace Groep9.NET.Controllers {
 
 
                 //stelt de start en einddatum in voor in de bevestigingspopup weer te geven
-                TempData["startdatum"] = Helper.BerekenStartDatumReservatieWeek(date);
-                TempData["einddatum"] = Helper.BerekenEindDatumReservatieWeek(date);
+                TempData["startdatum"] = Helper.BerekenStartDatumReservatieWeek(date).ToShortDateString();
+                TempData["einddatum"] = Helper.BerekenEindDatumReservatieWeek(date).ToShortDateString();
                 
 
                 ProductenViewModel vm = new ProductenViewModel() {

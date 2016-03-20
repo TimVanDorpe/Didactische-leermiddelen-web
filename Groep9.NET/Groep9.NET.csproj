@@ -273,6 +273,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Models\Domein\Domein.cd" />
+    <Content Include="Controllers\ControllerModel.cd" />
     <None Include="Properties\PublishProfiles\g9leermaterialen.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\custom.js" />

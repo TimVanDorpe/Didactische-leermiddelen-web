@@ -80,11 +80,6 @@ namespace Groep9.NET {
             Uitleenbaarheid = uitleenbaarheid;
             Plaats = plaats;
             Firma = firma;
-
-
-
-
-
         }
 
 
@@ -104,10 +99,7 @@ namespace Groep9.NET {
             {
                 int weekProduct =
                     Helper.BerekenWeek(r.StartDatum);
-
-
-
-
+                                
                 if (weekReservatie == weekProduct)
                 {
                     if (r is Reservatie)
@@ -118,12 +110,8 @@ namespace Groep9.NET {
                     {
                         aantalBlokkeringen += r.Aantal;
                     }
-
-
-
                 }
                
-
             }
             if (klasse.Equals("reservatie"))
             {
