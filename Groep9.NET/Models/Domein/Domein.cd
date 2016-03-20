@@ -87,7 +87,7 @@
   <Class Name="Groep9.NET.Models.Domein.ReservatieAbstr">
     <Position X="8" Y="6" Width="4.25" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAABAAAAAAEAAAAAAAACAAAgAAAgAgAAIAAAE=</HashCode>
+      <HashCode>AAACAAAAABAAAAAAEAAAAAIAACAAAgAACgAgAAIAAAE=</HashCode>
       <FileName>Models\Domein\ReservatieAbstr.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -97,12 +97,9 @@
   <Class Name="Groep9.NET.Models.Domein.Blokkering">
     <Position X="10" Y="10.25" Width="3.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Domein\Blokkering.cs</FileName>
     </TypeIdentifier>
-    <ShowAsCollectionAssociation>
-      <Property Name="Weekdagen" />
-    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Groep9.NET.Firma">
     <Position X="18.25" Y="2" Width="1.5" />
