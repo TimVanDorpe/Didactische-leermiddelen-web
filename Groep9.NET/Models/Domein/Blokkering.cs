@@ -28,7 +28,7 @@ namespace Groep9.NET.Models.Domein
             {
                 throw new ArgumentException("U moet ingelogd zijn als personeelslid om te reserveren.");
             }
-            product.VerwijderReservatieOfBlokkering(this);
+            product.VoegReservatieOfBlokkeringToe(this);
             
 
 

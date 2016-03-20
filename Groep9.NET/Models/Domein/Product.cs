@@ -90,7 +90,7 @@ namespace Groep9.NET {
 
         public int BerekenAantalReservatiesOfBlokkeringenOpWeek(DateTime datum, string klasse)
         {
-            int aantalAbstr = 0;
+           
             int aantalReservaties = 0;
             int aantalBlokkeringen = 0;
             int weekReservatie = 0;

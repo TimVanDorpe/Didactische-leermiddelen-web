@@ -28,7 +28,10 @@ namespace Groep9.NET.Models.Domein
         }
         protected ReservatieAbstr(Product product, int aantal, Gebruiker gebruiker, DateTime datum)
         {
-            
+            if (datum < DateTime.Today)
+            {
+                throw new ArgumentException("Je kan niet in het verleden reserveren");
+            }
             if (aantal < 0)
             {
                 throw new ArgumentException("Aantal moet positief zijn");

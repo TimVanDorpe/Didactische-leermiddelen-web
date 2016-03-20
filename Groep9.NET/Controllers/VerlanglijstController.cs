@@ -42,7 +42,7 @@ namespace Groep9.NET.Controllers {
                 
 
                 ProductenViewModel vm = new ProductenViewModel() {
-                    Producten = verlanglijst.Select(p => new ProductViewModel(p, gebruiker, p.BerekenAantalReservatiesOfBlokkeringenOpWeek(date,"reservatie"),p.BerekenAantalReservatiesOfBlokkeringenOpWeek(date, "blokkering")))
+                    Producten = verlanglijst.Select(p => new ProductViewModel(p, gebruiker, p.BerekenAantalReservatiesOfBlokkeringenOpWeek(date, "reservatie"),p.BerekenAantalReservatiesOfBlokkeringenOpWeek(date, "blokkering")))
                 };
 
                 if (Request.IsAjaxRequest())
