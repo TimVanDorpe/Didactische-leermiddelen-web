@@ -32,7 +32,8 @@ namespace Groep9.NET.Helpers
 
             }
             // indien de geselecteerde week volgende week is, EN het is vrijdag na 5 uur, return binnen 2 weken
-            if (BerekenWeek(date) == BerekenWeek(DateTime.Today) +1 && (DateTime.Today.DayOfWeek == DayOfWeek.Friday && DateTime.Now.Hour >= 17)) {
+            if (BerekenWeek(date) == BerekenWeek(DateTime.Today) +1 && ((DateTime.Today.DayOfWeek == DayOfWeek.Friday && DateTime.Now.Hour >= 17)
+                ||DateTime.Today.DayOfWeek == DayOfWeek.Saturday || DateTime.Today.DayOfWeek == DayOfWeek.Sunday)) {
                 int daysUntilMonday = (((int)DayOfWeek.Monday - (int)date.DayOfWeek + 7) % 7);
                 return date.AddDays(daysUntilMonday).AddHours(8);
             }
