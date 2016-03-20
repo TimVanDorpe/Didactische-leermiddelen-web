@@ -87,12 +87,15 @@
   <Class Name="Groep9.NET.Models.Domein.ReservatieAbstr">
     <Position X="8" Y="6" Width="4.25" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAABAAAAAAEAAAAAIAACAAAgAACgAgAAIAAAE=</HashCode>
+      <HashCode>AAACAAABABAAAAAAEAAAAAIAACAAAgAACgAgAAIAAAE=</HashCode>
       <FileName>Models\Domein\ReservatieAbstr.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Gebruiker" />
     </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Weekdagen" />
+    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Groep9.NET.Models.Domein.Blokkering">
     <Position X="10" Y="10.25" Width="3.25" />
