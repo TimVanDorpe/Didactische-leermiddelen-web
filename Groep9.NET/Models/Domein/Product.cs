@@ -139,68 +139,19 @@ namespace Groep9.NET {
             }
         }
 
-        //public int BerekenAantalGeblokkeerdOpWeek(DateTime datum)
-        //{
-        //    int aantalGeblokkeerd = 0;
-        //    int weekBlokkering = 0;
-        //    if (Helper.BerekenWeek(datum) == Helper.BerekenWeek(DateTime.Today))
-        //    {
-        //        weekBlokkering = Helper.BerekenWeek(datum) + 1;
-        //    }
-        //    weekBlokkering = Helper.BerekenWeek(datum);
-        //    foreach (Blokkering b in Blokkeringen)
-        //    {
-        //        int weekProduct =
-        //            Helper.BerekenWeek(b.StartDatum);
+     
 
-        //        if (weekBlokkering == weekProduct)
-        //        {
-        //            aantalGeblokkeerd += b.Aantal;
-        //        }
-        //    }
-        //    return aantalGeblokkeerd;
-
-        //}
-
-
-        public void voegReservatieOfBlokkeringToe(ReservatieAbstr r)
+        public void VoegReservatieOfBlokkeringToe(ReservatieAbstr r)
         {
             ReservatiesAbstr.Add(r);
         }
 
-        public void verwijderReservatieOfBlokkering(ReservatieAbstr r)
+        public void VerwijderReservatieOfBlokkering(ReservatieAbstr r)
         {
             ReservatiesAbstr.Remove(r);
         }
 
-        public int BerekenAantalGereserveerd()//VALIDATIE OOK NIET VERGETEN
-        {
-
-            int aantalReservaties = 0; 
-            foreach (ReservatieAbstr r in ReservatiesAbstr)
-            {
-               if(r is  Reservatie)
-               {
-                   aantalReservaties++;
-               }
-            }
-            return aantalReservaties;
-        }
-
-
-        public int BerekenAantalGeblokkeerd()
-        {
-            int aantalGeblokkeerd = 0;
-            foreach (ReservatieAbstr r in ReservatiesAbstr)
-            {
-                if (r is Blokkering)
-                {
-                    aantalGeblokkeerd++;
-                }
-            }
-            return aantalGeblokkeerd;
-        }
-
+    
   
 
 

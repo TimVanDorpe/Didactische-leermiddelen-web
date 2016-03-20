@@ -23,7 +23,7 @@ namespace Groep9.NET {
 
         public override void VerwijderReservatieAbstr(ReservatieAbstr r)
         {
-            r.Product.ReservatiesAbstr.Remove((Reservatie)r);
+            r.Product.VerwijderReservatieOfBlokkering(r);
             ReservAbstrLijst.Remove(r);
         }
     }

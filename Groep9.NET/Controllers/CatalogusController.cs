@@ -101,36 +101,30 @@ namespace Groep9.NET.Controllers {
         }
     
     public ActionResult AddOfVerwijderVerlanglijst(int id, Gebruiker gebruiker) {
-            try {
-
-                if (!CheckVerlanglijst(id, gebruiker)) {
-                    
-                    gebruiker.VoegProductAanVerlanglijstToe(productRepository.FindByProductNummer(id));
-                    
-                    gebruikerRepository.SaveChanges();
-                    TempData["Info"] = "Product " + productRepository.FindByProductNummer(id).Naam + " is toegevoegd aan verlanglijst.";
-                }
-                else {
-                    
-                    gebruiker.VerwijderProductUitVerlanglijst(productRepository.FindByProductNummer(id));
-                    
-                    gebruikerRepository.SaveChanges();
-                    TempData["Info2"] = "Product " + productRepository.FindByProductNummer(id).Naam + " is verwijderd uit uw verlanglijst.";
-                }
-               
-                return RedirectToAction("Index");
+        try
+        {
+            
+       
+            Product product = productRepository.FindByProductNummer(id);
+            gebruiker.VoegProductAanVerlanglijstToe(product);
+            if (gebruiker.VerlangLijst.Contains(product))
+            {
+                TempData["Info"] = "Product " + product.Naam + " is toegevoegd aan verlanglijst.";
             }
+            else
+            {
+                TempData["Info2"] = "Product " + product.Naam + " is verwijderd uit uw verlanglijst.";
+            }
+                gebruikerRepository.SaveChanges();
+            }
+           
+
             catch (ArgumentException e)
             {
                 TempData["ReservatieFail"] = e.Message;
             }
-            catch 
-            {
-                TempData["ReservatieFail"] = "Toevoegen/Verwijderen van verlanglijst is mislukt";
-               
-
-            }
-            return RedirectToAction("Index");
+            
+          return RedirectToAction("Index");
         }
 
 

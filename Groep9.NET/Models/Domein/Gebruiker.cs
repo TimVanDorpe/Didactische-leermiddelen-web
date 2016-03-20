@@ -27,8 +27,15 @@ namespace Groep9.NET.Models.Domein
 
         public void VoegProductAanVerlanglijstToe(Product p)
         {
-
-            VerlangLijst.Add(p);
+            if (VerlangLijst.Contains(p))
+            {
+                VerwijderProductUitVerlanglijst(p);
+            }
+            else
+            {
+                VerlangLijst.Add(p);
+            }
+            
             
         }
 

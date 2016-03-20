@@ -63,12 +63,17 @@ namespace Groep9.NET.Helpers
         }
 
         public static DateTime ZetDatumOm(string datum) {
-            if (datum == null) {
+            if (datum == null)
+            {
                 //als er geen datum geselecteerd is, stel tempdata in op vandaag
-                datum = DateTime.ParseExact(DateTime.Today.ToString().Substring(0, 10), "dd/MM/yyyy", null).ToString("dd/MM/yyyy");
+                return DateTime.Today;
+               
 
             }
+          
             return new DateTime(Int32.Parse(datum.Substring(6, 4)), Int32.Parse(datum.Substring(3, 2)), Int32.Parse(datum.Substring(0, 2)));
+           
+            
         }
     }
 }

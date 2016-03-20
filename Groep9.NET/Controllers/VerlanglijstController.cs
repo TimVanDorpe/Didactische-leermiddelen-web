@@ -13,7 +13,7 @@ namespace Groep9.NET.Controllers {
     public class VerlanglijstController : Controller {
         private IProductRepository productRepository;        
         private IGebruikerRepository gebruikerRepository;
-        //List<Dag> weekdagen = new List<Dag>();
+     
 
         // GET: Verlanglijst
         public VerlanglijstController(IProductRepository pr, IGebruikerRepository gr) {
@@ -108,7 +108,7 @@ namespace Groep9.NET.Controllers {
 
             return RedirectToAction("Index");
         }
-        public ActionResult AddBlokkering(Gebruiker gebruiker, int aantal, int id, string datum , bool Maandag = false , bool Dinsdag = false, bool Woensdag = false, bool Donderdag = false, bool Vrijdag = false)
+        public ActionResult AddBlokkering(Gebruiker gebruiker, int aantal, int id, string datum , bool maandag = false , bool dinsdag = false, bool woensdag = false, bool donderdag = false, bool vrijdag = false)
         {
             
             try
@@ -116,7 +116,7 @@ namespace Groep9.NET.Controllers {
                 Product prod = productRepository.FindByProductNummer(id);
                 DateTime date = Helper.ZetDatumOm(datum);
                 ReservatieAbstr blokkering = new Blokkering(prod, aantal, gebruiker, date);
-                           // blokkering.addWeekdag(Maandag, Dinsdag, Woensdag, Donderdag, Vrijdag);
+                           // blokkering.addWeekdag(maandag, dinsdag, woensdag, donderdag, vrijdag);
                             
                             gebruiker.VoegReservatieAbstrToe(blokkering);
                             gebruikerRepository.SaveChanges();

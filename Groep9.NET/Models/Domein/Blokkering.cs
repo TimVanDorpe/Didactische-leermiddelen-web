@@ -28,32 +28,32 @@ namespace Groep9.NET.Models.Domein
             {
                 throw new ArgumentException("U moet ingelogd zijn als personeelslid om te reserveren.");
             }
-            product.voegReservatieOfBlokkeringToe(this);
+            product.VerwijderReservatieOfBlokkering(this);
             
 
 
         }
 
-        public void addWeekdag(bool Maandag , bool Dinsdag, bool Woensdag, bool Donderdag, bool Vrijdag)
+        public void AddWeekdag(bool maandag , bool dinsdag, bool woensdag, bool donderdag, bool vrijdag)
         {
-            if (Maandag == true)
-            { Dag Ma = new Dag("Maandag");
+            if (maandag == true)
+            { Dag Ma = new Dag("maandag");
                 Weekdagen.Add(Ma);
             }
-            if (Dinsdag == true)
-            { Dag Di = new Dag("Dinsdag");
+            if (dinsdag == true)
+            { Dag Di = new Dag("dinsdag");
                 Weekdagen.Add(Di);
             }
-            if (Woensdag == true)
-            { Dag Wo = new Dag("Woensdag");
+            if (woensdag == true)
+            { Dag Wo = new Dag("woensdag");
                 Weekdagen.Add(Wo);
             }
-            if (Donderdag == true)
-            { Dag Do = new Dag("Donderdag");
+            if (donderdag == true)
+            { Dag Do = new Dag("donderdag");
                 Weekdagen.Add(Do);
             }
-            if (Vrijdag == true)
-            { Dag Vr = new Dag("Vrijdag");
+            if (vrijdag == true)
+            { Dag Vr = new Dag("vrijdag");
                 Weekdagen.Add(Vr);
             }
            

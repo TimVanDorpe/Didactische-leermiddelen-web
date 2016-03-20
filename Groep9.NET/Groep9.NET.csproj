@@ -232,7 +232,6 @@
     <Compile Include="Models\Domein\Personeelslid.cs" />
     <Compile Include="Models\Domein\Product.cs" />
     <Compile Include="Models\DAL\Initializer.cs" />
-    <Compile Include="Models\Domein\Plaats.cs" />
     <Compile Include="Models\Domein\Reservatie.cs" />
     <Compile Include="Models\Domein\ReservatieAbstr.cs" />
     <Compile Include="Models\Domein\Student.cs" />
