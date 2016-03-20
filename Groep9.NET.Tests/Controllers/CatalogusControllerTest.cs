@@ -60,14 +60,36 @@ namespace Groep9.NET.Tests.Controllers {
         [TestMethod]
         public void IndexReturnsAlleProducten() {
             //Act
-            ViewResult result = cc.Index(gebruiker,"","","") as ViewResult;
-            List<ProductViewModel> producten = result.ViewData.Model as List<ProductViewModel>;
+
+            ViewResult result = cc.Index(gebruiker) as ViewResult;
+            List<Product> producten = (result.Model as IEnumerable<Product>).ToList();
 
 
             //Assert
             Assert.AreEqual(3, producten.Count);
+            Assert.AreEqual(1, producten[0].ProductId);
+            Assert.AreEqual("B", producten[1].Naam);
+            Assert.AreEqual("C", producten[2].Naam);
           
         }
+
+        [TestMethod]
+        public void Index()
+        {
+
+            // Act
+            ViewResult result = cc.Index(context.Personeelslid) as ViewResult;
+
+            ProductenViewModel vm = new ProductenViewModel()
+            {
+                Producten = ProductenLijst.Select(p => new ProductViewModel(p, context.Personeelslid))
+            };
+            // Assert
+            Assert.AreEqual(result.Model, vm);
+
+        } 
+
+
 
         [TestMethod]
         public void DetailsReturnsDetails() {
@@ -80,12 +102,22 @@ namespace Groep9.NET.Tests.Controllers {
         
 
         [TestMethod]
-        public void GetdoelgroepSelectListReturnsDoelgroepSelectList()
+        public void AddOfVerwijderVerlanglijstWillRedirectToIndex()
         {
-            
+            RedirectToRouteResult result = cc.AddOfVerwijderVerlanglijst(1, gebruiker) as RedirectToRouteResult;
+            Assert.IsNotNull(result, "Should have redirected");
+            Assert.AreEqual("Index", result.RouteValues["action"]);
         }
 
 
-        
+            
+        [TestMethod]
+        public void AddOfVerwijderVerlanglijstWillAddToVerlanglijst() {
+            RedirectToRouteResult result = cc.AddOfVerwijderVerlanglijst(1, gebruiker) as RedirectToRouteResult;
+            Assert.AreEqual(1, gebruiker.VerlangLijst.Count);
+            mockpr.Verify(p => p.FindByProductNummer(1), Times.Once());
+        }
+
+
     }
 }
