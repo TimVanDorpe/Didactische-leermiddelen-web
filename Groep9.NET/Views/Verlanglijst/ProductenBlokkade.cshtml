@@ -66,17 +66,16 @@
                {
                    @class = "form-control",
                    Type = "number",
-                   @style = "width:80px;"@*, @placeholder = item.AantalBeschikbaar+ " bruikbaar"*@})
-
-                    @*hier moet een textbox komen zodat de gebruiker kan invoeren hoeveel hij/zij er wenst te reserveren*@
+                   @style = "width:80px;"})
+                                        
                 </td>
-                @*<td>
+                <td>
                     <input id="maandag" name="maandag" value="true" type="checkbox" /> Ma<br>
                     <input id="dinsdag" name="dinsdag" value="true" type="checkbox" /> Di<br>
                     <input id="woensdag" name="woensdag" value="true" type="checkbox" /> Wo<br>
                     <input id="donderdag" name="donderdag" value="true" type="checkbox" /> Do<br>
                     <input id="vrijdag" name="vrijdag" value="true" type="checkbox" /> Vr
-                </td>*@
+                </td>
                
                 <td colspan="2">
                     <div class="btn-toolbar pull-right" style="min-width:168px" role="toolbar">
@@ -99,36 +98,22 @@
                                         <button type="button" class="btn btn-default " data-dismiss="modal">Annuleren</button>
                                         <button type="submit" name="productnummer" value="@item.ProductId" class="btn btn-default">Bevestigen</button>
                                     </div>
-                                </div><!-- /.modal-content -->
-                            </div><!-- /.modal-dialog -->
-                        </div><!-- /.modal -->
-
-
-
+                                </div>
+                            </div>
+                        </div>
                         <a href="@Url.Action("Details", new { id = item.ProductId, datum = TempData["datum"]})" class="btn btn-info btn-sm ">
-
-                            <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
                         </a>
-
                         <a href="@Url.Action("RemoveFromVerlanglijst", new { id = item.ProductId })" class="btn btn-danger btn-sm ">
-
                             <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
                         </a>
                     </div>
-
-
-                </td>
-                                  
-
+                </td>                               
             </tr>
             }
         }
 
     </table><br />
-
-
-
-
 </div>
 <div class="visible-sm visible-xs">
     @if (!Model.Any())

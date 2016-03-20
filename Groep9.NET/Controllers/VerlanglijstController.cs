@@ -116,9 +116,8 @@ namespace Groep9.NET.Controllers {
                 Product prod = productRepository.FindByProductNummer(id);
                 DateTime date = Helper.ZetDatumOm(datum);
                 ReservatieAbstr blokkering = new Blokkering(prod, aantal, gebruiker, date);
-                           // blokkering.addWeekdag(maandag, dinsdag, woensdag, donderdag, vrijdag);
-                            
-                            gebruiker.VoegReservatieAbstrToe(blokkering);
+                blokkering.AddWeekdag(maandag, dinsdag, woensdag, donderdag, vrijdag);
+                gebruiker.VoegReservatieAbstrToe(blokkering);
                             gebruikerRepository.SaveChanges();
                             TempData["Info"] = "Product " + productRepository.FindByProductNummer(id).Naam + " is geblokkeerd.";
                       

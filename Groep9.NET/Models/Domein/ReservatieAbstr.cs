@@ -20,6 +20,9 @@ namespace Groep9.NET.Models.Domein
         public int Aantal { get; set; }
         public virtual Gebruiker Gebruiker { get; set; }
 
+        public virtual ICollection<Dag> Weekdagen { get; set; }
+
+
         public int ReservatieAbstrId { get; set; }
 
         protected ReservatieAbstr()
@@ -72,6 +75,34 @@ namespace Groep9.NET.Models.Domein
         {
 
             return Helper.BerekenWeek(datum);
+        }
+        public void AddWeekdag(bool maandag, bool dinsdag, bool woensdag, bool donderdag, bool vrijdag)
+        {
+            if (maandag == true)
+            {
+                Dag Ma = new Dag("maandag");
+                Weekdagen.Add(Ma);
+            }
+            if (dinsdag == true)
+            {
+                Dag Di = new Dag("dinsdag");
+                Weekdagen.Add(Di);
+            }
+            if (woensdag == true)
+            {
+                Dag Wo = new Dag("woensdag");
+                Weekdagen.Add(Wo);
+            }
+            if (donderdag == true)
+            {
+                Dag Do = new Dag("donderdag");
+                Weekdagen.Add(Do);
+            }
+            if (vrijdag == true)
+            {
+                Dag Vr = new Dag("vrijdag");
+                Weekdagen.Add(Vr);
+            }
         }
 
     }
