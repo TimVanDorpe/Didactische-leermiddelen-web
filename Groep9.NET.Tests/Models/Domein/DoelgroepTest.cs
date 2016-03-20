@@ -1,5 +1,6 @@
 ﻿using System;
 using Groep9.NET.Models.Domein;
+using Groep9.NET.Tests.Controllers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Groep9.NET.Tests.Models.Domein {

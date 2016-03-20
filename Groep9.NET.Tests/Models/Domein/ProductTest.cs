@@ -3,6 +3,7 @@ using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Groep9.NET.Helpers;
+using Groep9.NET.Tests.Controllers;
 
 namespace Groep9.NET.Tests.Models.Domein
 {

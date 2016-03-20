@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Text;
 using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
 using Groep9.NET.Models.Domein;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Groep9.NET.Tests.Models {
+namespace Groep9.NET.Tests.Controllers {
     /// <summary>
     /// Summary description for DummyContext
     /// </summary>

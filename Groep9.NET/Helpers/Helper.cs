@@ -72,7 +72,7 @@ namespace Groep9.NET.Helpers
 
             }
             DateTime date = new DateTime(Int32.Parse(datum.Substring(6, 4)), Int32.Parse(datum.Substring(3, 2)), Int32.Parse(datum.Substring(0, 2)));
-            if (date < DateTime.Now)
+            if (date < DateTime.Today)
             {
                 throw new ArgumentException("Je kan geen datum in het verleden selecteren.");
             }

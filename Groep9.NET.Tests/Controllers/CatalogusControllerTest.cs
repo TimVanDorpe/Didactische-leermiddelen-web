@@ -31,7 +31,7 @@ namespace Groep9.NET.Tests.Controllers {
         private Product product2;
         private Product product3;
 
-        private Gebruiker g;
+        private Gebruiker gebruiker;
 
         private IQueryable<Product> ProductenLijst;
 
@@ -51,7 +51,7 @@ namespace Groep9.NET.Tests.Controllers {
             mockpr.Setup(p => p.VindAlleProducten()).Returns(ProductenLijst);
             mockpr.Setup(p => p.FindByProductNummer(1)).Returns(product1);
 
-            g = context.Gebruiker;
+            gebruiker = context.Gebruiker;
 
             cc = new CatalogusController(mockpr.Object, mockdr.Object, mocklr.Object, mockgr.Object);
         }
@@ -60,7 +60,7 @@ namespace Groep9.NET.Tests.Controllers {
         [TestMethod]
         public void IndexReturnsAlleProducten() {
             //Act
-            ViewResult result = cc.Index(g) as ViewResult;
+            ViewResult result = cc.Index(gebruiker) as ViewResult;
             List<Product> producten = (result.Model as IEnumerable<Product>).ToList();
 
 
