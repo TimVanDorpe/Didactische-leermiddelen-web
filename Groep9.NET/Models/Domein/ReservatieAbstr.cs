@@ -40,7 +40,7 @@ namespace Groep9.NET.Models.Domein
             {
                 throw new ArgumentException("Aantal moet positief zijn");
             }
-            if (product.Aantal < (product.BerekenAantalReservatiesOfBlokkeringenOpWeek(datum, "reservatie") + Aantal))
+            if (product.Aantal < (product.BerekenAantalReservatiesOfBlokkeringenOpWeek(datum, "reservatie") + aantal))
             {
                 throw new ArgumentException("Er zijn niet genoeg producten beschikbaar op de gewenste datum.");
             }
